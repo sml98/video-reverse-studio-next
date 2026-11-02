@@ -1,0 +1,29 @@
+{
+  "id": "quaternius-standard",
+  "title": "Quaternius · Universal Animation Library (Standard)",
+  "source": "https://quaternius.itch.io/universal-animation-library",
+  "license": "CC0",
+  "credit": "Quaternius, CC0",
+  "styles": [
+    "3d",
+    "low-poly"
+  ],
+  "niches": [
+    "historia"
+  ],
+  "tags": [
+    "animacao",
+    "esqueleto",
+    "3d"
+  ],
+  "kinds": {
+    "model3d": "anim_library"
+  },
+  "notes": "Clips esqueléticos; exigem personagem compatível/retarget. Pro/Source não instalados.",
+  "installed_from": "instalação local anterior (cópia; origem preservada)",
+  "files": {
+    "AnimationLibrary_Standard.glb": "b94b87af722757a3e8971d97e0968c4fca3a1963ec49f216c1935618a9723a09",
+    "LICENSE": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+    "README.md": "370e6ff244ef43b269f936be7d630a77a3eb7ed8bbc3315ffcae5b327b814fcb"
+  }
+}

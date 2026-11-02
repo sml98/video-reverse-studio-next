@@ -1,0 +1,79 @@
+{
+  "id": "meme",
+  "title": "Meme/humor",
+  "emoji": "😂",
+  "description": "Preparação → expectativa → quebra/punchline.",
+  "arc": [
+    "preparação",
+    "expectativa",
+    "punchline"
+  ],
+  "visualLanguages": [
+    "stickers",
+    "cartoon",
+    "tipografia"
+  ],
+  "theme": {
+    "background": "#151022",
+    "foreground": "#ffffff",
+    "accent": "#ff4d8d",
+    "accent2": "#ffd23f",
+    "muted": "#b7a8d9",
+    "font": "rounded",
+    "visualLanguage": "stickers"
+  },
+  "example": {
+    "title": "Só mais um vídeo",
+    "idea": "Meme sobre prometer dormir cedo e acabar vendo vídeos aleatórios.",
+    "aspect": "vertical"
+  },
+  "recipe": [
+    {
+      "role": "preparação",
+      "label": "Setup + punchline",
+      "preset_id": "vrs-meme",
+      "duration": 6,
+      "narration": "Eu: hoje vou dormir cedo. Também eu, às três da manhã:",
+      "parameters": {
+        "setup": "Eu: hoje vou dormir cedo",
+        "punchline": "Eu às 3h vendo como fazem pão no Japão",
+        "emoji": "🥖",
+        "style": "modern"
+      },
+      "guidance": "Setup curto; a punchline entra após pausa."
+    },
+    {
+      "role": "punchline",
+      "label": "Fecho",
+      "preset_id": "vrs-kinetic-quote",
+      "duration": 3,
+      "narration": "Quem nunca?",
+      "parameters": {
+        "text": "Quem nunca?",
+        "emphasis": "nunca",
+        "author": "",
+        "authorship": "sem_atribuicao",
+        "style": "neon"
+      },
+      "guidance": ""
+    }
+  ],
+  "aspects": [
+    "landscape",
+    "vertical",
+    "square"
+  ],
+  "durationRange": [
+    10,
+    120
+  ],
+  "defaultDuration": 9,
+  "captions": {
+    "mode": "word",
+    "position": "bottom",
+    "maxWords": 3
+  },
+  "voice": "faber",
+  "schema": "vrs.niche/1",
+  "guide": "skills/vrs-presets/references/meme.md"
+}

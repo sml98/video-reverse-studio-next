@@ -1,0 +1,395 @@
+{
+  "schema": "vrs.filmplan/1",
+  "title": "A muda da Lia",
+  "language": "pt-BR",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "theme": {
+    "background": "#10141c",
+    "foreground": "#fffaf0",
+    "accent": "#ffb347",
+    "accent2": "#7bdff2",
+    "muted": "#a7b0c0",
+    "font": "rounded",
+    "visualLanguage": "recortes"
+  },
+  "captions": {
+    "enabled": true,
+    "mode": "word",
+    "position": "bottom",
+    "maxWords": 3,
+    "highlight": "#ffd23f"
+  },
+  "audio": {
+    "narration": "voice/narration.wav",
+    "music": "",
+    "musicVolume": 0.12,
+    "duck": true,
+    "voice": "faber"
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "component": "vrs-story-panel",
+      "params": {
+        "background": "",
+        "character": "assets/lib/open-peeps/peep-2.png",
+        "characterSide": "left",
+        "action": "enter",
+        "props": [],
+        "bubble": "Vou plantar uma árvore!",
+        "caption": "Lia tinha um plano."
+      },
+      "durationInFrames": 150,
+      "narration": "Lia queria plantar uma árvore no quintal.",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Lia",
+          "start": 300,
+          "end": 501
+        },
+        {
+          "id": "w-2",
+          "word": "queria",
+          "start": 501,
+          "end": 798
+        },
+        {
+          "id": "w-3",
+          "word": "plantar",
+          "start": 798,
+          "end": 1166
+        },
+        {
+          "id": "w-4",
+          "word": "uma",
+          "start": 1166,
+          "end": 1368
+        },
+        {
+          "id": "w-5",
+          "word": "árvore",
+          "start": 1368,
+          "end": 1689
+        },
+        {
+          "id": "w-6",
+          "word": "no",
+          "start": 1689,
+          "end": 1796
+        },
+        {
+          "id": "w-7",
+          "word": "quintal.",
+          "start": 1796,
+          "end": 2378
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {
+        "assets/lib/open-peeps/peep-2.png": "assets/lib/open-peeps/peep-2.png"
+      },
+      "layers": [],
+      "transitionIn": {
+        "type": "fade",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [],
+      "notes": ""
+    },
+    {
+      "id": "s02",
+      "component": "vrs-story-panel",
+      "params": {
+        "background": "",
+        "character": "assets/lib/open-peeps/peep-2.png",
+        "characterSide": "left",
+        "action": "shake",
+        "props": [],
+        "bubble": "Por que não cresce?",
+        "caption": "Uma semana depois…"
+      },
+      "durationInFrames": 150,
+      "narration": "Mas, depois de uma semana, a muda continuava pequena.",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Mas,",
+          "start": 300,
+          "end": 576
+        },
+        {
+          "id": "w-2",
+          "word": "depois",
+          "start": 576,
+          "end": 913
+        },
+        {
+          "id": "w-3",
+          "word": "de",
+          "start": 913,
+          "end": 1009
+        },
+        {
+          "id": "w-4",
+          "word": "uma",
+          "start": 1009,
+          "end": 1141
+        },
+        {
+          "id": "w-5",
+          "word": "semana,",
+          "start": 1141,
+          "end": 1742
+        },
+        {
+          "id": "w-6",
+          "word": "a",
+          "start": 1742,
+          "end": 1838
+        },
+        {
+          "id": "w-7",
+          "word": "muda",
+          "start": 1838,
+          "end": 2091
+        },
+        {
+          "id": "w-8",
+          "word": "continuava",
+          "start": 2091,
+          "end": 2692
+        },
+        {
+          "id": "w-9",
+          "word": "pequena.",
+          "start": 2692,
+          "end": 3341
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {
+        "assets/lib/open-peeps/peep-2.png": "assets/lib/open-peeps/peep-2.png"
+      },
+      "layers": [],
+      "transitionIn": {
+        "type": "circle",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [],
+      "notes": ""
+    },
+    {
+      "id": "s03",
+      "component": "vrs-steps",
+      "params": {
+        "title": "O que a Lia fez",
+        "steps": [
+          {
+            "title": "Pesquisou",
+            "detail": ""
+          },
+          {
+            "title": "Levou para o sol",
+            "detail": ""
+          },
+          {
+            "title": "Regou com cuidado",
+            "detail": ""
+          }
+        ]
+      },
+      "durationInFrames": 150,
+      "narration": "Ela pesquisou, mudou a muda para o sol e passou a regar com cuidado.",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Ela",
+          "start": 300,
+          "end": 501
+        },
+        {
+          "id": "w-2",
+          "word": "pesquisou,",
+          "start": 501,
+          "end": 1222
+        },
+        {
+          "id": "w-3",
+          "word": "mudou",
+          "start": 1222,
+          "end": 1530
+        },
+        {
+          "id": "w-4",
+          "word": "a",
+          "start": 1530,
+          "end": 1613
+        },
+        {
+          "id": "w-5",
+          "word": "muda",
+          "start": 1613,
+          "end": 1873
+        },
+        {
+          "id": "w-6",
+          "word": "para",
+          "start": 1873,
+          "end": 2062
+        },
+        {
+          "id": "w-7",
+          "word": "o",
+          "start": 2062,
+          "end": 2122
+        },
+        {
+          "id": "w-8",
+          "word": "sol",
+          "start": 2122,
+          "end": 2370
+        },
+        {
+          "id": "w-9",
+          "word": "e",
+          "start": 2370,
+          "end": 2488
+        },
+        {
+          "id": "w-10",
+          "word": "passou",
+          "start": 2488,
+          "end": 2820
+        },
+        {
+          "id": "w-11",
+          "word": "a",
+          "start": 2820,
+          "end": 2891
+        },
+        {
+          "id": "w-12",
+          "word": "regar",
+          "start": 2891,
+          "end": 3198
+        },
+        {
+          "id": "w-13",
+          "word": "com",
+          "start": 3198,
+          "end": 3376
+        },
+        {
+          "id": "w-14",
+          "word": "cuidado.",
+          "start": 3376,
+          "end": 4015
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "circle",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [],
+      "notes": ""
+    },
+    {
+      "id": "s04",
+      "component": "vrs-story-panel",
+      "params": {
+        "background": "",
+        "character": "assets/lib/open-peeps/peep-2.png",
+        "characterSide": "right",
+        "action": "jump",
+        "props": [],
+        "bubble": "Brotou!",
+        "caption": "Na primavera…"
+      },
+      "durationInFrames": 150,
+      "narration": "Na primavera, as primeiras folhas apareceram.",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Na",
+          "start": 300,
+          "end": 457
+        },
+        {
+          "id": "w-2",
+          "word": "primavera,",
+          "start": 457,
+          "end": 1112
+        },
+        {
+          "id": "w-3",
+          "word": "as",
+          "start": 1112,
+          "end": 1258
+        },
+        {
+          "id": "w-4",
+          "word": "primeiras",
+          "start": 1258,
+          "end": 1683
+        },
+        {
+          "id": "w-5",
+          "word": "folhas",
+          "start": 1683,
+          "end": 1974
+        },
+        {
+          "id": "w-6",
+          "word": "apareceram.",
+          "start": 1974,
+          "end": 2726
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {
+        "assets/lib/open-peeps/peep-2.png": "assets/lib/open-peeps/peep-2.png"
+      },
+      "layers": [],
+      "transitionIn": {
+        "type": "circle",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [],
+      "notes": ""
+    }
+  ],
+  "uncertainties": [],
+  "sources": [],
+  "illustrativeData": false,
+  "warnings": []
+}

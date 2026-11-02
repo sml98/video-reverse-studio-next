@@ -1,0 +1,122 @@
+{
+  "id": "tutorial",
+  "title": "Tutorial/educação",
+  "emoji": "🧭",
+  "description": "Objetivo → etapas → resultado.",
+  "arc": [
+    "objetivo",
+    "etapas",
+    "resultado"
+  ],
+  "visualLanguages": [
+    "motion-graphics",
+    "ícones",
+    "passos"
+  ],
+  "theme": {
+    "background": "#0f1216",
+    "foreground": "#f4f7fb",
+    "accent": "#ff9f43",
+    "accent2": "#54a0ff",
+    "muted": "#95a3b5",
+    "font": "rounded",
+    "visualLanguage": "motion-graphics"
+  },
+  "example": {
+    "title": "Café coado em 4 passos",
+    "idea": "Tutorial curto de café coado.",
+    "aspect": "vertical"
+  },
+  "recipe": [
+    {
+      "role": "objetivo",
+      "label": "Objetivo",
+      "preset_id": "vrs-title",
+      "duration": 3,
+      "narration": "Quer um café coado sem amargor?",
+      "parameters": {
+        "label": "TUTORIAL",
+        "title": "Café coado em 4 passos",
+        "subtitle": "",
+        "style": "bold"
+      },
+      "guidance": ""
+    },
+    {
+      "role": "etapas",
+      "label": "Passos",
+      "preset_id": "vrs-steps",
+      "duration": 9,
+      "narration": "Aqueça a água sem ferver. Escalde o filtro. Use cerca de dez gramas para cento e cinquenta mililitros. Despeje devagar, em espiral.",
+      "parameters": {
+        "title": "Passo a passo",
+        "steps": [
+          {
+            "title": "Água quase fervendo",
+            "detail": "cerca de 92 a 96 °C"
+          },
+          {
+            "title": "Escalde o filtro",
+            "detail": "tira o gosto de papel"
+          },
+          {
+            "title": "10 g para 150 ml",
+            "detail": "ajuste ao seu gosto"
+          },
+          {
+            "title": "Despeje em espiral",
+            "detail": "devagar, em etapas"
+          }
+        ]
+      },
+      "guidance": "Uma ação por passo."
+    },
+    {
+      "role": "resultado",
+      "label": "Resultado",
+      "preset_id": "vrs-object-stage",
+      "duration": 4,
+      "narration": "Pronto: um café encorpado e aromático.",
+      "parameters": {
+        "title": "Resultado",
+        "objects": [
+          {
+            "asset": "",
+            "icon": "drop",
+            "label": "Água certa"
+          },
+          {
+            "asset": "",
+            "icon": "clock",
+            "label": "Sem pressa"
+          },
+          {
+            "asset": "",
+            "icon": "heart",
+            "label": "Café gostoso"
+          }
+        ],
+        "layout": "arc"
+      },
+      "guidance": ""
+    }
+  ],
+  "aspects": [
+    "landscape",
+    "vertical",
+    "square"
+  ],
+  "durationRange": [
+    10,
+    120
+  ],
+  "defaultDuration": 16,
+  "captions": {
+    "mode": "word",
+    "position": "bottom",
+    "maxWords": 3
+  },
+  "voice": "faber",
+  "schema": "vrs.niche/1",
+  "guide": "skills/vrs-presets/references/tutorial.md"
+}

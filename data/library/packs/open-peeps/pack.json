@@ -1,0 +1,51 @@
+{
+  "id": "open-peeps",
+  "title": "Open Peeps · personagens 2D",
+  "source": "https://www.openpeeps.com/",
+  "license": "CC0",
+  "credit": "Open Peeps por Pablo Stanley, CC0",
+  "styles": [
+    "cartoon",
+    "stickers"
+  ],
+  "niches": [
+    "historia",
+    "meme",
+    "cta"
+  ],
+  "tags": [
+    "personagem",
+    "pessoa"
+  ],
+  "kinds": {
+    "image": "pose"
+  },
+  "notes": "Poses estáticas transparentes. Sem rig e sem lip-sync.",
+  "installed_from": "instalação local anterior (cópia; origem preservada)",
+  "files": {
+    "5e51c6ae16879c0ee9c10815_peep-2.png": "415605d147b4665726a1e3ab0fb69bb5fc9d770bf46987f98235a5784070bd0a",
+    "5e51c6f28c34f85f3c498170_peep-5.png": "f8113ff3d44485222938bfab02d84bf86a5250fd0e3d63868296257700c78ac3",
+    "5e532a5133d3686ff53d2a74_peep-2.png": "1fe003b99c7310b4598a45f41aa57d828a6780237a61b38565f8d7a16e384eb1",
+    "5e5350fb460080ed648acdc3_peep-7.png": "ab7025387971b3d78956c7fc9bcda3417b362f774ebe32ecfa67cef1dd29c714",
+    "5e5351418e2493653d03a995_peep-9.png": "99853b47f4487dd7474a91b2c175bef3f84c7a816e501db129e1466c6e746c90",
+    "5e5351f551970508e6a249c4_peep-15.png": "e2301047cf3fcae7ed96c5a1c0930b6b9610280957fbcbeb14cfdf610893fd81",
+    "5e53525c9588e0829a7b6d29_peep-18.png": "102a3a16729a7a4b1d6374c093bf8cd0c590ab7042db8533c8cde748f0215a36",
+    "5e535382e35d386d5a65cc91_peep-24.png": "69d3404a46e342614cee49575958b1f4b969ecb7e559b713a9ed0be01a42a0b2",
+    "5e53540664109d6cbf005ad4_peep-27.png": "adb108dd0851a63a3bda6123cf7e8fde4089af1626673e60cd9acbe12bf1f082",
+    "5e53563b8becbf8c4252ff27_peep-39.png": "b5c7c0fb1ac43b42161d8fb64e9d15b94ba7e2d553b8e858aa672808ec347060",
+    "5e5356897371bb93979e09cd_peep-42.png": "565eae5bfcdbe5382d77c3fc5b0633bf2398184fb88848e32ac55b55aa5c9a26",
+    "5e535741f5fa1a13a1f8f233_peep-48.png": "d2a2fab0a721caad3fc453b5b799c2944ce71bb0f38946cde93faea341636210",
+    "5e535793d399238d5e54a0b5_peep-51.png": "ba185b89839d3e45b98304587edd25d344671fb62a425de3c089ed2f632c16a7",
+    "5e535840d39923925454c88d_peep-56.png": "88d8ee62b2d94f4726bc77813212bca2b0446f24908bac07eddf5ecf5c173aad",
+    "5e5358af8e24939dc40660de_peep-60.png": "d5cf34c81bcc98e7f70c135567c68bfa77f0507c8feb85a58805d927e318c982",
+    "5e535902c9925085c4c9b4f8_peep-63.png": "b596a1ac748d899afdb3ab68933569cc56847999b3eeea95e78b1c85b766209e",
+    "5e535a157371bb4d9aa05b93_peep-72.png": "5cb9d1b2234adef8e127a402f5dc568b10da5fa8d4e5c318334b97ca8a9821a7",
+    "5e535aa79588e0c5d87f92d8_peep-77.png": "c5b26f96738624aa8518905ddbe343e632d56ffdc4a5290d48b566d3f4b56d3e",
+    "5e535bd3460080e5d68ef5ac_peep-87.png": "56bacbc3dce420522042531c06b2e605faf5262e8e5f99858e983c009ad0f9f8",
+    "5e535d35550b761a3af880d9_peep-99.png": "dde7206d92ff62f209b499c71891434877fbd388c3d29e62b29eb9d90d5b76a0",
+    "5e535d507371bb20aea29659_peep-100.png": "8f5800f8c22b7ec61ab9a25ff9d24f987f2df33c8ada3365272422583ce96021",
+    "5e535d897488c25a204b12ff_peep-102.png": "612095e11fbba736d738b3c37065e282820a19ad4d30a13103a13ad19e697d08",
+    "5e535da9550b762cb4f909a6_peep-103.png": "85befbf90473e4e0f2e9a6b7b5a4bdb210bdfbdbdda9f74ef0457bcc4d52b59a",
+    "5e535ddcd3992344b6572d31_peep-105.png": "8039ba55412279925e2d5c622fe2c3acc15be58d187cb014c96c21bf1c553a11"
+  }
+}

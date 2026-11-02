@@ -1,0 +1,110 @@
+{
+  "schema": "vrs.storyboard/1",
+  "title": "Juros compostos",
+  "language": "pt-BR",
+  "uncertainties": [],
+  "illustrative_data": true,
+  "scenes": [
+    {
+      "preset_id": "vrs-title",
+      "parameters": {
+        "label": "FINANÇAS",
+        "title": "Juros sobre juros",
+        "subtitle": "O que são juros compostos",
+        "style": "cinematic"
+      },
+      "narration": "Juros compostos são juros sobre juros.",
+      "duration": 4
+    },
+    {
+      "preset_id": "vrs-calc",
+      "parameters": {
+        "title": "R$ 1.000 a 1% ao mês",
+        "steps": [
+          {
+            "label": "Início",
+            "expression": "",
+            "result": 1000,
+            "prefix": "R$ ",
+            "suffix": "",
+            "decimals": 2
+          },
+          {
+            "label": "12 meses",
+            "expression": "1000 × 1,01¹²",
+            "result": 1126.83,
+            "prefix": "R$ ",
+            "suffix": "",
+            "decimals": 2
+          },
+          {
+            "label": "24 meses",
+            "expression": "1000 × 1,01²⁴",
+            "result": 1269.73,
+            "prefix": "R$ ",
+            "suffix": "",
+            "decimals": 2
+          }
+        ],
+        "conclusion": "O ganho do 2º ano é maior que o do 1º.",
+        "illustrative": true
+      },
+      "narration": "Mil reais a um por cento ao mês viram cerca de mil cento e vinte e sete em um ano, e mil duzentos e setenta em dois.",
+      "duration": 7
+    },
+    {
+      "preset_id": "vrs-line-chart",
+      "parameters": {
+        "title": "Saldo ao longo de 36 meses",
+        "unit": "R$",
+        "points": [
+          {
+            "label": "0m",
+            "value": 1000.0
+          },
+          {
+            "label": "6m",
+            "value": 1061.52
+          },
+          {
+            "label": "12m",
+            "value": 1126.83
+          },
+          {
+            "label": "18m",
+            "value": 1196.15
+          },
+          {
+            "label": "24m",
+            "value": 1269.73
+          },
+          {
+            "label": "30m",
+            "value": 1347.85
+          },
+          {
+            "label": "36m",
+            "value": 1430.77
+          }
+        ],
+        "annotationIndex": 6,
+        "annotationText": "R$ 1430,77",
+        "illustrative": true
+      },
+      "narration": "A curva acelera porque cada mês rende sobre um valor maior.",
+      "duration": 6
+    },
+    {
+      "preset_id": "vrs-kinetic-quote",
+      "parameters": {
+        "text": "Simulação ilustrativa: sem inflação, impostos ou taxas.",
+        "emphasis": "ilustrativa",
+        "author": "",
+        "authorship": "sem_atribuicao",
+        "style": "minimal"
+      },
+      "narration": "Simulação ilustrativa: não considera inflação, impostos ou taxas.",
+      "duration": 5
+    }
+  ]
+}

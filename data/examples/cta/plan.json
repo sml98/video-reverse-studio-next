@@ -1,0 +1,304 @@
+{
+  "schema": "vrs.filmplan/1",
+  "title": "Guia de estudos",
+  "language": "pt-BR",
+  "width": 720,
+  "height": 1280,
+  "fps": 30,
+  "theme": {
+    "background": "#0a0f1c",
+    "foreground": "#ffffff",
+    "accent": "#22d39a",
+    "accent2": "#7c8cff",
+    "muted": "#93a0bf",
+    "font": "display",
+    "visualLanguage": "motion-graphics"
+  },
+  "captions": {
+    "enabled": true,
+    "mode": "word",
+    "position": "bottom",
+    "maxWords": 3,
+    "highlight": "#ffd23f"
+  },
+  "audio": {
+    "narration": "voice/narration.wav",
+    "music": "",
+    "musicVolume": 0.12,
+    "duck": true,
+    "voice": "faber"
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "component": "vrs-title",
+      "params": {
+        "label": "",
+        "title": "Estuda e esquece tudo?",
+        "subtitle": "",
+        "style": "bold",
+        "backgroundAsset": ""
+      },
+      "durationInFrames": 90,
+      "narration": "Estuda muito e esquece tudo?",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Estuda",
+          "start": 300,
+          "end": 685
+        },
+        {
+          "id": "w-2",
+          "word": "muito",
+          "start": 685,
+          "end": 950
+        },
+        {
+          "id": "w-3",
+          "word": "e",
+          "start": 950,
+          "end": 1022
+        },
+        {
+          "id": "w-4",
+          "word": "esquece",
+          "start": 1022,
+          "end": 1408
+        },
+        {
+          "id": "w-5",
+          "word": "tudo?",
+          "start": 1408,
+          "end": 1890
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "fade",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [],
+      "notes": ""
+    },
+    {
+      "id": "s02",
+      "component": "vrs-comparison",
+      "params": {
+        "title": "Revisão espaçada",
+        "leftTitle": "Maratona",
+        "rightTitle": "Intervalos",
+        "leftItems": [
+          "Tudo na véspera",
+          "Esquece rápido"
+        ],
+        "rightItems": [
+          "Pouco por dia",
+          "Lembra por mais tempo"
+        ],
+        "verdict": "Benefício descrito sem promessa de resultado."
+      },
+      "durationInFrames": 180,
+      "narration": "Revisar em intervalos ajuda a lembrar mais, com menos horas de estudo.",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Revisar",
+          "start": 300,
+          "end": 676
+        },
+        {
+          "id": "w-2",
+          "word": "em",
+          "start": 676,
+          "end": 770
+        },
+        {
+          "id": "w-3",
+          "word": "intervalos",
+          "start": 770,
+          "end": 1264
+        },
+        {
+          "id": "w-4",
+          "word": "ajuda",
+          "start": 1264,
+          "end": 1605
+        },
+        {
+          "id": "w-5",
+          "word": "a",
+          "start": 1605,
+          "end": 1652
+        },
+        {
+          "id": "w-6",
+          "word": "lembrar",
+          "start": 1652,
+          "end": 2005
+        },
+        {
+          "id": "w-7",
+          "word": "mais,",
+          "start": 2005,
+          "end": 2452
+        },
+        {
+          "id": "w-8",
+          "word": "com",
+          "start": 2452,
+          "end": 2710
+        },
+        {
+          "id": "w-9",
+          "word": "menos",
+          "start": 2710,
+          "end": 3016
+        },
+        {
+          "id": "w-10",
+          "word": "horas",
+          "start": 3016,
+          "end": 3204
+        },
+        {
+          "id": "w-11",
+          "word": "de",
+          "start": 3204,
+          "end": 3322
+        },
+        {
+          "id": "w-12",
+          "word": "estudo.",
+          "start": 3322,
+          "end": 3933
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "zoom",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [],
+      "notes": ""
+    },
+    {
+      "id": "s03",
+      "component": "vrs-cta",
+      "params": {
+        "hook": "Monte seu plano",
+        "benefits": [
+          "Modelo de agenda",
+          "Checklist de revisão"
+        ],
+        "button": "Baixar guia grátis",
+        "handle": "exemplo.local/guia"
+      },
+      "durationInFrames": 150,
+      "narration": "Baixe o guia gratuito e monte seu plano em dez minutos.",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Baixe",
+          "start": 300,
+          "end": 627
+        },
+        {
+          "id": "w-2",
+          "word": "o",
+          "start": 627,
+          "end": 674
+        },
+        {
+          "id": "w-3",
+          "word": "guia",
+          "start": 674,
+          "end": 896
+        },
+        {
+          "id": "w-4",
+          "word": "gratuito",
+          "start": 896,
+          "end": 1352
+        },
+        {
+          "id": "w-5",
+          "word": "e",
+          "start": 1352,
+          "end": 1411
+        },
+        {
+          "id": "w-6",
+          "word": "monte",
+          "start": 1411,
+          "end": 1773
+        },
+        {
+          "id": "w-7",
+          "word": "seu",
+          "start": 1773,
+          "end": 1960
+        },
+        {
+          "id": "w-8",
+          "word": "plano",
+          "start": 1960,
+          "end": 2276
+        },
+        {
+          "id": "w-9",
+          "word": "em",
+          "start": 2276,
+          "end": 2393
+        },
+        {
+          "id": "w-10",
+          "word": "dez",
+          "start": 2393,
+          "end": 2627
+        },
+        {
+          "id": "w-11",
+          "word": "minutos.",
+          "start": 2627,
+          "end": 3481
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "zoom",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [],
+      "notes": ""
+    }
+  ],
+  "uncertainties": [],
+  "sources": [],
+  "illustrativeData": false,
+  "warnings": []
+}

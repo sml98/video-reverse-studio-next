@@ -1,0 +1,530 @@
+{
+  "schema": "vrs.filmplan/1",
+  "title": "A prensa que mudou a Europa",
+  "language": "pt-BR",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "theme": {
+    "background": "#14110d",
+    "foreground": "#f6efe3",
+    "accent": "#e0a458",
+    "accent2": "#8fb8de",
+    "muted": "#a89c8a",
+    "font": "serif",
+    "visualLanguage": "documentario"
+  },
+  "captions": {
+    "enabled": true,
+    "mode": "word",
+    "position": "bottom",
+    "maxWords": 3,
+    "highlight": "#ffd23f"
+  },
+  "audio": {
+    "narration": "voice/narration.wav",
+    "music": "",
+    "musicVolume": 0.12,
+    "duck": true,
+    "voice": "faber"
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "component": "vrs-title",
+      "params": {
+        "label": "DOCUMENTÁRIO",
+        "title": "A prensa que mudou a Europa",
+        "subtitle": "Mainz, século XV",
+        "style": "cinematic",
+        "backgroundAsset": ""
+      },
+      "durationInFrames": 126,
+      "narration": "Em meados do século quinze, copiar um livro levava meses.",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Em",
+          "start": 300,
+          "end": 430
+        },
+        {
+          "id": "w-2",
+          "word": "meados",
+          "start": 430,
+          "end": 809
+        },
+        {
+          "id": "w-3",
+          "word": "do",
+          "start": 809,
+          "end": 951
+        },
+        {
+          "id": "w-4",
+          "word": "século",
+          "start": 951,
+          "end": 1366
+        },
+        {
+          "id": "w-5",
+          "word": "quinze,",
+          "start": 1366,
+          "end": 1852
+        },
+        {
+          "id": "w-6",
+          "word": "copiar",
+          "start": 1852,
+          "end": 2302
+        },
+        {
+          "id": "w-7",
+          "word": "um",
+          "start": 2302,
+          "end": 2421
+        },
+        {
+          "id": "w-8",
+          "word": "livro",
+          "start": 2421,
+          "end": 2693
+        },
+        {
+          "id": "w-9",
+          "word": "levava",
+          "start": 2693,
+          "end": 3072
+        },
+        {
+          "id": "w-10",
+          "word": "meses.",
+          "start": 3072,
+          "end": 3736
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "fade",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [],
+      "notes": ""
+    },
+    {
+      "id": "s02",
+      "component": "vrs-timeline",
+      "params": {
+        "title": "Da oficina ao continente",
+        "events": [
+          {
+            "year": "c. 1440",
+            "label": "Prensa de tipos móveis",
+            "detail": "Gutenberg, Mainz"
+          },
+          {
+            "year": "c. 1455",
+            "label": "Bíblia de Gutenberg",
+            "detail": "Primeiro grande livro impresso na Europa"
+          },
+          {
+            "year": "1500",
+            "label": "Mais de 200 cidades",
+            "detail": "com oficinas de impressão"
+          }
+        ]
+      },
+      "durationInFrames": 291,
+      "narration": "Por volta de 1440, Gutenberg desenvolve a prensa de tipos móveis em Mainz. Por volta de 1455, imprime sua Bíblia.",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Por",
+          "start": 300,
+          "end": 452
+        },
+        {
+          "id": "w-2",
+          "word": "volta",
+          "start": 452,
+          "end": 720
+        },
+        {
+          "id": "w-3",
+          "word": "de",
+          "start": 720,
+          "end": 826
+        },
+        {
+          "id": "w-4",
+          "word": "1440,",
+          "start": 826,
+          "end": 2357
+        },
+        {
+          "id": "w-5",
+          "word": "Gutenberg",
+          "start": 2357,
+          "end": 2825
+        },
+        {
+          "id": "w-6",
+          "word": "desenvolve",
+          "start": 2825,
+          "end": 3351
+        },
+        {
+          "id": "w-7",
+          "word": "a",
+          "start": 3351,
+          "end": 3410
+        },
+        {
+          "id": "w-8",
+          "word": "prensa",
+          "start": 3410,
+          "end": 3714
+        },
+        {
+          "id": "w-9",
+          "word": "de",
+          "start": 3714,
+          "end": 3819
+        },
+        {
+          "id": "w-10",
+          "word": "tipos",
+          "start": 3819,
+          "end": 4146
+        },
+        {
+          "id": "w-11",
+          "word": "móveis",
+          "start": 4146,
+          "end": 4509
+        },
+        {
+          "id": "w-12",
+          "word": "em",
+          "start": 4509,
+          "end": 4649
+        },
+        {
+          "id": "w-13",
+          "word": "Mainz.",
+          "start": 4649,
+          "end": 5245
+        },
+        {
+          "id": "w-14",
+          "word": "Por",
+          "start": 5365,
+          "end": 5485
+        },
+        {
+          "id": "w-15",
+          "word": "volta",
+          "start": 5485,
+          "end": 5748
+        },
+        {
+          "id": "w-16",
+          "word": "de",
+          "start": 5748,
+          "end": 5856
+        },
+        {
+          "id": "w-17",
+          "word": "1455,",
+          "start": 5856,
+          "end": 8070
+        },
+        {
+          "id": "w-18",
+          "word": "imprime",
+          "start": 8070,
+          "end": 8489
+        },
+        {
+          "id": "w-19",
+          "word": "sua",
+          "start": 8489,
+          "end": 8693
+        },
+        {
+          "id": "w-20",
+          "word": "Bíblia.",
+          "start": 8693,
+          "end": 9231
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "fade",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [],
+      "notes": ""
+    },
+    {
+      "id": "s03",
+      "component": "vrs-map-route",
+      "params": {
+        "title": "A técnica se espalha",
+        "points": [
+          {
+            "label": "Mainz",
+            "x": 0.48,
+            "y": 0.42
+          },
+          {
+            "label": "Veneza",
+            "x": 0.56,
+            "y": 0.68
+          },
+          {
+            "label": "Paris",
+            "x": 0.33,
+            "y": 0.48
+          },
+          {
+            "label": "Londres",
+            "x": 0.26,
+            "y": 0.3
+          }
+        ],
+        "mapStyle": "parchment",
+        "note": "Mapa esquemático, fora de escala."
+      },
+      "durationInFrames": 180,
+      "narration": "Em poucas décadas, a técnica se espalhou por mais de duzentas cidades europeias.",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Em",
+          "start": 300,
+          "end": 488
+        },
+        {
+          "id": "w-2",
+          "word": "poucas",
+          "start": 488,
+          "end": 819
+        },
+        {
+          "id": "w-3",
+          "word": "décadas,",
+          "start": 819,
+          "end": 1373
+        },
+        {
+          "id": "w-4",
+          "word": "a",
+          "start": 1373,
+          "end": 1491
+        },
+        {
+          "id": "w-5",
+          "word": "técnica",
+          "start": 1491,
+          "end": 1916
+        },
+        {
+          "id": "w-6",
+          "word": "se",
+          "start": 1916,
+          "end": 2034
+        },
+        {
+          "id": "w-7",
+          "word": "espalhou",
+          "start": 2034,
+          "end": 2388
+        },
+        {
+          "id": "w-8",
+          "word": "por",
+          "start": 2388,
+          "end": 2518
+        },
+        {
+          "id": "w-9",
+          "word": "mais",
+          "start": 2518,
+          "end": 2766
+        },
+        {
+          "id": "w-10",
+          "word": "de",
+          "start": 2766,
+          "end": 2908
+        },
+        {
+          "id": "w-11",
+          "word": "duzentas",
+          "start": 2908,
+          "end": 3368
+        },
+        {
+          "id": "w-12",
+          "word": "cidades",
+          "start": 3368,
+          "end": 3781
+        },
+        {
+          "id": "w-13",
+          "word": "europeias.",
+          "start": 3781,
+          "end": 4584
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "fade",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [],
+      "notes": ""
+    },
+    {
+      "id": "s04",
+      "component": "vrs-stat",
+      "params": {
+        "value": 20,
+        "prefix": "+",
+        "suffix": " mi",
+        "decimals": 0,
+        "label": "volumes impressos até 1500",
+        "context": "Estimativa histórica amplamente citada.",
+        "illustrative": false
+      },
+      "durationInFrames": 180,
+      "narration": "Estima-se que, até 1500, mais de vinte milhões de volumes tenham sido impressos.",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Estima-se",
+          "start": 300,
+          "end": 767
+        },
+        {
+          "id": "w-2",
+          "word": "que,",
+          "start": 767,
+          "end": 1118
+        },
+        {
+          "id": "w-3",
+          "word": "até",
+          "start": 1118,
+          "end": 1375
+        },
+        {
+          "id": "w-4",
+          "word": "1500,",
+          "start": 1375,
+          "end": 2217
+        },
+        {
+          "id": "w-5",
+          "word": "mais",
+          "start": 2217,
+          "end": 2544
+        },
+        {
+          "id": "w-6",
+          "word": "de",
+          "start": 2544,
+          "end": 2685
+        },
+        {
+          "id": "w-7",
+          "word": "vinte",
+          "start": 2685,
+          "end": 3012
+        },
+        {
+          "id": "w-8",
+          "word": "milhões",
+          "start": 3012,
+          "end": 3328
+        },
+        {
+          "id": "w-9",
+          "word": "de",
+          "start": 3328,
+          "end": 3445
+        },
+        {
+          "id": "w-10",
+          "word": "volumes",
+          "start": 3445,
+          "end": 3877
+        },
+        {
+          "id": "w-11",
+          "word": "tenham",
+          "start": 3877,
+          "end": 4216
+        },
+        {
+          "id": "w-12",
+          "word": "sido",
+          "start": 4216,
+          "end": 4427
+        },
+        {
+          "id": "w-13",
+          "word": "impressos.",
+          "start": 4427,
+          "end": 5234
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "fade",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [],
+      "notes": ""
+    }
+  ],
+  "uncertainties": [],
+  "sources": [],
+  "illustrativeData": false,
+  "warnings": [
+    "Cena s02: a fala (9.7s) não cabe em 8.0s; a cena foi estendida sem cortar palavras."
+  ]
+}

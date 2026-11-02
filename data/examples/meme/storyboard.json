@@ -1,0 +1,32 @@
+{
+  "schema": "vrs.storyboard/1",
+  "title": "Só mais um vídeo",
+  "language": "pt-BR",
+  "uncertainties": [],
+  "illustrative_data": false,
+  "scenes": [
+    {
+      "preset_id": "vrs-meme",
+      "parameters": {
+        "setup": "Eu: hoje vou dormir cedo",
+        "punchline": "Eu às 3h vendo como fazem pão no Japão",
+        "emoji": "🥖",
+        "style": "modern"
+      },
+      "narration": "Eu: hoje vou dormir cedo. Também eu, às três da manhã:",
+      "duration": 6
+    },
+    {
+      "preset_id": "vrs-kinetic-quote",
+      "parameters": {
+        "text": "Quem nunca?",
+        "emphasis": "nunca",
+        "author": "",
+        "authorship": "sem_atribuicao",
+        "style": "neon"
+      },
+      "narration": "Quem nunca?",
+      "duration": 3
+    }
+  ]
+}

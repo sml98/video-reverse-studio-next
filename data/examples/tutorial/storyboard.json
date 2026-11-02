@@ -1,0 +1,72 @@
+{
+  "schema": "vrs.storyboard/1",
+  "title": "Café coado em 4 passos",
+  "language": "pt-BR",
+  "uncertainties": [],
+  "illustrative_data": false,
+  "scenes": [
+    {
+      "preset_id": "vrs-title",
+      "parameters": {
+        "label": "TUTORIAL",
+        "title": "Café coado em 4 passos",
+        "subtitle": "",
+        "style": "bold"
+      },
+      "narration": "Quer um café coado sem amargor?",
+      "duration": 3
+    },
+    {
+      "preset_id": "vrs-steps",
+      "parameters": {
+        "title": "Passo a passo",
+        "steps": [
+          {
+            "title": "Água quase fervendo",
+            "detail": "cerca de 92 a 96 °C"
+          },
+          {
+            "title": "Escalde o filtro",
+            "detail": "tira o gosto de papel"
+          },
+          {
+            "title": "10 g para 150 ml",
+            "detail": "ajuste ao seu gosto"
+          },
+          {
+            "title": "Despeje em espiral",
+            "detail": "devagar, em etapas"
+          }
+        ]
+      },
+      "narration": "Aqueça a água sem ferver. Escalde o filtro. Use cerca de dez gramas para cento e cinquenta mililitros. Despeje devagar, em espiral.",
+      "duration": 9
+    },
+    {
+      "preset_id": "vrs-object-stage",
+      "parameters": {
+        "title": "Resultado",
+        "objects": [
+          {
+            "asset": "",
+            "icon": "drop",
+            "label": "Água certa"
+          },
+          {
+            "asset": "",
+            "icon": "clock",
+            "label": "Sem pressa"
+          },
+          {
+            "asset": "",
+            "icon": "heart",
+            "label": "Café gostoso"
+          }
+        ],
+        "layout": "arc"
+      },
+      "narration": "Pronto: um café encorpado e aromático.",
+      "duration": 4
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "schema": "vrs.storyboard/1",
+  "title": "O próximo passo",
+  "language": "pt-BR",
+  "uncertainties": [],
+  "illustrative_data": false,
+  "scenes": [
+    {
+      "preset_id": "vrs-kinetic-quote",
+      "parameters": {
+        "text": "Ninguém vê o caminho inteiro. Coragem é dar o próximo passo mesmo assim.",
+        "emphasis": "coragem, passo",
+        "author": "",
+        "authorship": "autoral",
+        "style": "elegant"
+      },
+      "narration": "Ninguém vê o caminho inteiro. Coragem é dar o próximo passo mesmo assim.",
+      "duration": 7
+    },
+    {
+      "preset_id": "vrs-kinetic-quote",
+      "parameters": {
+        "text": "Comece pequeno. Continue sempre.",
+        "emphasis": "sempre",
+        "author": "",
+        "authorship": "autoral",
+        "style": "impact"
+      },
+      "narration": "Comece pequeno. Continue sempre.",
+      "duration": 4
+    }
+  ]
+}

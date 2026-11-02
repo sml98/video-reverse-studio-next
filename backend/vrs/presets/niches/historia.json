@@ -1,0 +1,132 @@
+{
+  "id": "historia",
+  "title": "História ilustrada",
+  "emoji": "📖",
+  "description": "Personagem/objetivo → evento → reação → desfecho.",
+  "arc": [
+    "personagem",
+    "evento",
+    "reação",
+    "desfecho"
+  ],
+  "visualLanguages": [
+    "recortes",
+    "cartoon",
+    "stickers"
+  ],
+  "theme": {
+    "background": "#10141c",
+    "foreground": "#fffaf0",
+    "accent": "#ffb347",
+    "accent2": "#7bdff2",
+    "muted": "#a7b0c0",
+    "font": "rounded",
+    "visualLanguage": "recortes"
+  },
+  "example": {
+    "title": "A muda da Lia",
+    "idea": "História curta de uma menina que planta uma árvore.",
+    "aspect": "landscape"
+  },
+  "assets_hint": [
+    "open-peeps",
+    "kenney-nature-kit",
+    "kenney-background-elements"
+  ],
+  "recipe": [
+    {
+      "role": "personagem",
+      "label": "Apresentação",
+      "preset_id": "vrs-story-panel",
+      "duration": 5,
+      "narration": "Lia queria plantar uma árvore no quintal.",
+      "parameters": {
+        "background": "",
+        "character": "lib:open-peeps.peep-2",
+        "characterSide": "left",
+        "action": "enter",
+        "props": [],
+        "bubble": "Vou plantar uma árvore!",
+        "caption": "Lia tinha um plano."
+      },
+      "guidance": "Personagem PNG = pose estática; movimento é deslocamento."
+    },
+    {
+      "role": "evento",
+      "label": "Evento",
+      "preset_id": "vrs-story-panel",
+      "duration": 5,
+      "narration": "Mas, depois de uma semana, a muda continuava pequena.",
+      "parameters": {
+        "background": "",
+        "character": "lib:open-peeps.peep-2",
+        "characterSide": "left",
+        "action": "shake",
+        "props": [],
+        "bubble": "Por que não cresce?",
+        "caption": "Uma semana depois…"
+      },
+      "guidance": ""
+    },
+    {
+      "role": "reação",
+      "label": "Reação",
+      "preset_id": "vrs-steps",
+      "duration": 5,
+      "narration": "Ela pesquisou, mudou a muda para o sol e passou a regar com cuidado.",
+      "parameters": {
+        "title": "O que a Lia fez",
+        "steps": [
+          {
+            "title": "Pesquisou",
+            "detail": ""
+          },
+          {
+            "title": "Levou para o sol",
+            "detail": ""
+          },
+          {
+            "title": "Regou com cuidado",
+            "detail": ""
+          }
+        ]
+      },
+      "guidance": ""
+    },
+    {
+      "role": "desfecho",
+      "label": "Desfecho",
+      "preset_id": "vrs-story-panel",
+      "duration": 5,
+      "narration": "Na primavera, as primeiras folhas apareceram.",
+      "parameters": {
+        "background": "",
+        "character": "lib:open-peeps.peep-2",
+        "characterSide": "right",
+        "action": "jump",
+        "props": [],
+        "bubble": "Brotou!",
+        "caption": "Na primavera…"
+      },
+      "guidance": ""
+    }
+  ],
+  "aspects": [
+    "landscape",
+    "vertical",
+    "square"
+  ],
+  "durationRange": [
+    10,
+    120
+  ],
+  "defaultDuration": 20,
+  "captions": {
+    "mode": "word",
+    "position": "bottom",
+    "maxWords": 3
+  },
+  "voice": "faber",
+  "schema": "vrs.niche/1",
+  "guide": "skills/vrs-presets/references/historia.md"
+}

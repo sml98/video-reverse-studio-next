@@ -1,0 +1,91 @@
+{
+  "schema": "vrs.storyboard/1",
+  "title": "A prensa que mudou a Europa",
+  "language": "pt-BR",
+  "uncertainties": [],
+  "illustrative_data": false,
+  "scenes": [
+    {
+      "preset_id": "vrs-title",
+      "parameters": {
+        "label": "DOCUMENTÁRIO",
+        "title": "A prensa que mudou a Europa",
+        "subtitle": "Mainz, século XV",
+        "style": "cinematic"
+      },
+      "narration": "Em meados do século quinze, copiar um livro levava meses.",
+      "duration": 4
+    },
+    {
+      "preset_id": "vrs-timeline",
+      "parameters": {
+        "title": "Da oficina ao continente",
+        "events": [
+          {
+            "year": "c. 1440",
+            "label": "Prensa de tipos móveis",
+            "detail": "Gutenberg, Mainz"
+          },
+          {
+            "year": "c. 1455",
+            "label": "Bíblia de Gutenberg",
+            "detail": "Primeiro grande livro impresso na Europa"
+          },
+          {
+            "year": "1500",
+            "label": "Mais de 200 cidades",
+            "detail": "com oficinas de impressão"
+          }
+        ]
+      },
+      "narration": "Por volta de 1440, Gutenberg desenvolve a prensa de tipos móveis em Mainz. Por volta de 1455, imprime sua Bíblia.",
+      "duration": 8
+    },
+    {
+      "preset_id": "vrs-map-route",
+      "parameters": {
+        "title": "A técnica se espalha",
+        "points": [
+          {
+            "label": "Mainz",
+            "x": 0.48,
+            "y": 0.42
+          },
+          {
+            "label": "Veneza",
+            "x": 0.56,
+            "y": 0.68
+          },
+          {
+            "label": "Paris",
+            "x": 0.33,
+            "y": 0.48
+          },
+          {
+            "label": "Londres",
+            "x": 0.26,
+            "y": 0.3
+          }
+        ],
+        "mapStyle": "parchment",
+        "note": "Mapa esquemático, fora de escala."
+      },
+      "narration": "Em poucas décadas, a técnica se espalhou por mais de duzentas cidades europeias.",
+      "duration": 6
+    },
+    {
+      "preset_id": "vrs-stat",
+      "parameters": {
+        "value": 20,
+        "prefix": "+",
+        "suffix": " mi",
+        "decimals": 0,
+        "label": "volumes impressos até 1500",
+        "context": "Estimativa histórica amplamente citada.",
+        "illustrative": false
+      },
+      "narration": "Estima-se que, até 1500, mais de vinte milhões de volumes tenham sido impressos.",
+      "duration": 6
+    }
+  ]
+}

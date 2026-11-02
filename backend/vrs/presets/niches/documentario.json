@@ -1,0 +1,146 @@
+{
+  "id": "documentario",
+  "title": "Documentário",
+  "emoji": "🎞️",
+  "description": "Contexto → capítulos/linha do tempo → evidências → síntese.",
+  "arc": [
+    "contexto",
+    "capítulos",
+    "evidências",
+    "síntese"
+  ],
+  "visualLanguages": [
+    "arquivo",
+    "mapas",
+    "gráficos",
+    "linha do tempo"
+  ],
+  "theme": {
+    "background": "#14110d",
+    "foreground": "#f6efe3",
+    "accent": "#e0a458",
+    "accent2": "#8fb8de",
+    "muted": "#a89c8a",
+    "font": "serif",
+    "visualLanguage": "documentario"
+  },
+  "example": {
+    "title": "A prensa que mudou a Europa",
+    "idea": "Documentário curto sobre a prensa de Gutenberg, com linha do tempo e mapa.",
+    "aspect": "landscape"
+  },
+  "recipe": [
+    {
+      "role": "contexto",
+      "label": "Abertura de capítulo",
+      "preset_id": "vrs-title",
+      "duration": 4,
+      "narration": "Em meados do século quinze, copiar um livro levava meses.",
+      "parameters": {
+        "label": "DOCUMENTÁRIO",
+        "title": "A prensa que mudou a Europa",
+        "subtitle": "Mainz, século XV",
+        "style": "cinematic"
+      },
+      "guidance": ""
+    },
+    {
+      "role": "capítulos",
+      "label": "Linha do tempo",
+      "preset_id": "vrs-timeline",
+      "duration": 8,
+      "narration": "Por volta de 1440, Gutenberg desenvolve a prensa de tipos móveis em Mainz. Por volta de 1455, imprime sua Bíblia.",
+      "parameters": {
+        "title": "Da oficina ao continente",
+        "events": [
+          {
+            "year": "c. 1440",
+            "label": "Prensa de tipos móveis",
+            "detail": "Gutenberg, Mainz"
+          },
+          {
+            "year": "c. 1455",
+            "label": "Bíblia de Gutenberg",
+            "detail": "Primeiro grande livro impresso na Europa"
+          },
+          {
+            "year": "1500",
+            "label": "Mais de 200 cidades",
+            "detail": "com oficinas de impressão"
+          }
+        ]
+      },
+      "guidance": "Datas aproximadas com 'c.'"
+    },
+    {
+      "role": "evidências",
+      "label": "Mapa esquemático",
+      "preset_id": "vrs-map-route",
+      "duration": 6,
+      "narration": "Em poucas décadas, a técnica se espalhou por mais de duzentas cidades europeias.",
+      "parameters": {
+        "title": "A técnica se espalha",
+        "points": [
+          {
+            "label": "Mainz",
+            "x": 0.48,
+            "y": 0.42
+          },
+          {
+            "label": "Veneza",
+            "x": 0.56,
+            "y": 0.68
+          },
+          {
+            "label": "Paris",
+            "x": 0.33,
+            "y": 0.48
+          },
+          {
+            "label": "Londres",
+            "x": 0.26,
+            "y": 0.3
+          }
+        ],
+        "mapStyle": "parchment",
+        "note": "Mapa esquemático, fora de escala."
+      },
+      "guidance": ""
+    },
+    {
+      "role": "síntese",
+      "label": "Número-síntese",
+      "preset_id": "vrs-stat",
+      "duration": 6,
+      "narration": "Estima-se que, até 1500, mais de vinte milhões de volumes tenham sido impressos.",
+      "parameters": {
+        "value": 20,
+        "prefix": "+",
+        "suffix": " mi",
+        "decimals": 0,
+        "label": "volumes impressos até 1500",
+        "context": "Estimativa histórica amplamente citada.",
+        "illustrative": false
+      },
+      "guidance": ""
+    }
+  ],
+  "aspects": [
+    "landscape",
+    "vertical",
+    "square"
+  ],
+  "durationRange": [
+    10,
+    120
+  ],
+  "defaultDuration": 24,
+  "captions": {
+    "mode": "word",
+    "position": "bottom",
+    "maxWords": 3
+  },
+  "voice": "faber",
+  "schema": "vrs.niche/1",
+  "guide": "skills/vrs-presets/references/documentario.md"
+}

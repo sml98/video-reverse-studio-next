@@ -1,0 +1,359 @@
+{
+  "schema": "vrs.filmplan/1",
+  "title": "Café coado em 4 passos",
+  "language": "pt-BR",
+  "width": 720,
+  "height": 1280,
+  "fps": 30,
+  "theme": {
+    "background": "#0f1216",
+    "foreground": "#f4f7fb",
+    "accent": "#ff9f43",
+    "accent2": "#54a0ff",
+    "muted": "#95a3b5",
+    "font": "rounded",
+    "visualLanguage": "motion-graphics"
+  },
+  "captions": {
+    "enabled": true,
+    "mode": "word",
+    "position": "bottom",
+    "maxWords": 3,
+    "highlight": "#ffd23f"
+  },
+  "audio": {
+    "narration": "voice/narration.wav",
+    "music": "",
+    "musicVolume": 0.12,
+    "duck": true,
+    "voice": "faber"
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "component": "vrs-title",
+      "params": {
+        "label": "TUTORIAL",
+        "title": "Café coado em 4 passos",
+        "subtitle": "",
+        "style": "bold",
+        "backgroundAsset": ""
+      },
+      "durationInFrames": 90,
+      "narration": "Quer um café coado sem amargor?",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Quer",
+          "start": 300,
+          "end": 447
+        },
+        {
+          "id": "w-2",
+          "word": "um",
+          "start": 447,
+          "end": 558
+        },
+        {
+          "id": "w-3",
+          "word": "café",
+          "start": 558,
+          "end": 816
+        },
+        {
+          "id": "w-4",
+          "word": "coado",
+          "start": 816,
+          "end": 1197
+        },
+        {
+          "id": "w-5",
+          "word": "sem",
+          "start": 1197,
+          "end": 1357
+        },
+        {
+          "id": "w-6",
+          "word": "amargor?",
+          "start": 1357,
+          "end": 1960
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "fade",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [],
+      "notes": ""
+    },
+    {
+      "id": "s02",
+      "component": "vrs-steps",
+      "params": {
+        "title": "Passo a passo",
+        "steps": [
+          {
+            "title": "Água quase fervendo",
+            "detail": "cerca de 92 a 96 °C"
+          },
+          {
+            "title": "Escalde o filtro",
+            "detail": "tira o gosto de papel"
+          },
+          {
+            "title": "10 g para 150 ml",
+            "detail": "ajuste ao seu gosto"
+          },
+          {
+            "title": "Despeje em espiral",
+            "detail": "devagar, em etapas"
+          }
+        ]
+      },
+      "durationInFrames": 270,
+      "narration": "Aqueça a água sem ferver. Escalde o filtro. Use cerca de dez gramas para cento e cinquenta mililitros. Despeje devagar, em espiral.",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Aqueça",
+          "start": 300,
+          "end": 666
+        },
+        {
+          "id": "w-2",
+          "word": "a",
+          "start": 666,
+          "end": 751
+        },
+        {
+          "id": "w-3",
+          "word": "água",
+          "start": 751,
+          "end": 983
+        },
+        {
+          "id": "w-4",
+          "word": "sem",
+          "start": 983,
+          "end": 1178
+        },
+        {
+          "id": "w-5",
+          "word": "ferver.",
+          "start": 1178,
+          "end": 1739
+        },
+        {
+          "id": "w-6",
+          "word": "Escalde",
+          "start": 1859,
+          "end": 2380
+        },
+        {
+          "id": "w-7",
+          "word": "o",
+          "start": 2380,
+          "end": 2440
+        },
+        {
+          "id": "w-8",
+          "word": "filtro.",
+          "start": 2440,
+          "end": 2997
+        },
+        {
+          "id": "w-9",
+          "word": "Use",
+          "start": 3117,
+          "end": 3319
+        },
+        {
+          "id": "w-10",
+          "word": "cerca",
+          "start": 3319,
+          "end": 3628
+        },
+        {
+          "id": "w-11",
+          "word": "de",
+          "start": 3628,
+          "end": 3735
+        },
+        {
+          "id": "w-12",
+          "word": "dez",
+          "start": 3735,
+          "end": 3996
+        },
+        {
+          "id": "w-13",
+          "word": "gramas",
+          "start": 3996,
+          "end": 4317
+        },
+        {
+          "id": "w-14",
+          "word": "para",
+          "start": 4317,
+          "end": 4531
+        },
+        {
+          "id": "w-15",
+          "word": "cento",
+          "start": 4531,
+          "end": 4899
+        },
+        {
+          "id": "w-16",
+          "word": "e",
+          "start": 4899,
+          "end": 5018
+        },
+        {
+          "id": "w-17",
+          "word": "cinquenta",
+          "start": 5018,
+          "end": 5505
+        },
+        {
+          "id": "w-18",
+          "word": "mililitros.",
+          "start": 5505,
+          "end": 6182
+        },
+        {
+          "id": "w-19",
+          "word": "Despeje",
+          "start": 6302,
+          "end": 6715
+        },
+        {
+          "id": "w-20",
+          "word": "devagar,",
+          "start": 6715,
+          "end": 7371
+        },
+        {
+          "id": "w-21",
+          "word": "em",
+          "start": 7371,
+          "end": 7529
+        },
+        {
+          "id": "w-22",
+          "word": "espiral.",
+          "start": 7529,
+          "end": 8148
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "slide",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [],
+      "notes": ""
+    },
+    {
+      "id": "s03",
+      "component": "vrs-object-stage",
+      "params": {
+        "title": "Resultado",
+        "objects": [
+          {
+            "asset": "",
+            "icon": "drop",
+            "label": "Água certa"
+          },
+          {
+            "asset": "",
+            "icon": "clock",
+            "label": "Sem pressa"
+          },
+          {
+            "asset": "",
+            "icon": "heart",
+            "label": "Café gostoso"
+          }
+        ],
+        "layout": "arc"
+      },
+      "durationInFrames": 120,
+      "narration": "Pronto: um café encorpado e aromático.",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Pronto:",
+          "start": 300,
+          "end": 865
+        },
+        {
+          "id": "w-2",
+          "word": "um",
+          "start": 865,
+          "end": 1007
+        },
+        {
+          "id": "w-3",
+          "word": "café",
+          "start": 1007,
+          "end": 1278
+        },
+        {
+          "id": "w-4",
+          "word": "encorpado",
+          "start": 1278,
+          "end": 1761
+        },
+        {
+          "id": "w-5",
+          "word": "e",
+          "start": 1761,
+          "end": 1879
+        },
+        {
+          "id": "w-6",
+          "word": "aromático.",
+          "start": 1879,
+          "end": 2610
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "slide",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [],
+      "notes": ""
+    }
+  ],
+  "uncertainties": [],
+  "sources": [],
+  "illustrativeData": false,
+  "warnings": []
+}

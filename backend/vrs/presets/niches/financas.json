@@ -1,0 +1,163 @@
+{
+  "id": "financas",
+  "title": "Finanças/dados",
+  "emoji": "📈",
+  "description": "Conceito → exemplo numérico → gráfico/cálculo → limites.",
+  "arc": [
+    "conceito",
+    "exemplo numérico",
+    "gráfico",
+    "limites"
+  ],
+  "visualLanguages": [
+    "infográfico",
+    "gráficos"
+  ],
+  "theme": {
+    "background": "#08130f",
+    "foreground": "#effff7",
+    "accent": "#38d996",
+    "accent2": "#ffd166",
+    "muted": "#8fb3a2",
+    "font": "sans",
+    "visualLanguage": "infografico"
+  },
+  "example": {
+    "title": "Juros compostos",
+    "idea": "Explique juros compostos com R$ 1.000 a 1% ao mês.",
+    "aspect": "landscape"
+  },
+  "recipe": [
+    {
+      "role": "conceito",
+      "label": "Conceito",
+      "preset_id": "vrs-title",
+      "duration": 4,
+      "narration": "Juros compostos são juros sobre juros.",
+      "parameters": {
+        "label": "FINANÇAS",
+        "title": "Juros sobre juros",
+        "subtitle": "O que são juros compostos",
+        "style": "cinematic"
+      },
+      "guidance": ""
+    },
+    {
+      "role": "exemplo numérico",
+      "label": "Cálculo",
+      "preset_id": "vrs-calc",
+      "duration": 7,
+      "narration": "Mil reais a um por cento ao mês viram cerca de mil cento e vinte e sete em um ano, e mil duzentos e setenta em dois.",
+      "parameters": {
+        "title": "R$ 1.000 a 1% ao mês",
+        "steps": [
+          {
+            "label": "Início",
+            "expression": "",
+            "result": 1000,
+            "prefix": "R$ ",
+            "suffix": "",
+            "decimals": 2
+          },
+          {
+            "label": "12 meses",
+            "expression": "1000 × 1,01¹²",
+            "result": 1126.83,
+            "prefix": "R$ ",
+            "suffix": "",
+            "decimals": 2
+          },
+          {
+            "label": "24 meses",
+            "expression": "1000 × 1,01²⁴",
+            "result": 1269.73,
+            "prefix": "R$ ",
+            "suffix": "",
+            "decimals": 2
+          }
+        ],
+        "conclusion": "O ganho do 2º ano é maior que o do 1º.",
+        "illustrative": true
+      },
+      "guidance": "Mostre a fórmula e o resultado calculado."
+    },
+    {
+      "role": "gráfico",
+      "label": "Curva",
+      "preset_id": "vrs-line-chart",
+      "duration": 6,
+      "narration": "A curva acelera porque cada mês rende sobre um valor maior.",
+      "parameters": {
+        "title": "Saldo ao longo de 36 meses",
+        "unit": "R$",
+        "points": [
+          {
+            "label": "0m",
+            "value": 1000.0
+          },
+          {
+            "label": "6m",
+            "value": 1061.52
+          },
+          {
+            "label": "12m",
+            "value": 1126.83
+          },
+          {
+            "label": "18m",
+            "value": 1196.15
+          },
+          {
+            "label": "24m",
+            "value": 1269.73
+          },
+          {
+            "label": "30m",
+            "value": 1347.85
+          },
+          {
+            "label": "36m",
+            "value": 1430.77
+          }
+        ],
+        "annotationIndex": 6,
+        "annotationText": "R$ 1430,77",
+        "illustrative": true
+      },
+      "guidance": ""
+    },
+    {
+      "role": "limites",
+      "label": "Limites",
+      "preset_id": "vrs-kinetic-quote",
+      "duration": 5,
+      "narration": "Simulação ilustrativa: não considera inflação, impostos ou taxas.",
+      "parameters": {
+        "text": "Simulação ilustrativa: sem inflação, impostos ou taxas.",
+        "emphasis": "ilustrativa",
+        "author": "",
+        "authorship": "sem_atribuicao",
+        "style": "minimal"
+      },
+      "guidance": "Sempre explicite limites."
+    }
+  ],
+  "aspects": [
+    "landscape",
+    "vertical",
+    "square"
+  ],
+  "durationRange": [
+    10,
+    120
+  ],
+  "defaultDuration": 22,
+  "captions": {
+    "mode": "word",
+    "position": "bottom",
+    "maxWords": 3
+  },
+  "voice": "faber",
+  "schema": "vrs.niche/1",
+  "guide": "skills/vrs-presets/references/financas.md"
+}

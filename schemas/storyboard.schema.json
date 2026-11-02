@@ -1,0 +1,190 @@
+{
+  "$defs": {
+    "Source": {
+      "additionalProperties": false,
+      "properties": {
+        "claim": {
+          "maxLength": 400,
+          "title": "Claim",
+          "type": "string"
+        },
+        "source": {
+          "maxLength": 400,
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "required": [
+        "claim",
+        "source"
+      ],
+      "title": "Source",
+      "type": "object"
+    },
+    "StoryboardScene": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Id"
+        },
+        "preset_id": {
+          "maxLength": 80,
+          "minLength": 1,
+          "title": "Preset Id",
+          "type": "string"
+        },
+        "parameters_json": {
+          "anyOf": [
+            {
+              "maxLength": 20000,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Parameters Json"
+        },
+        "parameters": {
+          "anyOf": [
+            {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Parameters"
+        },
+        "narration": {
+          "default": "",
+          "maxLength": 2000,
+          "title": "Narration",
+          "type": "string"
+        },
+        "asset_path": {
+          "default": "",
+          "maxLength": 400,
+          "title": "Asset Path",
+          "type": "string"
+        },
+        "asset_ids": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 12,
+          "title": "Asset Ids",
+          "type": "array"
+        },
+        "duration": {
+          "default": 5,
+          "exclusiveMinimum": 0,
+          "maximum": 120,
+          "title": "Duration",
+          "type": "number"
+        },
+        "transition": {
+          "anyOf": [
+            {
+              "enum": [
+                "none",
+                "fade",
+                "wipe",
+                "slide",
+                "zoom",
+                "circle",
+                "flash"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Transition"
+        }
+      },
+      "required": [
+        "preset_id"
+      ],
+      "title": "StoryboardScene",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "const": "vrs.storyboard/1",
+      "default": "vrs.storyboard/1",
+      "title": "Schema",
+      "type": "string"
+    },
+    "title": {
+      "maxLength": 160,
+      "minLength": 1,
+      "title": "Title",
+      "type": "string"
+    },
+    "language": {
+      "default": "pt-BR",
+      "maxLength": 16,
+      "title": "Language",
+      "type": "string"
+    },
+    "uncertainties": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 30,
+      "title": "Uncertainties",
+      "type": "array"
+    },
+    "sources": {
+      "items": {
+        "$ref": "#/$defs/Source"
+      },
+      "maxItems": 40,
+      "title": "Sources",
+      "type": "array"
+    },
+    "illustrative_data": {
+      "default": false,
+      "title": "Illustrative Data",
+      "type": "boolean"
+    },
+    "music": {
+      "default": "",
+      "maxLength": 400,
+      "title": "Music",
+      "type": "string"
+    },
+    "scenes": {
+      "items": {
+        "$ref": "#/$defs/StoryboardScene"
+      },
+      "maxItems": 60,
+      "minItems": 1,
+      "title": "Scenes",
+      "type": "array"
+    }
+  },
+  "required": [
+    "title",
+    "scenes"
+  ],
+  "title": "Storyboard",
+  "type": "object"
+}

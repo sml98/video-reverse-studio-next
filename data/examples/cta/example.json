@@ -1,0 +1,30 @@
+{
+  "project_id": "pce4c7f78b650",
+  "niche": "cta",
+  "review": {
+    "technical": "aprovado_tecnicamente",
+    "findings": [],
+    "motion": [
+      {
+        "scene": "s01",
+        "component": "vrs-title",
+        "motion": 4.27,
+        "first_half": 5.27
+      },
+      {
+        "scene": "s02",
+        "component": "vrs-comparison",
+        "motion": 3.18,
+        "first_half": 2.96
+      },
+      {
+        "scene": "s03",
+        "component": "vrs-cta",
+        "motion": 3.25,
+        "first_half": 4.1
+      }
+    ]
+  },
+  "render_seconds": 18.8,
+  "duration_s": 14.0
+}

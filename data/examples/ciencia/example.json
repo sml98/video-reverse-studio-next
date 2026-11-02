@@ -1,0 +1,36 @@
+{
+  "project_id": "p6d20f9df545e",
+  "niche": "ciencia",
+  "review": {
+    "technical": "aprovado_tecnicamente",
+    "findings": [],
+    "motion": [
+      {
+        "scene": "s01",
+        "component": "vrs-title",
+        "motion": 3.04,
+        "first_half": 3.4
+      },
+      {
+        "scene": "s02",
+        "component": "vrs-mechanism",
+        "motion": 3.74,
+        "first_half": 3.91
+      },
+      {
+        "scene": "s03",
+        "component": "vrs-bar-chart",
+        "motion": 4.24,
+        "first_half": 5.99
+      },
+      {
+        "scene": "s04",
+        "component": "vrs-kinetic-quote",
+        "motion": 3.21,
+        "first_half": 3.5
+      }
+    ]
+  },
+  "render_seconds": 2.8,
+  "duration_s": 22.267
+}

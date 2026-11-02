@@ -1,0 +1,53 @@
+{
+  "schema": "vrs.storyboard/1",
+  "title": "Guia de estudos",
+  "language": "pt-BR",
+  "uncertainties": [],
+  "illustrative_data": false,
+  "scenes": [
+    {
+      "preset_id": "vrs-title",
+      "parameters": {
+        "label": "",
+        "title": "Estuda e esquece tudo?",
+        "subtitle": "",
+        "style": "bold"
+      },
+      "narration": "Estuda muito e esquece tudo?",
+      "duration": 3
+    },
+    {
+      "preset_id": "vrs-comparison",
+      "parameters": {
+        "title": "Revisão espaçada",
+        "leftTitle": "Maratona",
+        "rightTitle": "Intervalos",
+        "leftItems": [
+          "Tudo na véspera",
+          "Esquece rápido"
+        ],
+        "rightItems": [
+          "Pouco por dia",
+          "Lembra por mais tempo"
+        ],
+        "verdict": "Benefício descrito sem promessa de resultado."
+      },
+      "narration": "Revisar em intervalos ajuda a lembrar mais, com menos horas de estudo.",
+      "duration": 6
+    },
+    {
+      "preset_id": "vrs-cta",
+      "parameters": {
+        "hook": "Monte seu plano",
+        "benefits": [
+          "Modelo de agenda",
+          "Checklist de revisão"
+        ],
+        "button": "Baixar guia grátis",
+        "handle": "exemplo.local/guia"
+      },
+      "narration": "Baixe o guia gratuito e monte seu plano em dez minutos.",
+      "duration": 5
+    }
+  ]
+}

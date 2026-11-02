@@ -1,0 +1,79 @@
+{
+  "id": "frases",
+  "title": "Frases animadas",
+  "emoji": "✍️",
+  "description": "Filosofia, autoajuda, motivação, reflexão e textos autorais em tipografia cinética.",
+  "arc": [
+    "frase",
+    "ênfase",
+    "assinatura honesta"
+  ],
+  "visualLanguages": [
+    "tipografia cinética",
+    "fundos animados"
+  ],
+  "theme": {
+    "background": "#0d0b14",
+    "foreground": "#fbf7ff",
+    "accent": "#f2b134",
+    "accent2": "#b388ff",
+    "muted": "#a59cba",
+    "font": "serif",
+    "visualLanguage": "tipografia"
+  },
+  "example": {
+    "title": "O próximo passo",
+    "idea": "Frase autoral sobre coragem e constância.",
+    "aspect": "vertical"
+  },
+  "recipe": [
+    {
+      "role": "frase",
+      "label": "Frase principal",
+      "preset_id": "vrs-kinetic-quote",
+      "duration": 7,
+      "narration": "Ninguém vê o caminho inteiro. Coragem é dar o próximo passo mesmo assim.",
+      "parameters": {
+        "text": "Ninguém vê o caminho inteiro. Coragem é dar o próximo passo mesmo assim.",
+        "emphasis": "coragem, passo",
+        "author": "",
+        "authorship": "autoral",
+        "style": "elegant"
+      },
+      "guidance": "Não invente autoria. Citação só com fonte verificada."
+    },
+    {
+      "role": "ênfase",
+      "label": "Reforço",
+      "preset_id": "vrs-kinetic-quote",
+      "duration": 4,
+      "narration": "Comece pequeno. Continue sempre.",
+      "parameters": {
+        "text": "Comece pequeno. Continue sempre.",
+        "emphasis": "sempre",
+        "author": "",
+        "authorship": "autoral",
+        "style": "impact"
+      },
+      "guidance": ""
+    }
+  ],
+  "aspects": [
+    "landscape",
+    "vertical",
+    "square"
+  ],
+  "durationRange": [
+    10,
+    120
+  ],
+  "defaultDuration": 11,
+  "captions": {
+    "mode": "word",
+    "position": "bottom",
+    "maxWords": 3
+  },
+  "voice": "faber",
+  "schema": "vrs.niche/1",
+  "guide": "skills/vrs-presets/references/frases.md"
+}

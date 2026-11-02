@@ -1,0 +1,36 @@
+{
+  "project_id": "p296edd24919e",
+  "niche": "financas",
+  "review": {
+    "technical": "aprovado_tecnicamente",
+    "findings": [],
+    "motion": [
+      {
+        "scene": "s01",
+        "component": "vrs-title",
+        "motion": 3.21,
+        "first_half": 3.41
+      },
+      {
+        "scene": "s02",
+        "component": "vrs-calc",
+        "motion": 3.66,
+        "first_half": 4.68
+      },
+      {
+        "scene": "s03",
+        "component": "vrs-line-chart",
+        "motion": 3.86,
+        "first_half": 5.12
+      },
+      {
+        "scene": "s04",
+        "component": "vrs-kinetic-quote",
+        "motion": 3.3,
+        "first_half": 3.15
+      }
+    ]
+  },
+  "render_seconds": 29.5,
+  "duration_s": 22.0
+}

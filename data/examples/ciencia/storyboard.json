@@ -1,0 +1,99 @@
+{
+  "schema": "vrs.storyboard/1",
+  "title": "Por que o céu é azul?",
+  "language": "pt-BR",
+  "uncertainties": [],
+  "illustrative_data": false,
+  "scenes": [
+    {
+      "preset_id": "vrs-title",
+      "parameters": {
+        "label": "CIÊNCIA EM 20 SEGUNDOS",
+        "title": "Por que o céu é azul?",
+        "subtitle": "",
+        "style": "cinematic"
+      },
+      "narration": "Por que o céu é azul durante o dia?",
+      "duration": 4
+    },
+    {
+      "preset_id": "vrs-mechanism",
+      "parameters": {
+        "title": "O caminho da luz",
+        "nodes": [
+          {
+            "id": "sol",
+            "label": "Luz do Sol",
+            "icon": "sun"
+          },
+          {
+            "id": "ar",
+            "label": "Moléculas do ar",
+            "icon": "atom"
+          },
+          {
+            "id": "olho",
+            "label": "Nossos olhos",
+            "icon": "person"
+          }
+        ],
+        "edges": [
+          {
+            "from": "sol",
+            "to": "ar",
+            "label": "todas as cores"
+          },
+          {
+            "from": "ar",
+            "to": "olho",
+            "label": "azul espalhado"
+          }
+        ],
+        "caption": "Espalhamento de Rayleigh: ondas curtas desviam mais.",
+        "layout": "row"
+      },
+      "narration": "A luz do Sol mistura todas as cores. No ar, moléculas minúsculas espalham muito mais a luz azul, de onda curta.",
+      "duration": 7
+    },
+    {
+      "preset_id": "vrs-bar-chart",
+      "parameters": {
+        "title": "Espalhamento relativo ao vermelho",
+        "unit": "×",
+        "bars": [
+          {
+            "label": "Vermelho 700 nm",
+            "value": 1.0,
+            "highlight": false
+          },
+          {
+            "label": "Verde 530 nm",
+            "value": 3.0,
+            "highlight": false
+          },
+          {
+            "label": "Azul 450 nm",
+            "value": 5.9,
+            "highlight": true
+          }
+        ],
+        "note": "Calculado por (700/λ)⁴ — espalhamento de Rayleigh.",
+        "illustrative": false
+      },
+      "narration": "Pela lei de Rayleigh, o azul é espalhado quase seis vezes mais que o vermelho.",
+      "duration": 6
+    },
+    {
+      "preset_id": "vrs-kinetic-quote",
+      "parameters": {
+        "text": "Para qualquer lado que você olhe, chega luz azul espalhada.",
+        "emphasis": "azul",
+        "author": "",
+        "authorship": "sem_atribuicao",
+        "style": "minimal"
+      },
+      "narration": "Por isso, para qualquer lado que você olhe, chega luz azul espalhada.",
+      "duration": 5
+    }
+  ]
+}

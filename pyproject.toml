@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "video-reverse-studio"
+version = "1.0.0"
+description = "Video Reverse Studio — estúdio pessoal local (CPU) dirigido por agente"
+requires-python = ">=3.10"
+dependencies = [
+  "fastapi==0.162.0",
+  "uvicorn==0.54.0",
+  "pydantic==2.14.2",
+  "python-multipart>=0.0.18,<1",
+  "pillow==12.3.0",
+  "numpy==2.5.4",
+  "httpx>=0.27,<1",
+]
+
+[project.optional-dependencies]
+# Voz local (Piper, CPU). Os modelos de voz NÃO são baixados pela instalação.
+voice = ["piper-tts==1.8.0"]
+# ASR leve local (faster-whisper int8). Pesos NÃO são baixados automaticamente.
+asr = ["faster-whisper==1.2.1"]
+# Servidor MCP stdio para agentes externos.
+mcp = ["mcp==1.30.0"]
+# Importação de links públicos (sem login, sem DRM).
+links = ["yt-dlp>=2025.1"]
+dev = ["pytest>=8,<10"]
+
+[project.scripts]
+vrs = "vrs.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["backend"]
+include = ["vrs*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["backend"]

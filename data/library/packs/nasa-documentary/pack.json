@@ -1,0 +1,26 @@
+{
+  "id": "nasa-documentary",
+  "title": "NASA · How Sunlight Pushes Asteroids",
+  "source": "https://images.nasa.gov/details/GSFC_20150729_Yarkovsky_m11964_Effect",
+  "license": "NASA Media Usage Guidelines (verificar créditos de terceiros)",
+  "credit": "NASA Goddard Space Flight Center",
+  "styles": [
+    "documentary"
+  ],
+  "niches": [
+    "ciencia",
+    "documentario"
+  ],
+  "tags": [
+    "nasa",
+    "asteroide",
+    "ciencia",
+    "referencia"
+  ],
+  "notes": "Vídeo de referência; não implica endosso da NASA. Não é preset parametrizado.",
+  "installed_from": "instalação local anterior (cópia; origem preservada)",
+  "files": {
+    "metadata.json": "e645812f34a1aa0b354231bcb16b4bfe4f72110eb2287fbdfebac1a4b51e0678",
+    "sunlight-asteroids.mp4": "f5bc78d011be0a6bb34e0f1c8b8562124b8196916b3a3847f5b7d1ee5030df13"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "project_id": "pbd827f64a985",
+  "niche": "documentario",
+  "review": {
+    "technical": "aprovado_tecnicamente",
+    "findings": [],
+    "motion": [
+      {
+        "scene": "s01",
+        "component": "vrs-title",
+        "motion": 3.76,
+        "first_half": 4.24
+      },
+      {
+        "scene": "s02",
+        "component": "vrs-timeline",
+        "motion": 3.1,
+        "first_half": 3.62
+      },
+      {
+        "scene": "s03",
+        "component": "vrs-map-route",
+        "motion": 3.82,
+        "first_half": 3.73
+      },
+      {
+        "scene": "s04",
+        "component": "vrs-stat",
+        "motion": 3.16,
+        "first_half": 3.61
+      }
+    ]
+  },
+  "render_seconds": 33.0,
+  "duration_s": 25.9
+}

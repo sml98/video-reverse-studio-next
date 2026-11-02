@@ -1,0 +1,73 @@
+{
+  "schema": "vrs.storyboard/1",
+  "title": "A muda da Lia",
+  "language": "pt-BR",
+  "uncertainties": [],
+  "illustrative_data": false,
+  "scenes": [
+    {
+      "preset_id": "vrs-story-panel",
+      "parameters": {
+        "background": "",
+        "character": "lib:open-peeps.peep-2",
+        "characterSide": "left",
+        "action": "enter",
+        "props": [],
+        "bubble": "Vou plantar uma árvore!",
+        "caption": "Lia tinha um plano."
+      },
+      "narration": "Lia queria plantar uma árvore no quintal.",
+      "duration": 5
+    },
+    {
+      "preset_id": "vrs-story-panel",
+      "parameters": {
+        "background": "",
+        "character": "lib:open-peeps.peep-2",
+        "characterSide": "left",
+        "action": "shake",
+        "props": [],
+        "bubble": "Por que não cresce?",
+        "caption": "Uma semana depois…"
+      },
+      "narration": "Mas, depois de uma semana, a muda continuava pequena.",
+      "duration": 5
+    },
+    {
+      "preset_id": "vrs-steps",
+      "parameters": {
+        "title": "O que a Lia fez",
+        "steps": [
+          {
+            "title": "Pesquisou",
+            "detail": ""
+          },
+          {
+            "title": "Levou para o sol",
+            "detail": ""
+          },
+          {
+            "title": "Regou com cuidado",
+            "detail": ""
+          }
+        ]
+      },
+      "narration": "Ela pesquisou, mudou a muda para o sol e passou a regar com cuidado.",
+      "duration": 5
+    },
+    {
+      "preset_id": "vrs-story-panel",
+      "parameters": {
+        "background": "",
+        "character": "lib:open-peeps.peep-2",
+        "characterSide": "right",
+        "action": "jump",
+        "props": [],
+        "bubble": "Brotou!",
+        "caption": "Na primavera…"
+      },
+      "narration": "Na primavera, as primeiras folhas apareceram.",
+      "duration": 5
+    }
+  ]
+}

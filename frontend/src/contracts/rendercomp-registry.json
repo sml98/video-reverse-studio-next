@@ -1,0 +1,3538 @@
+{
+  "origin": {
+    "repository": "https://github.com/RenderComp/free-remotion-templates",
+    "revision": "f648980e528defb7594e24c6447055f0540f340b",
+    "license": "MIT"
+  },
+  "scenes": [
+    {
+      "id": "rc-brush-stroke-reveal",
+      "upstreamId": "brush-stroke-reveal",
+      "title": "Brush stroke reveal",
+      "category": "Logo-and-Brand",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 120,
+      "component": "BrushStrokeReveal",
+      "defaultsExport": "defaultBrushStrokeRevealProps",
+      "path": "src/vendor/rendercomp/components/brush-stroke-reveal/BrushStrokeReveal.tsx",
+      "thumbnail": "/rendercomp-thumbs/brush-stroke-reveal.gif",
+      "params": [
+        {
+          "key": "title",
+          "type": "text",
+          "label": "Title",
+          "maxLength": 80,
+          "default": "Brush Stroke"
+        },
+        {
+          "key": "description",
+          "type": "text",
+          "label": "Description",
+          "maxLength": 84,
+          "default": "painted on, stroke by stroke"
+        },
+        {
+          "key": "strokes",
+          "type": "number",
+          "label": "Strokes",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 3
+        },
+        {
+          "key": "direction",
+          "type": "text",
+          "label": "Direction",
+          "maxLength": 80,
+          "default": "left"
+        },
+        {
+          "key": "textColor",
+          "type": "color",
+          "label": "Text Color",
+          "default": "#1a1a1a"
+        },
+        {
+          "key": "background",
+          "type": "color",
+          "label": "Background",
+          "default": "#fffdf6"
+        },
+        {
+          "key": "accentColor",
+          "type": "color",
+          "label": "Accent Color",
+          "default": "#a93226"
+        }
+      ]
+    },
+    {
+      "id": "rc-logo-blur-reveal",
+      "upstreamId": "logo-blur-reveal",
+      "title": "Logo blur reveal",
+      "category": "Logo-and-Brand",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 120,
+      "component": "LogoBlurReveal",
+      "defaultsExport": "defaultLogoBlurRevealProps",
+      "path": "src/vendor/rendercomp/components/logo-blur-reveal/LogoBlurReveal.tsx",
+      "thumbnail": "/rendercomp-thumbs/logo-blur-reveal.gif",
+      "params": [
+        {
+          "key": "logoText",
+          "type": "text",
+          "label": "Logo Text",
+          "maxLength": 80,
+          "default": "HELLO"
+        },
+        {
+          "key": "blurAmount",
+          "type": "number",
+          "label": "Blur Amount",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 40
+        },
+        {
+          "key": "revealDuration",
+          "type": "number",
+          "label": "Reveal Duration",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 1.6
+        },
+        {
+          "key": "logoColor",
+          "type": "color",
+          "label": "Logo Color",
+          "default": "#0F172A"
+        },
+        {
+          "key": "backgroundColor",
+          "type": "color",
+          "label": "Background Color",
+          "default": "#F8FAFC"
+        },
+        {
+          "key": "fontSize",
+          "type": "number",
+          "label": "Font Size",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 260
+        },
+        {
+          "key": "duration",
+          "type": "number",
+          "label": "Duration",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 4
+        }
+      ]
+    },
+    {
+      "id": "rc-logo-bounce-drop",
+      "upstreamId": "logo-bounce-drop",
+      "title": "Logo bounce drop",
+      "category": "Logo-and-Brand",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 90,
+      "component": "LogoBounceDrop",
+      "defaultsExport": "defaultLogoBounceDropProps",
+      "path": "src/vendor/rendercomp/components/logo-bounce-drop/LogoBounceDrop.tsx",
+      "thumbnail": "/rendercomp-thumbs/logo-bounce-drop.gif",
+      "params": [
+        {
+          "key": "logoText",
+          "type": "text",
+          "label": "Logo Text",
+          "maxLength": 80,
+          "default": "RENDERCOMP"
+        },
+        {
+          "key": "svgPath",
+          "type": "text",
+          "label": "Svg Path",
+          "maxLength": 80,
+          "default": ""
+        },
+        {
+          "key": "viewBox",
+          "type": "text",
+          "label": "View Box",
+          "maxLength": 80,
+          "default": "0 0 300 300"
+        },
+        {
+          "key": "dropHeight",
+          "type": "number",
+          "label": "Drop Height",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 0.6
+        },
+        {
+          "key": "bounceStrength",
+          "type": "number",
+          "label": "Bounce Strength",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 4
+        },
+        {
+          "key": "logoColor",
+          "type": "color",
+          "label": "Logo Color",
+          "default": "#0F172A"
+        },
+        {
+          "key": "backgroundColor",
+          "type": "color",
+          "label": "Background Color",
+          "default": "#F8FAFC"
+        },
+        {
+          "key": "fontSize",
+          "type": "number",
+          "label": "Font Size",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 240
+        },
+        {
+          "key": "duration",
+          "type": "number",
+          "label": "Duration",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 3
+        }
+      ]
+    },
+    {
+      "id": "rc-logo-mask-wipe",
+      "upstreamId": "logo-mask-wipe",
+      "title": "Logo mask wipe",
+      "category": "Logo-and-Brand",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 100,
+      "component": "LogoMaskWipe",
+      "defaultsExport": "defaultLogoMaskWipeProps",
+      "path": "src/vendor/rendercomp/components/logo-mask-wipe/LogoMaskWipe.tsx",
+      "thumbnail": "/rendercomp-thumbs/logo-mask-wipe.gif",
+      "params": [
+        {
+          "key": "backgroundColor",
+          "type": "color",
+          "label": "Background Color",
+          "default": "#0a0800"
+        },
+        {
+          "key": "accentColor",
+          "type": "color",
+          "label": "Accent Color",
+          "default": "#eab308"
+        },
+        {
+          "key": "textColor",
+          "type": "color",
+          "label": "Text Color",
+          "default": "#fefce8"
+        },
+        {
+          "key": "monogram",
+          "type": "text",
+          "label": "Monogram",
+          "maxLength": 80,
+          "default": "A"
+        },
+        {
+          "key": "brandText",
+          "type": "text",
+          "label": "Brand Text",
+          "maxLength": 80,
+          "default": "ACME INC."
+        }
+      ]
+    },
+    {
+      "id": "rc-logo-split-reveal",
+      "upstreamId": "logo-split-reveal",
+      "title": "Logo split reveal",
+      "category": "Logo-and-Brand",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 120,
+      "component": "LogoSplitReveal",
+      "defaultsExport": "defaultLogoSplitRevealProps",
+      "path": "src/vendor/rendercomp/components/logo-split-reveal/LogoSplitReveal.tsx",
+      "thumbnail": "/rendercomp-thumbs/logo-split-reveal.gif",
+      "params": [
+        {
+          "key": "logoText",
+          "type": "text",
+          "label": "Logo Text",
+          "maxLength": 80,
+          "default": "RENDERCOMP"
+        },
+        {
+          "key": "splitOffset",
+          "type": "number",
+          "label": "Split Offset",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 960
+        },
+        {
+          "key": "revealDuration",
+          "type": "number",
+          "label": "Reveal Duration",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 1.4
+        },
+        {
+          "key": "logoColor",
+          "type": "color",
+          "label": "Logo Color",
+          "default": "#0F172A"
+        },
+        {
+          "key": "backgroundColor",
+          "type": "color",
+          "label": "Background Color",
+          "default": "#F8FAFC"
+        },
+        {
+          "key": "fontSize",
+          "type": "number",
+          "label": "Font Size",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 260
+        },
+        {
+          "key": "duration",
+          "type": "number",
+          "label": "Duration",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 4
+        }
+      ]
+    },
+    {
+      "id": "rc-logo-stroke-draw",
+      "upstreamId": "logo-stroke-draw",
+      "title": "Logo stroke draw",
+      "category": "Logo-and-Brand",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 110,
+      "component": "LogoStrokeDraw",
+      "defaultsExport": "defaultLogoStrokeDrawProps",
+      "path": "src/vendor/rendercomp/components/logo-stroke-draw/LogoStrokeDraw.tsx",
+      "thumbnail": "/rendercomp-thumbs/logo-stroke-draw.gif",
+      "params": [
+        {
+          "key": "backgroundColor",
+          "type": "color",
+          "label": "Background Color",
+          "default": "#0a0800"
+        },
+        {
+          "key": "accentColor",
+          "type": "color",
+          "label": "Accent Color",
+          "default": "#eab308"
+        },
+        {
+          "key": "textColor",
+          "type": "color",
+          "label": "Text Color",
+          "default": "#fefce8"
+        },
+        {
+          "key": "monogram",
+          "type": "text",
+          "label": "Monogram",
+          "maxLength": 80,
+          "default": "A"
+        },
+        {
+          "key": "brandText",
+          "type": "text",
+          "label": "Brand Text",
+          "maxLength": 80,
+          "default": "ACME INC."
+        }
+      ]
+    },
+    {
+      "id": "rc-neon-sign",
+      "upstreamId": "neon-sign",
+      "title": "Neon sign",
+      "category": "Logo-and-Brand",
+      "nativeWidth": 1080,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 100,
+      "component": "NeonSign",
+      "defaultsExport": "defaultNeonSignProps",
+      "path": "src/vendor/rendercomp/components/neon-sign/NeonSign.tsx",
+      "thumbnail": "/rendercomp-thumbs/neon-sign.gif",
+      "params": [
+        {
+          "key": "backgroundColor",
+          "type": "color",
+          "label": "Background Color",
+          "default": "#080010"
+        },
+        {
+          "key": "neonColor",
+          "type": "color",
+          "label": "Neon Color",
+          "default": "#f0abfc"
+        },
+        {
+          "key": "glowColor",
+          "type": "color",
+          "label": "Glow Color",
+          "default": "#c026d3"
+        },
+        {
+          "key": "flickerColor",
+          "type": "color",
+          "label": "Flicker Color",
+          "default": "#e879f9"
+        },
+        {
+          "key": "frameColor",
+          "type": "color",
+          "label": "Frame Color",
+          "default": "#3f3f46"
+        },
+        {
+          "key": "textColor",
+          "type": "color",
+          "label": "Text Color",
+          "default": "#fae8ff"
+        },
+        {
+          "key": "subColor",
+          "type": "color",
+          "label": "Sub Color",
+          "default": "#a21caf"
+        },
+        {
+          "key": "signText",
+          "type": "text",
+          "label": "Sign Text",
+          "maxLength": 80,
+          "default": "OPEN"
+        },
+        {
+          "key": "subText",
+          "type": "text",
+          "label": "Sub Text",
+          "maxLength": 80,
+          "default": "Now serving"
+        }
+      ]
+    },
+    {
+      "id": "rc-shatter-reveal",
+      "upstreamId": "shatter-reveal",
+      "title": "Shatter reveal",
+      "category": "Logo-and-Brand",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 120,
+      "component": "ShatterReveal",
+      "defaultsExport": "defaultShatterRevealProps",
+      "path": "src/vendor/rendercomp/components/shatter-reveal/ShatterReveal.tsx",
+      "thumbnail": "/rendercomp-thumbs/shatter-reveal.gif",
+      "params": [
+        {
+          "key": "title",
+          "type": "text",
+          "label": "Title",
+          "maxLength": 80,
+          "default": "Reveal"
+        },
+        {
+          "key": "subtitle",
+          "type": "text",
+          "label": "Subtitle",
+          "maxLength": 87,
+          "default": "Fragments converge into focus"
+        },
+        {
+          "key": "pieces",
+          "type": "number",
+          "label": "Pieces",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 36
+        },
+        {
+          "key": "spread",
+          "type": "number",
+          "label": "Spread",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 280
+        },
+        {
+          "key": "textColor",
+          "type": "color",
+          "label": "Text Color",
+          "default": "#ffffff"
+        },
+        {
+          "key": "background",
+          "type": "color",
+          "label": "Background",
+          "default": "#050913"
+        },
+        {
+          "key": "tileBackground",
+          "type": "longtext",
+          "label": "Tile Background",
+          "maxLength": 186,
+          "default": "linear-gradient(135deg, #1d4ed8 0%, #7c3aed 50%, #db2777 100%)"
+        },
+        {
+          "key": "accentColor",
+          "type": "color",
+          "label": "Accent Color",
+          "default": "#facc15"
+        }
+      ]
+    },
+    {
+      "id": "rc-bounce-in-headline",
+      "upstreamId": "bounce-in-headline",
+      "title": "Bounce in headline",
+      "category": "Text-and-Titles",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 120,
+      "component": "BounceInHeadline",
+      "defaultsExport": "defaultBounceInHeadlineProps",
+      "path": "src/vendor/rendercomp/components/bounce-in-headline/BounceInHeadline.tsx",
+      "thumbnail": "/rendercomp-thumbs/bounce-in-headline.gif",
+      "params": [
+        {
+          "key": "headline",
+          "type": "text",
+          "label": "Headline",
+          "maxLength": 80,
+          "default": "Make It Bounce"
+        },
+        {
+          "key": "background",
+          "type": "color",
+          "label": "Background",
+          "default": "#111827"
+        },
+        {
+          "key": "color",
+          "type": "color",
+          "label": "Color",
+          "default": "#fbbf24"
+        },
+        {
+          "key": "bounces",
+          "type": "number",
+          "label": "Bounces",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 3
+        },
+        {
+          "key": "height",
+          "type": "number",
+          "label": "Height",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 120
+        },
+        {
+          "key": "delay",
+          "type": "number",
+          "label": "Delay",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 8
+        },
+        {
+          "key": "duration",
+          "type": "number",
+          "label": "Duration",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 36
+        }
+      ]
+    },
+    {
+      "id": "rc-chapter-title",
+      "upstreamId": "chapter-title",
+      "title": "Chapter title",
+      "category": "Text-and-Titles",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 150,
+      "component": "ChapterTitle",
+      "defaultsExport": "defaultChapterTitleProps",
+      "path": "src/vendor/rendercomp/components/chapter-title/ChapterTitle.tsx",
+      "thumbnail": "/rendercomp-thumbs/chapter-title.gif",
+      "params": [
+        {
+          "key": "chapterLabel",
+          "type": "text",
+          "label": "Chapter Label",
+          "maxLength": 80,
+          "default": "Chapter 1"
+        },
+        {
+          "key": "title",
+          "type": "text",
+          "label": "Title",
+          "maxLength": 80,
+          "default": "Chapter One: The Beginning"
+        },
+        {
+          "key": "subtitle",
+          "type": "text",
+          "label": "Subtitle",
+          "maxLength": 80,
+          "default": "Where the journey starts"
+        },
+        {
+          "key": "background",
+          "type": "color",
+          "label": "Background",
+          "default": "#0d1117"
+        },
+        {
+          "key": "chapterColor",
+          "type": "color",
+          "label": "Chapter Color",
+          "default": "#d4af37"
+        },
+        {
+          "key": "titleColor",
+          "type": "color",
+          "label": "Title Color",
+          "default": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "rc-four-tone-mono-titler",
+      "upstreamId": "four-tone-mono-titler",
+      "title": "Four tone mono titler",
+      "category": "Text-and-Titles",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 120,
+      "component": "FourToneMonoTitler",
+      "defaultsExport": "defaultFourToneMonoTitlerProps",
+      "path": "src/vendor/rendercomp/components/four-tone-mono-titler/FourToneMonoTitler.tsx",
+      "thumbnail": "/rendercomp-thumbs/four-tone-mono-titler.gif",
+      "params": [
+        {
+          "key": "title",
+          "type": "text",
+          "label": "Title",
+          "maxLength": 80,
+          "default": "LANTERN HOLLOW"
+        },
+        {
+          "key": "subtitle",
+          "type": "text",
+          "label": "Subtitle",
+          "maxLength": 80,
+          "default": "STAGE 01 - THE QUIET MARSH"
+        },
+        {
+          "key": "tone0",
+          "type": "color",
+          "label": "Tone0",
+          "default": "#0f380f"
+        },
+        {
+          "key": "tone1",
+          "type": "color",
+          "label": "Tone1",
+          "default": "#306230"
+        },
+        {
+          "key": "tone2",
+          "type": "color",
+          "label": "Tone2",
+          "default": "#8bac0f"
+        },
+        {
+          "key": "tone3",
+          "type": "color",
+          "label": "Tone3",
+          "default": "#9bbc0f"
+        },
+        {
+          "key": "titleCell",
+          "type": "number",
+          "label": "Title Cell",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 4
+        },
+        {
+          "key": "subtitleCell",
+          "type": "number",
+          "label": "Subtitle Cell",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 2
+        },
+        {
+          "key": "wipeFrames",
+          "type": "number",
+          "label": "Wipe Frames",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 72
+        },
+        {
+          "key": "shimmerSpeed",
+          "type": "number",
+          "label": "Shimmer Speed",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 3.2
+        },
+        {
+          "key": "ditherDensity",
+          "type": "number",
+          "label": "Dither Density",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 0.6
+        },
+        {
+          "key": "showAmbient",
+          "type": "boolean",
+          "label": "Show Ambient",
+          "default": true
+        }
+      ]
+    },
+    {
+      "id": "rc-glitch-text",
+      "upstreamId": "glitch-text",
+      "title": "Glitch text",
+      "category": "Text-and-Titles",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 120,
+      "component": "GlitchText",
+      "defaultsExport": "defaultGlitchTextProps",
+      "path": "src/vendor/rendercomp/components/glitch-text/GlitchText.tsx",
+      "thumbnail": "/rendercomp-thumbs/glitch-text.gif",
+      "params": [
+        {
+          "key": "text",
+          "type": "text",
+          "label": "Text",
+          "maxLength": 80,
+          "default": "OVERDRIVE"
+        },
+        {
+          "key": "glitchColor",
+          "type": "color",
+          "label": "Glitch Color",
+          "default": "#FFFFFF"
+        },
+        {
+          "key": "intensity",
+          "type": "number",
+          "label": "Intensity",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 0.8
+        },
+        {
+          "key": "backgroundColor",
+          "type": "color",
+          "label": "Background Color",
+          "default": "#0A0A0F"
+        },
+        {
+          "key": "fontSize",
+          "type": "number",
+          "label": "Font Size",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 220
+        },
+        {
+          "key": "duration",
+          "type": "number",
+          "label": "Duration",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 4
+        }
+      ]
+    },
+    {
+      "id": "rc-gradient-text-sweep",
+      "upstreamId": "gradient-text-sweep",
+      "title": "Gradient text sweep",
+      "category": "Text-and-Titles",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 110,
+      "component": "GradientTextSweep",
+      "defaultsExport": "defaultGradientTextSweepProps",
+      "path": "src/vendor/rendercomp/components/gradient-text-sweep/GradientTextSweep.tsx",
+      "thumbnail": "/rendercomp-thumbs/gradient-text-sweep.gif",
+      "params": [
+        {
+          "key": "backgroundColor",
+          "type": "color",
+          "label": "Background Color",
+          "default": "#050818"
+        },
+        {
+          "key": "accentColor",
+          "type": "color",
+          "label": "Accent Color",
+          "default": "#22d3ee"
+        },
+        {
+          "key": "textColor",
+          "type": "color",
+          "label": "Text Color",
+          "default": "#ecfeff"
+        },
+        {
+          "key": "headline",
+          "type": "text",
+          "label": "Headline",
+          "maxLength": 80,
+          "default": "BUILD BOLD"
+        },
+        {
+          "key": "subline",
+          "type": "text",
+          "label": "Subline",
+          "maxLength": 80,
+          "default": "ACME INC."
+        }
+      ]
+    },
+    {
+      "id": "rc-kinetic-word-stack",
+      "upstreamId": "kinetic-word-stack",
+      "title": "Kinetic word stack",
+      "category": "Text-and-Titles",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 120,
+      "component": "KineticWordStack",
+      "defaultsExport": "defaultKineticWordStackProps",
+      "path": "src/vendor/rendercomp/components/kinetic-word-stack/KineticWordStack.tsx",
+      "thumbnail": "/rendercomp-thumbs/kinetic-word-stack.gif",
+      "params": [
+        {
+          "key": "backgroundColor",
+          "type": "color",
+          "label": "Background Color",
+          "default": "#050818"
+        },
+        {
+          "key": "accentColor",
+          "type": "color",
+          "label": "Accent Color",
+          "default": "#22d3ee"
+        },
+        {
+          "key": "textColor",
+          "type": "color",
+          "label": "Text Color",
+          "default": "#ecfeff"
+        },
+        {
+          "key": "words",
+          "type": "list",
+          "label": "Words",
+          "maxItems": 12,
+          "item": {
+            "type": "text",
+            "maxLength": 120,
+            "default": ""
+          },
+          "default": [
+            "BUILD",
+            "WHAT",
+            "MATTERS",
+            "NOW"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rc-pixel-typewriter-quote",
+      "upstreamId": "pixel-typewriter-quote",
+      "title": "Pixel typewriter quote",
+      "category": "Text-and-Titles",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 180,
+      "component": "PixelTypewriterQuote",
+      "defaultsExport": "defaultPixelTypewriterQuoteProps",
+      "path": "src/vendor/rendercomp/components/pixel-typewriter-quote/PixelTypewriterQuote.tsx",
+      "thumbnail": "/rendercomp-thumbs/pixel-typewriter-quote.gif",
+      "params": [
+        {
+          "key": "quote",
+          "type": "text",
+          "label": "Quote",
+          "maxLength": 126,
+          "default": "Make it work, make it right, make it fast."
+        },
+        {
+          "key": "attribution",
+          "type": "text",
+          "label": "Attribution",
+          "maxLength": 80,
+          "default": "- Kent Beck"
+        },
+        {
+          "key": "backgroundColor",
+          "type": "color",
+          "label": "Background Color",
+          "default": "#0c0e1a"
+        },
+        {
+          "key": "inkColor",
+          "type": "color",
+          "label": "Ink Color",
+          "default": "#dfe7ff"
+        },
+        {
+          "key": "accentColor",
+          "type": "color",
+          "label": "Accent Color",
+          "default": "#39e0c8"
+        },
+        {
+          "key": "cps",
+          "type": "number",
+          "label": "Cps",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 0.55
+        }
+      ]
+    },
+    {
+      "id": "rc-scramble-text",
+      "upstreamId": "scramble-text",
+      "title": "Scramble text",
+      "category": "Text-and-Titles",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 150,
+      "component": "ScrambleText",
+      "defaultsExport": "defaultScrambleTextProps",
+      "path": "src/vendor/rendercomp/components/scramble-text/ScrambleText.tsx",
+      "thumbnail": "/rendercomp-thumbs/scramble-text.gif",
+      "params": [
+        {
+          "key": "text",
+          "type": "text",
+          "label": "Text",
+          "maxLength": 80,
+          "default": "ACCESS GRANTED"
+        },
+        {
+          "key": "label",
+          "type": "text",
+          "label": "Label",
+          "maxLength": 80,
+          "default": "DECRYPTING"
+        },
+        {
+          "key": "background",
+          "type": "color",
+          "label": "Background",
+          "default": "#05080f"
+        },
+        {
+          "key": "textColor",
+          "type": "color",
+          "label": "Text Color",
+          "default": "#00ff9c"
+        },
+        {
+          "key": "labelColor",
+          "type": "color",
+          "label": "Label Color",
+          "default": "#7a9a8c"
+        },
+        {
+          "key": "scrambleDuration",
+          "type": "number",
+          "label": "Scramble Duration",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 60
+        },
+        {
+          "key": "charset",
+          "type": "text",
+          "label": "Charset",
+          "maxLength": 147,
+          "default": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*+=?/<>"
+        }
+      ]
+    },
+    {
+      "id": "rc-text-mask-reveal",
+      "upstreamId": "text-mask-reveal",
+      "title": "Text mask reveal",
+      "category": "Text-and-Titles",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 110,
+      "component": "TextMaskReveal",
+      "defaultsExport": "defaultTextMaskRevealProps",
+      "path": "src/vendor/rendercomp/components/text-mask-reveal/TextMaskReveal.tsx",
+      "thumbnail": "/rendercomp-thumbs/text-mask-reveal.gif",
+      "params": [
+        {
+          "key": "backgroundColor",
+          "type": "color",
+          "label": "Background Color",
+          "default": "#050818"
+        },
+        {
+          "key": "accentColor",
+          "type": "color",
+          "label": "Accent Color",
+          "default": "#22d3ee"
+        },
+        {
+          "key": "textColor",
+          "type": "color",
+          "label": "Text Color",
+          "default": "#ecfeff"
+        },
+        {
+          "key": "lines",
+          "type": "list",
+          "label": "Lines",
+          "maxItems": 12,
+          "item": {
+            "type": "text",
+            "maxLength": 120,
+            "default": ""
+          },
+          "default": [
+            "DESIGN",
+            "IN",
+            "MOTION"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rc-typewriter",
+      "upstreamId": "typewriter",
+      "title": "Typewriter",
+      "category": "Text-and-Titles",
+      "nativeWidth": 1080,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 100,
+      "component": "Typewriter",
+      "defaultsExport": "defaultTypewriterProps",
+      "path": "src/vendor/rendercomp/components/typewriter/Typewriter.tsx",
+      "thumbnail": "/rendercomp-thumbs/typewriter.gif",
+      "params": [
+        {
+          "key": "backgroundColor",
+          "type": "color",
+          "label": "Background Color",
+          "default": "#0f0c00"
+        },
+        {
+          "key": "machineColor",
+          "type": "color",
+          "label": "Machine Color",
+          "default": "#374151"
+        },
+        {
+          "key": "machineDarkColor",
+          "type": "color",
+          "label": "Machine Dark Color",
+          "default": "#1f2937"
+        },
+        {
+          "key": "keyColor",
+          "type": "color",
+          "label": "Key Color",
+          "default": "#4b5563"
+        },
+        {
+          "key": "ribbonColor",
+          "type": "color",
+          "label": "Ribbon Color",
+          "default": "#dc2626"
+        },
+        {
+          "key": "paperColor",
+          "type": "color",
+          "label": "Paper Color",
+          "default": "#f8fafc"
+        },
+        {
+          "key": "textColor",
+          "type": "color",
+          "label": "Text Color",
+          "default": "#fef9c3"
+        },
+        {
+          "key": "subColor",
+          "type": "color",
+          "label": "Sub Color",
+          "default": "#d97706"
+        },
+        {
+          "key": "messageText",
+          "type": "text",
+          "label": "Message Text",
+          "maxLength": 80,
+          "default": "Written"
+        },
+        {
+          "key": "subText",
+          "type": "text",
+          "label": "Sub Text",
+          "maxLength": 80,
+          "default": "Words on paper"
+        }
+      ]
+    },
+    {
+      "id": "rc-wave-text",
+      "upstreamId": "wave-text",
+      "title": "Wave text",
+      "category": "Text-and-Titles",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 150,
+      "component": "WaveText",
+      "defaultsExport": "defaultWaveTextProps",
+      "path": "src/vendor/rendercomp/components/wave-text/WaveText.tsx",
+      "thumbnail": "/rendercomp-thumbs/wave-text.gif",
+      "params": [
+        {
+          "key": "text",
+          "type": "text",
+          "label": "Text",
+          "maxLength": 80,
+          "default": "WAVE"
+        },
+        {
+          "key": "subText",
+          "type": "text",
+          "label": "Sub Text",
+          "maxLength": 80,
+          "default": "Shape the Future"
+        },
+        {
+          "key": "background",
+          "type": "color",
+          "label": "Background",
+          "default": "#0c2342"
+        },
+        {
+          "key": "textColor",
+          "type": "color",
+          "label": "Text Color",
+          "default": "#ffffff"
+        },
+        {
+          "key": "subTextColor",
+          "type": "color",
+          "label": "Sub Text Color",
+          "default": "#7fb3ff"
+        },
+        {
+          "key": "amplitude",
+          "type": "number",
+          "label": "Amplitude",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 18
+        },
+        {
+          "key": "waveSpeed",
+          "type": "number",
+          "label": "Wave Speed",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 28
+        },
+        {
+          "key": "wavelength",
+          "type": "number",
+          "label": "Wavelength",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 0.55
+        }
+      ]
+    },
+    {
+      "id": "rc-camera-shake",
+      "upstreamId": "camera-shake",
+      "title": "Camera shake",
+      "category": "Transitions",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 120,
+      "component": "CameraShake",
+      "defaultsExport": "defaultCameraShakeProps",
+      "path": "src/vendor/rendercomp/components/camera-shake/CameraShake.tsx",
+      "thumbnail": "/rendercomp-thumbs/camera-shake.gif",
+      "params": [
+        {
+          "key": "title",
+          "type": "text",
+          "label": "Title",
+          "maxLength": 80,
+          "default": "IMPACT"
+        },
+        {
+          "key": "subtitle",
+          "type": "text",
+          "label": "Subtitle",
+          "maxLength": 80,
+          "default": "System breach detected"
+        },
+        {
+          "key": "background",
+          "type": "color",
+          "label": "Background",
+          "default": "#111827"
+        },
+        {
+          "key": "textColor",
+          "type": "color",
+          "label": "Text Color",
+          "default": "#fef3c7"
+        },
+        {
+          "key": "accentColor",
+          "type": "color",
+          "label": "Accent Color",
+          "default": "#f59e0b"
+        },
+        {
+          "key": "maxIntensity",
+          "type": "number",
+          "label": "Max Intensity",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 28
+        },
+        {
+          "key": "impactAt",
+          "type": "number",
+          "label": "Impact At",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 0.9
+        },
+        {
+          "key": "shakeDuration",
+          "type": "number",
+          "label": "Shake Duration",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 1.6
+        }
+      ]
+    },
+    {
+      "id": "rc-card-flip-transition",
+      "upstreamId": "card-flip-transition",
+      "title": "Card flip transition",
+      "category": "Transitions",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 120,
+      "component": "CardFlipTransition",
+      "defaultsExport": "defaultCardFlipTransitionProps",
+      "path": "src/vendor/rendercomp/components/card-flip-transition/CardFlipTransition.tsx",
+      "thumbnail": "/rendercomp-thumbs/card-flip-transition.gif",
+      "params": [
+        {
+          "key": "colorBefore",
+          "type": "color",
+          "label": "Color Before",
+          "default": "#22223b"
+        },
+        {
+          "key": "colorAfter",
+          "type": "color",
+          "label": "Color After",
+          "default": "#9a8c98"
+        },
+        {
+          "key": "labelBefore",
+          "type": "text",
+          "label": "Label Before",
+          "maxLength": 80,
+          "default": "Before"
+        },
+        {
+          "key": "labelAfter",
+          "type": "text",
+          "label": "Label After",
+          "maxLength": 80,
+          "default": "After"
+        },
+        {
+          "key": "textColor",
+          "type": "color",
+          "label": "Text Color",
+          "default": "#ffffff"
+        },
+        {
+          "key": "backdropColor",
+          "type": "color",
+          "label": "Backdrop Color",
+          "default": "#14141f"
+        }
+      ]
+    },
+    {
+      "id": "rc-transition-circle-wipe",
+      "upstreamId": "transition-circle-wipe",
+      "title": "Transition circle wipe",
+      "category": "Transitions",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 90,
+      "component": "TransitionCircleWipe",
+      "defaultsExport": "defaultTransitionCircleWipeProps",
+      "path": "src/vendor/rendercomp/components/transition-circle-wipe/TransitionCircleWipe.tsx",
+      "thumbnail": "/rendercomp-thumbs/transition-circle-wipe.gif",
+      "params": [
+        {
+          "key": "backgroundColor",
+          "type": "color",
+          "label": "Background Color",
+          "default": "#0b0f1a"
+        },
+        {
+          "key": "accentColor",
+          "type": "color",
+          "label": "Accent Color",
+          "default": "#6366f1"
+        },
+        {
+          "key": "textColor",
+          "type": "color",
+          "label": "Text Color",
+          "default": "#eef2ff"
+        },
+        {
+          "key": "fromLabel",
+          "type": "text",
+          "label": "From Label",
+          "maxLength": 80,
+          "default": "Scene 01"
+        },
+        {
+          "key": "toLabel",
+          "type": "text",
+          "label": "To Label",
+          "maxLength": 80,
+          "default": "Scene 02"
+        }
+      ]
+    },
+    {
+      "id": "rc-ink-spread-transition",
+      "upstreamId": "ink-spread-transition",
+      "title": "Ink spread transition",
+      "category": "Transitions",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 120,
+      "component": "InkSpreadTransition",
+      "defaultsExport": "defaultInkSpreadTransitionProps",
+      "path": "src/vendor/rendercomp/components/ink-spread-transition/InkSpreadTransition.tsx",
+      "thumbnail": "/rendercomp-thumbs/ink-spread-transition.gif",
+      "params": [
+        {
+          "key": "colorBefore",
+          "type": "color",
+          "label": "Color Before",
+          "default": "#f5f1e8"
+        },
+        {
+          "key": "colorAfter",
+          "type": "color",
+          "label": "Color After",
+          "default": "#1a1a1a"
+        },
+        {
+          "key": "labelBefore",
+          "type": "text",
+          "label": "Label Before",
+          "maxLength": 80,
+          "default": "Before"
+        },
+        {
+          "key": "labelAfter",
+          "type": "text",
+          "label": "Label After",
+          "maxLength": 80,
+          "default": "After"
+        },
+        {
+          "key": "textColor",
+          "type": "color",
+          "label": "Text Color",
+          "default": "#1a1a1a"
+        }
+      ]
+    },
+    {
+      "id": "rc-flip-page-transition",
+      "upstreamId": "flip-page-transition",
+      "title": "Flip page transition",
+      "category": "Transitions",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 120,
+      "component": "FlipPageTransition",
+      "defaultsExport": "defaultFlipPageTransitionProps",
+      "path": "src/vendor/rendercomp/components/flip-page-transition/FlipPageTransition.tsx",
+      "thumbnail": "/rendercomp-thumbs/flip-page-transition.gif",
+      "params": [
+        {
+          "key": "colorBefore",
+          "type": "color",
+          "label": "Color Before",
+          "default": "#fefae0"
+        },
+        {
+          "key": "colorAfter",
+          "type": "color",
+          "label": "Color After",
+          "default": "#283618"
+        },
+        {
+          "key": "labelBefore",
+          "type": "text",
+          "label": "Label Before",
+          "maxLength": 80,
+          "default": "Before"
+        },
+        {
+          "key": "labelAfter",
+          "type": "text",
+          "label": "Label After",
+          "maxLength": 80,
+          "default": "After"
+        },
+        {
+          "key": "textColor",
+          "type": "color",
+          "label": "Text Color",
+          "default": "#283618"
+        }
+      ]
+    },
+    {
+      "id": "rc-pixel-mosaic-transition",
+      "upstreamId": "pixel-mosaic-transition",
+      "title": "Pixel mosaic transition",
+      "category": "Transitions",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 90,
+      "component": "PixelMosaicTransition",
+      "defaultsExport": "defaultPixelMosaicTransitionProps",
+      "path": "src/vendor/rendercomp/components/pixel-mosaic-transition/PixelMosaicTransition.tsx",
+      "thumbnail": "/rendercomp-thumbs/pixel-mosaic-transition.gif",
+      "params": [
+        {
+          "key": "backgroundColor",
+          "type": "color",
+          "label": "Background Color",
+          "default": "#05060f"
+        },
+        {
+          "key": "screenAColor",
+          "type": "color",
+          "label": "Screen A Color",
+          "default": "#ff8a3d"
+        },
+        {
+          "key": "screenAAccent",
+          "type": "color",
+          "label": "Screen A Accent",
+          "default": "#fff0c2"
+        },
+        {
+          "key": "screenBColor",
+          "type": "color",
+          "label": "Screen B Color",
+          "default": "#1b2b66"
+        },
+        {
+          "key": "screenBAccent",
+          "type": "color",
+          "label": "Screen B Accent",
+          "default": "#cfe0ff"
+        },
+        {
+          "key": "maxCell",
+          "type": "number",
+          "label": "Max Cell",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 48
+        },
+        {
+          "key": "ditherOpacity",
+          "type": "number",
+          "label": "Dither Opacity",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 0.08
+        }
+      ]
+    },
+    {
+      "id": "rc-slide-wipe",
+      "upstreamId": "slide-wipe",
+      "title": "Slide wipe",
+      "category": "Transitions",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 120,
+      "component": "SlideWipe",
+      "defaultsExport": "defaultSlideWipeProps",
+      "path": "src/vendor/rendercomp/components/slide-wipe/SlideWipe.tsx",
+      "thumbnail": "/rendercomp-thumbs/slide-wipe.gif",
+      "params": [
+        {
+          "key": "colorBefore",
+          "type": "color",
+          "label": "Color Before",
+          "default": "#0d4f8b"
+        },
+        {
+          "key": "colorAfter",
+          "type": "color",
+          "label": "Color After",
+          "default": "#ffb703"
+        },
+        {
+          "key": "labelBefore",
+          "type": "text",
+          "label": "Label Before",
+          "maxLength": 80,
+          "default": "Before"
+        },
+        {
+          "key": "labelAfter",
+          "type": "text",
+          "label": "Label After",
+          "maxLength": 80,
+          "default": "After"
+        },
+        {
+          "key": "textColor",
+          "type": "color",
+          "label": "Text Color",
+          "default": "#ffffff"
+        },
+        {
+          "key": "backdropColor",
+          "type": "color",
+          "label": "Backdrop Color",
+          "default": "#0a1626"
+        }
+      ]
+    },
+    {
+      "id": "rc-whip-pan",
+      "upstreamId": "whip-pan",
+      "title": "Whip pan",
+      "category": "Transitions",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 120,
+      "component": "WhipPan",
+      "defaultsExport": "defaultWhipPanProps",
+      "path": "src/vendor/rendercomp/components/whip-pan/WhipPan.tsx",
+      "thumbnail": "/rendercomp-thumbs/whip-pan.gif",
+      "params": [
+        {
+          "key": "scenes",
+          "type": "list",
+          "label": "Scenes",
+          "maxItems": 12,
+          "item": {
+            "type": "object",
+            "fields": [
+              {
+                "key": "background",
+                "type": "color",
+                "label": "Background",
+                "default": "#0f172a"
+              },
+              {
+                "key": "title",
+                "type": "text",
+                "label": "Title",
+                "maxLength": 80,
+                "default": "Discover"
+              },
+              {
+                "key": "subtitle",
+                "type": "text",
+                "label": "Subtitle",
+                "maxLength": 80,
+                "default": "Stories that move"
+              },
+              {
+                "key": "textColor",
+                "type": "color",
+                "label": "Text Color",
+                "default": "#f1f5f9"
+              }
+            ]
+          },
+          "default": [
+            {
+              "background": "#0f172a",
+              "title": "Discover",
+              "subtitle": "Stories that move",
+              "textColor": "#f1f5f9"
+            },
+            {
+              "background": "#7c3aed",
+              "title": "Create",
+              "subtitle": "Built for impact",
+              "textColor": "#ffffff"
+            },
+            {
+              "background": "#ea580c",
+              "title": "Deliver",
+              "subtitle": "Ready to ship",
+              "textColor": "#fff7ed"
+            }
+          ]
+        },
+        {
+          "key": "panLeft",
+          "type": "boolean",
+          "label": "Pan Left",
+          "default": true
+        },
+        {
+          "key": "maxBlur",
+          "type": "number",
+          "label": "Max Blur",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 24
+        }
+      ]
+    },
+    {
+      "id": "rc-bar-chart-anim",
+      "upstreamId": "bar-chart-anim",
+      "title": "Bar chart anim",
+      "category": "Data-and-Charts",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 150,
+      "component": "BarChartAnim",
+      "defaultsExport": "defaultBarChartAnimProps",
+      "path": "src/vendor/rendercomp/components/bar-chart-anim/BarChartAnim.tsx",
+      "thumbnail": "/rendercomp-thumbs/bar-chart-anim.gif",
+      "params": [
+        {
+          "key": "title",
+          "type": "text",
+          "label": "Title",
+          "maxLength": 80,
+          "default": "Quarterly Revenue"
+        },
+        {
+          "key": "subtitle",
+          "type": "text",
+          "label": "Subtitle",
+          "maxLength": 80,
+          "default": "Year over year +28%"
+        },
+        {
+          "key": "bars",
+          "type": "list",
+          "label": "Bars",
+          "maxItems": 12,
+          "item": {
+            "type": "object",
+            "fields": [
+              {
+                "key": "label",
+                "type": "text",
+                "label": "Label",
+                "maxLength": 80,
+                "default": "Q1"
+              },
+              {
+                "key": "value",
+                "type": "number",
+                "label": "Value",
+                "min": -1000000000,
+                "max": 1000000000,
+                "default": 120
+              },
+              {
+                "key": "color",
+                "type": "color",
+                "label": "Color",
+                "default": "#60a5fa"
+              }
+            ]
+          },
+          "default": [
+            {
+              "label": "Q1",
+              "value": 120,
+              "color": "#60a5fa"
+            },
+            {
+              "label": "Q2",
+              "value": 180,
+              "color": "#34d399"
+            },
+            {
+              "label": "Q3",
+              "value": 240,
+              "color": "#fbbf24"
+            },
+            {
+              "label": "Q4",
+              "value": 320,
+              "color": "#f472b6"
+            }
+          ]
+        },
+        {
+          "key": "background",
+          "type": "color",
+          "label": "Background",
+          "default": "#0f172a"
+        },
+        {
+          "key": "titleColor",
+          "type": "color",
+          "label": "Title Color",
+          "default": "#ffffff"
+        },
+        {
+          "key": "accentColor",
+          "type": "color",
+          "label": "Accent Color",
+          "default": "#60a5fa"
+        }
+      ]
+    },
+    {
+      "id": "rc-line-chart-anim",
+      "upstreamId": "line-chart-anim",
+      "title": "Line chart anim",
+      "category": "Data-and-Charts",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 150,
+      "component": "LineChartAnim",
+      "defaultsExport": "defaultLineChartAnimProps",
+      "path": "src/vendor/rendercomp/components/line-chart-anim/LineChartAnim.tsx",
+      "thumbnail": "/rendercomp-thumbs/line-chart-anim.gif",
+      "params": [
+        {
+          "key": "title",
+          "type": "text",
+          "label": "Title",
+          "maxLength": 80,
+          "default": "Monthly Active Users"
+        },
+        {
+          "key": "subtitle",
+          "type": "text",
+          "label": "Subtitle",
+          "maxLength": 81,
+          "default": "Last six months (thousands)"
+        },
+        {
+          "key": "points",
+          "type": "list",
+          "label": "Points",
+          "maxItems": 12,
+          "item": {
+            "type": "object",
+            "fields": [
+              {
+                "key": "label",
+                "type": "text",
+                "label": "Label",
+                "maxLength": 80,
+                "default": "Jan"
+              },
+              {
+                "key": "value",
+                "type": "number",
+                "label": "Value",
+                "min": -1000000000,
+                "max": 1000000000,
+                "default": 40
+              }
+            ]
+          },
+          "default": [
+            {
+              "label": "Jan",
+              "value": 40
+            },
+            {
+              "label": "Feb",
+              "value": 55
+            },
+            {
+              "label": "Mar",
+              "value": 50
+            },
+            {
+              "label": "Apr",
+              "value": 72
+            },
+            {
+              "label": "May",
+              "value": 88
+            },
+            {
+              "label": "Jun",
+              "value": 95
+            }
+          ]
+        },
+        {
+          "key": "background",
+          "type": "color",
+          "label": "Background",
+          "default": "#0b1220"
+        },
+        {
+          "key": "titleColor",
+          "type": "color",
+          "label": "Title Color",
+          "default": "#ffffff"
+        },
+        {
+          "key": "lineColor",
+          "type": "color",
+          "label": "Line Color",
+          "default": "#22d3ee"
+        },
+        {
+          "key": "gridColor",
+          "type": "text",
+          "label": "Grid Color",
+          "maxLength": 80,
+          "default": "rgba(255,255,255,0.08)"
+        }
+      ]
+    },
+    {
+      "id": "rc-pourover-drip-fill-gauge",
+      "upstreamId": "pourover-drip-fill-gauge",
+      "title": "Pourover drip fill gauge",
+      "category": "Data-and-Charts",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 180,
+      "component": "PouroverDripFillGauge",
+      "defaultsExport": "defaultPouroverDripFillGaugeProps",
+      "path": "src/vendor/rendercomp/components/pourover-drip-fill-gauge/PouroverDripFillGauge.tsx",
+      "thumbnail": "/rendercomp-thumbs/pourover-drip-fill-gauge.gif",
+      "params": [
+        {
+          "key": "toneBg",
+          "type": "color",
+          "label": "Tone Bg",
+          "default": "#1c1206"
+        },
+        {
+          "key": "toneDark",
+          "type": "color",
+          "label": "Tone Dark",
+          "default": "#6b4410"
+        },
+        {
+          "key": "toneMid",
+          "type": "color",
+          "label": "Tone Mid",
+          "default": "#c88a1e"
+        },
+        {
+          "key": "toneLight",
+          "type": "color",
+          "label": "Tone Light",
+          "default": "#f6d27a"
+        },
+        {
+          "key": "fillSpeed",
+          "type": "number",
+          "label": "Fill Speed",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 0.78
+        },
+        {
+          "key": "showDrips",
+          "type": "boolean",
+          "label": "Show Drips",
+          "default": true
+        }
+      ]
+    },
+    {
+      "id": "rc-kpi-counter",
+      "upstreamId": "kpi-counter",
+      "title": "Kpi counter",
+      "category": "Data-and-Charts",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 120,
+      "component": "KpiCounter",
+      "defaultsExport": "defaultKpiCounterProps",
+      "path": "src/vendor/rendercomp/components/kpi-counter/KpiCounter.tsx",
+      "thumbnail": "/rendercomp-thumbs/kpi-counter.gif",
+      "params": [
+        {
+          "key": "backgroundColor",
+          "type": "color",
+          "label": "Background Color",
+          "default": "#0f172a"
+        },
+        {
+          "key": "cardColor",
+          "type": "color",
+          "label": "Card Color",
+          "default": "#1e293b"
+        },
+        {
+          "key": "textColor",
+          "type": "color",
+          "label": "Text Color",
+          "default": "#f8fafc"
+        },
+        {
+          "key": "subtextColor",
+          "type": "color",
+          "label": "Subtext Color",
+          "default": "#94a3b8"
+        },
+        {
+          "key": "accentColor",
+          "type": "color",
+          "label": "Accent Color",
+          "default": "#6366f1"
+        },
+        {
+          "key": "title",
+          "type": "text",
+          "label": "Title",
+          "maxLength": 80,
+          "default": "Q4 Results"
+        },
+        {
+          "key": "subtitle",
+          "type": "text",
+          "label": "Subtitle",
+          "maxLength": 80,
+          "default": "2024 Performance"
+        },
+        {
+          "key": "metrics",
+          "type": "list",
+          "label": "Metrics",
+          "maxItems": 12,
+          "item": {
+            "type": "object",
+            "fields": [
+              {
+                "key": "label",
+                "type": "text",
+                "label": "Label",
+                "maxLength": 80,
+                "default": "Revenue"
+              },
+              {
+                "key": "value",
+                "type": "number",
+                "label": "Value",
+                "min": -1000000000,
+                "max": 1000000000,
+                "default": 2840000
+              },
+              {
+                "key": "prefix",
+                "type": "text",
+                "label": "Prefix",
+                "maxLength": 80,
+                "default": "$"
+              },
+              {
+                "key": "suffix",
+                "type": "text",
+                "label": "Suffix",
+                "maxLength": 80,
+                "default": ""
+              },
+              {
+                "key": "decimals",
+                "type": "number",
+                "label": "Decimals",
+                "min": -1000000000,
+                "max": 1000000000,
+                "default": 0
+              },
+              {
+                "key": "color",
+                "type": "color",
+                "label": "Color",
+                "default": "#22c55e"
+              },
+              {
+                "key": "icon",
+                "type": "text",
+                "label": "Icon",
+                "maxLength": 80,
+                "default": "+"
+              }
+            ]
+          },
+          "default": [
+            {
+              "label": "Revenue",
+              "value": 2840000,
+              "prefix": "$",
+              "suffix": "",
+              "decimals": 0,
+              "color": "#22c55e",
+              "icon": "+"
+            },
+            {
+              "label": "Growth",
+              "value": 127,
+              "prefix": "+",
+              "suffix": "%",
+              "decimals": 0,
+              "color": "#6366f1",
+              "icon": "^"
+            },
+            {
+              "label": "Clients",
+              "value": 384,
+              "prefix": "",
+              "suffix": "",
+              "decimals": 0,
+              "color": "#f59e0b",
+              "icon": "#"
+            },
+            {
+              "label": "NPS Score",
+              "value": 72,
+              "prefix": "",
+              "suffix": "",
+              "decimals": 0,
+              "color": "#ec4899",
+              "icon": "★"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rc-pixel-candlestick-ohlc",
+      "upstreamId": "pixel-candlestick-ohlc",
+      "title": "Pixel candlestick ohlc",
+      "category": "Data-and-Charts",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 180,
+      "component": "PixelCandlestickOhlc",
+      "defaultsExport": "defaultPixelCandlestickOhlcProps",
+      "path": "src/vendor/rendercomp/components/pixel-candlestick-ohlc/PixelCandlestickOhlc.tsx",
+      "thumbnail": "/rendercomp-thumbs/pixel-candlestick-ohlc.gif",
+      "params": [
+        {
+          "key": "backgroundColor",
+          "type": "color",
+          "label": "Background Color",
+          "default": "#0a0f1e"
+        },
+        {
+          "key": "gridColor",
+          "type": "color",
+          "label": "Grid Color",
+          "default": "#1b2942"
+        },
+        {
+          "key": "bullColor",
+          "type": "color",
+          "label": "Bull Color",
+          "default": "#2ee06a"
+        },
+        {
+          "key": "bearColor",
+          "type": "color",
+          "label": "Bear Color",
+          "default": "#ff4d5e"
+        },
+        {
+          "key": "accentColor",
+          "type": "color",
+          "label": "Accent Color",
+          "default": "#7fe9ff"
+        },
+        {
+          "key": "candleCount",
+          "type": "number",
+          "label": "Candle Count",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 24
+        },
+        {
+          "key": "volatility",
+          "type": "number",
+          "label": "Volatility",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 0.5
+        },
+        {
+          "key": "cycleSpeed",
+          "type": "number",
+          "label": "Cycle Speed",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 6
+        },
+        {
+          "key": "ticker",
+          "type": "text",
+          "label": "Ticker",
+          "maxLength": 80,
+          "default": "BTC/USD"
+        }
+      ]
+    },
+    {
+      "id": "rc-racing-chart",
+      "upstreamId": "racing-chart",
+      "title": "Racing chart",
+      "category": "Data-and-Charts",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 210,
+      "component": "RacingChart",
+      "defaultsExport": "defaultRacingChartProps",
+      "path": "src/vendor/rendercomp/components/racing-chart/RacingChart.tsx",
+      "thumbnail": "/rendercomp-thumbs/racing-chart.gif",
+      "params": [
+        {
+          "key": "data",
+          "type": "list",
+          "label": "Data",
+          "maxItems": 12,
+          "item": {
+            "type": "object",
+            "fields": [
+              {
+                "key": "label",
+                "type": "text",
+                "label": "Label",
+                "maxLength": 80,
+                "default": "Aurora"
+              },
+              {
+                "key": "values",
+                "type": "list",
+                "label": "Values",
+                "maxItems": 12,
+                "item": {
+                  "type": "number",
+                  "min": -1000000000,
+                  "max": 1000000000,
+                  "default": 0
+                },
+                "default": [
+                  22,
+                  28,
+                  34,
+                  41,
+                  48
+                ]
+              },
+              {
+                "key": "color",
+                "type": "color",
+                "label": "Color",
+                "default": "#d4af37"
+              }
+            ]
+          },
+          "default": [
+            {
+              "label": "Aurora",
+              "values": [
+                22,
+                28,
+                34,
+                41,
+                48
+              ],
+              "color": "#d4af37"
+            },
+            {
+              "label": "Beacon",
+              "values": [
+                30,
+                32,
+                33,
+                35,
+                36
+              ],
+              "color": "#2563eb"
+            },
+            {
+              "label": "Cobalt",
+              "values": [
+                18,
+                24,
+                30,
+                32,
+                38
+              ],
+              "color": "#10b981"
+            },
+            {
+              "label": "Delta",
+              "values": [
+                26,
+                25,
+                24,
+                22,
+                20
+              ],
+              "color": "#ef4444"
+            },
+            {
+              "label": "Echo",
+              "values": [
+                12,
+                16,
+                20,
+                28,
+                34
+              ],
+              "color": "#a855f7"
+            }
+          ]
+        },
+        {
+          "key": "frames",
+          "type": "number",
+          "label": "Frames",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 36
+        },
+        {
+          "key": "title",
+          "type": "text",
+          "label": "Title",
+          "maxLength": 80,
+          "default": "Market Share Race"
+        },
+        {
+          "key": "background",
+          "type": "color",
+          "label": "Background",
+          "default": "#0b1f3a"
+        },
+        {
+          "key": "titleColor",
+          "type": "color",
+          "label": "Title Color",
+          "default": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "rc-community-chat",
+      "upstreamId": "community-chat",
+      "title": "Community chat",
+      "category": "Social-and-UI",
+      "nativeWidth": 1080,
+      "nativeHeight": 1920,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 270,
+      "component": "CommunityChat",
+      "defaultsExport": "defaultCommunityChatProps",
+      "path": "src/vendor/rendercomp/components/community-chat/CommunityChat.tsx",
+      "thumbnail": "/rendercomp-thumbs/community-chat.gif",
+      "params": [
+        {
+          "key": "workspaceName",
+          "type": "text",
+          "label": "Workspace Name",
+          "maxLength": 80,
+          "default": "Nimbus"
+        },
+        {
+          "key": "channelName",
+          "type": "text",
+          "label": "Channel Name",
+          "maxLength": 80,
+          "default": "announcements"
+        },
+        {
+          "key": "messages",
+          "type": "list",
+          "label": "Messages",
+          "maxItems": 12,
+          "item": {
+            "type": "object",
+            "fields": [
+              {
+                "key": "authorName",
+                "type": "text",
+                "label": "Author Name",
+                "maxLength": 80,
+                "default": "Nimbus Bot"
+              },
+              {
+                "key": "avatarLabel",
+                "type": "text",
+                "label": "Avatar Label",
+                "maxLength": 80,
+                "default": "N"
+              },
+              {
+                "key": "avatarColor",
+                "type": "color",
+                "label": "Avatar Color",
+                "default": "#2f9e8f"
+              },
+              {
+                "key": "time",
+                "type": "text",
+                "label": "Time",
+                "maxLength": 80,
+                "default": "Today 10:24"
+              },
+              {
+                "key": "text",
+                "type": "text",
+                "label": "Text",
+                "maxLength": 96,
+                "default": "New AI video pipeline is live 🎬"
+              },
+              {
+                "key": "reactions",
+                "type": "list",
+                "label": "Reactions",
+                "maxItems": 12,
+                "item": {
+                  "type": "object",
+                  "fields": [
+                    {
+                      "key": "emoji",
+                      "type": "text",
+                      "label": "Emoji",
+                      "maxLength": 80,
+                      "default": "🎉"
+                    },
+                    {
+                      "key": "count",
+                      "type": "number",
+                      "label": "Count",
+                      "min": -1000000000,
+                      "max": 1000000000,
+                      "default": 24
+                    }
+                  ]
+                },
+                "default": [
+                  {
+                    "emoji": "🎉",
+                    "count": 24
+                  },
+                  {
+                    "emoji": "👀",
+                    "count": 12
+                  }
+                ]
+              }
+            ]
+          },
+          "default": [
+            {
+              "authorName": "Nimbus Bot",
+              "avatarLabel": "N",
+              "avatarColor": "#2f9e8f",
+              "time": "Today 10:24",
+              "text": "New AI video pipeline is live 🎬",
+              "reactions": [
+                {
+                  "emoji": "🎉",
+                  "count": 24
+                },
+                {
+                  "emoji": "👀",
+                  "count": 12
+                }
+              ]
+            },
+            {
+              "authorName": "Member 1",
+              "avatarLabel": "M",
+              "avatarColor": "#5cc89a",
+              "time": "Today 10:25",
+              "text": "This looks amazing!"
+            },
+            {
+              "authorName": "Member 2",
+              "avatarLabel": "K",
+              "avatarColor": "#7a5cd6",
+              "time": "Today 10:26",
+              "text": "Love the new UI 💚",
+              "reactions": [
+                {
+                  "emoji": "❤️",
+                  "count": 8
+                }
+              ]
+            },
+            {
+              "authorName": "Member 3",
+              "avatarLabel": "S",
+              "avatarColor": "#d68a3c",
+              "time": "Today 10:28",
+              "text": "Can we share clips straight to social?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rc-end-card",
+      "upstreamId": "end-card",
+      "title": "End card",
+      "category": "Social-and-UI",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 150,
+      "component": "EndCard",
+      "defaultsExport": "defaultEndCardProps",
+      "path": "src/vendor/rendercomp/components/end-card/EndCard.tsx",
+      "thumbnail": "/rendercomp-thumbs/end-card.gif",
+      "params": [
+        {
+          "key": "title",
+          "type": "text",
+          "label": "Title",
+          "maxLength": 80,
+          "default": "Thanks for watching"
+        },
+        {
+          "key": "subtitle",
+          "type": "text",
+          "label": "Subtitle",
+          "maxLength": 80,
+          "default": "LEARN MORE AT OUR SITE"
+        },
+        {
+          "key": "ctaText",
+          "type": "text",
+          "label": "Cta Text",
+          "maxLength": 80,
+          "default": "Visit our website"
+        },
+        {
+          "key": "background",
+          "type": "color",
+          "label": "Background",
+          "default": "#0b1f3a"
+        },
+        {
+          "key": "titleColor",
+          "type": "color",
+          "label": "Title Color",
+          "default": "#ffffff"
+        },
+        {
+          "key": "accentColor",
+          "type": "color",
+          "label": "Accent Color",
+          "default": "#d4af37"
+        }
+      ]
+    },
+    {
+      "id": "rc-eye-reveal",
+      "upstreamId": "eye-reveal",
+      "title": "Eye reveal",
+      "category": "Social-and-UI",
+      "nativeWidth": 1080,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 90,
+      "component": "EyeReveal",
+      "defaultsExport": "defaultEyeRevealProps",
+      "path": "src/vendor/rendercomp/components/eye-reveal/EyeReveal.tsx",
+      "thumbnail": "/rendercomp-thumbs/eye-reveal.gif",
+      "params": [
+        {
+          "key": "backgroundColor",
+          "type": "color",
+          "label": "Background Color",
+          "default": "#0f172a"
+        },
+        {
+          "key": "scleraColor",
+          "type": "color",
+          "label": "Sclera Color",
+          "default": "#f8fafc"
+        },
+        {
+          "key": "irisColor",
+          "type": "color",
+          "label": "Iris Color",
+          "default": "#3b82f6"
+        },
+        {
+          "key": "pupilColor",
+          "type": "color",
+          "label": "Pupil Color",
+          "default": "#0f172a"
+        },
+        {
+          "key": "lidColor",
+          "type": "color",
+          "label": "Lid Color",
+          "default": "#1e293b"
+        },
+        {
+          "key": "textColor",
+          "type": "color",
+          "label": "Text Color",
+          "default": "#f8fafc"
+        },
+        {
+          "key": "subColor",
+          "type": "color",
+          "label": "Sub Color",
+          "default": "#94a3b8"
+        },
+        {
+          "key": "messageText",
+          "type": "text",
+          "label": "Message Text",
+          "maxLength": 80,
+          "default": "Revealed"
+        },
+        {
+          "key": "subText",
+          "type": "text",
+          "label": "Sub Text",
+          "maxLength": 80,
+          "default": "See the truth"
+        }
+      ]
+    },
+    {
+      "id": "rc-lower-third-glass-card",
+      "upstreamId": "lower-third-glass-card",
+      "title": "Lower third glass card",
+      "category": "Social-and-UI",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 120,
+      "component": "LowerThirdGlassCard",
+      "defaultsExport": "defaultLowerThirdGlassCardProps",
+      "path": "src/vendor/rendercomp/components/lower-third-glass-card/LowerThirdGlassCard.tsx",
+      "thumbnail": "/rendercomp-thumbs/lower-third-glass-card.gif",
+      "params": [
+        {
+          "key": "backgroundColor",
+          "type": "color",
+          "label": "Background Color",
+          "default": "#0c1a2e"
+        },
+        {
+          "key": "accentColor",
+          "type": "color",
+          "label": "Accent Color",
+          "default": "#06b6d4"
+        },
+        {
+          "key": "textColor",
+          "type": "color",
+          "label": "Text Color",
+          "default": "#f0f9ff"
+        },
+        {
+          "key": "nameText",
+          "type": "text",
+          "label": "Name Text",
+          "maxLength": 80,
+          "default": "Alex Morgan"
+        },
+        {
+          "key": "titleText",
+          "type": "text",
+          "label": "Title Text",
+          "maxLength": 80,
+          "default": "Head of Product, Acme Inc."
+        }
+      ]
+    },
+    {
+      "id": "rc-character-jumping",
+      "upstreamId": "character-jumping",
+      "title": "Character jumping",
+      "category": "Social-and-UI",
+      "nativeWidth": 1080,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 120,
+      "component": "CharacterJumping",
+      "defaultsExport": "defaultCharacterJumpingProps",
+      "path": "src/vendor/rendercomp/components/character-jumping/CharacterJumping.tsx",
+      "thumbnail": "/rendercomp-thumbs/character-jumping.gif",
+      "params": [
+        {
+          "key": "backgroundColor",
+          "type": "color",
+          "label": "Background Color",
+          "default": "#e0f2fe"
+        },
+        {
+          "key": "characterColor",
+          "type": "color",
+          "label": "Character Color",
+          "default": "#0ea5e9"
+        },
+        {
+          "key": "shadowColor",
+          "type": "color",
+          "label": "Shadow Color",
+          "default": "#0369a1"
+        },
+        {
+          "key": "accentColor",
+          "type": "color",
+          "label": "Accent Color",
+          "default": "#fbbf24"
+        },
+        {
+          "key": "groundColor",
+          "type": "color",
+          "label": "Ground Color",
+          "default": "#bae6fd"
+        },
+        {
+          "key": "label",
+          "type": "text",
+          "label": "Label",
+          "maxLength": 80,
+          "default": "Let's Go!"
+        },
+        {
+          "key": "textColor",
+          "type": "color",
+          "label": "Text Color",
+          "default": "#0c4a6e"
+        },
+        {
+          "key": "jumpCount",
+          "type": "number",
+          "label": "Jump Count",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 3
+        }
+      ]
+    },
+    {
+      "id": "rc-social-reel",
+      "upstreamId": "social-reel",
+      "title": "Social reel",
+      "category": "Social-and-UI",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 150,
+      "component": "SocialReel",
+      "defaultsExport": "defaultSocialReelProps",
+      "path": "src/vendor/rendercomp/components/social-reel/SocialReel.tsx",
+      "thumbnail": "/rendercomp-thumbs/social-reel.gif",
+      "params": [
+        {
+          "key": "brandName",
+          "type": "text",
+          "label": "Brand Name",
+          "maxLength": 80,
+          "default": "Streamly"
+        },
+        {
+          "key": "handle",
+          "type": "text",
+          "label": "Handle",
+          "maxLength": 80,
+          "default": "@aria.studio"
+        },
+        {
+          "key": "headline",
+          "type": "text",
+          "label": "Headline",
+          "maxLength": 80,
+          "default": "Make it"
+        },
+        {
+          "key": "headlineAccent",
+          "type": "text",
+          "label": "Headline Accent",
+          "maxLength": 80,
+          "default": "unmissable"
+        },
+        {
+          "key": "secondCopy",
+          "type": "text",
+          "label": "Second Copy",
+          "maxLength": 80,
+          "default": "Stories that\nscroll-stop"
+        },
+        {
+          "key": "infoLines",
+          "type": "list",
+          "label": "Info Lines",
+          "maxItems": 12,
+          "item": {
+            "type": "text",
+            "maxLength": 120,
+            "default": ""
+          },
+          "default": [
+            "New drop / Studio Aria",
+            "Open daily 10:00 — 20:00",
+            "Link in profile"
+          ]
+        },
+        {
+          "key": "ctaText",
+          "type": "text",
+          "label": "Cta Text",
+          "maxLength": 80,
+          "default": "Watch the full reel"
+        },
+        {
+          "key": "accentColor",
+          "type": "color",
+          "label": "Accent Color",
+          "default": "#4f8cff"
+        },
+        {
+          "key": "bgFrom",
+          "type": "color",
+          "label": "Bg From",
+          "default": "#1b1d2a"
+        },
+        {
+          "key": "bgVia",
+          "type": "color",
+          "label": "Bg Via",
+          "default": "#222540"
+        },
+        {
+          "key": "bgTo",
+          "type": "color",
+          "label": "Bg To",
+          "default": "#10243f"
+        },
+        {
+          "key": "caption",
+          "type": "text",
+          "label": "Caption",
+          "maxLength": 80,
+          "default": "behind the scenes ✦ no.07"
+        },
+        {
+          "key": "likeCount",
+          "type": "text",
+          "label": "Like Count",
+          "maxLength": 80,
+          "default": "12.4k"
+        }
+      ]
+    },
+    {
+      "id": "rc-split-screen",
+      "upstreamId": "split-screen",
+      "title": "Split screen",
+      "category": "Social-and-UI",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 150,
+      "component": "SplitScreen",
+      "defaultsExport": "defaultSplitScreenProps",
+      "path": "src/vendor/rendercomp/components/split-screen/SplitScreen.tsx",
+      "thumbnail": "/rendercomp-thumbs/split-screen.gif",
+      "params": [
+        {
+          "key": "direction",
+          "type": "text",
+          "label": "Direction",
+          "maxLength": 80,
+          "default": "horizontal"
+        },
+        {
+          "key": "panelA",
+          "type": "json",
+          "label": "Panel A",
+          "default": {
+            "heading": "Before",
+            "sub": "The old way",
+            "bg": "#1f2937",
+            "textColor": "#f1f5f9"
+          }
+        },
+        {
+          "key": "panelB",
+          "type": "json",
+          "label": "Panel B",
+          "default": {
+            "heading": "After",
+            "sub": "Powered by AI",
+            "bg": "#0ea5e9",
+            "textColor": "#ffffff"
+          }
+        },
+        {
+          "key": "dividerColor",
+          "type": "color",
+          "label": "Divider Color",
+          "default": "#fbbf24"
+        },
+        {
+          "key": "dividerWidth",
+          "type": "number",
+          "label": "Divider Width",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 6
+        },
+        {
+          "key": "backdropColor",
+          "type": "color",
+          "label": "Backdrop Color",
+          "default": "#0b1220"
+        }
+      ]
+    },
+    {
+      "id": "rc-thinking-bubble",
+      "upstreamId": "thinking-bubble",
+      "title": "Thinking bubble",
+      "category": "Social-and-UI",
+      "nativeWidth": 1080,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 120,
+      "component": "ThinkingBubble",
+      "defaultsExport": "defaultThinkingBubbleProps",
+      "path": "src/vendor/rendercomp/components/thinking-bubble/ThinkingBubble.tsx",
+      "thumbnail": "/rendercomp-thumbs/thinking-bubble.gif",
+      "params": [
+        {
+          "key": "backgroundColor",
+          "type": "color",
+          "label": "Background Color",
+          "default": "#fafaf9"
+        },
+        {
+          "key": "characterColor",
+          "type": "color",
+          "label": "Character Color",
+          "default": "#78716c"
+        },
+        {
+          "key": "bubbleColor",
+          "type": "color",
+          "label": "Bubble Color",
+          "default": "#ffffff"
+        },
+        {
+          "key": "bubbleBorder",
+          "type": "color",
+          "label": "Bubble Border",
+          "default": "#d6d3d1"
+        },
+        {
+          "key": "dotColor",
+          "type": "color",
+          "label": "Dot Color",
+          "default": "#a8a29e"
+        },
+        {
+          "key": "thoughtText",
+          "type": "text",
+          "label": "Thought Text",
+          "maxLength": 80,
+          "default": "Hmm..."
+        },
+        {
+          "key": "textColor",
+          "type": "color",
+          "label": "Text Color",
+          "default": "#44403c"
+        },
+        {
+          "key": "showText",
+          "type": "boolean",
+          "label": "Show Text",
+          "default": true
+        }
+      ]
+    },
+    {
+      "id": "rc-wave-hello",
+      "upstreamId": "wave-hello",
+      "title": "Wave hello",
+      "category": "Social-and-UI",
+      "nativeWidth": 1080,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 90,
+      "component": "WaveHello",
+      "defaultsExport": "defaultWaveHelloProps",
+      "path": "src/vendor/rendercomp/components/wave-hello/WaveHello.tsx",
+      "thumbnail": "/rendercomp-thumbs/wave-hello.gif",
+      "params": [
+        {
+          "key": "backgroundColor",
+          "type": "color",
+          "label": "Background Color",
+          "default": "#e0f2fe"
+        },
+        {
+          "key": "skinColor",
+          "type": "color",
+          "label": "Skin Color",
+          "default": "#fbbf24"
+        },
+        {
+          "key": "bodyColor",
+          "type": "color",
+          "label": "Body Color",
+          "default": "#3b82f6"
+        },
+        {
+          "key": "accentColor",
+          "type": "color",
+          "label": "Accent Color",
+          "default": "#1d4ed8"
+        },
+        {
+          "key": "textColor",
+          "type": "color",
+          "label": "Text Color",
+          "default": "#1e3a5f"
+        },
+        {
+          "key": "title",
+          "type": "text",
+          "label": "Title",
+          "maxLength": 80,
+          "default": "Hello!"
+        },
+        {
+          "key": "subtitle",
+          "type": "text",
+          "label": "Subtitle",
+          "maxLength": 80,
+          "default": "Welcome aboard"
+        }
+      ]
+    },
+    {
+      "id": "rc-bokeh-circles",
+      "upstreamId": "bokeh-circles",
+      "title": "Bokeh circles",
+      "category": "Loops-and-Backgrounds",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 150,
+      "component": "BokehCircles",
+      "defaultsExport": "defaultBokehCirclesProps",
+      "path": "src/vendor/rendercomp/components/bokeh-circles/BokehCircles.tsx",
+      "thumbnail": "/rendercomp-thumbs/bokeh-circles.gif",
+      "params": [
+        {
+          "key": "colors",
+          "type": "list",
+          "label": "Colors",
+          "maxItems": 12,
+          "item": {
+            "type": "text",
+            "maxLength": 120,
+            "default": ""
+          },
+          "default": [
+            "#ffd1a4",
+            "#ffe6c7",
+            "#fff3d6",
+            "#ffc89e"
+          ]
+        },
+        {
+          "key": "baseColor",
+          "type": "color",
+          "label": "Base Color",
+          "default": "#1a0f1f"
+        },
+        {
+          "key": "count",
+          "type": "number",
+          "label": "Count",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 24
+        },
+        {
+          "key": "label",
+          "type": "text",
+          "label": "Label",
+          "maxLength": 80,
+          "default": "Background Demo"
+        },
+        {
+          "key": "labelColor",
+          "type": "color",
+          "label": "Label Color",
+          "default": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "rc-fireworks-burst",
+      "upstreamId": "fireworks-burst",
+      "title": "Fireworks burst",
+      "category": "Loops-and-Backgrounds",
+      "nativeWidth": 1080,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 110,
+      "component": "FireworksBurst",
+      "defaultsExport": "defaultFireworksBurstProps",
+      "path": "src/vendor/rendercomp/components/fireworks-burst/FireworksBurst.tsx",
+      "thumbnail": "/rendercomp-thumbs/fireworks-burst.gif",
+      "params": [
+        {
+          "key": "backgroundColor",
+          "type": "color",
+          "label": "Background Color",
+          "default": "#0f172a"
+        },
+        {
+          "key": "burstColors",
+          "type": "list",
+          "label": "Burst Colors",
+          "maxItems": 14,
+          "item": {
+            "type": "text",
+            "maxLength": 120,
+            "default": ""
+          },
+          "default": [
+            "#ef4444",
+            "#f97316",
+            "#eab308",
+            "#22c55e",
+            "#3b82f6",
+            "#a855f7",
+            "#ec4899"
+          ]
+        },
+        {
+          "key": "trailColor",
+          "type": "color",
+          "label": "Trail Color",
+          "default": "#fef08a"
+        },
+        {
+          "key": "sparkColor",
+          "type": "color",
+          "label": "Spark Color",
+          "default": "#fbbf24"
+        },
+        {
+          "key": "textColor",
+          "type": "color",
+          "label": "Text Color",
+          "default": "#f8fafc"
+        },
+        {
+          "key": "subColor",
+          "type": "color",
+          "label": "Sub Color",
+          "default": "#fbbf24"
+        },
+        {
+          "key": "messageText",
+          "type": "text",
+          "label": "Message Text",
+          "maxLength": 80,
+          "default": "Boom!"
+        },
+        {
+          "key": "subText",
+          "type": "text",
+          "label": "Sub Text",
+          "maxLength": 80,
+          "default": "Celebration time"
+        }
+      ]
+    },
+    {
+      "id": "rc-loop-grid-wave",
+      "upstreamId": "loop-grid-wave",
+      "title": "Loop grid wave",
+      "category": "Loops-and-Backgrounds",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 90,
+      "component": "LoopGridWave",
+      "defaultsExport": "defaultLoopGridWaveProps",
+      "path": "src/vendor/rendercomp/components/loop-grid-wave/LoopGridWave.tsx",
+      "thumbnail": "/rendercomp-thumbs/loop-grid-wave.gif",
+      "params": [
+        {
+          "key": "backgroundColor",
+          "type": "color",
+          "label": "Background Color",
+          "default": "#0a0f1e"
+        },
+        {
+          "key": "dotColor",
+          "type": "color",
+          "label": "Dot Color",
+          "default": "#334155"
+        },
+        {
+          "key": "accentColor",
+          "type": "color",
+          "label": "Accent Color",
+          "default": "#38bdf8"
+        },
+        {
+          "key": "amplitude",
+          "type": "number",
+          "label": "Amplitude",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 1
+        },
+        {
+          "key": "speed",
+          "type": "number",
+          "label": "Speed",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 1
+        }
+      ]
+    },
+    {
+      "id": "rc-parallax-pan",
+      "upstreamId": "parallax-pan",
+      "title": "Parallax pan",
+      "category": "Loops-and-Backgrounds",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 120,
+      "component": "ParallaxPan",
+      "defaultsExport": "defaultParallaxPanProps",
+      "path": "src/vendor/rendercomp/components/parallax-pan/ParallaxPan.tsx",
+      "thumbnail": "/rendercomp-thumbs/parallax-pan.gif",
+      "params": [
+        {
+          "key": "title",
+          "type": "text",
+          "label": "Title",
+          "maxLength": 80,
+          "default": "Beyond the Horizon"
+        },
+        {
+          "key": "subtitle",
+          "type": "text",
+          "label": "Subtitle",
+          "maxLength": 96,
+          "default": "A journey through layered worlds"
+        },
+        {
+          "key": "skyTop",
+          "type": "color",
+          "label": "Sky Top",
+          "default": "#1e3a8a"
+        },
+        {
+          "key": "skyBottom",
+          "type": "color",
+          "label": "Sky Bottom",
+          "default": "#f59e0b"
+        },
+        {
+          "key": "mountainColor",
+          "type": "color",
+          "label": "Mountain Color",
+          "default": "#1e293b"
+        },
+        {
+          "key": "hillColor",
+          "type": "color",
+          "label": "Hill Color",
+          "default": "#334155"
+        },
+        {
+          "key": "groundColor",
+          "type": "color",
+          "label": "Ground Color",
+          "default": "#0f172a"
+        },
+        {
+          "key": "textColor",
+          "type": "color",
+          "label": "Text Color",
+          "default": "#fef3c7"
+        },
+        {
+          "key": "panDistance",
+          "type": "number",
+          "label": "Pan Distance",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 600
+        }
+      ]
+    },
+    {
+      "id": "rc-pencil-draw",
+      "upstreamId": "pencil-draw",
+      "title": "Pencil draw",
+      "category": "Loops-and-Backgrounds",
+      "nativeWidth": 1080,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 100,
+      "component": "PencilDraw",
+      "defaultsExport": "defaultPencilDrawProps",
+      "path": "src/vendor/rendercomp/components/pencil-draw/PencilDraw.tsx",
+      "thumbnail": "/rendercomp-thumbs/pencil-draw.gif",
+      "params": [
+        {
+          "key": "backgroundColor",
+          "type": "color",
+          "label": "Background Color",
+          "default": "#fffbeb"
+        },
+        {
+          "key": "pencilColor",
+          "type": "color",
+          "label": "Pencil Color",
+          "default": "#fbbf24"
+        },
+        {
+          "key": "lineColor",
+          "type": "color",
+          "label": "Line Color",
+          "default": "#1e293b"
+        },
+        {
+          "key": "eraserColor",
+          "type": "color",
+          "label": "Eraser Color",
+          "default": "#fca5a5"
+        },
+        {
+          "key": "textColor",
+          "type": "color",
+          "label": "Text Color",
+          "default": "#1e293b"
+        },
+        {
+          "key": "subColor",
+          "type": "color",
+          "label": "Sub Color",
+          "default": "#64748b"
+        },
+        {
+          "key": "messageText",
+          "type": "text",
+          "label": "Message Text",
+          "maxLength": 80,
+          "default": "Creating..."
+        },
+        {
+          "key": "subText",
+          "type": "text",
+          "label": "Sub Text",
+          "maxLength": 80,
+          "default": "Design in progress"
+        }
+      ]
+    },
+    {
+      "id": "rc-pixel-waterfall-cycle",
+      "upstreamId": "pixel-waterfall-cycle",
+      "title": "Pixel waterfall cycle",
+      "category": "Loops-and-Backgrounds",
+      "nativeWidth": 1080,
+      "nativeHeight": 1920,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 180,
+      "component": "PixelWaterfallCycle",
+      "defaultsExport": "defaultPixelWaterfallCycleProps",
+      "path": "src/vendor/rendercomp/components/pixel-waterfall-cycle/PixelWaterfallCycle.tsx",
+      "thumbnail": "/rendercomp-thumbs/pixel-waterfall-cycle.gif",
+      "params": [
+        {
+          "key": "backgroundColor",
+          "type": "color",
+          "label": "Background Color",
+          "default": "#0a1430"
+        },
+        {
+          "key": "accentColor",
+          "type": "color",
+          "label": "Accent Color",
+          "default": "#e6fbff"
+        },
+        {
+          "key": "cliffColor",
+          "type": "color",
+          "label": "Cliff Color",
+          "default": "#1a2238"
+        },
+        {
+          "key": "cycleSpeed",
+          "type": "number",
+          "label": "Cycle Speed",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 0.2
+        },
+        {
+          "key": "showMist",
+          "type": "boolean",
+          "label": "Show Mist",
+          "default": true
+        }
+      ]
+    },
+    {
+      "id": "rc-particle-snow",
+      "upstreamId": "particle-snow",
+      "title": "Particle snow",
+      "category": "Loops-and-Backgrounds",
+      "nativeWidth": 1080,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 150,
+      "component": "ParticleSnow",
+      "defaultsExport": "defaultParticleSnowProps",
+      "path": "src/vendor/rendercomp/components/particle-snow/ParticleSnow.tsx",
+      "thumbnail": "/rendercomp-thumbs/particle-snow.gif",
+      "params": [
+        {
+          "key": "backgroundColor",
+          "type": "color",
+          "label": "Background Color",
+          "default": "#0f172a"
+        },
+        {
+          "key": "snowColor",
+          "type": "color",
+          "label": "Snow Color",
+          "default": "#e2e8f0"
+        },
+        {
+          "key": "accentColor",
+          "type": "color",
+          "label": "Accent Color",
+          "default": "#38bdf8"
+        },
+        {
+          "key": "flakeCount",
+          "type": "number",
+          "label": "Flake Count",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 70
+        },
+        {
+          "key": "title",
+          "type": "text",
+          "label": "Title",
+          "maxLength": 80,
+          "default": "Winter Magic"
+        },
+        {
+          "key": "subtitle",
+          "type": "text",
+          "label": "Subtitle",
+          "maxLength": 80,
+          "default": "Season's Greetings"
+        },
+        {
+          "key": "textColor",
+          "type": "color",
+          "label": "Text Color",
+          "default": "#f8fafc"
+        }
+      ]
+    },
+    {
+      "id": "rc-starfield",
+      "upstreamId": "starfield",
+      "title": "Starfield",
+      "category": "Loops-and-Backgrounds",
+      "nativeWidth": 1920,
+      "nativeHeight": 1080,
+      "nativeFps": 30,
+      "nativeDurationInFrames": 150,
+      "component": "Starfield",
+      "defaultsExport": "defaultStarfieldProps",
+      "path": "src/vendor/rendercomp/components/starfield/Starfield.tsx",
+      "thumbnail": "/rendercomp-thumbs/starfield.gif",
+      "params": [
+        {
+          "key": "count",
+          "type": "number",
+          "label": "Count",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 180
+        },
+        {
+          "key": "starColor",
+          "type": "color",
+          "label": "Star Color",
+          "default": "#ffffff"
+        },
+        {
+          "key": "baseColor",
+          "type": "color",
+          "label": "Base Color",
+          "default": "#02030a"
+        },
+        {
+          "key": "warpSpeed",
+          "type": "number",
+          "label": "Warp Speed",
+          "min": -1000000000,
+          "max": 1000000000,
+          "default": 4
+        },
+        {
+          "key": "label",
+          "type": "text",
+          "label": "Label",
+          "maxLength": 80,
+          "default": "BACKGROUND"
+        },
+        {
+          "key": "labelColor",
+          "type": "color",
+          "label": "Label Color",
+          "default": "#ffffff"
+        }
+      ]
+    }
+  ]
+}

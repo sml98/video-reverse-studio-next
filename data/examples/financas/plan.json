@@ -1,0 +1,523 @@
+{
+  "schema": "vrs.filmplan/1",
+  "title": "Juros compostos",
+  "language": "pt-BR",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "theme": {
+    "background": "#08130f",
+    "foreground": "#effff7",
+    "accent": "#38d996",
+    "accent2": "#ffd166",
+    "muted": "#8fb3a2",
+    "font": "sans",
+    "visualLanguage": "infografico"
+  },
+  "captions": {
+    "enabled": true,
+    "mode": "word",
+    "position": "bottom",
+    "maxWords": 3,
+    "highlight": "#ffd23f"
+  },
+  "audio": {
+    "narration": "voice/narration.wav",
+    "music": "",
+    "musicVolume": 0.12,
+    "duck": true,
+    "voice": "faber"
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "component": "vrs-title",
+      "params": {
+        "label": "FINANÇAS",
+        "title": "Juros sobre juros",
+        "subtitle": "O que são juros compostos",
+        "style": "cinematic",
+        "backgroundAsset": ""
+      },
+      "durationInFrames": 120,
+      "narration": "Juros compostos são juros sobre juros.",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Juros",
+          "start": 300,
+          "end": 581
+        },
+        {
+          "id": "w-2",
+          "word": "compostos",
+          "start": 581,
+          "end": 1156
+        },
+        {
+          "id": "w-3",
+          "word": "são",
+          "start": 1156,
+          "end": 1344
+        },
+        {
+          "id": "w-4",
+          "word": "juros",
+          "start": 1344,
+          "end": 1614
+        },
+        {
+          "id": "w-5",
+          "word": "sobre",
+          "start": 1614,
+          "end": 1884
+        },
+        {
+          "id": "w-6",
+          "word": "juros.",
+          "start": 1884,
+          "end": 2471
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "fade",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [],
+      "notes": ""
+    },
+    {
+      "id": "s02",
+      "component": "vrs-calc",
+      "params": {
+        "title": "R$ 1.000 a 1% ao mês",
+        "steps": [
+          {
+            "label": "Início",
+            "expression": "",
+            "result": 1000,
+            "prefix": "R$ ",
+            "suffix": "",
+            "decimals": 2
+          },
+          {
+            "label": "12 meses",
+            "expression": "1000 × 1,01¹²",
+            "result": 1126.83,
+            "prefix": "R$ ",
+            "suffix": "",
+            "decimals": 2
+          },
+          {
+            "label": "24 meses",
+            "expression": "1000 × 1,01²⁴",
+            "result": 1269.73,
+            "prefix": "R$ ",
+            "suffix": "",
+            "decimals": 2
+          }
+        ],
+        "conclusion": "O ganho do 2º ano é maior que o do 1º.",
+        "illustrative": true
+      },
+      "durationInFrames": 210,
+      "narration": "Mil reais a um por cento ao mês viram cerca de mil cento e vinte e sete em um ano, e mil duzentos e setenta em dois.",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Mil",
+          "start": 300,
+          "end": 513
+        },
+        {
+          "id": "w-2",
+          "word": "reais",
+          "start": 513,
+          "end": 844
+        },
+        {
+          "id": "w-3",
+          "word": "a",
+          "start": 844,
+          "end": 891
+        },
+        {
+          "id": "w-4",
+          "word": "um",
+          "start": 891,
+          "end": 998
+        },
+        {
+          "id": "w-5",
+          "word": "por",
+          "start": 998,
+          "end": 1163
+        },
+        {
+          "id": "w-6",
+          "word": "cento",
+          "start": 1163,
+          "end": 1471
+        },
+        {
+          "id": "w-7",
+          "word": "ao",
+          "start": 1471,
+          "end": 1566
+        },
+        {
+          "id": "w-8",
+          "word": "mês",
+          "start": 1566,
+          "end": 1779
+        },
+        {
+          "id": "w-9",
+          "word": "viram",
+          "start": 1779,
+          "end": 2051
+        },
+        {
+          "id": "w-10",
+          "word": "cerca",
+          "start": 2051,
+          "end": 2347
+        },
+        {
+          "id": "w-11",
+          "word": "de",
+          "start": 2347,
+          "end": 2489
+        },
+        {
+          "id": "w-12",
+          "word": "mil",
+          "start": 2489,
+          "end": 2666
+        },
+        {
+          "id": "w-13",
+          "word": "cento",
+          "start": 2666,
+          "end": 3057
+        },
+        {
+          "id": "w-14",
+          "word": "e",
+          "start": 3057,
+          "end": 3116
+        },
+        {
+          "id": "w-15",
+          "word": "vinte",
+          "start": 3116,
+          "end": 3459
+        },
+        {
+          "id": "w-16",
+          "word": "e",
+          "start": 3459,
+          "end": 3530
+        },
+        {
+          "id": "w-17",
+          "word": "sete",
+          "start": 3530,
+          "end": 3803
+        },
+        {
+          "id": "w-18",
+          "word": "em",
+          "start": 3803,
+          "end": 3909
+        },
+        {
+          "id": "w-19",
+          "word": "um",
+          "start": 3909,
+          "end": 4016
+        },
+        {
+          "id": "w-20",
+          "word": "ano,",
+          "start": 4016,
+          "end": 4465
+        },
+        {
+          "id": "w-21",
+          "word": "e",
+          "start": 4465,
+          "end": 4548
+        },
+        {
+          "id": "w-22",
+          "word": "mil",
+          "start": 4548,
+          "end": 4738
+        },
+        {
+          "id": "w-23",
+          "word": "duzentos",
+          "start": 4738,
+          "end": 5223
+        },
+        {
+          "id": "w-24",
+          "word": "e",
+          "start": 5223,
+          "end": 5318
+        },
+        {
+          "id": "w-25",
+          "word": "setenta",
+          "start": 5318,
+          "end": 5791
+        },
+        {
+          "id": "w-26",
+          "word": "em",
+          "start": 5791,
+          "end": 5897
+        },
+        {
+          "id": "w-27",
+          "word": "dois.",
+          "start": 5897,
+          "end": 6406
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "slide",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [],
+      "notes": ""
+    },
+    {
+      "id": "s03",
+      "component": "vrs-line-chart",
+      "params": {
+        "title": "Saldo ao longo de 36 meses",
+        "unit": "R$",
+        "points": [
+          {
+            "label": "0m",
+            "value": 1000.0
+          },
+          {
+            "label": "6m",
+            "value": 1061.52
+          },
+          {
+            "label": "12m",
+            "value": 1126.83
+          },
+          {
+            "label": "18m",
+            "value": 1196.15
+          },
+          {
+            "label": "24m",
+            "value": 1269.73
+          },
+          {
+            "label": "30m",
+            "value": 1347.85
+          },
+          {
+            "label": "36m",
+            "value": 1430.77
+          }
+        ],
+        "annotationIndex": 6,
+        "annotationText": "R$ 1430,77",
+        "illustrative": true
+      },
+      "durationInFrames": 180,
+      "narration": "A curva acelera porque cada mês rende sobre um valor maior.",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "A",
+          "start": 300,
+          "end": 405
+        },
+        {
+          "id": "w-2",
+          "word": "curva",
+          "start": 405,
+          "end": 663
+        },
+        {
+          "id": "w-3",
+          "word": "acelera",
+          "start": 663,
+          "end": 1074
+        },
+        {
+          "id": "w-4",
+          "word": "porque",
+          "start": 1074,
+          "end": 1368
+        },
+        {
+          "id": "w-5",
+          "word": "cada",
+          "start": 1368,
+          "end": 1685
+        },
+        {
+          "id": "w-6",
+          "word": "mês",
+          "start": 1685,
+          "end": 1884
+        },
+        {
+          "id": "w-7",
+          "word": "rende",
+          "start": 1884,
+          "end": 2189
+        },
+        {
+          "id": "w-8",
+          "word": "sobre",
+          "start": 2189,
+          "end": 2483
+        },
+        {
+          "id": "w-9",
+          "word": "um",
+          "start": 2483,
+          "end": 2600
+        },
+        {
+          "id": "w-10",
+          "word": "valor",
+          "start": 2600,
+          "end": 2859
+        },
+        {
+          "id": "w-11",
+          "word": "maior.",
+          "start": 2859,
+          "end": 3469
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "slide",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [],
+      "notes": ""
+    },
+    {
+      "id": "s04",
+      "component": "vrs-kinetic-quote",
+      "params": {
+        "text": "Simulação ilustrativa: sem inflação, impostos ou taxas.",
+        "emphasis": "ilustrativa",
+        "author": "",
+        "authorship": "sem_atribuicao",
+        "style": "minimal"
+      },
+      "durationInFrames": 150,
+      "narration": "Simulação ilustrativa: não considera inflação, impostos ou taxas.",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Simulação",
+          "start": 300,
+          "end": 771
+        },
+        {
+          "id": "w-2",
+          "word": "ilustrativa:",
+          "start": 771,
+          "end": 1631
+        },
+        {
+          "id": "w-3",
+          "word": "não",
+          "start": 1631,
+          "end": 1819
+        },
+        {
+          "id": "w-4",
+          "word": "considera",
+          "start": 1819,
+          "end": 2279
+        },
+        {
+          "id": "w-5",
+          "word": "inflação,",
+          "start": 2279,
+          "end": 3009
+        },
+        {
+          "id": "w-6",
+          "word": "impostos",
+          "start": 3009,
+          "end": 3480
+        },
+        {
+          "id": "w-7",
+          "word": "ou",
+          "start": 3480,
+          "end": 3610
+        },
+        {
+          "id": "w-8",
+          "word": "taxas.",
+          "start": 3610,
+          "end": 4293
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "slide",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [],
+      "notes": ""
+    }
+  ],
+  "uncertainties": [],
+  "sources": [],
+  "illustrativeData": true,
+  "warnings": []
+}

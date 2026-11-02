@@ -1,0 +1,542 @@
+{
+  "schema": "vrs.filmplan/1",
+  "title": "Por que o céu é azul?",
+  "language": "pt-BR",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "theme": {
+    "background": "#07111f",
+    "foreground": "#eef6ff",
+    "accent": "#ffc23d",
+    "accent2": "#4cc9f0",
+    "muted": "#8aa4c2",
+    "font": "sans",
+    "visualLanguage": "motion-graphics"
+  },
+  "captions": {
+    "enabled": true,
+    "mode": "word",
+    "position": "bottom",
+    "maxWords": 3,
+    "highlight": "#ffd23f"
+  },
+  "audio": {
+    "narration": "voice/narration.wav",
+    "music": "",
+    "musicVolume": 0.12,
+    "duck": true,
+    "voice": "faber"
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "component": "vrs-title",
+      "params": {
+        "label": "CIÊNCIA EM 20 SEGUNDOS",
+        "title": "Por que o céu é azul?",
+        "subtitle": "",
+        "style": "cinematic",
+        "backgroundAsset": ""
+      },
+      "durationInFrames": 120,
+      "narration": "Por que o céu é azul durante o dia?",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Por",
+          "start": 300,
+          "end": 431
+        },
+        {
+          "id": "w-2",
+          "word": "que",
+          "start": 431,
+          "end": 562
+        },
+        {
+          "id": "w-3",
+          "word": "o",
+          "start": 562,
+          "end": 621
+        },
+        {
+          "id": "w-4",
+          "word": "céu",
+          "start": 621,
+          "end": 836
+        },
+        {
+          "id": "w-5",
+          "word": "é",
+          "start": 836,
+          "end": 883
+        },
+        {
+          "id": "w-6",
+          "word": "azul",
+          "start": 883,
+          "end": 1145
+        },
+        {
+          "id": "w-7",
+          "word": "durante",
+          "start": 1145,
+          "end": 1503
+        },
+        {
+          "id": "w-8",
+          "word": "o",
+          "start": 1503,
+          "end": 1574
+        },
+        {
+          "id": "w-9",
+          "word": "dia?",
+          "start": 1574,
+          "end": 2122
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "fade",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [],
+      "notes": ""
+    },
+    {
+      "id": "s02",
+      "component": "vrs-mechanism",
+      "params": {
+        "title": "O caminho da luz",
+        "nodes": [
+          {
+            "id": "sol",
+            "label": "Luz do Sol",
+            "icon": "sun"
+          },
+          {
+            "id": "ar",
+            "label": "Moléculas do ar",
+            "icon": "atom"
+          },
+          {
+            "id": "olho",
+            "label": "Nossos olhos",
+            "icon": "person"
+          }
+        ],
+        "edges": [
+          {
+            "from": "sol",
+            "to": "ar",
+            "label": "todas as cores"
+          },
+          {
+            "from": "ar",
+            "to": "olho",
+            "label": "azul espalhado"
+          }
+        ],
+        "caption": "Espalhamento de Rayleigh: ondas curtas desviam mais.",
+        "layout": "row"
+      },
+      "durationInFrames": 218,
+      "narration": "A luz do Sol mistura todas as cores. No ar, moléculas minúsculas espalham muito mais a luz azul, de onda curta.",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "A",
+          "start": 300,
+          "end": 406
+        },
+        {
+          "id": "w-2",
+          "word": "luz",
+          "start": 406,
+          "end": 620
+        },
+        {
+          "id": "w-3",
+          "word": "do",
+          "start": 620,
+          "end": 739
+        },
+        {
+          "id": "w-4",
+          "word": "Sol",
+          "start": 739,
+          "end": 941
+        },
+        {
+          "id": "w-5",
+          "word": "mistura",
+          "start": 941,
+          "end": 1309
+        },
+        {
+          "id": "w-6",
+          "word": "todas",
+          "start": 1309,
+          "end": 1594
+        },
+        {
+          "id": "w-7",
+          "word": "as",
+          "start": 1594,
+          "end": 1760
+        },
+        {
+          "id": "w-8",
+          "word": "cores.",
+          "start": 1760,
+          "end": 2401
+        },
+        {
+          "id": "w-9",
+          "word": "No",
+          "start": 2521,
+          "end": 2697
+        },
+        {
+          "id": "w-10",
+          "word": "ar,",
+          "start": 2697,
+          "end": 3027
+        },
+        {
+          "id": "w-11",
+          "word": "moléculas",
+          "start": 3027,
+          "end": 3557
+        },
+        {
+          "id": "w-12",
+          "word": "minúsculas",
+          "start": 3557,
+          "end": 4086
+        },
+        {
+          "id": "w-13",
+          "word": "espalham",
+          "start": 4086,
+          "end": 4557
+        },
+        {
+          "id": "w-14",
+          "word": "muito",
+          "start": 4557,
+          "end": 4887
+        },
+        {
+          "id": "w-15",
+          "word": "mais",
+          "start": 4887,
+          "end": 5181
+        },
+        {
+          "id": "w-16",
+          "word": "a",
+          "start": 5181,
+          "end": 5252
+        },
+        {
+          "id": "w-17",
+          "word": "luz",
+          "start": 5252,
+          "end": 5487
+        },
+        {
+          "id": "w-18",
+          "word": "azul,",
+          "start": 5487,
+          "end": 5911
+        },
+        {
+          "id": "w-19",
+          "word": "de",
+          "start": 5911,
+          "end": 6028
+        },
+        {
+          "id": "w-20",
+          "word": "onda",
+          "start": 6028,
+          "end": 6240
+        },
+        {
+          "id": "w-21",
+          "word": "curta.",
+          "start": 6240,
+          "end": 6793
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "wipe",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [],
+      "notes": ""
+    },
+    {
+      "id": "s03",
+      "component": "vrs-bar-chart",
+      "params": {
+        "title": "Espalhamento relativo ao vermelho",
+        "unit": "×",
+        "bars": [
+          {
+            "label": "Vermelho 700 nm",
+            "value": 1.0,
+            "highlight": false
+          },
+          {
+            "label": "Verde 530 nm",
+            "value": 3.0,
+            "highlight": false
+          },
+          {
+            "label": "Azul 450 nm",
+            "value": 5.9,
+            "highlight": true
+          }
+        ],
+        "note": "Calculado por (700/λ)⁴ — espalhamento de Rayleigh.",
+        "illustrative": false
+      },
+      "durationInFrames": 180,
+      "narration": "Pela lei de Rayleigh, o azul é espalhado quase seis vezes mais que o vermelho.",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Pela",
+          "start": 300,
+          "end": 463
+        },
+        {
+          "id": "w-2",
+          "word": "lei",
+          "start": 463,
+          "end": 626
+        },
+        {
+          "id": "w-3",
+          "word": "de",
+          "start": 626,
+          "end": 800
+        },
+        {
+          "id": "w-4",
+          "word": "Rayleigh,",
+          "start": 800,
+          "end": 1347
+        },
+        {
+          "id": "w-5",
+          "word": "o",
+          "start": 1347,
+          "end": 1464
+        },
+        {
+          "id": "w-6",
+          "word": "azul",
+          "start": 1464,
+          "end": 1836
+        },
+        {
+          "id": "w-7",
+          "word": "é",
+          "start": 1836,
+          "end": 1953
+        },
+        {
+          "id": "w-8",
+          "word": "espalhado",
+          "start": 1953,
+          "end": 2453
+        },
+        {
+          "id": "w-9",
+          "word": "quase",
+          "start": 2453,
+          "end": 2779
+        },
+        {
+          "id": "w-10",
+          "word": "seis",
+          "start": 2779,
+          "end": 3047
+        },
+        {
+          "id": "w-11",
+          "word": "vezes",
+          "start": 3047,
+          "end": 3373
+        },
+        {
+          "id": "w-12",
+          "word": "mais",
+          "start": 3373,
+          "end": 3618
+        },
+        {
+          "id": "w-13",
+          "word": "que",
+          "start": 3618,
+          "end": 3734
+        },
+        {
+          "id": "w-14",
+          "word": "o",
+          "start": 3734,
+          "end": 3792
+        },
+        {
+          "id": "w-15",
+          "word": "vermelho.",
+          "start": 3792,
+          "end": 4409
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "wipe",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [],
+      "notes": ""
+    },
+    {
+      "id": "s04",
+      "component": "vrs-kinetic-quote",
+      "params": {
+        "text": "Para qualquer lado que você olhe, chega luz azul espalhada.",
+        "emphasis": "azul",
+        "author": "",
+        "authorship": "sem_atribuicao",
+        "style": "minimal"
+      },
+      "durationInFrames": 150,
+      "narration": "Por isso, para qualquer lado que você olhe, chega luz azul espalhada.",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Por",
+          "start": 300,
+          "end": 405
+        },
+        {
+          "id": "w-2",
+          "word": "isso,",
+          "start": 405,
+          "end": 792
+        },
+        {
+          "id": "w-3",
+          "word": "para",
+          "start": 792,
+          "end": 1003
+        },
+        {
+          "id": "w-4",
+          "word": "qualquer",
+          "start": 1003,
+          "end": 1332
+        },
+        {
+          "id": "w-5",
+          "word": "lado",
+          "start": 1332,
+          "end": 1613
+        },
+        {
+          "id": "w-6",
+          "word": "que",
+          "start": 1613,
+          "end": 1719
+        },
+        {
+          "id": "w-7",
+          "word": "você",
+          "start": 1719,
+          "end": 2036
+        },
+        {
+          "id": "w-8",
+          "word": "olhe,",
+          "start": 2036,
+          "end": 2388
+        },
+        {
+          "id": "w-9",
+          "word": "chega",
+          "start": 2388,
+          "end": 2610
+        },
+        {
+          "id": "w-10",
+          "word": "luz",
+          "start": 2610,
+          "end": 2763
+        },
+        {
+          "id": "w-11",
+          "word": "azul",
+          "start": 2763,
+          "end": 2998
+        },
+        {
+          "id": "w-12",
+          "word": "espalhada.",
+          "start": 2998,
+          "end": 3690
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "wipe",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [],
+      "notes": ""
+    }
+  ],
+  "uncertainties": [],
+  "sources": [],
+  "illustrativeData": false,
+  "warnings": []
+}

@@ -1,0 +1,30 @@
+{
+  "project_id": "paf1b8cae227d",
+  "niche": "tutorial",
+  "review": {
+    "technical": "aprovado_tecnicamente",
+    "findings": [],
+    "motion": [
+      {
+        "scene": "s01",
+        "component": "vrs-title",
+        "motion": 4.65,
+        "first_half": 6.08
+      },
+      {
+        "scene": "s02",
+        "component": "vrs-steps",
+        "motion": 3.9,
+        "first_half": 3.69
+      },
+      {
+        "scene": "s03",
+        "component": "vrs-object-stage",
+        "motion": 5.56,
+        "first_half": 6.93
+      }
+    ]
+  },
+  "render_seconds": 21.3,
+  "duration_s": 16.0
+}

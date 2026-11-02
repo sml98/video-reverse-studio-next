@@ -1,0 +1,312 @@
+{
+  "version": 1,
+  "icons": ["sun", "planet", "heat", "cold", "arrow", "coin", "chart", "person", "house", "leaf", "drop", "flame", "gear", "idea", "check", "warning", "clock", "globe", "pumpkin", "ghost", "candle", "book", "star", "heart", "moon", "bolt", "rocket", "atom"],
+  "scenes": [
+    {
+      "id": "vrs-title",
+      "title": "Título de capítulo animado",
+      "summary": "Rótulo cresce, linha se desenha, palavras do título entram em sequência; fundo com partículas lentas.",
+      "category": "titulos",
+      "motion": ["texto cinético", "linha desenhada", "partículas"],
+      "params": [
+        {"key": "label", "type": "text", "label": "Rótulo/capítulo", "maxLength": 40, "default": "CAPÍTULO 1"},
+        {"key": "title", "type": "text", "label": "Título", "maxLength": 90, "default": "Uma pergunta simples"},
+        {"key": "subtitle", "type": "text", "label": "Subtítulo", "maxLength": 140, "default": ""},
+        {"key": "style", "type": "select", "label": "Estilo", "options": ["cinematic", "bold", "minimal"], "default": "cinematic"},
+        {"key": "backgroundAsset", "type": "asset", "label": "Imagem de fundo (opcional)", "default": ""}
+      ]
+    },
+    {
+      "id": "vrs-kinetic-quote",
+      "title": "Frase tipográfica animada",
+      "summary": "Composição tipográfica com grupos de palavras, ênfases coloridas, pausas legíveis e assinatura opcional honesta.",
+      "category": "frases",
+      "motion": ["texto cinético", "ênfase", "pausa de leitura"],
+      "params": [
+        {"key": "text", "type": "longtext", "label": "Frase", "maxLength": 280, "default": "Disciplina é lembrar o que você quer."},
+        {"key": "emphasis", "type": "text", "label": "Palavras de ênfase (separadas por vírgula)", "maxLength": 200, "default": "disciplina"},
+        {"key": "author", "type": "text", "label": "Assinatura (vazio = sem atribuição)", "maxLength": 80, "default": ""},
+        {"key": "authorship", "type": "select", "label": "Autoria", "options": ["autoral", "citacao_verificada", "sem_atribuicao"], "default": "autoral"},
+        {"key": "style", "type": "select", "label": "Estilo", "options": ["elegant", "impact", "minimal", "neon"], "default": "elegant"}
+      ]
+    },
+    {
+      "id": "vrs-timeline",
+      "title": "Linha do tempo progressiva",
+      "summary": "Linha avança, marcadores surgem em ordem e cada evento revela ano, rótulo e detalhe.",
+      "category": "documentario",
+      "motion": ["progresso", "revelação sequencial", "marcadores"],
+      "params": [
+        {"key": "title", "type": "text", "label": "Título", "maxLength": 80, "default": "Linha do tempo"},
+        {"key": "events", "type": "list", "label": "Eventos", "maxItems": 6, "minItems": 2,
+          "item": {"type": "object", "fields": [
+            {"key": "year", "type": "text", "label": "Data", "maxLength": 18, "default": "1900"},
+            {"key": "label", "type": "text", "label": "Evento", "maxLength": 40, "default": "Evento"},
+            {"key": "detail", "type": "text", "label": "Detalhe", "maxLength": 90, "default": ""}
+          ]},
+          "default": [{"year": "1800", "label": "Início", "detail": ""}, {"year": "1900", "label": "Mudança", "detail": ""}, {"year": "2000", "label": "Hoje", "detail": ""}]
+        }
+      ]
+    },
+    {
+      "id": "vrs-mechanism",
+      "title": "Diagrama de mecanismo",
+      "summary": "Nós aparecem, setas se desenham e partículas percorrem os fluxos mostrando causa → efeito.",
+      "category": "ciencia",
+      "motion": ["fluxo", "setas desenhadas", "partículas no caminho"],
+      "params": [
+        {"key": "title", "type": "text", "label": "Título", "maxLength": 80, "default": "Como funciona"},
+        {"key": "nodes", "type": "list", "label": "Etapas/nós", "maxItems": 6, "minItems": 2,
+          "item": {"type": "object", "fields": [
+            {"key": "id", "type": "text", "label": "ID", "maxLength": 20, "default": "a"},
+            {"key": "label", "type": "text", "label": "Rótulo", "maxLength": 30, "default": "Etapa"},
+            {"key": "icon", "type": "icon", "label": "Ícone", "default": "gear"}
+          ]},
+          "default": [{"id": "a", "label": "Causa", "icon": "sun"}, {"id": "b", "label": "Processo", "icon": "gear"}, {"id": "c", "label": "Efeito", "icon": "arrow"}]
+        },
+        {"key": "edges", "type": "list", "label": "Ligações", "maxItems": 8,
+          "item": {"type": "object", "fields": [
+            {"key": "from", "type": "text", "label": "De", "maxLength": 20, "default": "a"},
+            {"key": "to", "type": "text", "label": "Para", "maxLength": 20, "default": "b"},
+            {"key": "label", "type": "text", "label": "Rótulo", "maxLength": 30, "default": ""}
+          ]},
+          "default": [{"from": "a", "to": "b", "label": ""}, {"from": "b", "to": "c", "label": ""}]
+        },
+        {"key": "caption", "type": "text", "label": "Legenda do diagrama", "maxLength": 120, "default": ""},
+        {"key": "layout", "type": "select", "label": "Disposição", "options": ["row", "cycle"], "default": "row"}
+      ]
+    },
+    {
+      "id": "vrs-bar-chart",
+      "title": "Gráfico de barras construído",
+      "summary": "Eixo surge, barras crescem com contadores e a barra destacada pulsa; dados ilustrativos são marcados.",
+      "category": "dados",
+      "motion": ["barras crescendo", "contadores", "destaque"],
+      "params": [
+        {"key": "title", "type": "text", "label": "Título", "maxLength": 80, "default": "Comparação"},
+        {"key": "unit", "type": "text", "label": "Unidade", "maxLength": 12, "default": ""},
+        {"key": "bars", "type": "list", "label": "Barras", "maxItems": 8, "minItems": 1,
+          "item": {"type": "object", "fields": [
+            {"key": "label", "type": "text", "label": "Rótulo", "maxLength": 24, "default": "A"},
+            {"key": "value", "type": "number", "label": "Valor", "min": -1000000000, "max": 1000000000, "default": 10},
+            {"key": "highlight", "type": "boolean", "label": "Destacar", "default": false}
+          ]},
+          "default": [{"label": "A", "value": 30, "highlight": false}, {"label": "B", "value": 60, "highlight": true}, {"label": "C", "value": 45, "highlight": false}]
+        },
+        {"key": "note", "type": "text", "label": "Nota/fonte", "maxLength": 120, "default": ""},
+        {"key": "illustrative", "type": "boolean", "label": "Dados ilustrativos", "default": true}
+      ]
+    },
+    {
+      "id": "vrs-line-chart",
+      "title": "Gráfico de linha desenhado",
+      "summary": "Grade e eixos aparecem, a linha se desenha ponto a ponto, área preenche e uma anotação aponta o momento-chave.",
+      "category": "dados",
+      "motion": ["linha desenhada", "área", "anotação"],
+      "params": [
+        {"key": "title", "type": "text", "label": "Título", "maxLength": 80, "default": "Evolução"},
+        {"key": "unit", "type": "text", "label": "Unidade", "maxLength": 12, "default": ""},
+        {"key": "points", "type": "list", "label": "Pontos", "maxItems": 24, "minItems": 2,
+          "item": {"type": "object", "fields": [
+            {"key": "label", "type": "text", "label": "Rótulo", "maxLength": 12, "default": "1"},
+            {"key": "value", "type": "number", "label": "Valor", "min": -1000000000, "max": 1000000000, "default": 0}
+          ]},
+          "default": [{"label": "1", "value": 10}, {"label": "2", "value": 14}, {"label": "3", "value": 22}, {"label": "4", "value": 35}]
+        },
+        {"key": "annotationIndex", "type": "number", "label": "Ponto anotado (índice, -1 = nenhum)", "min": -1, "max": 23, "default": -1},
+        {"key": "annotationText", "type": "text", "label": "Texto da anotação", "maxLength": 60, "default": ""},
+        {"key": "illustrative", "type": "boolean", "label": "Dados ilustrativos", "default": true}
+      ]
+    },
+    {
+      "id": "vrs-calc",
+      "title": "Cálculo passo a passo",
+      "summary": "Cada linha do cálculo entra, o resultado conta até o valor e a conclusão fecha com destaque.",
+      "category": "dados",
+      "motion": ["contadores", "revelação por etapa"],
+      "params": [
+        {"key": "title", "type": "text", "label": "Título", "maxLength": 80, "default": "Exemplo numérico"},
+        {"key": "steps", "type": "list", "label": "Etapas", "maxItems": 6, "minItems": 1,
+          "item": {"type": "object", "fields": [
+            {"key": "label", "type": "text", "label": "Rótulo", "maxLength": 50, "default": "Etapa"},
+            {"key": "expression", "type": "text", "label": "Expressão", "maxLength": 60, "default": ""},
+            {"key": "result", "type": "number", "label": "Resultado", "min": -1000000000000, "max": 1000000000000, "default": 0},
+            {"key": "prefix", "type": "text", "label": "Prefixo", "maxLength": 6, "default": ""},
+            {"key": "suffix", "type": "text", "label": "Sufixo", "maxLength": 8, "default": ""},
+            {"key": "decimals", "type": "number", "label": "Casas decimais", "min": 0, "max": 4, "default": 0}
+          ]},
+          "default": [{"label": "Valor inicial", "expression": "", "result": 1000, "prefix": "R$ ", "suffix": "", "decimals": 2}]
+        },
+        {"key": "conclusion", "type": "text", "label": "Conclusão", "maxLength": 100, "default": ""},
+        {"key": "illustrative", "type": "boolean", "label": "Dados ilustrativos", "default": true}
+      ]
+    },
+    {
+      "id": "vrs-comparison",
+      "title": "Comparação lado a lado",
+      "summary": "Colunas deslizam, itens entram alternados, selo VS pulsa e o veredito aparece no fim.",
+      "category": "explicacao",
+      "motion": ["entrada alternada", "selo pulsante"],
+      "params": [
+        {"key": "title", "type": "text", "label": "Título", "maxLength": 80, "default": "Comparação"},
+        {"key": "leftTitle", "type": "text", "label": "Lado A", "maxLength": 30, "default": "Antes"},
+        {"key": "rightTitle", "type": "text", "label": "Lado B", "maxLength": 30, "default": "Depois"},
+        {"key": "leftItems", "type": "list", "label": "Itens A", "maxItems": 4, "item": {"type": "text", "maxLength": 50, "default": "Item"}, "default": ["Item 1", "Item 2"]},
+        {"key": "rightItems", "type": "list", "label": "Itens B", "maxItems": 4, "item": {"type": "text", "maxLength": 50, "default": "Item"}, "default": ["Item 1", "Item 2"]},
+        {"key": "verdict", "type": "text", "label": "Veredito", "maxLength": 90, "default": ""}
+      ]
+    },
+    {
+      "id": "vrs-steps",
+      "title": "Passos de tutorial",
+      "summary": "Barra de progresso avança, cada passo entra com número e é marcado como concluído.",
+      "category": "tutorial",
+      "motion": ["progresso", "check animado"],
+      "params": [
+        {"key": "title", "type": "text", "label": "Título", "maxLength": 80, "default": "Passo a passo"},
+        {"key": "steps", "type": "list", "label": "Passos", "maxItems": 6, "minItems": 1,
+          "item": {"type": "object", "fields": [
+            {"key": "title", "type": "text", "label": "Passo", "maxLength": 40, "default": "Passo"},
+            {"key": "detail", "type": "text", "label": "Detalhe", "maxLength": 90, "default": ""}
+          ]},
+          "default": [{"title": "Prepare", "detail": ""}, {"title": "Execute", "detail": ""}, {"title": "Confira", "detail": ""}]
+        }
+      ]
+    },
+    {
+      "id": "vrs-map-route",
+      "title": "Mapa esquemático com rota",
+      "summary": "Mapa estilizado (não geográfico exato) com marcadores que surgem e rota tracejada que avança entre os pontos.",
+      "category": "documentario",
+      "motion": ["rota desenhada", "marcadores", "câmera suave"],
+      "params": [
+        {"key": "title", "type": "text", "label": "Título", "maxLength": 80, "default": "Rota"},
+        {"key": "points", "type": "list", "label": "Pontos (x,y de 0 a 1)", "maxItems": 8, "minItems": 2,
+          "item": {"type": "object", "fields": [
+            {"key": "label", "type": "text", "label": "Lugar", "maxLength": 30, "default": "Lugar"},
+            {"key": "x", "type": "number", "label": "x", "min": 0, "max": 1, "default": 0.5},
+            {"key": "y", "type": "number", "label": "y", "min": 0, "max": 1, "default": 0.5}
+          ]},
+          "default": [{"label": "Origem", "x": 0.25, "y": 0.35}, {"label": "Destino", "x": 0.7, "y": 0.6}]
+        },
+        {"key": "mapStyle", "type": "select", "label": "Estilo", "options": ["schematic", "parchment"], "default": "schematic"},
+        {"key": "note", "type": "text", "label": "Nota", "maxLength": 100, "default": "Mapa esquemático, fora de escala."}
+      ]
+    },
+    {
+      "id": "vrs-doc-montage",
+      "title": "Montagem documental com imagens",
+      "summary": "Imagens em camadas com movimento de câmera (Ken Burns/parallax), legenda e crédito. É câmera sobre imagem, não animação do conteúdo.",
+      "category": "documentario",
+      "motion": ["câmera sobre imagem", "parallax", "legenda de crédito"],
+      "params": [
+        {"key": "title", "type": "text", "label": "Título", "maxLength": 80, "default": ""},
+        {"key": "images", "type": "list", "label": "Imagens", "maxItems": 5, "minItems": 1,
+          "item": {"type": "object", "fields": [
+            {"key": "asset", "type": "asset", "label": "Imagem", "default": ""},
+            {"key": "caption", "type": "text", "label": "Legenda", "maxLength": 80, "default": ""},
+            {"key": "credit", "type": "text", "label": "Crédito", "maxLength": 80, "default": ""}
+          ]},
+          "default": [{"asset": "", "caption": "", "credit": ""}]
+        },
+        {"key": "motion", "type": "select", "label": "Movimento", "options": ["kenburns", "parallax", "slide"], "default": "kenburns"}
+      ]
+    },
+    {
+      "id": "vrs-story-panel",
+      "title": "Painel de história ilustrada",
+      "summary": "Cenário, personagem recortado que entra e reage (deslocamento/ênfase de pose — não é ciclo de caminhada), objetos e balão de fala digitado.",
+      "category": "historia",
+      "motion": ["recorte entrando", "reação", "balão digitado"],
+      "params": [
+        {"key": "background", "type": "asset", "label": "Cenário (opcional)", "default": ""},
+        {"key": "character", "type": "asset", "label": "Personagem (PNG)", "default": ""},
+        {"key": "characterSide", "type": "select", "label": "Lado", "options": ["left", "right"], "default": "left"},
+        {"key": "action", "type": "select", "label": "Ação", "options": ["enter", "bounce", "nod", "shake", "jump"], "default": "enter"},
+        {"key": "props", "type": "list", "label": "Objetos", "maxItems": 4,
+          "item": {"type": "object", "fields": [
+            {"key": "asset", "type": "asset", "label": "Objeto", "default": ""},
+            {"key": "x", "type": "number", "label": "x (0–1)", "min": 0, "max": 1, "default": 0.7},
+            {"key": "y", "type": "number", "label": "y (0–1)", "min": 0, "max": 1, "default": 0.75},
+            {"key": "scale", "type": "number", "label": "escala", "min": 0.1, "max": 3, "default": 1}
+          ]},
+          "default": []
+        },
+        {"key": "bubble", "type": "text", "label": "Fala", "maxLength": 140, "default": ""},
+        {"key": "caption", "type": "text", "label": "Narração em tela", "maxLength": 100, "default": ""}
+      ]
+    },
+    {
+      "id": "vrs-meme",
+      "title": "Meme: preparação → punchline",
+      "summary": "Texto de preparação, pausa de expectativa e quebra com zoom-punch e tremor curto.",
+      "category": "humor",
+      "motion": ["expectativa", "zoom-punch", "tremor"],
+      "params": [
+        {"key": "setup", "type": "text", "label": "Preparação", "maxLength": 120, "default": "Eu: vou dormir cedo hoje"},
+        {"key": "punchline", "type": "text", "label": "Punchline", "maxLength": 120, "default": "Também eu às 3h da manhã:"},
+        {"key": "image", "type": "asset", "label": "Imagem/sticker (opcional)", "default": ""},
+        {"key": "emoji", "type": "text", "label": "Emoji de reação", "maxLength": 8, "default": "😅"},
+        {"key": "style", "type": "select", "label": "Estilo", "options": ["classic", "modern"], "default": "modern"}
+      ]
+    },
+    {
+      "id": "vrs-cta",
+      "title": "Chamada para ação",
+      "summary": "Gancho com impacto, benefícios entram com checks e botão pulsa com a chamada.",
+      "category": "cta",
+      "motion": ["impacto", "checks", "botão pulsante"],
+      "params": [
+        {"key": "hook", "type": "text", "label": "Gancho", "maxLength": 80, "default": "Pare de perder tempo"},
+        {"key": "benefits", "type": "list", "label": "Benefícios reais", "maxItems": 4, "item": {"type": "text", "maxLength": 60, "default": "Benefício"}, "default": ["Benefício claro"]},
+        {"key": "button", "type": "text", "label": "Botão", "maxLength": 30, "default": "Saiba mais"},
+        {"key": "handle", "type": "text", "label": "Perfil/link", "maxLength": 40, "default": ""}
+      ]
+    },
+    {
+      "id": "vrs-stat",
+      "title": "Número em destaque",
+      "summary": "Número grande conta até o valor com anel de progresso e contexto abaixo.",
+      "category": "dados",
+      "motion": ["contador", "anel de progresso"],
+      "params": [
+        {"key": "value", "type": "number", "label": "Valor", "min": -1000000000000, "max": 1000000000000, "default": 42},
+        {"key": "prefix", "type": "text", "label": "Prefixo", "maxLength": 6, "default": ""},
+        {"key": "suffix", "type": "text", "label": "Sufixo", "maxLength": 10, "default": "%"},
+        {"key": "decimals", "type": "number", "label": "Casas decimais", "min": 0, "max": 3, "default": 0},
+        {"key": "label", "type": "text", "label": "Rótulo", "maxLength": 80, "default": "Indicador"},
+        {"key": "context", "type": "text", "label": "Contexto", "maxLength": 120, "default": ""},
+        {"key": "illustrative", "type": "boolean", "label": "Dado ilustrativo", "default": true}
+      ]
+    },
+    {
+      "id": "vrs-object-stage",
+      "title": "Palco de objetos",
+      "summary": "Objetos/stickers da biblioteca entram com mola, flutuam e recebem rótulos em sequência.",
+      "category": "explicacao",
+      "motion": ["mola", "flutuação", "rótulos sequenciais"],
+      "params": [
+        {"key": "title", "type": "text", "label": "Título", "maxLength": 80, "default": ""},
+        {"key": "objects", "type": "list", "label": "Objetos", "maxItems": 6, "minItems": 1,
+          "item": {"type": "object", "fields": [
+            {"key": "asset", "type": "asset", "label": "Imagem", "default": ""},
+            {"key": "icon", "type": "icon", "label": "Ícone (se não houver imagem)", "default": "star"},
+            {"key": "label", "type": "text", "label": "Rótulo", "maxLength": 30, "default": ""}
+          ]},
+          "default": [{"asset": "", "icon": "star", "label": "Objeto"}]
+        },
+        {"key": "layout", "type": "select", "label": "Disposição", "options": ["row", "arc", "scatter"], "default": "row"}
+      ]
+    },
+    {
+      "id": "vrs-custom",
+      "title": "Cena programada (camadas)",
+      "summary": "Cena definida por camadas, pivôs e keyframes no FilmPlan; para mecanismos que os modelos não cobrem.",
+      "category": "avancado",
+      "motion": ["keyframes", "hierarquia", "curvas"],
+      "params": [
+        {"key": "title", "type": "text", "label": "Título (opcional)", "maxLength": 80, "default": ""}
+      ]
+    }
+  ]
+}

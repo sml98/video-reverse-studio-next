@@ -1,0 +1,175 @@
+{
+  "schema": "vrs.filmplan/1",
+  "title": "Só mais um vídeo",
+  "language": "pt-BR",
+  "width": 720,
+  "height": 1280,
+  "fps": 30,
+  "theme": {
+    "background": "#151022",
+    "foreground": "#ffffff",
+    "accent": "#ff4d8d",
+    "accent2": "#ffd23f",
+    "muted": "#b7a8d9",
+    "font": "rounded",
+    "visualLanguage": "stickers"
+  },
+  "captions": {
+    "enabled": true,
+    "mode": "word",
+    "position": "bottom",
+    "maxWords": 3,
+    "highlight": "#ffd23f"
+  },
+  "audio": {
+    "narration": "voice/narration.wav",
+    "music": "",
+    "musicVolume": 0.12,
+    "duck": true,
+    "voice": "faber"
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "component": "vrs-meme",
+      "params": {
+        "setup": "Eu: hoje vou dormir cedo",
+        "punchline": "Eu às 3h vendo como fazem pão no Japão",
+        "image": "",
+        "emoji": "🥖",
+        "style": "modern"
+      },
+      "durationInFrames": 180,
+      "narration": "Eu: hoje vou dormir cedo. Também eu, às três da manhã:",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Eu:",
+          "start": 300,
+          "end": 633
+        },
+        {
+          "id": "w-2",
+          "word": "hoje",
+          "start": 633,
+          "end": 830
+        },
+        {
+          "id": "w-3",
+          "word": "vou",
+          "start": 830,
+          "end": 966
+        },
+        {
+          "id": "w-4",
+          "word": "dormir",
+          "start": 966,
+          "end": 1250
+        },
+        {
+          "id": "w-5",
+          "word": "cedo.",
+          "start": 1250,
+          "end": 1855
+        },
+        {
+          "id": "w-6",
+          "word": "Também",
+          "start": 1975,
+          "end": 2305
+        },
+        {
+          "id": "w-7",
+          "word": "eu,",
+          "start": 2305,
+          "end": 2660
+        },
+        {
+          "id": "w-8",
+          "word": "às",
+          "start": 2660,
+          "end": 2844
+        },
+        {
+          "id": "w-9",
+          "word": "três",
+          "start": 2844,
+          "end": 3064
+        },
+        {
+          "id": "w-10",
+          "word": "da",
+          "start": 3064,
+          "end": 3174
+        },
+        {
+          "id": "w-11",
+          "word": "manhã:",
+          "start": 3174,
+          "end": 3577
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "fade",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [],
+      "notes": ""
+    },
+    {
+      "id": "s02",
+      "component": "vrs-kinetic-quote",
+      "params": {
+        "text": "Quem nunca?",
+        "emphasis": "nunca",
+        "author": "",
+        "authorship": "sem_atribuicao",
+        "style": "neon"
+      },
+      "durationInFrames": 90,
+      "narration": "Quem nunca?",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Quem",
+          "start": 300,
+          "end": 543
+        },
+        {
+          "id": "w-2",
+          "word": "nunca?",
+          "start": 543,
+          "end": 1031
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "flash",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [],
+      "notes": ""
+    }
+  ],
+  "uncertainties": [],
+  "sources": [],
+  "illustrativeData": false,
+  "warnings": []
+}

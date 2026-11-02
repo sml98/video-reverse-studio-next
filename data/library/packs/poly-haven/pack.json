@@ -1,0 +1,27 @@
+{
+  "id": "poly-haven",
+  "title": "Poly Haven · HDRI e texturas",
+  "source": "https://polyhaven.com/",
+  "license": "CC0",
+  "credit": "Poly Haven (polyhaven.com), CC0",
+  "styles": [
+    "documentary",
+    "3d"
+  ],
+  "niches": [],
+  "tags": [
+    "textura",
+    "ceu",
+    "madeira"
+  ],
+  "kinds": {
+    "image": "texture"
+  },
+  "notes": "Seleção 1K. Texturas não são cenários animados.",
+  "installed_from": "instalação local anterior (cópia; origem preservada)",
+  "files": {
+    "kloppenheim_06_puresky/kloppenheim_06_puresky.hdr": "206c67e3a1b992282821cf06662bdd69bbb4915c1c4444a66338a40d6a7d4e34",
+    "kloppenheim_06_puresky/kloppenheim_06_puresky.jpg": "7705c424d465958a8712a11d3928de28009651617a019ae62d37a616c79f3cf8",
+    "wood_floor_deck/wood_floor_deck.jpg": "1f2c623e87b0ee905f6f4ec8664dd19b4b135207c96e86198ff2919770b47166"
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "id": "ciencia",
+  "title": "Explicação científica",
+  "emoji": "🔬",
+  "description": "Pergunta → mecanismo visual → demonstração → conclusão.",
+  "arc": [
+    "pergunta",
+    "mecanismo",
+    "demonstração",
+    "conclusão"
+  ],
+  "visualLanguages": [
+    "motion-graphics",
+    "diagrama",
+    "infográfico"
+  ],
+  "theme": {
+    "background": "#07111f",
+    "foreground": "#eef6ff",
+    "accent": "#ffc23d",
+    "accent2": "#4cc9f0",
+    "muted": "#8aa4c2",
+    "font": "sans",
+    "visualLanguage": "motion-graphics"
+  },
+  "example": {
+    "title": "Por que o céu é azul?",
+    "idea": "Explique por que o céu é azul em 20 segundos, com diagrama e gráfico.",
+    "aspect": "landscape"
+  },
+  "recipe": [
+    {
+      "role": "pergunta",
+      "label": "Gancho com a pergunta",
+      "preset_id": "vrs-title",
+      "duration": 4,
+      "narration": "Por que o céu é azul durante o dia?",
+      "parameters": {
+        "label": "CIÊNCIA EM 20 SEGUNDOS",
+        "title": "Por que o céu é azul?",
+        "subtitle": "",
+        "style": "cinematic"
+      },
+      "guidance": "Uma pergunta concreta, sem resposta ainda."
+    },
+    {
+      "role": "mecanismo",
+      "label": "Mecanismo em diagrama",
+      "preset_id": "vrs-mechanism",
+      "duration": 7,
+      "narration": "A luz do Sol mistura todas as cores. No ar, moléculas minúsculas espalham muito mais a luz azul, de onda curta.",
+      "parameters": {
+        "title": "O caminho da luz",
+        "nodes": [
+          {
+            "id": "sol",
+            "label": "Luz do Sol",
+            "icon": "sun"
+          },
+          {
+            "id": "ar",
+            "label": "Moléculas do ar",
+            "icon": "atom"
+          },
+          {
+            "id": "olho",
+            "label": "Nossos olhos",
+            "icon": "person"
+          }
+        ],
+        "edges": [
+          {
+            "from": "sol",
+            "to": "ar",
+            "label": "todas as cores"
+          },
+          {
+            "from": "ar",
+            "to": "olho",
+            "label": "azul espalhado"
+          }
+        ],
+        "caption": "Espalhamento de Rayleigh: ondas curtas desviam mais.",
+        "layout": "row"
+      },
+      "guidance": "Cada nó = uma etapa causal; setas mostram o fluxo."
+    },
+    {
+      "role": "demonstração",
+      "label": "Demonstração numérica",
+      "preset_id": "vrs-bar-chart",
+      "duration": 6,
+      "narration": "Pela lei de Rayleigh, o azul é espalhado quase seis vezes mais que o vermelho.",
+      "parameters": {
+        "title": "Espalhamento relativo ao vermelho",
+        "unit": "×",
+        "bars": [
+          {
+            "label": "Vermelho 700 nm",
+            "value": 1.0,
+            "highlight": false
+          },
+          {
+            "label": "Verde 530 nm",
+            "value": 3.0,
+            "highlight": false
+          },
+          {
+            "label": "Azul 450 nm",
+            "value": 5.9,
+            "highlight": true
+          }
+        ],
+        "note": "Calculado por (700/λ)⁴ — espalhamento de Rayleigh.",
+        "illustrative": false
+      },
+      "guidance": "Números devem ser calculados ou citados; marque ilustrativos."
+    },
+    {
+      "role": "conclusão",
+      "label": "Conclusão",
+      "preset_id": "vrs-kinetic-quote",
+      "duration": 5,
+      "narration": "Por isso, para qualquer lado que você olhe, chega luz azul espalhada.",
+      "parameters": {
+        "text": "Para qualquer lado que você olhe, chega luz azul espalhada.",
+        "emphasis": "azul",
+        "author": "",
+        "authorship": "sem_atribuicao",
+        "style": "minimal"
+      },
+      "guidance": "Feche a pergunta inicial em uma frase."
+    }
+  ],
+  "aspects": [
+    "landscape",
+    "vertical",
+    "square"
+  ],
+  "durationRange": [
+    10,
+    120
+  ],
+  "defaultDuration": 22,
+  "captions": {
+    "mode": "word",
+    "position": "bottom",
+    "maxWords": 3
+  },
+  "voice": "faber",
+  "schema": "vrs.niche/1",
+  "guide": "skills/vrs-presets/references/ciencia.md"
+}

@@ -1,0 +1,16 @@
+.venv/
+.tools/
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/.rcreg-*/
+data/vrs.sqlite3*
+data/cache/
+data/inputs/
+data/outputs/
+data/logs/
+data/projects/
+.env
+*.pyc
+__pycache__/
+.pytest_cache/

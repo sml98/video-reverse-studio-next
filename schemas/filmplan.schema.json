@@ -1,0 +1,598 @@
+{
+  "$defs": {
+    "AudioSettings": {
+      "additionalProperties": false,
+      "properties": {
+        "narration": {
+          "default": "",
+          "title": "Narration",
+          "type": "string"
+        },
+        "music": {
+          "default": "",
+          "title": "Music",
+          "type": "string"
+        },
+        "musicVolume": {
+          "default": 0.12,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Musicvolume",
+          "type": "number"
+        },
+        "duck": {
+          "default": true,
+          "title": "Duck",
+          "type": "boolean"
+        },
+        "voice": {
+          "default": "",
+          "title": "Voice",
+          "type": "string"
+        }
+      },
+      "title": "AudioSettings",
+      "type": "object"
+    },
+    "CaptionSettings": {
+      "additionalProperties": false,
+      "properties": {
+        "enabled": {
+          "default": true,
+          "title": "Enabled",
+          "type": "boolean"
+        },
+        "mode": {
+          "default": "word",
+          "enum": [
+            "word",
+            "phrase",
+            "off"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "position": {
+          "default": "bottom",
+          "enum": [
+            "bottom",
+            "center",
+            "top"
+          ],
+          "title": "Position",
+          "type": "string"
+        },
+        "maxWords": {
+          "default": 3,
+          "maximum": 6,
+          "minimum": 1,
+          "title": "Maxwords",
+          "type": "integer"
+        },
+        "highlight": {
+          "default": "#ffd23f",
+          "title": "Highlight",
+          "type": "string"
+        }
+      },
+      "title": "CaptionSettings",
+      "type": "object"
+    },
+    "Keyframe": {
+      "additionalProperties": false,
+      "properties": {
+        "frame": {
+          "minimum": 0,
+          "title": "Frame",
+          "type": "integer"
+        },
+        "value": {
+          "title": "Value",
+          "type": "number"
+        },
+        "easing": {
+          "default": "smooth",
+          "enum": [
+            "linear",
+            "smooth",
+            "in",
+            "out",
+            "back",
+            "spring",
+            "cinematic",
+            "elastic",
+            "steps"
+          ],
+          "title": "Easing",
+          "type": "string"
+        }
+      },
+      "required": [
+        "frame",
+        "value"
+      ],
+      "title": "Keyframe",
+      "type": "object"
+    },
+    "Layer": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "group",
+            "text",
+            "image",
+            "rect",
+            "circle",
+            "path",
+            "arrow"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "parent": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Parent"
+        },
+        "x": {
+          "default": 0,
+          "title": "X",
+          "type": "number"
+        },
+        "y": {
+          "default": 0,
+          "title": "Y",
+          "type": "number"
+        },
+        "w": {
+          "default": 100,
+          "title": "W",
+          "type": "number"
+        },
+        "h": {
+          "default": 100,
+          "title": "H",
+          "type": "number"
+        },
+        "pivotX": {
+          "default": 0.5,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Pivotx",
+          "type": "number"
+        },
+        "pivotY": {
+          "default": 0.5,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Pivoty",
+          "type": "number"
+        },
+        "text": {
+          "default": "",
+          "maxLength": 400,
+          "title": "Text",
+          "type": "string"
+        },
+        "src": {
+          "default": "",
+          "maxLength": 400,
+          "title": "Src",
+          "type": "string"
+        },
+        "d": {
+          "default": "",
+          "maxLength": 4000,
+          "title": "D",
+          "type": "string"
+        },
+        "fill": {
+          "default": "#ffffff",
+          "title": "Fill",
+          "type": "string"
+        },
+        "stroke": {
+          "default": "",
+          "title": "Stroke",
+          "type": "string"
+        },
+        "strokeWidth": {
+          "default": 0,
+          "maximum": 200,
+          "minimum": 0,
+          "title": "Strokewidth",
+          "type": "number"
+        },
+        "fontSize": {
+          "default": 48,
+          "exclusiveMinimum": 0,
+          "maximum": 600,
+          "title": "Fontsize",
+          "type": "number"
+        },
+        "fontWeight": {
+          "default": 700,
+          "maximum": 900,
+          "minimum": 100,
+          "title": "Fontweight",
+          "type": "integer"
+        },
+        "radius": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Radius",
+          "type": "number"
+        },
+        "animations": {
+          "additionalProperties": {
+            "items": {
+              "$ref": "#/$defs/Keyframe"
+            },
+            "type": "array"
+          },
+          "propertyNames": {
+            "enum": [
+              "x",
+              "y",
+              "scale",
+              "scaleX",
+              "scaleY",
+              "rotate",
+              "opacity",
+              "progress",
+              "blur"
+            ]
+          },
+          "title": "Animations",
+          "type": "object"
+        }
+      },
+      "required": [
+        "id",
+        "type"
+      ],
+      "title": "Layer",
+      "type": "object"
+    },
+    "PlanScene": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "component": {
+          "maxLength": 80,
+          "minLength": 1,
+          "title": "Component",
+          "type": "string"
+        },
+        "params": {
+          "additionalProperties": true,
+          "title": "Params",
+          "type": "object"
+        },
+        "durationInFrames": {
+          "exclusiveMinimum": 0,
+          "title": "Durationinframes",
+          "type": "integer"
+        },
+        "narration": {
+          "default": "",
+          "maxLength": 2000,
+          "title": "Narration",
+          "type": "string"
+        },
+        "words": {
+          "items": {
+            "$ref": "#/$defs/WordTiming"
+          },
+          "title": "Words",
+          "type": "array"
+        },
+        "timing": {
+          "default": "none",
+          "enum": [
+            "user_text",
+            "proportional",
+            "tts_phonemes",
+            "asr_estimated",
+            "forced_aligned",
+            "none"
+          ],
+          "title": "Timing",
+          "type": "string"
+        },
+        "assets": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Assets",
+          "type": "object"
+        },
+        "layers": {
+          "items": {
+            "$ref": "#/$defs/Layer"
+          },
+          "maxItems": 80,
+          "title": "Layers",
+          "type": "array"
+        },
+        "transitionIn": {
+          "$ref": "#/$defs/Transition"
+        },
+        "transitionOut": {
+          "$ref": "#/$defs/Transition"
+        },
+        "sfx": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "maxItems": 8,
+          "title": "Sfx",
+          "type": "array"
+        },
+        "notes": {
+          "default": "",
+          "maxLength": 1000,
+          "title": "Notes",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "component",
+        "durationInFrames"
+      ],
+      "title": "PlanScene",
+      "type": "object"
+    },
+    "Source": {
+      "additionalProperties": false,
+      "properties": {
+        "claim": {
+          "maxLength": 400,
+          "title": "Claim",
+          "type": "string"
+        },
+        "source": {
+          "maxLength": 400,
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "required": [
+        "claim",
+        "source"
+      ],
+      "title": "Source",
+      "type": "object"
+    },
+    "Theme": {
+      "additionalProperties": false,
+      "properties": {
+        "background": {
+          "default": "#0b1020",
+          "title": "Background",
+          "type": "string"
+        },
+        "foreground": {
+          "default": "#f5f7ff",
+          "title": "Foreground",
+          "type": "string"
+        },
+        "accent": {
+          "default": "#ffb02e",
+          "title": "Accent",
+          "type": "string"
+        },
+        "accent2": {
+          "default": "#5ad1ff",
+          "title": "Accent2",
+          "type": "string"
+        },
+        "muted": {
+          "default": "#8a93b8",
+          "title": "Muted",
+          "type": "string"
+        },
+        "font": {
+          "default": "sans",
+          "enum": [
+            "sans",
+            "serif",
+            "display",
+            "mono",
+            "rounded"
+          ],
+          "title": "Font",
+          "type": "string"
+        },
+        "visualLanguage": {
+          "default": "motion-graphics",
+          "maxLength": 40,
+          "title": "Visuallanguage",
+          "type": "string"
+        }
+      },
+      "title": "Theme",
+      "type": "object"
+    },
+    "Transition": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "default": "fade",
+          "enum": [
+            "none",
+            "fade",
+            "wipe",
+            "slide",
+            "zoom",
+            "circle",
+            "flash"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "durationInFrames": {
+          "default": 12,
+          "maximum": 90,
+          "minimum": 0,
+          "title": "Durationinframes",
+          "type": "integer"
+        },
+        "color": {
+          "default": "",
+          "title": "Color",
+          "type": "string"
+        }
+      },
+      "title": "Transition",
+      "type": "object"
+    },
+    "WordTiming": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "word": {
+          "maxLength": 80,
+          "minLength": 1,
+          "title": "Word",
+          "type": "string"
+        },
+        "start": {
+          "minimum": 0,
+          "title": "Start",
+          "type": "integer"
+        },
+        "end": {
+          "minimum": 0,
+          "title": "End",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "word",
+        "start",
+        "end"
+      ],
+      "title": "WordTiming",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "const": "vrs.filmplan/1",
+      "default": "vrs.filmplan/1",
+      "title": "Schema",
+      "type": "string"
+    },
+    "title": {
+      "maxLength": 160,
+      "minLength": 1,
+      "title": "Title",
+      "type": "string"
+    },
+    "language": {
+      "default": "pt-BR",
+      "title": "Language",
+      "type": "string"
+    },
+    "width": {
+      "maximum": 3840,
+      "minimum": 240,
+      "title": "Width",
+      "type": "integer"
+    },
+    "height": {
+      "maximum": 3840,
+      "minimum": 240,
+      "title": "Height",
+      "type": "integer"
+    },
+    "fps": {
+      "default": 30,
+      "enum": [
+        24,
+        25,
+        30,
+        60
+      ],
+      "title": "Fps",
+      "type": "integer"
+    },
+    "theme": {
+      "$ref": "#/$defs/Theme"
+    },
+    "captions": {
+      "$ref": "#/$defs/CaptionSettings"
+    },
+    "audio": {
+      "$ref": "#/$defs/AudioSettings"
+    },
+    "scenes": {
+      "items": {
+        "$ref": "#/$defs/PlanScene"
+      },
+      "maxItems": 60,
+      "minItems": 1,
+      "title": "Scenes",
+      "type": "array"
+    },
+    "uncertainties": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Uncertainties",
+      "type": "array"
+    },
+    "sources": {
+      "items": {
+        "$ref": "#/$defs/Source"
+      },
+      "title": "Sources",
+      "type": "array"
+    },
+    "illustrativeData": {
+      "default": false,
+      "title": "Illustrativedata",
+      "type": "boolean"
+    },
+    "warnings": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Warnings",
+      "type": "array"
+    }
+  },
+  "required": [
+    "title",
+    "width",
+    "height",
+    "scenes"
+  ],
+  "title": "FilmPlan",
+  "type": "object"
+}
