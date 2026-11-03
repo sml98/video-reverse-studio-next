@@ -241,11 +241,18 @@ def test_new_scenes_reframe_and_auto_sfx(tmp_path: Path):
 
     catalog._specs.cache_clear()
     catalog.scenes.cache_clear()
+    catalog.niches.cache_clear()
     assert "vrs-3d-stage" in catalog.scenes()
     assert "vrs-parallax-photo" in catalog.scenes()
     assert "vrs-code-walkthrough" in catalog.scenes()
+    assert "vrs-stickman-stage" in catalog.scenes()
+    assert "vrs-southpark-stage" in catalog.scenes()
+    assert "vrs-roblox-stage" in catalog.scenes()
+    assert "vrs-multiplane-stage" in catalog.scenes()
+    for nid in ("stickman", "southpark", "roblox", "multiplane"):
+        assert nid in catalog.niches()
 
-    p = projects.create_project(name="Novas Cenas", idea="Teste incremental", niche_id="tutorial", aspect="landscape", target_seconds=12, options={"narration": False})
+    p = projects.create_project(name="Novas Cenas", idea="Teste incremental", niche_id="stickman", aspect="landscape", target_seconds=12, options={"narration": False})
     pid = p["id"]
     sb = {
         "schema": "vrs.storyboard/1",
@@ -253,23 +260,35 @@ def test_new_scenes_reframe_and_auto_sfx(tmp_path: Path):
         "scenes": [
             {
                 "id": "s1",
-                "preset_id": "vrs-code-walkthrough",
-                "duration": 5,
-                "narration": "Veja a linha dois do código.",
-                "parameters": {"title": "Exemplo", "filename": "calc.py", "code": "x = 10\ny = x * 2", "focusLine": 2},
+                "preset_id": "vrs-stickman-stage",
+                "duration": 4,
+                "narration": "Boneco palito explicando no quadro.",
+                "parameters": {"title": "Stickman", "action": "explain_board", "expression": "happy", "accessory": "cap"},
             },
             {
                 "id": "s2",
-                "preset_id": "vrs-parallax-photo",
-                "duration": 5,
-                "narration": "Foto em destaque.",
-                "parameters": {"title": "Arquivo", "callout": "Ponto focal", "focusX": 0.5, "focusY": 0.5},
+                "preset_id": "vrs-southpark-stage",
+                "duration": 4,
+                "narration": "Recorte de papel estilo South Park.",
+                "parameters": {"title": "Cutout", "mode": "duet", "environment": "snow_town", "expression": "shocked"},
+            },
+            {
+                "id": "s3",
+                "preset_id": "vrs-roblox-stage",
+                "duration": 4,
+                "narration": "Pulando no Obby 3D.",
+                "parameters": {"title": "Roblox 3D", "action": "obby_jump", "environment": "obby_sky"},
             },
         ],
     }
     plan = expand.expand(pid, sb)
     projects.save_versioned(pid, "plan", plan)
     assert plan["width"] == 1920 and plan["height"] == 1080
+
+    # Troca de componente via patch_scene
+    workflow.patch_scene(pid, "s2", {"component": "vrs-multiplane-stage", "params": {"title": "Multiplane"}}, render_after=False)
+    plan_patched = projects.load(pid, "plan")
+    assert plan_patched["scenes"][1]["component"] == "vrs-multiplane-stage"
 
     # Reenquadramento 1-clique para vertical (9:16)
     ref = workflow.reframe_project(pid, "vertical", render_after=False)

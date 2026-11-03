@@ -52,7 +52,9 @@ export type Layout = {
   safeBottom: number; // limite inferior para conteúdo (reserva legendas)
 };
 
-export type Ctx = { theme: Theme; layout: Layout; assetUrl: (rel: string) => string; captionsOn: boolean };
+export type WordTiming = { id: string; word: string; start: number; end: number };
+
+export type Ctx = { theme: Theme; layout: Layout; assetUrl: (rel: string) => string; captionsOn: boolean; words?: WordTiming[]; narration?: string };
 
 const ThemeCtx = createContext<Ctx | null>(null);
 
@@ -63,7 +65,7 @@ export function useVrs(): Ctx {
   const { width, height } = useVideoConfig();
   if (c) return c;
   const layout = makeLayout(width, height, false);
-  return { theme: { background: "#0b1020", foreground: "#f5f7ff", accent: "#ffb02e", accent2: "#5ad1ff", muted: "#8a93b8", font: "sans", visualLanguage: "motion-graphics" }, layout, assetUrl: (r) => r, captionsOn: false };
+  return { theme: { background: "#0b1020", foreground: "#f5f7ff", accent: "#ffb02e", accent2: "#5ad1ff", muted: "#8a93b8", font: "sans", visualLanguage: "motion-graphics" }, layout, assetUrl: (r) => r, captionsOn: false, words: [], narration: "" };
 }
 
 export function makeLayout(w: number, h: number, captionsOn: boolean): Layout {

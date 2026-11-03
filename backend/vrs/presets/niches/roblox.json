@@ -1,0 +1,104 @@
+{
+  "id": "roblox",
+  "title": "Mundo Roblox / Blocky 3D",
+  "emoji": "🧱",
+  "description": "Bonecos 3D articulados em blocos pulando pista Obby, acenando e conversando em cenários 3D.",
+  "arc": [
+    "desafio obby",
+    "explicação 3d",
+    "dupla blocky"
+  ],
+  "visualLanguages": [
+    "roblox-3d",
+    "blocky",
+    "cartoon"
+  ],
+  "theme": {
+    "background": "#0f172a",
+    "foreground": "#f8fafc",
+    "accent": "#38bdf8",
+    "accent2": "#f43f5e",
+    "muted": "#94a3b8",
+    "font": "rounded",
+    "visualLanguage": "roblox-3d"
+  },
+  "example": {
+    "title": "Desafio no Obby das Nuvens",
+    "idea": "Aventura em 3D estilo Roblox superando obstáculos e explicando os níveis do jogo.",
+    "aspect": "landscape"
+  },
+  "assets_hint": [
+    "kenney-nature-kit",
+    "quaternius-standard"
+  ],
+  "recipe": [
+    {
+      "role": "desafio obby",
+      "label": "Salto no Obby",
+      "preset_id": "vrs-roblox-stage",
+      "duration": 5,
+      "narration": "No primeiro nível do desafio, cada salto exige precisão no tempo certo.",
+      "parameters": {
+        "title": "Nível 1: Pista nas Nuvens",
+        "action": "obby_jump",
+        "environment": "obby_sky",
+        "shirtColor": "#2563eb",
+        "pantsColor": "#16a34a",
+        "skinColor": "#facc15",
+        "bubble": "Pula agora!"
+      },
+      "guidance": ""
+    },
+    {
+      "role": "explicação 3d",
+      "label": "Cidade Blocky",
+      "preset_id": "vrs-roblox-stage",
+      "duration": 5,
+      "narration": "Quando você domina o ritmo dos blocos, o mapa inteiro abre novas rotas.",
+      "parameters": {
+        "title": "Explorando a Cidade 3D",
+        "action": "wave_talk",
+        "environment": "blocky_city",
+        "shirtColor": "#ef4444",
+        "pantsColor": "#1e293b",
+        "skinColor": "#facc15",
+        "bubble": "Nova rota desbloqueada!"
+      },
+      "guidance": ""
+    },
+    {
+      "role": "dupla blocky",
+      "label": "Encontro no Acampamento",
+      "preset_id": "vrs-roblox-stage",
+      "duration": 5,
+      "narration": "E no final da fase, a equipe se reúne no acampamento para o próximo desafio!",
+      "parameters": {
+        "title": "Fase Concluída",
+        "action": "duet_3d",
+        "environment": "nature_camp",
+        "shirtColor": "#22c55e",
+        "pantsColor": "#1d4ed8",
+        "skinColor": "#facc15",
+        "bubble": "GG! Próxima fase!"
+      },
+      "guidance": ""
+    }
+  ],
+  "aspects": [
+    "landscape",
+    "vertical",
+    "square"
+  ],
+  "durationRange": [
+    10,
+    120
+  ],
+  "defaultDuration": 16,
+  "captions": {
+    "mode": "word",
+    "position": "bottom",
+    "maxWords": 3
+  },
+  "voice": "faber",
+  "schema": "vrs.niche/1"
+}

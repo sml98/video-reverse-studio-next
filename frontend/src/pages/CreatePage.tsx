@@ -49,26 +49,39 @@ export const CreatePage: React.FC = () => {
     if (n.aspects.includes(n.example.aspect)) setAspect(n.example.aspect);
   };
 
-  const applyQuickHalloween = () => {
-    const doc = cat?.niches.find((n) => n.id === "documentario");
-    if (doc) chooseNiche(doc);
-    setRefKind("library");
-    setRefLibraryId("nasa-documentary.sunlight-asteroids");
-    setDuration(45);
-    setAspect("landscape");
-    setName("A origem histórica do Halloween");
-    setIdea("Explique a origem do Halloween em português, em 45 segundos. Quero cenas animadas, gráficos e legendas.");
+  const applyQuickPreset = (nicheId: string, title: string, promptIdea: string, asp = "landscape", dur = 16, refLib = "") => {
+    const target = cat?.niches.find((n) => n.id === nicheId);
+    if (target) chooseNiche(target);
+    if (refLib) {
+      setRefKind("library");
+      setRefLibraryId(refLib);
+    } else {
+      setRefKind("none");
+    }
+    setDuration(dur);
+    setAspect(asp);
+    setName(title);
+    setIdea(promptIdea);
   };
 
-  const applyQuickQuote = () => {
-    const fr = cat?.niches.find((n) => n.id === "frases");
-    if (fr) chooseNiche(fr);
-    setRefKind("none");
-    setDuration(20);
-    setAspect("vertical");
-    setName("Disciplina silenciosa");
-    setIdea("A clareza não nasce da pressa: ela aparece quando você remove o excesso e sustenta o ritmo todos os dias.");
-  };
+  const applyQuickHalloween = () =>
+    applyQuickPreset(
+      "documentario",
+      "A origem histórica do Halloween",
+      "Explique a origem do Halloween em português, em 45 segundos. Quero cenas animadas, gráficos e legendas.",
+      "landscape",
+      45,
+      "nasa-documentary.sunlight-asteroids",
+    );
+
+  const applyQuickQuote = () =>
+    applyQuickPreset(
+      "frases",
+      "Disciplina silenciosa",
+      "A clareza não nasce da pressa: ela aparece quando você remove o excesso e sustenta o ritmo todos os dias.",
+      "vertical",
+      20,
+    );
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -131,12 +144,75 @@ export const CreatePage: React.FC = () => {
             Escolha um modelo completo por nicho, assista ao exemplo animado, escreva sua ideia e gere seu MP4 localmente na CPU.
           </p>
         </div>
-        <div className="row" style={{ gap: 8 }}>
+        <div className="row" style={{ gap: 6, flexWrap: "wrap" }}>
+          <button
+            type="button"
+            className="btn ghost"
+            onClick={() =>
+              applyQuickPreset(
+                "stickman",
+                "O Paradoxo da Produtividade",
+                "Por que trabalhar 12 horas seguidas derruba o foco, explicado com bonecos palito articulados no quadro branco.",
+                "landscape",
+                16,
+              )
+            }
+          >
+            ✏️ Preset: Boneco Palito 2D
+          </button>
+          <button
+            type="button"
+            className="btn ghost"
+            onClick={() =>
+              applyQuickPreset(
+                "southpark",
+                "O Plano Infalível na Neve",
+                "Dois amigos estilo recorte de papel South Park discutindo um plano maluco no ponto de ônibus.",
+                "landscape",
+                16,
+                "vrs-templates.paper-cutout-demo",
+              )
+            }
+          >
+            ✂️ Preset: Estilo South Park
+          </button>
+          <button
+            type="button"
+            className="btn ghost"
+            onClick={() =>
+              applyQuickPreset(
+                "roblox",
+                "Desafio no Obby das Nuvens",
+                "Bonecos 3D estilo Roblox saltando obstáculos no céu e comemorando no acampamento.",
+                "landscape",
+                16,
+                "vrs-templates.roblox-demo",
+              )
+            }
+          >
+            🧱 Preset: Mundo Roblox 3D
+          </button>
+          <button
+            type="button"
+            className="btn ghost"
+            onClick={() =>
+              applyQuickPreset(
+                "multiplane",
+                "Podcast dos Avatares: IA vs Código",
+                "O Panda Programador e o Tubarão Advogado debatendo em um estúdio multi-plano com stickers die-cut.",
+                "landscape",
+                16,
+                "vrs-templates.stickers-demo",
+              )
+            }
+          >
+            🎭 Preset: Avatares + Stickers
+          </button>
           <button type="button" className="btn ghost" onClick={applyQuickHalloween}>
-            🎃 Exemplo: Halloween (com ref. NASA)
+            🎃 Exemplo: Halloween
           </button>
           <button type="button" className="btn ghost" onClick={applyQuickQuote}>
-            ✦ Exemplo: Frase autoral animada
+            ✦ Exemplo: Frase
           </button>
         </div>
       </header>

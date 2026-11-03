@@ -16,6 +16,27 @@ const STAGE_ORDER = [
 
 const SPEC_MAP: Record<string, any> = Object.fromEntries((sceneSpecs.scenes as any[]).map((s) => [s.id, s]));
 
+const QUICK_ASSETS = [
+  { label: "— Selecionar da biblioteca (ou digite abaixo) —", value: "" },
+  { label: "🐾 Panda Programador (Avatar)", value: "lib:user-avatars.animal-character-coder-red-panda" },
+  { label: "🦈 Tubarão Advogado (Avatar)", value: "lib:user-avatars.animal-character-lawyer-shark" },
+  { label: "🐧 Pinguim Professor (Avatar)", value: "lib:user-avatars.animal-character-professor-penguin" },
+  { label: "🐕 Corgi Chefe (Avatar)", value: "lib:user-avatars.animal-character-boss-corgi" },
+  { label: "🦉 Coruja Juíza (Avatar)", value: "lib:user-avatars.animal-character-judge-owl" },
+  { label: "🐹 Hamster Trader (Avatar)", value: "lib:user-avatars.animal-character-trader-hamster" },
+  { label: "🐱 Gato Laranja CEO (Avatar)", value: "lib:user-avatars.animal-character-ceo-orange-tabby" },
+  { label: "🧑 Professor Gen-Z Miles (Humano)", value: "lib:user-avatars.human-archetypes-gen-z-professor-miles" },
+  { label: "🎧 DJ Lukas Berlim (Humano)", value: "lib:user-avatars.human-archetypes-berlin-dj-lukas" },
+  { label: "🛹 Contador Skatista Kevin (Humano)", value: "lib:user-avatars.human-archetypes-skater-accountant-kevin" },
+  { label: "🧍 Open Peep 2 (Recorte P&B)", value: "lib:open-peeps.peep-2" },
+  { label: "🧍 Open Peep 15 (Recorte P&B)", value: "lib:open-peeps.peep-15" },
+  { label: "🏰 Castelo 2D (Kenney)", value: "lib:kenney-background-elements.castle" },
+  { label: "⛰️ Montanhas 2D (Kenney)", value: "lib:kenney-background-elements.mountain1" },
+  { label: "🌄 Colinas Verdes 2D (Kenney)", value: "lib:kenney-background-elements.hills1" },
+  { label: "☁️ Céu 2D (Kenney)", value: "lib:kenney-background-elements.sky" },
+  { label: "🏃 Personagem 3D Quaternius (.glb)", value: "lib:quaternius-standard.animationlibrary-standard" },
+];
+
 /** Etapa do backend (texto livre em PT) → índice do stepper de 6 etapas. */
 function stageIndex(stage: string, awaiting: boolean): number {
   const s = (stage || "").toLowerCase();
@@ -102,6 +123,7 @@ export const ProjectPage: React.FC<{ id: string }> = ({ id }) => {
       await api.post(`/api/projects/${id}/scene-patch`, {
         scene_id: sceneEdit.id,
         patch: {
+          component: sceneEdit.component,
           durationInFrames: Number(sceneEdit.durationInFrames) || 180,
           notes: sceneEdit.notes || "",
           params: sceneEdit.params,
@@ -659,6 +681,28 @@ export const ProjectPage: React.FC<{ id: string }> = ({ id }) => {
                     <span className="muted mono" style={{ fontSize: 12 }}>id: {sceneEdit.id}</span>
                   </div>
                   <div>
+                    <label>Motor / Estilo visual da cena</label>
+                    <select
+                      value={sceneEdit.component}
+                      onChange={(e) => {
+                        const nextComp = e.target.value;
+                        const nextSpec = SPEC_MAP[nextComp];
+                        const defaults = Object.fromEntries((nextSpec?.params || []).map((p: any) => [p.key, p.default]));
+                        setSceneEdit({
+                          ...sceneEdit,
+                          component: nextComp,
+                          params: { ...defaults, ...(sceneEdit.params?.title ? { title: sceneEdit.params.title } : {}) },
+                        });
+                      }}
+                    >
+                      {(sceneSpecs.scenes as any[]).map((s) => (
+                        <option key={s.id} value={s.id}>
+                          {s.title} ({s.id})
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
                     <label>Notas da cena</label>
                     <input
                       value={sceneEdit.notes || ""}
@@ -759,6 +803,53 @@ export const ProjectPage: React.FC<{ id: string }> = ({ id }) => {
                               <option key={o} value={o}>{o}</option>
                             ))}
                           </select>
+                        </div>
+                      );
+                    }
+                    if (p.type === "color") {
+                      return (
+                        <div key={p.key}>
+                          <label>{p.label}</label>
+                          <div className="row" style={{ gap: 8 }}>
+                            <input
+                              type="color"
+                              value={String(val || "#38bdf8")}
+                              onChange={(e) => setSceneEdit({ ...sceneEdit, params: { ...sceneEdit.params, [p.key]: e.target.value } })}
+                              style={{ width: 44, height: 34, padding: 2 }}
+                            />
+                            <input
+                              type="text"
+                              value={String(val ?? "")}
+                              onChange={(e) => setSceneEdit({ ...sceneEdit, params: { ...sceneEdit.params, [p.key]: e.target.value } })}
+                            />
+                          </div>
+                        </div>
+                      );
+                    }
+                    if (p.type === "asset") {
+                      return (
+                        <div key={p.key} className="col" style={{ gap: 4 }}>
+                          <label>{p.label}</label>
+                          <select
+                            value={QUICK_ASSETS.some((qa) => qa.value === String(val ?? "")) ? String(val ?? "") : ""}
+                            onChange={(e) => {
+                              if (e.target.value) {
+                                setSceneEdit({ ...sceneEdit, params: { ...sceneEdit.params, [p.key]: e.target.value } });
+                              }
+                            }}
+                          >
+                            {QUICK_ASSETS.map((qa) => (
+                              <option key={qa.label} value={qa.value}>
+                                {qa.label}
+                              </option>
+                            ))}
+                          </select>
+                          <input
+                            type="text"
+                            placeholder="Ex.: lib:user-avatars.animal-character-coder-red-panda"
+                            value={String(val ?? "")}
+                            onChange={(e) => setSceneEdit({ ...sceneEdit, params: { ...sceneEdit.params, [p.key]: e.target.value } })}
+                          />
                         </div>
                       );
                     }

@@ -1,0 +1,406 @@
+{
+  "schema": "vrs.filmplan/1",
+  "title": "Desafio no Obby das Nuvens",
+  "language": "pt-BR",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "theme": {
+    "background": "#0f172a",
+    "foreground": "#f8fafc",
+    "accent": "#38bdf8",
+    "accent2": "#f43f5e",
+    "muted": "#94a3b8",
+    "font": "rounded",
+    "visualLanguage": "roblox-3d"
+  },
+  "captions": {
+    "enabled": true,
+    "mode": "word",
+    "position": "bottom",
+    "maxWords": 3,
+    "highlight": "#ffd23f"
+  },
+  "audio": {
+    "narration": "voice/narration.wav",
+    "music": "",
+    "musicVolume": 0.12,
+    "duck": true,
+    "voice": "faber"
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "component": "vrs-roblox-stage",
+      "params": {
+        "title": "Nível 1: Pista nas Nuvens",
+        "action": "obby_jump",
+        "environment": "obby_sky",
+        "shirtColor": "#2563eb",
+        "pantsColor": "#16a34a",
+        "skinColor": "#facc15",
+        "bubble": "Pula agora!"
+      },
+      "durationInFrames": 150,
+      "narration": "No primeiro nível do desafio, cada salto exige precisão no tempo certo.",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "No",
+          "start": 300,
+          "end": 440
+        },
+        {
+          "id": "w-2",
+          "word": "primeiro",
+          "start": 440,
+          "end": 768
+        },
+        {
+          "id": "w-3",
+          "word": "nível",
+          "start": 768,
+          "end": 1026
+        },
+        {
+          "id": "w-4",
+          "word": "do",
+          "start": 1026,
+          "end": 1119
+        },
+        {
+          "id": "w-5",
+          "word": "desafio,",
+          "start": 1119,
+          "end": 1892
+        },
+        {
+          "id": "w-6",
+          "word": "cada",
+          "start": 1892,
+          "end": 2232
+        },
+        {
+          "id": "w-7",
+          "word": "salto",
+          "start": 2232,
+          "end": 2548
+        },
+        {
+          "id": "w-8",
+          "word": "exige",
+          "start": 2548,
+          "end": 2853
+        },
+        {
+          "id": "w-9",
+          "word": "precisão",
+          "start": 2853,
+          "end": 3333
+        },
+        {
+          "id": "w-10",
+          "word": "no",
+          "start": 3333,
+          "end": 3427
+        },
+        {
+          "id": "w-11",
+          "word": "tempo",
+          "start": 3427,
+          "end": 3696
+        },
+        {
+          "id": "w-12",
+          "word": "certo.",
+          "start": 3696,
+          "end": 4282
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "fade",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/click1.ogg",
+          "at_ms": 1119,
+          "volume": 0.14,
+          "role": "anchor:w-5"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "id": "s02",
+      "component": "vrs-roblox-stage",
+      "params": {
+        "title": "Explorando a Cidade 3D",
+        "action": "wave_talk",
+        "environment": "blocky_city",
+        "shirtColor": "#ef4444",
+        "pantsColor": "#1e293b",
+        "skinColor": "#facc15",
+        "bubble": "Nova rota desbloqueada!"
+      },
+      "durationInFrames": 150,
+      "narration": "Quando você domina o ritmo dos blocos, o mapa inteiro abre novas rotas.",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Quando",
+          "start": 300,
+          "end": 522
+        },
+        {
+          "id": "w-2",
+          "word": "você",
+          "start": 522,
+          "end": 791
+        },
+        {
+          "id": "w-3",
+          "word": "domina",
+          "start": 791,
+          "end": 1154
+        },
+        {
+          "id": "w-4",
+          "word": "o",
+          "start": 1154,
+          "end": 1225
+        },
+        {
+          "id": "w-5",
+          "word": "ritmo",
+          "start": 1225,
+          "end": 1517
+        },
+        {
+          "id": "w-6",
+          "word": "dos",
+          "start": 1517,
+          "end": 1681
+        },
+        {
+          "id": "w-7",
+          "word": "blocos,",
+          "start": 1681,
+          "end": 2290
+        },
+        {
+          "id": "w-8",
+          "word": "o",
+          "start": 2290,
+          "end": 2419
+        },
+        {
+          "id": "w-9",
+          "word": "mapa",
+          "start": 2419,
+          "end": 2688
+        },
+        {
+          "id": "w-10",
+          "word": "inteiro",
+          "start": 2688,
+          "end": 3087
+        },
+        {
+          "id": "w-11",
+          "word": "abre",
+          "start": 3087,
+          "end": 3344
+        },
+        {
+          "id": "w-12",
+          "word": "novas",
+          "start": 3344,
+          "end": 3672
+        },
+        {
+          "id": "w-13",
+          "word": "rotas.",
+          "start": 3672,
+          "end": 4351
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "zoom",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
+          "at_ms": 40,
+          "volume": 0.16,
+          "role": "transition:zoom"
+        },
+        {
+          "path": "assets/lib/kenney-ui-audio/click1.ogg",
+          "at_ms": 1225,
+          "volume": 0.14,
+          "role": "anchor:w-5"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "id": "s03",
+      "component": "vrs-roblox-stage",
+      "params": {
+        "title": "Fase Concluída",
+        "action": "duet_3d",
+        "environment": "nature_camp",
+        "shirtColor": "#22c55e",
+        "pantsColor": "#1d4ed8",
+        "skinColor": "#facc15",
+        "bubble": "GG! Próxima fase!"
+      },
+      "durationInFrames": 152,
+      "narration": "E no final da fase, a equipe se reúne no acampamento para o próximo desafio!",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "E",
+          "start": 300,
+          "end": 381
+        },
+        {
+          "id": "w-2",
+          "word": "no",
+          "start": 381,
+          "end": 486
+        },
+        {
+          "id": "w-3",
+          "word": "final",
+          "start": 486,
+          "end": 812
+        },
+        {
+          "id": "w-4",
+          "word": "da",
+          "start": 812,
+          "end": 951
+        },
+        {
+          "id": "w-5",
+          "word": "fase,",
+          "start": 951,
+          "end": 1452
+        },
+        {
+          "id": "w-6",
+          "word": "a",
+          "start": 1452,
+          "end": 1545
+        },
+        {
+          "id": "w-7",
+          "word": "equipe",
+          "start": 1545,
+          "end": 1906
+        },
+        {
+          "id": "w-8",
+          "word": "se",
+          "start": 1906,
+          "end": 2011
+        },
+        {
+          "id": "w-9",
+          "word": "reúne",
+          "start": 2011,
+          "end": 2360
+        },
+        {
+          "id": "w-10",
+          "word": "no",
+          "start": 2360,
+          "end": 2442
+        },
+        {
+          "id": "w-11",
+          "word": "acampamento",
+          "start": 2442,
+          "end": 3140
+        },
+        {
+          "id": "w-12",
+          "word": "para",
+          "start": 3140,
+          "end": 3338
+        },
+        {
+          "id": "w-13",
+          "word": "o",
+          "start": 3338,
+          "end": 3396
+        },
+        {
+          "id": "w-14",
+          "word": "próximo",
+          "start": 3396,
+          "end": 3792
+        },
+        {
+          "id": "w-15",
+          "word": "desafio!",
+          "start": 3792,
+          "end": 4584
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "zoom",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
+          "at_ms": 40,
+          "volume": 0.16,
+          "role": "transition:zoom"
+        },
+        {
+          "path": "assets/lib/kenney-ui-audio/click1.ogg",
+          "at_ms": 1452,
+          "volume": 0.14,
+          "role": "anchor:w-6"
+        }
+      ],
+      "notes": ""
+    }
+  ],
+  "uncertainties": [],
+  "sources": [],
+  "illustrativeData": false,
+  "warnings": []
+}

@@ -1,0 +1,85 @@
+{
+  "schema": "vrs.storyboard/1",
+  "title": "Podcast dos Avatares: IA vs Código",
+  "language": "pt-BR",
+  "uncertainties": [],
+  "illustrative_data": false,
+  "scenes": [
+    {
+      "preset_id": "vrs-multiplane-stage",
+      "parameters": {
+        "title": "Estúdio VRS · Episódio 1",
+        "environment": "podcast_studio",
+        "farBackground": "",
+        "midground": "",
+        "character": "lib:user-avatars.animal-character-coder-red-panda",
+        "secondCharacter": "",
+        "bubble": "Automatizando com código!",
+        "stickers": [
+          {
+            "asset": "",
+            "emoji": "🚀",
+            "label": "100% LOCAL",
+            "x": 0.18,
+            "y": 0.34
+          },
+          {
+            "asset": "",
+            "emoji": "⚡",
+            "label": "RÁPIDO",
+            "x": 0.82,
+            "y": 0.36
+          }
+        ]
+      },
+      "narration": "Bem-vindos ao estúdio! Hoje vamos revelar como automatizar projetos inteiros sem perder qualidade.",
+      "duration": 5
+    },
+    {
+      "preset_id": "vrs-multiplane-stage",
+      "parameters": {
+        "title": "Código & Regras Claras",
+        "environment": "city_neon",
+        "farBackground": "",
+        "midground": "",
+        "character": "lib:user-avatars.animal-character-coder-red-panda",
+        "secondCharacter": "lib:user-avatars.animal-character-lawyer-shark",
+        "bubble": "Procedência verificada!",
+        "stickers": [
+          {
+            "asset": "",
+            "emoji": "⚖️",
+            "label": "APROVADO",
+            "x": 0.5,
+            "y": 0.28
+          }
+        ]
+      },
+      "narration": "Mas antes de publicar qualquer sistema, cada recurso precisa ter licença limpa e procedência verificada.",
+      "duration": 5
+    },
+    {
+      "preset_id": "vrs-multiplane-stage",
+      "parameters": {
+        "title": "Histórias que Ganham Vida",
+        "environment": "castle_hills",
+        "farBackground": "lib:kenney-background-elements.sky",
+        "midground": "lib:kenney-background-elements.castle",
+        "character": "lib:user-avatars.animal-character-professor-penguin",
+        "secondCharacter": "",
+        "bubble": "Bora criar o próximo vídeo!",
+        "stickers": [
+          {
+            "asset": "",
+            "emoji": "🏆",
+            "label": "SUCESSO",
+            "x": 0.2,
+            "y": 0.35
+          }
+        ]
+      },
+      "narration": "Com cenários em camadas e personagens expressivos, suas histórias ganham vida na tela.",
+      "duration": 5
+    }
+  ]
+}

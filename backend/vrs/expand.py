@@ -18,8 +18,8 @@ from .util import VRSError, safe_join, write_json
 LEAD_MS = 300  # respiro antes da fala (após a transição de entrada)
 TAIL_MS = 450  # respiro depois da fala
 TRANSITIONS = ["fade", "wipe", "slide", "zoom", "circle"]
-NICHE_TRANSITION = {"ciencia": "wipe", "documentario": "fade", "meme": "flash", "cta": "zoom", "financas": "slide", "frases": "fade", "tutorial": "slide", "historia": "circle"}
-PRIMARY_ASSET = {"vrs-title": "backgroundAsset", "vrs-story-panel": "character", "vrs-meme": "image", "vrs-3d-stage": "model", "vrs-parallax-photo": "image"}
+NICHE_TRANSITION = {"ciencia": "wipe", "documentario": "fade", "meme": "flash", "cta": "zoom", "financas": "slide", "frases": "fade", "tutorial": "slide", "historia": "circle", "stickman": "wipe", "southpark": "slide", "roblox": "zoom", "multiplane": "fade"}
+PRIMARY_ASSET = {"vrs-title": "backgroundAsset", "vrs-story-panel": "character", "vrs-meme": "image", "vrs-3d-stage": "model", "vrs-parallax-photo": "image", "vrs-stickman-stage": "boardAsset", "vrs-multiplane-stage": "character"}
 
 Progress = Callable[[str, float], None]
 
@@ -40,7 +40,7 @@ def _auto_sfx(pid: str, idx: int, preset_id: str, tr: str, words: list[dict[str,
     if idx > 0 and tr != "none":
         rel = library.import_into_project(pid, rollover)
         cues.append({"path": rel, "at_ms": 40, "volume": 0.16, "role": f"transition:{tr}"})
-    if words and preset_id in ("vrs-stat", "vrs-meme", "vrs-cta", "vrs-kinetic-quote", "vrs-calc", "vrs-code-walkthrough", "vrs-parallax-photo"):
+    if words and preset_id in ("vrs-stat", "vrs-meme", "vrs-cta", "vrs-kinetic-quote", "vrs-calc", "vrs-code-walkthrough", "vrs-parallax-photo", "vrs-stickman-stage", "vrs-southpark-stage", "vrs-roblox-stage", "vrs-multiplane-stage"):
         anchor = words[min(len(words) - 1, max(0, len(words) // 3))]
         rel_c = library.import_into_project(pid, click)
         cues.append({"path": rel_c, "at_ms": int(anchor["start"]), "volume": 0.14, "role": f"anchor:{anchor['id']}"})
@@ -201,17 +201,25 @@ def storyboard_from_recipe(niche_id: str, *, title: str | None = None) -> dict[s
     }
 
 
-def patch_scene(plan: dict[str, Any], scene_id: str, patch: dict[str, Any]) -> dict[str, Any]:
-    """Altera parâmetros/duração/transição de uma cena; o cache re-renderiza só ela."""
-    allowed = {"params", "durationInFrames", "transitionIn", "transitionOut", "layers", "sfx", "notes"}
+def patch_scene(plan: dict[str, Any], scene_id: str, patch: dict[str, Any], *, pid: str | None = None) -> dict[str, Any]:
+    """Altera parâmetros/componente/duração/transição de uma cena; o cache re-renderiza só ela."""
+    allowed = {"component", "params", "durationInFrames", "transitionIn", "transitionOut", "layers", "sfx", "notes"}
     bad = set(patch) - allowed
     if bad:
         raise VRSError(f"Campos não editáveis por patch: {', '.join(sorted(bad))}")
     for sc in plan["scenes"]:
         if sc["id"] == scene_id:
+            if "component" in patch and patch["component"] != sc["component"]:
+                catalog.get_scene(patch["component"])
+                sc["component"] = patch["component"]
+                sc["params"] = catalog.validate_params(sc["component"], {})
             if "params" in patch:
-                merged = {**sc["params"], **patch["params"]}
-                sc["params"] = catalog.validate_params(sc["component"], merged)
+                spec_keys = {p["key"] for p in catalog.get_scene(sc["component"])["params"]}
+                filtered = {k: v for k, v in {**sc["params"], **patch["params"]}.items() if k in spec_keys}
+                sc["params"] = catalog.validate_params(sc["component"], filtered)
+                if pid:
+                    extra_assets = _apply_assets(pid, sc["component"], sc["params"], "", [])
+                    sc["assets"] = {**(sc.get("assets") or {}), **extra_assets}
             for k in ("durationInFrames", "transitionIn", "transitionOut", "layers", "sfx", "notes"):
                 if k in patch:
                     sc[k] = patch[k]

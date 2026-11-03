@@ -9,6 +9,7 @@ import { ViralCaptions } from "./ViralCaptions";
 import { CalcScene, BarChartScene, ComparisonScene, LineChartScene } from "./scenes/data";
 import { MapRouteScene, MechanismScene, StepsScene, TimelineScene } from "./scenes/explain";
 import { CustomLayersScene, DocMontageScene, ObjectStageScene, ParallaxPhotoScene, Stage3DScene, StoryPanelScene } from "./scenes/media";
+import { MultiplaneStageScene, RobloxStageScene, SouthParkStageScene, StickmanStageScene } from "./scenes/characters";
 import { CodeWalkthroughScene, CtaScene, MemeScene, QuoteScene, StatScene, TitleScene } from "./scenes/text";
 
 const OWN: Record<string, React.FC<{ params: Record<string, any> }>> = {
@@ -31,6 +32,10 @@ const OWN: Record<string, React.FC<{ params: Record<string, any> }>> = {
   "vrs-3d-stage": Stage3DScene,
   "vrs-parallax-photo": ParallaxPhotoScene,
   "vrs-code-walkthrough": CodeWalkthroughScene,
+  "vrs-stickman-stage": StickmanStageScene,
+  "vrs-southpark-stage": SouthParkStageScene,
+  "vrs-roblox-stage": RobloxStageScene,
+  "vrs-multiplane-stage": MultiplaneStageScene,
 };
 
 export const KNOWN_COMPONENTS = new Set<string>([...Object.keys(OWN), "vrs-custom", ...Object.keys(RENDERCOMP_COMPONENTS)]);
@@ -109,6 +114,8 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({ plan, scene, asset
       return u;
     },
     captionsOn,
+    words: scene.words,
+    narration: scene.narration,
   };
   const spec = SCENE_SPECS[scene.component];
   if (!spec || !KNOWN_COMPONENTS.has(scene.component)) throw new Error(`Componente desconhecido: ${scene.component}`);

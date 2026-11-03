@@ -117,7 +117,7 @@ def patch_scene(pid: str, scene_id: str, patch: dict[str, Any], *, render_after:
     plan = projects.load(pid, "plan")
     if not plan:
         raise VRSError("Projeto sem plano.", code="no_plan")
-    new = expand.patch_scene(plan, scene_id, patch)
+    new = expand.patch_scene(plan, scene_id, patch, pid=pid)
     n = projects.save_versioned(pid, "plan", new)
     job = jobs.enqueue("render", pid, {}) if render_after else None
     return {"plan_version": n, "job": job}

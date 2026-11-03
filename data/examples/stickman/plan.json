@@ -1,0 +1,416 @@
+{
+  "schema": "vrs.filmplan/1",
+  "title": "O paradoxo da produtividade",
+  "language": "pt-BR",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "theme": {
+    "background": "#0f172a",
+    "foreground": "#f8fafc",
+    "accent": "#38bdf8",
+    "accent2": "#facc15",
+    "muted": "#94a3b8",
+    "font": "rounded",
+    "visualLanguage": "stickman-rig"
+  },
+  "captions": {
+    "enabled": true,
+    "mode": "word",
+    "position": "bottom",
+    "maxWords": 3,
+    "highlight": "#ffd23f"
+  },
+  "audio": {
+    "narration": "voice/narration.wav",
+    "music": "",
+    "musicVolume": 0.12,
+    "duck": true,
+    "voice": "faber"
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "component": "vrs-stickman-stage",
+      "params": {
+        "title": "O Mito das 12 Horas",
+        "action": "explain_board",
+        "expression": "skeptical",
+        "accessory": "cap",
+        "environment": "whiteboard",
+        "boardTitle": "PRODUTIVIDADE REAL",
+        "bullets": [
+          "Foco profundo dura 4 horas",
+          "Cansaço multiplica erros",
+          "Descanso faz parte do treino"
+        ],
+        "boardAsset": "",
+        "bubble": "Olha para este quadro!"
+      },
+      "durationInFrames": 150,
+      "narration": "Todo mundo acha que trabalhar doze horas seguidas dobra o resultado.",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Todo",
+          "start": 300,
+          "end": 499
+        },
+        {
+          "id": "w-2",
+          "word": "mundo",
+          "start": 499,
+          "end": 792
+        },
+        {
+          "id": "w-3",
+          "word": "acha",
+          "start": 792,
+          "end": 1027
+        },
+        {
+          "id": "w-4",
+          "word": "que",
+          "start": 1027,
+          "end": 1121
+        },
+        {
+          "id": "w-5",
+          "word": "trabalhar",
+          "start": 1121,
+          "end": 1531
+        },
+        {
+          "id": "w-6",
+          "word": "doze",
+          "start": 1531,
+          "end": 1918
+        },
+        {
+          "id": "w-7",
+          "word": "horas",
+          "start": 1918,
+          "end": 2129
+        },
+        {
+          "id": "w-8",
+          "word": "seguidas",
+          "start": 2129,
+          "end": 2575
+        },
+        {
+          "id": "w-9",
+          "word": "dobra",
+          "start": 2575,
+          "end": 2868
+        },
+        {
+          "id": "w-10",
+          "word": "o",
+          "start": 2868,
+          "end": 2927
+        },
+        {
+          "id": "w-11",
+          "word": "resultado.",
+          "start": 2927,
+          "end": 3713
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "fade",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/click1.ogg",
+          "at_ms": 1027,
+          "volume": 0.14,
+          "role": "anchor:w-4"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "id": "s02",
+      "component": "vrs-stickman-stage",
+      "params": {
+        "title": "Sobrecarga Mental",
+        "action": "shrug_panic",
+        "expression": "shocked",
+        "accessory": "headphones",
+        "environment": "minimal",
+        "boardTitle": "ALERTA DE ENERGIA",
+        "bullets": [
+          "Atenção cai pela metade",
+          "Retrabalho no dia seguinte"
+        ],
+        "boardAsset": "",
+        "bubble": "Socorro, esqueci tudo!"
+      },
+      "durationInFrames": 150,
+      "narration": "Mas depois da sexta hora sem pausa, o cérebro entra em modo de emergência.",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Mas",
+          "start": 300,
+          "end": 489
+        },
+        {
+          "id": "w-2",
+          "word": "depois",
+          "start": 489,
+          "end": 784
+        },
+        {
+          "id": "w-3",
+          "word": "da",
+          "start": 784,
+          "end": 914
+        },
+        {
+          "id": "w-4",
+          "word": "sexta",
+          "start": 914,
+          "end": 1316
+        },
+        {
+          "id": "w-5",
+          "word": "hora",
+          "start": 1316,
+          "end": 1529
+        },
+        {
+          "id": "w-6",
+          "word": "sem",
+          "start": 1529,
+          "end": 1730
+        },
+        {
+          "id": "w-7",
+          "word": "pausa,",
+          "start": 1730,
+          "end": 2250
+        },
+        {
+          "id": "w-8",
+          "word": "o",
+          "start": 2250,
+          "end": 2356
+        },
+        {
+          "id": "w-9",
+          "word": "cérebro",
+          "start": 2356,
+          "end": 2723
+        },
+        {
+          "id": "w-10",
+          "word": "entra",
+          "start": 2723,
+          "end": 2935
+        },
+        {
+          "id": "w-11",
+          "word": "em",
+          "start": 2935,
+          "end": 3054
+        },
+        {
+          "id": "w-12",
+          "word": "modo",
+          "start": 3054,
+          "end": 3326
+        },
+        {
+          "id": "w-13",
+          "word": "de",
+          "start": 3326,
+          "end": 3420
+        },
+        {
+          "id": "w-14",
+          "word": "emergência.",
+          "start": 3420,
+          "end": 4212
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "wipe",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
+          "at_ms": 40,
+          "volume": 0.16,
+          "role": "transition:wipe"
+        },
+        {
+          "path": "assets/lib/kenney-ui-audio/click1.ogg",
+          "at_ms": 1316,
+          "volume": 0.14,
+          "role": "anchor:w-5"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "id": "s03",
+      "component": "vrs-stickman-stage",
+      "params": {
+        "title": "Foco vs. Pressa",
+        "action": "duet_debate",
+        "expression": "happy",
+        "accessory": "glasses",
+        "environment": "podcast",
+        "boardTitle": "REGRA DE OURO",
+        "bullets": [
+          "Blocos de 90 minutos",
+          "Pausa real longe da tela"
+        ],
+        "boardAsset": "",
+        "bubble": "Trabalhe com estratégia!"
+      },
+      "durationInFrames": 150,
+      "narration": "O segredo não é correr sem parar, e sim proteger os blocos de foco.",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "O",
+          "start": 300,
+          "end": 417
+        },
+        {
+          "id": "w-2",
+          "word": "segredo",
+          "start": 417,
+          "end": 757
+        },
+        {
+          "id": "w-3",
+          "word": "não",
+          "start": 757,
+          "end": 944
+        },
+        {
+          "id": "w-4",
+          "word": "é",
+          "start": 944,
+          "end": 1014
+        },
+        {
+          "id": "w-5",
+          "word": "correr",
+          "start": 1014,
+          "end": 1343
+        },
+        {
+          "id": "w-6",
+          "word": "sem",
+          "start": 1343,
+          "end": 1507
+        },
+        {
+          "id": "w-7",
+          "word": "parar,",
+          "start": 1507,
+          "end": 1940
+        },
+        {
+          "id": "w-8",
+          "word": "e",
+          "start": 1940,
+          "end": 2058
+        },
+        {
+          "id": "w-9",
+          "word": "sim",
+          "start": 2058,
+          "end": 2304
+        },
+        {
+          "id": "w-10",
+          "word": "proteger",
+          "start": 2304,
+          "end": 2691
+        },
+        {
+          "id": "w-11",
+          "word": "os",
+          "start": 2691,
+          "end": 2796
+        },
+        {
+          "id": "w-12",
+          "word": "blocos",
+          "start": 2796,
+          "end": 3218
+        },
+        {
+          "id": "w-13",
+          "word": "de",
+          "start": 3218,
+          "end": 3370
+        },
+        {
+          "id": "w-14",
+          "word": "foco.",
+          "start": 3370,
+          "end": 3980
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "wipe",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
+          "at_ms": 40,
+          "volume": 0.16,
+          "role": "transition:wipe"
+        },
+        {
+          "path": "assets/lib/kenney-ui-audio/click1.ogg",
+          "at_ms": 1014,
+          "volume": 0.14,
+          "role": "anchor:w-5"
+        }
+      ],
+      "notes": ""
+    }
+  ],
+  "uncertainties": [],
+  "sources": [],
+  "illustrativeData": false,
+  "warnings": []
+}

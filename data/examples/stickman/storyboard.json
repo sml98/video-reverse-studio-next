@@ -1,0 +1,67 @@
+{
+  "schema": "vrs.storyboard/1",
+  "title": "O paradoxo da produtividade",
+  "language": "pt-BR",
+  "uncertainties": [],
+  "illustrative_data": false,
+  "scenes": [
+    {
+      "preset_id": "vrs-stickman-stage",
+      "parameters": {
+        "title": "O Mito das 12 Horas",
+        "action": "explain_board",
+        "expression": "skeptical",
+        "accessory": "cap",
+        "environment": "whiteboard",
+        "boardTitle": "PRODUTIVIDADE REAL",
+        "bullets": [
+          "Foco profundo dura 4 horas",
+          "Cansaço multiplica erros",
+          "Descanso faz parte do treino"
+        ],
+        "boardAsset": "",
+        "bubble": "Olha para este quadro!"
+      },
+      "narration": "Todo mundo acha que trabalhar doze horas seguidas dobra o resultado.",
+      "duration": 5
+    },
+    {
+      "preset_id": "vrs-stickman-stage",
+      "parameters": {
+        "title": "Sobrecarga Mental",
+        "action": "shrug_panic",
+        "expression": "shocked",
+        "accessory": "headphones",
+        "environment": "minimal",
+        "boardTitle": "ALERTA DE ENERGIA",
+        "bullets": [
+          "Atenção cai pela metade",
+          "Retrabalho no dia seguinte"
+        ],
+        "boardAsset": "",
+        "bubble": "Socorro, esqueci tudo!"
+      },
+      "narration": "Mas depois da sexta hora sem pausa, o cérebro entra em modo de emergência.",
+      "duration": 5
+    },
+    {
+      "preset_id": "vrs-stickman-stage",
+      "parameters": {
+        "title": "Foco vs. Pressa",
+        "action": "duet_debate",
+        "expression": "happy",
+        "accessory": "glasses",
+        "environment": "podcast",
+        "boardTitle": "REGRA DE OURO",
+        "bullets": [
+          "Blocos de 90 minutos",
+          "Pausa real longe da tela"
+        ],
+        "boardAsset": "",
+        "bubble": "Trabalhe com estratégia!"
+      },
+      "narration": "O segredo não é correr sem parar, e sim proteger os blocos de foco.",
+      "duration": 5
+    }
+  ]
+}

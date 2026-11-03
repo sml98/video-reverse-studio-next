@@ -1,0 +1,415 @@
+{
+  "schema": "vrs.filmplan/1",
+  "title": "O plano infalível no ponto de ônibus",
+  "language": "pt-BR",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "theme": {
+    "background": "#0f172a",
+    "foreground": "#f8fafc",
+    "accent": "#facc15",
+    "accent2": "#ef4444",
+    "muted": "#cbd5e1",
+    "font": "rounded",
+    "visualLanguage": "paper-cutout"
+  },
+  "captions": {
+    "enabled": true,
+    "mode": "word",
+    "position": "bottom",
+    "maxWords": 3,
+    "highlight": "#ffd23f"
+  },
+  "audio": {
+    "narration": "voice/narration.wav",
+    "music": "",
+    "musicVolume": 0.12,
+    "duck": true,
+    "voice": "faber"
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "component": "vrs-southpark-stage",
+      "params": {
+        "title": "Manhã Gelada",
+        "mode": "duet",
+        "environment": "snow_town",
+        "expression": "happy",
+        "hatStyle": "beanie",
+        "coatColor": "#ef4444",
+        "hatColor": "#38bdf8",
+        "characterName": "Leo",
+        "secondCoatColor": "#f97316",
+        "secondHatColor": "#22c55e",
+        "secondCharacterName": "Max",
+        "bubble": "Tive uma ideia genial!"
+      },
+      "durationInFrames": 150,
+      "narration": "Cara, eu tive uma ideia genial para a gente nunca mais acordar cedo.",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Cara,",
+          "start": 300,
+          "end": 698
+        },
+        {
+          "id": "w-2",
+          "word": "eu",
+          "start": 698,
+          "end": 874
+        },
+        {
+          "id": "w-3",
+          "word": "tive",
+          "start": 874,
+          "end": 1097
+        },
+        {
+          "id": "w-4",
+          "word": "uma",
+          "start": 1097,
+          "end": 1214
+        },
+        {
+          "id": "w-5",
+          "word": "ideia",
+          "start": 1214,
+          "end": 1472
+        },
+        {
+          "id": "w-6",
+          "word": "genial",
+          "start": 1472,
+          "end": 1871
+        },
+        {
+          "id": "w-7",
+          "word": "para",
+          "start": 1871,
+          "end": 2023
+        },
+        {
+          "id": "w-8",
+          "word": "a",
+          "start": 2023,
+          "end": 2070
+        },
+        {
+          "id": "w-9",
+          "word": "gente",
+          "start": 2070,
+          "end": 2340
+        },
+        {
+          "id": "w-10",
+          "word": "nunca",
+          "start": 2340,
+          "end": 2621
+        },
+        {
+          "id": "w-11",
+          "word": "mais",
+          "start": 2621,
+          "end": 2833
+        },
+        {
+          "id": "w-12",
+          "word": "acordar",
+          "start": 2833,
+          "end": 3208
+        },
+        {
+          "id": "w-13",
+          "word": "cedo.",
+          "start": 3208,
+          "end": 3794
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "fade",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/click1.ogg",
+          "at_ms": 1214,
+          "volume": 0.14,
+          "role": "anchor:w-5"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "id": "s02",
+      "component": "vrs-southpark-stage",
+      "params": {
+        "title": "",
+        "mode": "duet",
+        "environment": "snow_town",
+        "expression": "angry",
+        "hatStyle": "ushanka",
+        "coatColor": "#ef4444",
+        "hatColor": "#38bdf8",
+        "characterName": "Leo",
+        "secondCoatColor": "#f97316",
+        "secondHatColor": "#22c55e",
+        "secondCharacterName": "Max",
+        "bubble": "Nem vem com essa!"
+      },
+      "durationInFrames": 150,
+      "narration": "Da última vez que você disse isso, a gente terminou preso na diretoria.",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Da",
+          "start": 300,
+          "end": 418
+        },
+        {
+          "id": "w-2",
+          "word": "última",
+          "start": 418,
+          "end": 820
+        },
+        {
+          "id": "w-3",
+          "word": "vez",
+          "start": 820,
+          "end": 1056
+        },
+        {
+          "id": "w-4",
+          "word": "que",
+          "start": 1056,
+          "end": 1139
+        },
+        {
+          "id": "w-5",
+          "word": "você",
+          "start": 1139,
+          "end": 1423
+        },
+        {
+          "id": "w-6",
+          "word": "disse",
+          "start": 1423,
+          "end": 1754
+        },
+        {
+          "id": "w-7",
+          "word": "isso,",
+          "start": 1754,
+          "end": 2133
+        },
+        {
+          "id": "w-8",
+          "word": "a",
+          "start": 2133,
+          "end": 2227
+        },
+        {
+          "id": "w-9",
+          "word": "gente",
+          "start": 2227,
+          "end": 2487
+        },
+        {
+          "id": "w-10",
+          "word": "terminou",
+          "start": 2487,
+          "end": 2913
+        },
+        {
+          "id": "w-11",
+          "word": "preso",
+          "start": 2913,
+          "end": 3244
+        },
+        {
+          "id": "w-12",
+          "word": "na",
+          "start": 3244,
+          "end": 3386
+        },
+        {
+          "id": "w-13",
+          "word": "diretoria.",
+          "start": 3386,
+          "end": 4096
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "slide",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
+          "at_ms": 40,
+          "volume": 0.16,
+          "role": "transition:slide"
+        },
+        {
+          "path": "assets/lib/kenney-ui-audio/click1.ogg",
+          "at_ms": 1139,
+          "volume": 0.14,
+          "role": "anchor:w-5"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "id": "s03",
+      "component": "vrs-southpark-stage",
+      "params": {
+        "title": "",
+        "mode": "solo",
+        "environment": "classroom",
+        "expression": "shocked",
+        "hatStyle": "spiky",
+        "coatColor": "#2563eb",
+        "hatColor": "#facc15",
+        "characterName": "Leo",
+        "secondCoatColor": "#f97316",
+        "secondHatColor": "#22c55e",
+        "secondCharacterName": "Max",
+        "bubble": "Confia na planilha!"
+      },
+      "durationInFrames": 150,
+      "narration": "Relaxa, dessa vez o plano tem gráfico, planilha e zero chance de erro!",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Relaxa,",
+          "start": 300,
+          "end": 803
+        },
+        {
+          "id": "w-2",
+          "word": "dessa",
+          "start": 803,
+          "end": 1178
+        },
+        {
+          "id": "w-3",
+          "word": "vez",
+          "start": 1178,
+          "end": 1424
+        },
+        {
+          "id": "w-4",
+          "word": "o",
+          "start": 1424,
+          "end": 1529
+        },
+        {
+          "id": "w-5",
+          "word": "plano",
+          "start": 1529,
+          "end": 1822
+        },
+        {
+          "id": "w-6",
+          "word": "tem",
+          "start": 1822,
+          "end": 2021
+        },
+        {
+          "id": "w-7",
+          "word": "gráfico,",
+          "start": 2021,
+          "end": 2606
+        },
+        {
+          "id": "w-8",
+          "word": "planilha",
+          "start": 2606,
+          "end": 3145
+        },
+        {
+          "id": "w-9",
+          "word": "e",
+          "start": 3145,
+          "end": 3285
+        },
+        {
+          "id": "w-10",
+          "word": "zero",
+          "start": 3285,
+          "end": 3520
+        },
+        {
+          "id": "w-11",
+          "word": "chance",
+          "start": 3520,
+          "end": 3847
+        },
+        {
+          "id": "w-12",
+          "word": "de",
+          "start": 3847,
+          "end": 4011
+        },
+        {
+          "id": "w-13",
+          "word": "erro!",
+          "start": 4011,
+          "end": 4398
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "slide",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
+          "at_ms": 40,
+          "volume": 0.16,
+          "role": "transition:slide"
+        },
+        {
+          "path": "assets/lib/kenney-ui-audio/click1.ogg",
+          "at_ms": 1529,
+          "volume": 0.14,
+          "role": "anchor:w-5"
+        }
+      ],
+      "notes": ""
+    }
+  ],
+  "uncertainties": [],
+  "sources": [],
+  "illustrativeData": false,
+  "warnings": []
+}

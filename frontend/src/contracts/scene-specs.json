@@ -343,6 +343,87 @@
       ]
     },
     {
+      "id": "vrs-stickman-stage",
+      "title": "Boneco Palito Articulado 2D + Quadro",
+      "summary": "Boneco palito vetorial articulado por juntas (caminhada, apontar lousa, mesa podcast, debate em dupla) com expressões e lip-sync por fonemas.",
+      "category": "historia",
+      "motion": ["rig 2D articulado", "lip-sync visemas", "quadro branco"],
+      "params": [
+        {"key": "title", "type": "text", "label": "Título da cena", "maxLength": 80, "default": ""},
+        {"key": "action", "type": "select", "label": "Ação / Pose", "options": ["explain_board", "walk_talk", "desk_podcast", "shrug_panic", "duet_debate"], "default": "explain_board"},
+        {"key": "expression", "type": "select", "label": "Expressão facial", "options": ["neutral", "happy", "angry", "shocked", "skeptical", "money"], "default": "neutral"},
+        {"key": "accessory", "type": "select", "label": "Acessório", "options": ["none", "cap", "crown", "glasses", "headphones"], "default": "cap"},
+        {"key": "environment", "type": "select", "label": "Cenário", "options": ["whiteboard", "podcast", "classroom", "street", "minimal"], "default": "whiteboard"},
+        {"key": "boardTitle", "type": "text", "label": "Título no quadro/bancada", "maxLength": 60, "default": "RESUMO RÁPIDO"},
+        {"key": "bullets", "type": "list", "label": "Itens do quadro branco", "maxItems": 4, "item": {"type": "text", "maxLength": 60, "default": "Ponto"}, "default": ["Ideia principal", "Como funciona na prática", "Resultado final"]},
+        {"key": "boardAsset", "type": "asset", "label": "Imagem no quadro (opcional)", "default": ""},
+        {"key": "bubble", "type": "text", "label": "Balão de fala (opcional)", "maxLength": 120, "default": ""}
+      ]
+    },
+    {
+      "id": "vrs-southpark-stage",
+      "title": "Bonecos Estilo South Park (Paper Cutout + Lip-Sync)",
+      "summary": "Personagens em camadas estilo recorte de papel a 12fps com inclinação de cabeça na sílaba, 6 bocas sincronizadas e cenário de papel.",
+      "category": "humor",
+      "motion": ["recorte 12fps", "head-bob", "lip-sync 6 visemas"],
+      "params": [
+        {"key": "title", "type": "text", "label": "Título (opcional)", "maxLength": 80, "default": ""},
+        {"key": "mode", "type": "select", "label": "Modo de cena", "options": ["solo", "duet"], "default": "duet"},
+        {"key": "environment", "type": "select", "label": "Cenário de papel", "options": ["snow_town", "classroom", "courtroom", "studio"], "default": "snow_town"},
+        {"key": "expression", "type": "select", "label": "Expressão", "options": ["neutral", "happy", "angry", "shocked"], "default": "neutral"},
+        {"key": "hatStyle", "type": "select", "label": "Estilo de gorro/cabelo", "options": ["beanie", "ushanka", "spiky"], "default": "beanie"},
+        {"key": "coatColor", "type": "color", "label": "Cor do casaco 1", "default": "#ef4444"},
+        {"key": "hatColor", "type": "color", "label": "Cor do gorro 1", "default": "#38bdf8"},
+        {"key": "characterName", "type": "text", "label": "Nome Personagem 1", "maxLength": 24, "default": "Leo"},
+        {"key": "secondCoatColor", "type": "color", "label": "Cor do casaco 2 (dueto)", "default": "#f97316"},
+        {"key": "secondHatColor", "type": "color", "label": "Cor do gorro 2 (dueto)", "default": "#22c55e"},
+        {"key": "secondCharacterName", "type": "text", "label": "Nome Personagem 2", "maxLength": 24, "default": "Max"},
+        {"key": "bubble", "type": "text", "label": "Balão de fala", "maxLength": 120, "default": ""}
+      ]
+    },
+    {
+      "id": "vrs-roblox-stage",
+      "title": "Mundo Roblox / Blocky 3D (Bonecos + Obby)",
+      "summary": "Bonecos 3D articulados em blocos (estilo Roblox R6) com rosto sincronizado à fala, pulos em pista Obby e cenários 3D Three.js.",
+      "category": "historia",
+      "motion": ["rig 3D blocky", "obby parkour", "câmera 3D"],
+      "params": [
+        {"key": "title", "type": "text", "label": "Título", "maxLength": 80, "default": ""},
+        {"key": "action", "type": "select", "label": "Ação 3D", "options": ["obby_jump", "wave_talk", "walk_explore", "duet_3d"], "default": "obby_jump"},
+        {"key": "environment", "type": "select", "label": "Mapa / Cenário 3D", "options": ["obby_sky", "blocky_city", "nature_camp"], "default": "obby_sky"},
+        {"key": "shirtColor", "type": "color", "label": "Cor do torso/camisa", "default": "#2563eb"},
+        {"key": "pantsColor", "type": "color", "label": "Cor das pernas", "default": "#16a34a"},
+        {"key": "skinColor", "type": "color", "label": "Tom de pele blocky", "default": "#facc15"},
+        {"key": "bubble", "type": "text", "label": "Fala no topo", "maxLength": 110, "default": ""}
+      ]
+    },
+    {
+      "id": "vrs-multiplane-stage",
+      "title": "Cenário Multi-Plano 2.5D + Avatares & Stickers",
+      "summary": "Cenário em 3 camadas de profundidade com avatares vivos (respiração e pulso de fala) e stickers die-cut com borda branca recortada.",
+      "category": "historia",
+      "motion": ["paralaxe 3 planos", "avatar reativo", "stickers die-cut"],
+      "params": [
+        {"key": "title", "type": "text", "label": "Título", "maxLength": 80, "default": ""},
+        {"key": "environment", "type": "select", "label": "Preset de ambiente", "options": ["podcast_studio", "castle_hills", "city_neon"], "default": "podcast_studio"},
+        {"key": "farBackground", "type": "asset", "label": "Fundo distante (opcional)", "default": ""},
+        {"key": "midground", "type": "asset", "label": "Meio-termo / construção (opcional)", "default": ""},
+        {"key": "character", "type": "asset", "label": "Avatar principal (PNG)", "default": ""},
+        {"key": "secondCharacter", "type": "asset", "label": "Segundo avatar (opcional)", "default": ""},
+        {"key": "bubble", "type": "text", "label": "Legenda na bancada / fala", "maxLength": 120, "default": ""},
+        {"key": "stickers", "type": "list", "label": "Stickers Die-Cut", "maxItems": 4,
+          "item": {"type": "object", "fields": [
+            {"key": "asset", "type": "asset", "label": "Imagem do sticker (opcional)", "default": ""},
+            {"key": "emoji", "type": "text", "label": "Emoji (se sem imagem)", "maxLength": 8, "default": "🔥"},
+            {"key": "label", "type": "text", "label": "Selo do sticker", "maxLength": 24, "default": "TOP"},
+            {"key": "x", "type": "number", "label": "Posição X (0–1)", "min": 0.1, "max": 0.9, "default": 0.2},
+            {"key": "y", "type": "number", "label": "Posição Y (0–1)", "min": 0.15, "max": 0.75, "default": 0.35}
+          ]},
+          "default": [{"asset": "", "emoji": "🔥", "label": "DESTAQUE", "x": 0.2, "y": 0.35}]
+        }
+      ]
+    },
+    {
       "id": "vrs-custom",
       "title": "Cena programada (camadas)",
       "summary": "Cena definida por camadas, pivôs e keyframes no FilmPlan; para mecanismos que os modelos não cobrem.",

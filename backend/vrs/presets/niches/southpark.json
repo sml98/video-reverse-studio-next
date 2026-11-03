@@ -1,0 +1,118 @@
+{
+  "id": "southpark",
+  "title": "Cutout Estilo South Park",
+  "emoji": "✂️",
+  "description": "Bonecos de papel recortado a 12fps com inclinação de cabeça e sincronia labial de visemas.",
+  "arc": [
+    "abertura na neve",
+    "discussão",
+    "desfecho cômico"
+  ],
+  "visualLanguages": [
+    "paper-cutout",
+    "cartoon",
+    "stickers"
+  ],
+  "theme": {
+    "background": "#0f172a",
+    "foreground": "#f8fafc",
+    "accent": "#facc15",
+    "accent2": "#ef4444",
+    "muted": "#cbd5e1",
+    "font": "rounded",
+    "visualLanguage": "paper-cutout"
+  },
+  "example": {
+    "title": "O plano infalível no ponto de ônibus",
+    "idea": "Dois amigos de papel recortado debatem um plano absurdo esperando o ônibus na neve.",
+    "aspect": "landscape"
+  },
+  "assets_hint": [
+    "kenney-background-elements"
+  ],
+  "recipe": [
+    {
+      "role": "abertura na neve",
+      "label": "Ponto de Ônibus",
+      "preset_id": "vrs-southpark-stage",
+      "duration": 5,
+      "narration": "Cara, eu tive uma ideia genial para a gente nunca mais acordar cedo.",
+      "parameters": {
+        "title": "Manhã Gelada",
+        "mode": "duet",
+        "environment": "snow_town",
+        "expression": "happy",
+        "hatStyle": "beanie",
+        "coatColor": "#ef4444",
+        "hatColor": "#38bdf8",
+        "characterName": "Leo",
+        "secondCoatColor": "#f97316",
+        "secondHatColor": "#22c55e",
+        "secondCharacterName": "Max",
+        "bubble": "Tive uma ideia genial!"
+      },
+      "guidance": ""
+    },
+    {
+      "role": "discussão",
+      "label": "Questionamento",
+      "preset_id": "vrs-southpark-stage",
+      "duration": 5,
+      "narration": "Da última vez que você disse isso, a gente terminou preso na diretoria.",
+      "parameters": {
+        "title": "",
+        "mode": "duet",
+        "environment": "snow_town",
+        "expression": "angry",
+        "hatStyle": "ushanka",
+        "coatColor": "#ef4444",
+        "hatColor": "#38bdf8",
+        "characterName": "Leo",
+        "secondCoatColor": "#f97316",
+        "secondHatColor": "#22c55e",
+        "secondCharacterName": "Max",
+        "bubble": "Nem vem com essa!"
+      },
+      "guidance": ""
+    },
+    {
+      "role": "desfecho cômico",
+      "label": "Desfecho",
+      "preset_id": "vrs-southpark-stage",
+      "duration": 5,
+      "narration": "Relaxa, dessa vez o plano tem gráfico, planilha e zero chance de erro!",
+      "parameters": {
+        "title": "",
+        "mode": "solo",
+        "environment": "classroom",
+        "expression": "shocked",
+        "hatStyle": "spiky",
+        "coatColor": "#2563eb",
+        "hatColor": "#facc15",
+        "characterName": "Leo",
+        "secondCoatColor": "#f97316",
+        "secondHatColor": "#22c55e",
+        "secondCharacterName": "Max",
+        "bubble": "Confia na planilha!"
+      },
+      "guidance": ""
+    }
+  ],
+  "aspects": [
+    "landscape",
+    "vertical",
+    "square"
+  ],
+  "durationRange": [
+    10,
+    120
+  ],
+  "defaultDuration": 16,
+  "captions": {
+    "mode": "word",
+    "position": "bottom",
+    "maxWords": 3
+  },
+  "voice": "faber",
+  "schema": "vrs.niche/1"
+}

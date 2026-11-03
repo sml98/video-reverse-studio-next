@@ -1,0 +1,36 @@
+{
+  "project_id": "p9ae266038b4e",
+  "niche": "roblox",
+  "review": {
+    "technical": "aprovado_com_achados",
+    "findings": [
+      {
+        "kind": "conteudo_na_borda",
+        "scene": "s01",
+        "detail": "atividade nas margens 48 — verificar texto cortado"
+      }
+    ],
+    "motion": [
+      {
+        "scene": "s01",
+        "component": "vrs-roblox-stage",
+        "motion": 4.07,
+        "first_half": 3.75
+      },
+      {
+        "scene": "s02",
+        "component": "vrs-roblox-stage",
+        "motion": 2.99,
+        "first_half": 3.07
+      },
+      {
+        "scene": "s03",
+        "component": "vrs-roblox-stage",
+        "motion": 2.54,
+        "first_half": 2.65
+      }
+    ]
+  },
+  "render_seconds": 22.6,
+  "duration_s": 15.067
+}

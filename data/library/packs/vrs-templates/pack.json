@@ -1,0 +1,40 @@
+{
+  "id": "vrs-templates",
+  "title": "Templates Visuais de Referência · Roblox, Cutout, Stickers, Cartoon, Minecraft",
+  "source": "Acervo local VRS Templates",
+  "license": "Uso livre local (VRS)",
+  "credit": "Video Reverse Studio Templates",
+  "styles": [
+    "roblox",
+    "paper-cutout",
+    "stickers",
+    "cartoon",
+    "minecraft",
+    "documentary"
+  ],
+  "niches": [
+    "historia",
+    "meme",
+    "tutorial",
+    "documentario"
+  ],
+  "tags": [
+    "template",
+    "roblox",
+    "cutout",
+    "southpark",
+    "stickers",
+    "cartoon",
+    "minecraft",
+    "referencia"
+  ],
+  "notes": "Vídeos curtos de referência de estilo e ritmo para Roblox, Paper Cutout, Stickers e Cartoon.",
+  "files": {
+    "cartoon-demo.mp4": "63385ddc524ac4f316ece0b0cbdd617fe222ab2e86e39184f0ad061e57e0eb71",
+    "documentary-demo.mp4": "8dcd24b9acfa477ee1a3d10b11f53409659c8fab48b7f3869141f57d0591aff3",
+    "minecraft-demo.mp4": "4eb6b27047807c4979b8f2db2f50a63496ace2890eda21a8f852d910d68a6e81",
+    "paper-cutout-demo.mp4": "90c03987d29e755b0c7d22b83f8a118ce9ee2fc50bca4f303beb1e289f2a44f9",
+    "roblox-demo.mp4": "434ca1c62453df6dc601a06155170fc1824d2ccd2e32229c6ce9ed5738142aae",
+    "stickers-demo.mp4": "c25189924ac744666d9357bc7d6621800c14a549031c88ce374d7718dbc39dd4"
+  }
+}

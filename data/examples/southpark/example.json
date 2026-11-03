@@ -1,0 +1,46 @@
+{
+  "project_id": "p3262671c7c8a",
+  "niche": "southpark",
+  "review": {
+    "technical": "aprovado_com_achados",
+    "findings": [
+      {
+        "kind": "conteudo_na_borda",
+        "scene": "s01",
+        "detail": "atividade nas margens 42 — verificar texto cortado"
+      },
+      {
+        "kind": "conteudo_na_borda",
+        "scene": "s02",
+        "detail": "atividade nas margens 42 — verificar texto cortado"
+      },
+      {
+        "kind": "conteudo_na_borda",
+        "scene": "s03",
+        "detail": "atividade nas margens 86 — verificar texto cortado"
+      }
+    ],
+    "motion": [
+      {
+        "scene": "s01",
+        "component": "vrs-southpark-stage",
+        "motion": 4.83,
+        "first_half": 4.79
+      },
+      {
+        "scene": "s02",
+        "component": "vrs-southpark-stage",
+        "motion": 4.78,
+        "first_half": 4.65
+      },
+      {
+        "scene": "s03",
+        "component": "vrs-southpark-stage",
+        "motion": 1.66,
+        "first_half": 1.85
+      }
+    ]
+  },
+  "render_seconds": 19.0,
+  "duration_s": 15.0
+}

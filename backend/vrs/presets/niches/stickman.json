@@ -1,0 +1,121 @@
+{
+  "id": "stickman",
+  "title": "Explainer Boneco Palito 2D",
+  "emoji": "✏️",
+  "description": "Boneco palito articulado explicando no quadro branco, caminhando e debatendo em dupla.",
+  "arc": [
+    "quadro branco",
+    "caminhada",
+    "debate em dupla",
+    "conclusão"
+  ],
+  "visualLanguages": [
+    "stickman-rig",
+    "whiteboard",
+    "stickers"
+  ],
+  "theme": {
+    "background": "#0f172a",
+    "foreground": "#f8fafc",
+    "accent": "#38bdf8",
+    "accent2": "#facc15",
+    "muted": "#94a3b8",
+    "font": "rounded",
+    "visualLanguage": "stickman-rig"
+  },
+  "example": {
+    "title": "O paradoxo da produtividade",
+    "idea": "Por que trabalhar mais horas nem sempre gera mais resultado, explicado com bonecos palito.",
+    "aspect": "landscape"
+  },
+  "assets_hint": [
+    "kenney-background-elements",
+    "user-avatars"
+  ],
+  "recipe": [
+    {
+      "role": "quadro branco",
+      "label": "Quadro Branco",
+      "preset_id": "vrs-stickman-stage",
+      "duration": 5,
+      "narration": "Todo mundo acha que trabalhar doze horas seguidas dobra o resultado.",
+      "parameters": {
+        "title": "O Mito das 12 Horas",
+        "action": "explain_board",
+        "expression": "skeptical",
+        "accessory": "cap",
+        "environment": "whiteboard",
+        "boardTitle": "PRODUTIVIDADE REAL",
+        "bullets": [
+          "Foco profundo dura 4 horas",
+          "Cansaço multiplica erros",
+          "Descanso faz parte do treino"
+        ],
+        "boardAsset": "",
+        "bubble": "Olha para este quadro!"
+      },
+      "guidance": "Boneco palito aponta para a lousa enquanto os itens surgem."
+    },
+    {
+      "role": "caminhada",
+      "label": "Caminhada e Pânico",
+      "preset_id": "vrs-stickman-stage",
+      "duration": 5,
+      "narration": "Mas depois da sexta hora sem pausa, o cérebro entra em modo de emergência.",
+      "parameters": {
+        "title": "Sobrecarga Mental",
+        "action": "shrug_panic",
+        "expression": "shocked",
+        "accessory": "headphones",
+        "environment": "minimal",
+        "boardTitle": "ALERTA DE ENERGIA",
+        "bullets": [
+          "Atenção cai pela metade",
+          "Retrabalho no dia seguinte"
+        ],
+        "boardAsset": "",
+        "bubble": "Socorro, esqueci tudo!"
+      },
+      "guidance": ""
+    },
+    {
+      "role": "debate em dupla",
+      "label": "Debate em Dupla",
+      "preset_id": "vrs-stickman-stage",
+      "duration": 5,
+      "narration": "O segredo não é correr sem parar, e sim proteger os blocos de foco.",
+      "parameters": {
+        "title": "Foco vs. Pressa",
+        "action": "duet_debate",
+        "expression": "happy",
+        "accessory": "glasses",
+        "environment": "podcast",
+        "boardTitle": "REGRA DE OURO",
+        "bullets": [
+          "Blocos de 90 minutos",
+          "Pausa real longe da tela"
+        ],
+        "boardAsset": "",
+        "bubble": "Trabalhe com estratégia!"
+      },
+      "guidance": ""
+    }
+  ],
+  "aspects": [
+    "landscape",
+    "vertical",
+    "square"
+  ],
+  "durationRange": [
+    10,
+    120
+  ],
+  "defaultDuration": 16,
+  "captions": {
+    "mode": "word",
+    "position": "bottom",
+    "maxWords": 3
+  },
+  "voice": "faber",
+  "schema": "vrs.niche/1"
+}

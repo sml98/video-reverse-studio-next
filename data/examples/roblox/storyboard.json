@@ -1,0 +1,51 @@
+{
+  "schema": "vrs.storyboard/1",
+  "title": "Desafio no Obby das Nuvens",
+  "language": "pt-BR",
+  "uncertainties": [],
+  "illustrative_data": false,
+  "scenes": [
+    {
+      "preset_id": "vrs-roblox-stage",
+      "parameters": {
+        "title": "Nível 1: Pista nas Nuvens",
+        "action": "obby_jump",
+        "environment": "obby_sky",
+        "shirtColor": "#2563eb",
+        "pantsColor": "#16a34a",
+        "skinColor": "#facc15",
+        "bubble": "Pula agora!"
+      },
+      "narration": "No primeiro nível do desafio, cada salto exige precisão no tempo certo.",
+      "duration": 5
+    },
+    {
+      "preset_id": "vrs-roblox-stage",
+      "parameters": {
+        "title": "Explorando a Cidade 3D",
+        "action": "wave_talk",
+        "environment": "blocky_city",
+        "shirtColor": "#ef4444",
+        "pantsColor": "#1e293b",
+        "skinColor": "#facc15",
+        "bubble": "Nova rota desbloqueada!"
+      },
+      "narration": "Quando você domina o ritmo dos blocos, o mapa inteiro abre novas rotas.",
+      "duration": 5
+    },
+    {
+      "preset_id": "vrs-roblox-stage",
+      "parameters": {
+        "title": "Fase Concluída",
+        "action": "duet_3d",
+        "environment": "nature_camp",
+        "shirtColor": "#22c55e",
+        "pantsColor": "#1d4ed8",
+        "skinColor": "#facc15",
+        "bubble": "GG! Próxima fase!"
+      },
+      "narration": "E no final da fase, a equipe se reúne no acampamento para o próximo desafio!",
+      "duration": 5
+    }
+  ]
+}

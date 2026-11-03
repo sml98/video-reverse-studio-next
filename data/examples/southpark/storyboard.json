@@ -1,0 +1,66 @@
+{
+  "schema": "vrs.storyboard/1",
+  "title": "O plano infalível no ponto de ônibus",
+  "language": "pt-BR",
+  "uncertainties": [],
+  "illustrative_data": false,
+  "scenes": [
+    {
+      "preset_id": "vrs-southpark-stage",
+      "parameters": {
+        "title": "Manhã Gelada",
+        "mode": "duet",
+        "environment": "snow_town",
+        "expression": "happy",
+        "hatStyle": "beanie",
+        "coatColor": "#ef4444",
+        "hatColor": "#38bdf8",
+        "characterName": "Leo",
+        "secondCoatColor": "#f97316",
+        "secondHatColor": "#22c55e",
+        "secondCharacterName": "Max",
+        "bubble": "Tive uma ideia genial!"
+      },
+      "narration": "Cara, eu tive uma ideia genial para a gente nunca mais acordar cedo.",
+      "duration": 5
+    },
+    {
+      "preset_id": "vrs-southpark-stage",
+      "parameters": {
+        "title": "",
+        "mode": "duet",
+        "environment": "snow_town",
+        "expression": "angry",
+        "hatStyle": "ushanka",
+        "coatColor": "#ef4444",
+        "hatColor": "#38bdf8",
+        "characterName": "Leo",
+        "secondCoatColor": "#f97316",
+        "secondHatColor": "#22c55e",
+        "secondCharacterName": "Max",
+        "bubble": "Nem vem com essa!"
+      },
+      "narration": "Da última vez que você disse isso, a gente terminou preso na diretoria.",
+      "duration": 5
+    },
+    {
+      "preset_id": "vrs-southpark-stage",
+      "parameters": {
+        "title": "",
+        "mode": "solo",
+        "environment": "classroom",
+        "expression": "shocked",
+        "hatStyle": "spiky",
+        "coatColor": "#2563eb",
+        "hatColor": "#facc15",
+        "characterName": "Leo",
+        "secondCoatColor": "#f97316",
+        "secondHatColor": "#22c55e",
+        "secondCharacterName": "Max",
+        "bubble": "Confia na planilha!"
+      },
+      "narration": "Relaxa, dessa vez o plano tem gráfico, planilha e zero chance de erro!",
+      "duration": 5
+    }
+  ]
+}

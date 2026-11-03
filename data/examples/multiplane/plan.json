@@ -1,0 +1,459 @@
+{
+  "schema": "vrs.filmplan/1",
+  "title": "Podcast dos Avatares: IA vs Código",
+  "language": "pt-BR",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "theme": {
+    "background": "#0b1020",
+    "foreground": "#f8fafc",
+    "accent": "#ffb02e",
+    "accent2": "#38bdf8",
+    "muted": "#94a3b8",
+    "font": "rounded",
+    "visualLanguage": "multiplane"
+  },
+  "captions": {
+    "enabled": true,
+    "mode": "word",
+    "position": "bottom",
+    "maxWords": 3,
+    "highlight": "#ffd23f"
+  },
+  "audio": {
+    "narration": "voice/narration.wav",
+    "music": "",
+    "musicVolume": 0.12,
+    "duck": true,
+    "voice": "faber"
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "component": "vrs-multiplane-stage",
+      "params": {
+        "title": "Estúdio VRS · Episódio 1",
+        "environment": "podcast_studio",
+        "farBackground": "",
+        "midground": "",
+        "character": "assets/lib/user-avatars/animal-character-coder-red-panda.png",
+        "secondCharacter": "",
+        "bubble": "Automatizando com código!",
+        "stickers": [
+          {
+            "asset": "",
+            "emoji": "🚀",
+            "label": "100% LOCAL",
+            "x": 0.18,
+            "y": 0.34
+          },
+          {
+            "asset": "",
+            "emoji": "⚡",
+            "label": "RÁPIDO",
+            "x": 0.82,
+            "y": 0.36
+          }
+        ]
+      },
+      "durationInFrames": 183,
+      "narration": "Bem-vindos ao estúdio! Hoje vamos revelar como automatizar projetos inteiros sem perder qualidade.",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Bem-vindos",
+          "start": 300,
+          "end": 933
+        },
+        {
+          "id": "w-2",
+          "word": "ao",
+          "start": 933,
+          "end": 1047
+        },
+        {
+          "id": "w-3",
+          "word": "estúdio!",
+          "start": 1047,
+          "end": 1681
+        },
+        {
+          "id": "w-4",
+          "word": "Hoje",
+          "start": 1801,
+          "end": 2050
+        },
+        {
+          "id": "w-5",
+          "word": "vamos",
+          "start": 2050,
+          "end": 2287
+        },
+        {
+          "id": "w-6",
+          "word": "revelar",
+          "start": 2287,
+          "end": 2643
+        },
+        {
+          "id": "w-7",
+          "word": "como",
+          "start": 2643,
+          "end": 2869
+        },
+        {
+          "id": "w-8",
+          "word": "automatizar",
+          "start": 2869,
+          "end": 3462
+        },
+        {
+          "id": "w-9",
+          "word": "projetos",
+          "start": 3462,
+          "end": 3984
+        },
+        {
+          "id": "w-10",
+          "word": "inteiros",
+          "start": 3984,
+          "end": 4375
+        },
+        {
+          "id": "w-11",
+          "word": "sem",
+          "start": 4375,
+          "end": 4541
+        },
+        {
+          "id": "w-12",
+          "word": "perder",
+          "start": 4541,
+          "end": 4814
+        },
+        {
+          "id": "w-13",
+          "word": "qualidade.",
+          "start": 4814,
+          "end": 5621
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {
+        "assets/lib/user-avatars/animal-character-coder-red-panda.png": "assets/lib/user-avatars/animal-character-coder-red-panda.png"
+      },
+      "layers": [],
+      "transitionIn": {
+        "type": "fade",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/click1.ogg",
+          "at_ms": 2050,
+          "volume": 0.14,
+          "role": "anchor:w-5"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "id": "s02",
+      "component": "vrs-multiplane-stage",
+      "params": {
+        "title": "Código & Regras Claras",
+        "environment": "city_neon",
+        "farBackground": "",
+        "midground": "",
+        "character": "assets/lib/user-avatars/animal-character-coder-red-panda.png",
+        "secondCharacter": "assets/lib/user-avatars/animal-character-lawyer-shark.png",
+        "bubble": "Procedência verificada!",
+        "stickers": [
+          {
+            "asset": "",
+            "emoji": "⚖️",
+            "label": "APROVADO",
+            "x": 0.5,
+            "y": 0.28
+          }
+        ]
+      },
+      "durationInFrames": 202,
+      "narration": "Mas antes de publicar qualquer sistema, cada recurso precisa ter licença limpa e procedência verificada.",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Mas",
+          "start": 300,
+          "end": 440
+        },
+        {
+          "id": "w-2",
+          "word": "antes",
+          "start": 440,
+          "end": 721
+        },
+        {
+          "id": "w-3",
+          "word": "de",
+          "start": 721,
+          "end": 873
+        },
+        {
+          "id": "w-4",
+          "word": "publicar",
+          "start": 873,
+          "end": 1306
+        },
+        {
+          "id": "w-5",
+          "word": "qualquer",
+          "start": 1306,
+          "end": 1692
+        },
+        {
+          "id": "w-6",
+          "word": "sistema,",
+          "start": 1692,
+          "end": 2324
+        },
+        {
+          "id": "w-7",
+          "word": "cada",
+          "start": 2324,
+          "end": 2651
+        },
+        {
+          "id": "w-8",
+          "word": "recurso",
+          "start": 2651,
+          "end": 3073
+        },
+        {
+          "id": "w-9",
+          "word": "precisa",
+          "start": 3073,
+          "end": 3529
+        },
+        {
+          "id": "w-10",
+          "word": "ter",
+          "start": 3529,
+          "end": 3716
+        },
+        {
+          "id": "w-11",
+          "word": "licença",
+          "start": 3716,
+          "end": 4161
+        },
+        {
+          "id": "w-12",
+          "word": "limpa",
+          "start": 4161,
+          "end": 4559
+        },
+        {
+          "id": "w-13",
+          "word": "e",
+          "start": 4559,
+          "end": 4687
+        },
+        {
+          "id": "w-14",
+          "word": "procedência",
+          "start": 4687,
+          "end": 5366
+        },
+        {
+          "id": "w-15",
+          "word": "verificada.",
+          "start": 5366,
+          "end": 6267
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {
+        "assets/lib/user-avatars/animal-character-coder-red-panda.png": "assets/lib/user-avatars/animal-character-coder-red-panda.png",
+        "assets/lib/user-avatars/animal-character-lawyer-shark.png": "assets/lib/user-avatars/animal-character-lawyer-shark.png"
+      },
+      "layers": [],
+      "transitionIn": {
+        "type": "fade",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
+          "at_ms": 40,
+          "volume": 0.16,
+          "role": "transition:fade"
+        },
+        {
+          "path": "assets/lib/kenney-ui-audio/click1.ogg",
+          "at_ms": 1692,
+          "volume": 0.14,
+          "role": "anchor:w-6"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "id": "s03",
+      "component": "vrs-multiplane-stage",
+      "params": {
+        "title": "Histórias que Ganham Vida",
+        "environment": "castle_hills",
+        "farBackground": "assets/lib/kenney-background-elements/sky.png",
+        "midground": "assets/lib/kenney-background-elements/castle.png",
+        "character": "assets/lib/user-avatars/animal-character-professor-penguin.png",
+        "secondCharacter": "",
+        "bubble": "Bora criar o próximo vídeo!",
+        "stickers": [
+          {
+            "asset": "",
+            "emoji": "🏆",
+            "label": "SUCESSO",
+            "x": 0.2,
+            "y": 0.35
+          }
+        ]
+      },
+      "durationInFrames": 163,
+      "narration": "Com cenários em camadas e personagens expressivos, suas histórias ganham vida na tela.",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Com",
+          "start": 300,
+          "end": 417
+        },
+        {
+          "id": "w-2",
+          "word": "cenários",
+          "start": 417,
+          "end": 886
+        },
+        {
+          "id": "w-3",
+          "word": "em",
+          "start": 886,
+          "end": 1003
+        },
+        {
+          "id": "w-4",
+          "word": "camadas",
+          "start": 1003,
+          "end": 1496
+        },
+        {
+          "id": "w-5",
+          "word": "e",
+          "start": 1496,
+          "end": 1613
+        },
+        {
+          "id": "w-6",
+          "word": "personagens",
+          "start": 1613,
+          "end": 2234
+        },
+        {
+          "id": "w-7",
+          "word": "expressivos,",
+          "start": 2234,
+          "end": 3032
+        },
+        {
+          "id": "w-8",
+          "word": "suas",
+          "start": 3032,
+          "end": 3266
+        },
+        {
+          "id": "w-9",
+          "word": "histórias",
+          "start": 3266,
+          "end": 3677
+        },
+        {
+          "id": "w-10",
+          "word": "ganham",
+          "start": 3677,
+          "end": 4029
+        },
+        {
+          "id": "w-11",
+          "word": "vida",
+          "start": 4029,
+          "end": 4240
+        },
+        {
+          "id": "w-12",
+          "word": "na",
+          "start": 4240,
+          "end": 4369
+        },
+        {
+          "id": "w-13",
+          "word": "tela.",
+          "start": 4369,
+          "end": 4955
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {
+        "assets/lib/kenney-background-elements/sky.png": "assets/lib/kenney-background-elements/sky.png",
+        "assets/lib/kenney-background-elements/castle.png": "assets/lib/kenney-background-elements/castle.png",
+        "assets/lib/user-avatars/animal-character-professor-penguin.png": "assets/lib/user-avatars/animal-character-professor-penguin.png"
+      },
+      "layers": [],
+      "transitionIn": {
+        "type": "fade",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
+          "at_ms": 40,
+          "volume": 0.16,
+          "role": "transition:fade"
+        },
+        {
+          "path": "assets/lib/kenney-ui-audio/click1.ogg",
+          "at_ms": 1496,
+          "volume": 0.14,
+          "role": "anchor:w-5"
+        }
+      ],
+      "notes": ""
+    }
+  ],
+  "uncertainties": [],
+  "sources": [],
+  "illustrativeData": false,
+  "warnings": [
+    "Cena s01: a fala (6.1s) não cabe em 5.0s; a cena foi estendida sem cortar palavras.",
+    "Cena s02: a fala (6.7s) não cabe em 5.0s; a cena foi estendida sem cortar palavras.",
+    "Cena s03: a fala (5.4s) não cabe em 5.0s; a cena foi estendida sem cortar palavras."
+  ]
+}
