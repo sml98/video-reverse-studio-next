@@ -19,11 +19,12 @@
     "mode": "word",
     "position": "bottom",
     "maxWords": 3,
-    "highlight": "#ffd23f"
+    "highlight": "#ffd23f",
+    "style": "cinema"
   },
   "audio": {
     "narration": "voice/narration.wav",
-    "music": "",
+    "music": "assets/lib/vrs-pro-audio/bgm-doc-suspense.wav",
     "musicVolume": 0.12,
     "duck": true,
     "voice": "faber"
@@ -41,6 +42,7 @@
       },
       "durationInFrames": 126,
       "narration": "Em meados do século quinze, copiar um livro levava meses.",
+      "voice": "faber",
       "words": [
         {
           "id": "w-1",
@@ -116,7 +118,14 @@
         "durationInFrames": 0,
         "color": ""
       },
-      "sfx": [],
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/click1.ogg",
+          "at_ms": 60,
+          "volume": 0.18,
+          "role": "intro:drop"
+        }
+      ],
       "notes": ""
     },
     {
@@ -144,6 +153,7 @@
       },
       "durationInFrames": 291,
       "narration": "Por volta de 1440, Gutenberg desenvolve a prensa de tipos móveis em Mainz. Por volta de 1455, imprime sua Bíblia.",
+      "voice": "faber",
       "words": [
         {
           "id": "w-1",
@@ -279,11 +289,166 @@
         "durationInFrames": 0,
         "color": ""
       },
-      "sfx": [],
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
+          "at_ms": 30,
+          "volume": 0.18,
+          "role": "transition:fade"
+        }
+      ],
       "notes": ""
     },
     {
       "id": "s03",
+      "component": "vrs-news-highlight",
+      "params": {
+        "title": "Evidência Histórica",
+        "sourceName": "ARQUIVO HISTÓRICO · MAINZ",
+        "publishDate": "c. 1455 · Século XV",
+        "headline": "A Bíblia de 42 linhas inaugura a era da imprensa na Europa",
+        "highlightText": "Dezenas de cópias idênticas foram produzidas em meses em vez de anos.",
+        "bodySnippet": "A revolução tipográfica reduziu drasticamente o custo do conhecimento em todo o continente.",
+        "image": ""
+      },
+      "durationInFrames": 193,
+      "narration": "Os registros históricos confirmam que a Bíblia de 42 linhas inaugurou a produção em escala na Europa.",
+      "voice": "faber",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Os",
+          "start": 300,
+          "end": 427
+        },
+        {
+          "id": "w-2",
+          "word": "registros",
+          "start": 427,
+          "end": 858
+        },
+        {
+          "id": "w-3",
+          "word": "históricos",
+          "start": 858,
+          "end": 1416
+        },
+        {
+          "id": "w-4",
+          "word": "confirmam",
+          "start": 1416,
+          "end": 1975
+        },
+        {
+          "id": "w-5",
+          "word": "que",
+          "start": 1975,
+          "end": 2079
+        },
+        {
+          "id": "w-6",
+          "word": "a",
+          "start": 2079,
+          "end": 2161
+        },
+        {
+          "id": "w-7",
+          "word": "Bíblia",
+          "start": 2161,
+          "end": 2463
+        },
+        {
+          "id": "w-8",
+          "word": "de",
+          "start": 2463,
+          "end": 2568
+        },
+        {
+          "id": "w-9",
+          "word": "42",
+          "start": 2568,
+          "end": 3441
+        },
+        {
+          "id": "w-10",
+          "word": "linhas",
+          "start": 3441,
+          "end": 3720
+        },
+        {
+          "id": "w-11",
+          "word": "inaugurou",
+          "start": 3720,
+          "end": 4150
+        },
+        {
+          "id": "w-12",
+          "word": "a",
+          "start": 4150,
+          "end": 4208
+        },
+        {
+          "id": "w-13",
+          "word": "produção",
+          "start": 4208,
+          "end": 4720
+        },
+        {
+          "id": "w-14",
+          "word": "em",
+          "start": 4720,
+          "end": 4813
+        },
+        {
+          "id": "w-15",
+          "word": "escala",
+          "start": 4813,
+          "end": 5174
+        },
+        {
+          "id": "w-16",
+          "word": "na",
+          "start": 5174,
+          "end": 5290
+        },
+        {
+          "id": "w-17",
+          "word": "Europa.",
+          "start": 5290,
+          "end": 5965
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "fade",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
+          "at_ms": 30,
+          "volume": 0.18,
+          "role": "transition:fade"
+        },
+        {
+          "path": "assets/lib/kenney-ui-audio/click1.ogg",
+          "at_ms": 2079,
+          "volume": 0.16,
+          "role": "anchor:w-6"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "id": "s04",
       "component": "vrs-map-route",
       "params": {
         "title": "A técnica se espalha",
@@ -314,6 +479,7 @@
       },
       "durationInFrames": 180,
       "narration": "Em poucas décadas, a técnica se espalhou por mais de duzentas cidades europeias.",
+      "voice": "faber",
       "words": [
         {
           "id": "w-1",
@@ -407,11 +573,18 @@
         "durationInFrames": 0,
         "color": ""
       },
-      "sfx": [],
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
+          "at_ms": 30,
+          "volume": 0.18,
+          "role": "transition:fade"
+        }
+      ],
       "notes": ""
     },
     {
-      "id": "s04",
+      "id": "s05",
       "component": "vrs-stat",
       "params": {
         "value": 20,
@@ -424,6 +597,7 @@
       },
       "durationInFrames": 180,
       "narration": "Estima-se que, até 1500, mais de vinte milhões de volumes tenham sido impressos.",
+      "voice": "faber",
       "words": [
         {
           "id": "w-1",
@@ -517,14 +691,34 @@
         "durationInFrames": 0,
         "color": ""
       },
-      "sfx": [],
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
+          "at_ms": 30,
+          "volume": 0.18,
+          "role": "transition:fade"
+        },
+        {
+          "path": "assets/lib/kenney-ui-audio/click1.ogg",
+          "at_ms": 2217,
+          "volume": 0.16,
+          "role": "anchor:w-5"
+        }
+      ],
       "notes": ""
     }
   ],
   "uncertainties": [],
-  "sources": [],
+  "sources": [
+    {
+      "claim": "Prensa de tipos móveis em Mainz (c. 1440–1455)",
+      "source": "Gutenberg-Museum / Encyclopædia Britannica"
+    }
+  ],
   "illustrativeData": false,
   "warnings": [
-    "Cena s02: a fala (9.7s) não cabe em 8.0s; a cena foi estendida sem cortar palavras."
+    "Cena s02: a fala (9.7s) não cabe em 8.0s; a cena foi estendida sem cortar palavras.",
+    "Cena s03: a fala (6.4s) não cabe em 5.0s; a cena foi estendida sem cortar palavras.",
+    "Duração 32.3s excede o alvo de 24s em mais de 20%: o agente deve encurtar a narração."
   ]
 }

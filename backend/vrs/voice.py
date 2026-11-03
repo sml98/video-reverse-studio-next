@@ -60,16 +60,31 @@ def list_voices() -> list[dict[str, Any]]:
                     "audition": f"/media/voices/{onnx.parent.name}/audition.wav" if (onnx.parent / "audition.wav").exists() else "",
                 }
             )
+    ids = {v["id"] for v in out}
+    if "faber" in ids and "cadu" in ids:
+        out.append(
+            {
+                "id": "duet",
+                "engine": "piper-duet",
+                "file": "faber+cadu",
+                "language": "pt_BR",
+                "quality": "duet-medium",
+                "sample_rate": 22050,
+                "model_card": "Diálogo automático em duas vozes locais (faber + cadu alternando frases)",
+                "audition": "/media/voices/faber/audition.wav",
+            }
+        )
     return out
 
 
 def _model_path(voice_id: str) -> Path:
-    if not re.fullmatch(r"[a-z0-9_\-]{1,40}", voice_id or ""):
+    if not re.fullmatch(r"[a-z0-9_\-+]{1,40}", voice_id or ""):
         raise VRSError("ID de voz inválido.")
-    d = settings().voices_dir / voice_id
+    vid = "faber" if voice_id == "duet" else voice_id.split("+")[0]
+    d = settings().voices_dir / vid
     onnx = next(iter(sorted(d.glob("*.onnx"))), None)
     if not onnx:
-        raise VRSError(f"Voz '{voice_id}' não instalada em .tools/voices. Rode scripts/install-assets.sh --voices (instalação explícita).", code="voice_missing")
+        raise VRSError(f"Voz '{vid}' não instalada em .tools/voices. Rode scripts/install-assets.sh --voices (instalação explícita).", code="voice_missing")
     return onnx
 
 
@@ -89,6 +104,38 @@ def _load(voice_id: str):
 
 
 WORD_RE = re.compile(r"\S+")
+
+_PTBR_TOKEN_MAP = {
+    "2d": "dois dê",
+    "3d": "três dê",
+    "2.5d": "dois ponto cinco dê",
+    "ia": "inteligência artificial",
+    "cpu": "cê pê u",
+    "gpu": "gê pê u",
+    "mp4": "eme pê quatro",
+    "fps": "quadros por segundo",
+    "cta": "chamada para ação",
+    "vs": "versus",
+    "obby": "óbi",
+}
+
+
+def _spoken_word(w: str) -> str:
+    """Normaliza siglas, moedas e símbolos para pronúncia natural mantendo 1 token visual."""
+    m = re.match(r"^([^\wR$%]*)([\wR$%.]+)(.*)$", w, flags=re.UNICODE)
+    if not m:
+        return w
+    pre, core, post = m.groups()
+    low = core.lower()
+    if low in _PTBR_TOKEN_MAP:
+        return f"{pre}{_PTBR_TOKEN_MAP[low]}{post}"
+    if core.startswith("R$") and len(core) > 2:
+        return f"{pre}{core[2:]} reais{post}"
+    if core.endswith("%") and len(core) > 1:
+        return f"{pre}{core[:-1]} por cento{post}"
+    if re.fullmatch(r"\d+x", low):
+        return f"{pre}{low[:-1]} vezes{post}"
+    return w
 
 
 def _split_sentences(text: str) -> list[str]:
@@ -153,7 +200,7 @@ def _regroup(voice, text_words: list[str], ph_words: list[float]) -> list[float]
     counts = []
     for w in text_words:
         try:
-            sents = voice.phonemize(w)
+            sents = voice.phonemize(_spoken_word(w))
             n = sum(len([x for x in "".join(s).split(" ") if x.strip()]) for s in sents)
         except Exception:
             return None
@@ -168,11 +215,18 @@ def _regroup(voice, text_words: list[str], ph_words: list[float]) -> list[float]
 
 
 def synthesize(text: str, voice_id: str, out_wav: Path, *, length_scale: float = 1.0) -> dict[str, Any]:
-    """Sintetiza `text` em WAV mono 16-bit, com fades anti-click e tempos de palavras (ms)."""
+    """Sintetiza `text` em WAV mono 16-bit, com fades anti-click e tempos de palavras (ms). Suporta dueto (duet / faber+cadu)."""
     text = re.sub(r"\s+", " ", text or "").strip()
     if not text:
         raise VRSError("Texto vazio para narração.")
-    voice, has_align = _load(voice_id)
+    if voice_id == "duet":
+        v_pair = ["faber", "cadu"]
+    elif "+" in voice_id:
+        v_pair = [v.strip() for v in voice_id.split("+") if v.strip()]
+    else:
+        v_pair = [voice_id]
+    loaded_voices = [_load(v) for v in v_pair]
+    voice, has_align = loaded_voices[0]
     from piper import SynthesisConfig
 
     cfg = SynthesisConfig(length_scale=length_scale, normalize_audio=True)
@@ -181,25 +235,29 @@ def synthesize(text: str, voice_id: str, out_wav: Path, *, length_scale: float =
     words: list[dict[str, Any]] = []
     pos = 0
     precise_all = True
-    gap = np.zeros(int(sr * 0.12), dtype=np.int16)
+    gap = np.zeros(int(sr * 0.14), dtype=np.int16)
     sentences = _split_sentences(text)
     widx = 0
     for si, sentence in enumerate(sentences):
-        chunks = list(voice.synthesize(sentence, syn_config=cfg, include_alignments=has_align))
+        cur_voice, cur_align = loaded_voices[si % len(loaded_voices)]
+        s_words = WORD_RE.findall(sentence)
+        if not s_words:
+            continue
+        spoken_sentence = " ".join(_spoken_word(w) for w in s_words)
+        chunks = list(cur_voice.synthesize(spoken_sentence, syn_config=cfg, include_alignments=cur_align))
         if not chunks:
             continue
-        s_words = WORD_RE.findall(sentence)
         # Piper pode dividir em vários chunks; tratamos a frase inteira como bloco.
         arr = np.concatenate([c.audio_int16_array for c in chunks]).astype(np.int16)
         ph_words: list[float] | None = []
         for c in chunks:
-            pw = _phoneme_word_durations(voice, c) if has_align else None
+            pw = _phoneme_word_durations(cur_voice, c) if cur_align else None
             if pw is None:
                 ph_words = None
                 break
             ph_words.extend(pw)  # type: ignore[union-attr]
         if ph_words is not None and len(ph_words) != len(s_words):
-            ph_words = _regroup(voice, s_words, ph_words)
+            ph_words = _regroup(cur_voice, s_words, ph_words)
         start_ms = pos * 1000 / sr
         dur_ms = len(arr) * 1000 / sr
         timings, precise = _word_timings_for_chunk(s_words, ph_words, start_ms, dur_ms)

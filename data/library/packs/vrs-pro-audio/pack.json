@@ -1,0 +1,205 @@
+{
+  "id": "vrs-pro-audio",
+  "name": "VRS Studio Audio Pack (BGM & Cinematic SFX)",
+  "license": "CC0-1.0",
+  "source_url": "https://github.com/sml98/video-reverse-studio-next",
+  "description": "5 trilhas instrumentais de fundo (Lo-Fi, Comédia South Park, Blocky Synth, Documentário e Finanças) e 5 efeitos sonoros cinematográficos (Whoosh, Pop Mola, Sub-Drop, Marcador e Ding).",
+  "items": [
+    {
+      "id": "vrs-pro-audio.bgm-lofi-explain",
+      "name": "BGM Lo-Fi Explicativo (Warm Rhodes)",
+      "kind": "music",
+      "path": "bgm/bgm-lofi-explain.wav",
+      "tags": [
+        "bgm",
+        "lofi",
+        "explain",
+        "ciencia",
+        "tutorial",
+        "stickman",
+        "chill"
+      ],
+      "license": "CC0-1.0",
+      "source_url": "https://github.com/sml98/video-reverse-studio-next",
+      "author": "Video Reverse Studio Procedural Audio Lab",
+      "attribution_required": false,
+      "sha256": "7d81a8519f63fcaee3ebac7d615240d53a7b07d315333e007f7f98903454d9d5",
+      "size": 882044
+    },
+    {
+      "id": "vrs-pro-audio.bgm-quirky-comedy",
+      "name": "BGM Comédia Pluck (South Park / Meme)",
+      "kind": "music",
+      "path": "bgm/bgm-quirky-comedy.wav",
+      "tags": [
+        "bgm",
+        "comedy",
+        "southpark",
+        "meme",
+        "quirky",
+        "upbeat"
+      ],
+      "license": "CC0-1.0",
+      "source_url": "https://github.com/sml98/video-reverse-studio-next",
+      "author": "Video Reverse Studio Procedural Audio Lab",
+      "attribution_required": false,
+      "sha256": "907080956a208d1d66e40c9ebf470fe89a46e08390cd460d646259bfe53016d8",
+      "size": 882044
+    },
+    {
+      "id": "vrs-pro-audio.bgm-blocky-gaming",
+      "name": "BGM Blocky Synth Arcade (Roblox / Gaming)",
+      "kind": "music",
+      "path": "bgm/bgm-blocky-gaming.wav",
+      "tags": [
+        "bgm",
+        "roblox",
+        "gaming",
+        "arcade",
+        "synth",
+        "cta",
+        "multiplane"
+      ],
+      "license": "CC0-1.0",
+      "source_url": "https://github.com/sml98/video-reverse-studio-next",
+      "author": "Video Reverse Studio Procedural Audio Lab",
+      "attribution_required": false,
+      "sha256": "ea24f555a253249c764c845e2396a560ee0f8f9baaf79f084f38b088bb3888fd",
+      "size": 882044
+    },
+    {
+      "id": "vrs-pro-audio.bgm-doc-suspense",
+      "name": "BGM Pulso Documental Cinematográfico",
+      "kind": "music",
+      "path": "bgm/bgm-doc-suspense.wav",
+      "tags": [
+        "bgm",
+        "documentario",
+        "historia",
+        "cinematic",
+        "suspense",
+        "frases"
+      ],
+      "license": "CC0-1.0",
+      "source_url": "https://github.com/sml98/video-reverse-studio-next",
+      "author": "Video Reverse Studio Procedural Audio Lab",
+      "attribution_required": false,
+      "sha256": "757cb6ad8fbed448dec32e29096a97cd5592ac5e97306cd8c0a78e4d8392ea07",
+      "size": 882044
+    },
+    {
+      "id": "vrs-pro-audio.bgm-corp-finance",
+      "name": "BGM Pulso Executivo (Finanças / Tech)",
+      "kind": "music",
+      "path": "bgm/bgm-corp-finance.wav",
+      "tags": [
+        "bgm",
+        "financas",
+        "corporate",
+        "tech",
+        "clean"
+      ],
+      "license": "CC0-1.0",
+      "source_url": "https://github.com/sml98/video-reverse-studio-next",
+      "author": "Video Reverse Studio Procedural Audio Lab",
+      "attribution_required": false,
+      "sha256": "7e4e5ef1d4eedad744ac0e64a609671f52f366b0053801207faf3a37ba631877",
+      "size": 882044
+    },
+    {
+      "id": "vrs-pro-audio.sfx-whoosh",
+      "name": "SFX Whoosh Cinematográfico (Transição)",
+      "kind": "sfx",
+      "path": "sfx/sfx-whoosh.wav",
+      "tags": [
+        "sfx",
+        "whoosh",
+        "transition",
+        "swipe",
+        "rollover"
+      ],
+      "license": "CC0-1.0",
+      "source_url": "https://github.com/sml98/video-reverse-studio-next",
+      "author": "Video Reverse Studio Procedural Audio Lab",
+      "attribution_required": false,
+      "sha256": "870697679de6f807586255fa6ad8c972cb1edc10241e00f83e3ea96c146b84b5",
+      "size": 18566
+    },
+    {
+      "id": "vrs-pro-audio.sfx-pop-spring",
+      "name": "SFX Pop Mola (Sticker / Pop-in)",
+      "kind": "sfx",
+      "path": "sfx/sfx-pop-spring.wav",
+      "tags": [
+        "sfx",
+        "pop",
+        "sticker",
+        "click",
+        "bubble"
+      ],
+      "license": "CC0-1.0",
+      "source_url": "https://github.com/sml98/video-reverse-studio-next",
+      "author": "Video Reverse Studio Procedural Audio Lab",
+      "attribution_required": false,
+      "sha256": "d9da38273d42d675570a96c137667e7fe3ce0e0945ffa6cf6f5351a53fa5731b",
+      "size": 10628
+    },
+    {
+      "id": "vrs-pro-audio.sfx-sub-drop",
+      "name": "SFX Impacto Sub-Drop (Revelação / Dado)",
+      "kind": "sfx",
+      "path": "sfx/sfx-sub-drop.wav",
+      "tags": [
+        "sfx",
+        "impact",
+        "sub",
+        "drop",
+        "stat"
+      ],
+      "license": "CC0-1.0",
+      "source_url": "https://github.com/sml98/video-reverse-studio-next",
+      "author": "Video Reverse Studio Procedural Audio Lab",
+      "attribution_required": false,
+      "sha256": "90cf2a84217653bb2f363e75d28b10305ae250c2d2fdd4145904e34cea03ea40",
+      "size": 28708
+    },
+    {
+      "id": "vrs-pro-audio.sfx-marker-write",
+      "name": "SFX Marcador / Giz no Quadro",
+      "kind": "sfx",
+      "path": "sfx/sfx-marker-write.wav",
+      "tags": [
+        "sfx",
+        "marker",
+        "chalk",
+        "whiteboard",
+        "highlight"
+      ],
+      "license": "CC0-1.0",
+      "source_url": "https://github.com/sml98/video-reverse-studio-next",
+      "author": "Video Reverse Studio Procedural Audio Lab",
+      "attribution_required": false,
+      "sha256": "8e52c8497b0b3acaae8bba92e10fdeacb18f689007e7b728b616ae9cffd6be61",
+      "size": 14156
+    },
+    {
+      "id": "vrs-pro-audio.sfx-ding-check",
+      "name": "SFX Ding Cristalino (Check / CTA)",
+      "kind": "sfx",
+      "path": "sfx/sfx-ding-check.wav",
+      "tags": [
+        "sfx",
+        "ding",
+        "bell",
+        "cta",
+        "check"
+      ],
+      "license": "CC0-1.0",
+      "source_url": "https://github.com/sml98/video-reverse-studio-next",
+      "author": "Video Reverse Studio Procedural Audio Lab",
+      "attribution_required": false,
+      "sha256": "876e87b40797dd7f04a72b1c83cd52da24b2032b3e9e96ba1e26535ad8ddc136",
+      "size": 19888
+    }
+  ]
+}

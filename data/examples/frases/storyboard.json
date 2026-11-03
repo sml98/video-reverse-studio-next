@@ -3,7 +3,9 @@
   "title": "O próximo passo",
   "language": "pt-BR",
   "uncertainties": [],
+  "sources": [],
   "illustrative_data": false,
+  "music": "lib:vrs-pro-audio.bgm-doc-suspense",
   "scenes": [
     {
       "preset_id": "vrs-kinetic-quote",

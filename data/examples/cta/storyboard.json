@@ -3,7 +3,9 @@
   "title": "Guia de estudos",
   "language": "pt-BR",
   "uncertainties": [],
+  "sources": [],
   "illustrative_data": false,
+  "music": "lib:vrs-pro-audio.bgm-blocky-gaming",
   "scenes": [
     {
       "preset_id": "vrs-title",
@@ -34,6 +36,20 @@
       },
       "narration": "Revisar em intervalos ajuda a lembrar mais, com menos horas de estudo.",
       "duration": 6
+    },
+    {
+      "preset_id": "vrs-device-mockup",
+      "parameters": {
+        "title": "Seu Plano na Palma da Mão",
+        "deviceType": "phone",
+        "appTitle": "Guia de Estudos Pro",
+        "metricValue": "10 min/dia",
+        "metricLabel": "Revisão espaçada pronta para usar",
+        "screenAsset": "",
+        "badge": "100% GRATUITO"
+      },
+      "narration": "Veja no celular ou computador o cronograma pronto para aplicar hoje mesmo.",
+      "duration": 4
     },
     {
       "preset_id": "vrs-cta",

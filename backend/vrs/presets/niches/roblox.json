@@ -37,7 +37,7 @@
       "label": "Salto no Obby",
       "preset_id": "vrs-roblox-stage",
       "duration": 5,
-      "narration": "No primeiro nível do desafio, cada salto exige precisão no tempo certo.",
+      "narration": "No primeiro nível do desafio 3D, cada salto exige precisão no tempo certo.",
       "parameters": {
         "title": "Nível 1: Pista nas Nuvens",
         "action": "obby_jump",
@@ -45,7 +45,8 @@
         "shirtColor": "#2563eb",
         "pantsColor": "#16a34a",
         "skinColor": "#facc15",
-        "bubble": "Pula agora!"
+        "bubble": "Pula agora!",
+        "cameraMode": "auto_cut"
       },
       "guidance": ""
     },
@@ -62,7 +63,8 @@
         "shirtColor": "#ef4444",
         "pantsColor": "#1e293b",
         "skinColor": "#facc15",
-        "bubble": "Nova rota desbloqueada!"
+        "bubble": "Nova rota desbloqueada!",
+        "cameraMode": "auto_cut"
       },
       "guidance": ""
     },
@@ -71,7 +73,7 @@
       "label": "Encontro no Acampamento",
       "preset_id": "vrs-roblox-stage",
       "duration": 5,
-      "narration": "E no final da fase, a equipe se reúne no acampamento para o próximo desafio!",
+      "narration": "Conseguimos passar pela pista nas nuvens! Agora a equipe inteira está pronta para o próximo mapa 3D!",
       "parameters": {
         "title": "Fase Concluída",
         "action": "duet_3d",
@@ -79,9 +81,11 @@
         "shirtColor": "#22c55e",
         "pantsColor": "#1d4ed8",
         "skinColor": "#facc15",
-        "bubble": "GG! Próxima fase!"
+        "bubble": "GG! Próxima fase!",
+        "cameraMode": "auto_cut"
       },
-      "guidance": ""
+      "guidance": "",
+      "voice": "duet"
     }
   ],
   "aspects": [
@@ -97,8 +101,10 @@
   "captions": {
     "mode": "word",
     "position": "bottom",
-    "maxWords": 3
+    "maxWords": 3,
+    "style": "karaoke"
   },
   "voice": "faber",
-  "schema": "vrs.niche/1"
+  "schema": "vrs.niche/1",
+  "music": "lib:vrs-pro-audio.bgm-blocky-gaming"
 }

@@ -63,6 +63,40 @@ export function computeSpeechState(
   return { talking: false, viseme: "closed", syllablePulse: 0, wordIndex: -1, activeWord: "" };
 }
 
+/** Diretor de câmera 2D/2.5D: alterna entre Plano Geral (establishing shot) e Close-up no personagem/quadro ativo. */
+export function computeCameraTransform(
+  frame: number,
+  fps: number,
+  durationInFrames: number,
+  cameraMode: string,
+  isDuet: boolean,
+  leftSpeakerActive: boolean,
+  hasBoard = false,
+): string {
+  if (cameraMode === "wide") return "scale(1)";
+  const sec = frame / fps;
+  const totalSec = durationInFrames / fps;
+  if (cameraMode === "closeup") {
+    const tx = isDuet ? (leftSpeakerActive ? 12 : -12) : hasBoard ? -8 : 0;
+    return `scale(1.18) translate(${tx}%, -3%)`;
+  }
+  // auto_cut: Plano geral nos primeiros 1.2s e últimos 0.8s; cortes cinematográficos no meio
+  if (sec < 1.15 || sec > totalSec - 0.8) {
+    return "scale(1)";
+  }
+  const beat = Math.floor((sec - 1.15) / 1.9);
+  if (isDuet) {
+    if (beat % 3 === 2) return "scale(1.04)";
+    const tx = leftSpeakerActive ? 13 : -13;
+    return `scale(1.2) translate(${tx}%, -4%)`;
+  }
+  if (hasBoard) {
+    if (beat % 2 === 1) return "scale(1.16) translate(-10%, -2%)"; // Foco no quadro branco
+    return "scale(1.14) translate(10%, -3%)"; // Foco no apresentador
+  }
+  return beat % 2 === 0 ? "scale(1.15) translate(0%, -4%)" : "scale(1.03)";
+}
+
 // ============================================================================
 // MOTOR 1: vrs-stickman-stage (Bonequinho Palito Articulado 2D + Quadro/Cenário)
 // ============================================================================
@@ -292,6 +326,9 @@ export const StickmanStageScene: React.FC<{ params: Any }> = ({ params }) => {
   const enter = prog(frame, 0, 16, "out");
   const isDuet = action === "duet_debate";
   const speaker1Turn = !isDuet || Math.floor((frame / fps) / 2.2) % 2 === 0;
+  const hasBoard = (action === "explain_board" || environment === "whiteboard" || environment === "classroom") && !isDuet;
+  const camTransform = computeCameraTransform(frame, fps, durationInFrames, params.cameraMode || "auto_cut", isDuet, speaker1Turn, hasBoard);
+  const boilSeed = Math.floor(frame / 3) % 7;
 
   const groundY = layout.safeBottom - 20 * layout.u;
 
@@ -304,8 +341,20 @@ export const StickmanStageScene: React.FC<{ params: Any }> = ({ params }) => {
             : environment === "classroom"
               ? "linear-gradient(180deg, #1e293b 0%, #0f172a 75%, #334155 75%)"
               : `linear-gradient(180deg, ${withAlpha(theme.accent2, 0.18)} 0%, ${theme.background} 78%)`,
+        overflow: "hidden",
       }}
     >
+      {/* Filtro SVG de traço vivo (Line-Boil 10fps estilo animação rabiscada à mão) */}
+      <svg width={0} height={0} style={{ position: "absolute" }}>
+        <defs>
+          <filter id="vrs-line-boil">
+            <feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves={2} seed={boilSeed} result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale={2.4} xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+        </defs>
+      </svg>
+
+      <AbsoluteFill style={{ transform: camTransform, transformOrigin: "50% 55%", transition: "transform 0.22s ease-out" }}>
       {/* Piso do cenário */}
       <div
         style={{
@@ -402,7 +451,23 @@ export const StickmanStageScene: React.FC<{ params: Any }> = ({ params }) => {
             <div style={{ height: "44%", display: "flex", justifyContent: "center", alignItems: "center" }}>
               <AssetImg src={params.boardAsset} style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }} />
             </div>
-          ) : null}
+          ) : (
+            <div style={{ height: "38%", display: "flex", justifyContent: "center", alignItems: "center" }}>
+              <svg viewBox="0 0 360 110" style={{ width: "86%", height: "100%", overflow: "visible" }}>
+                <path
+                  d="M 20 85 Q 95 20 175 65 T 335 22"
+                  fill="none"
+                  stroke="#0284c7"
+                  strokeWidth={6}
+                  strokeLinecap="round"
+                  pathLength={1}
+                  strokeDasharray={1}
+                  strokeDashoffset={1 - prog(frame, 12, 38, "out")}
+                />
+                <circle cx={335} cy={22} r={9 * prog(frame, 44, 10, "out")} fill="#16a34a" />
+              </svg>
+            </div>
+          )}
         </div>
       )}
 
@@ -416,6 +481,7 @@ export const StickmanStageScene: React.FC<{ params: Any }> = ({ params }) => {
               : layout.padX + (layout.vertical ? 20 : 60) * layout.u,
           top: groundY - 410 * layout.u,
           transform: `translateX(${(1 - enter) * -120}px)`,
+          filter: "url(#vrs-line-boil)",
         }}
       >
         <StickFigureSVG
@@ -505,6 +571,7 @@ export const StickmanStageScene: React.FC<{ params: Any }> = ({ params }) => {
           {bubble}
         </div>
       ) : null}
+      </AbsoluteFill>
     </AbsoluteFill>
   );
 };
@@ -687,8 +754,8 @@ const PaperCutoutPuppet: React.FC<{
 
 export const SouthParkStageScene: React.FC<{ params: Any }> = ({ params }) => {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const { theme, layout, words, narration } = useVrs();
+  const { fps, durationInFrames } = useVideoConfig();
+  const { layout, words, narration } = useVrs();
 
   const mode = params.mode ?? "duet";
   const environment = params.environment ?? "snow_town";
@@ -698,6 +765,7 @@ export const SouthParkStageScene: React.FC<{ params: Any }> = ({ params }) => {
   const speech = computeSpeechState(frame, fps, words, narration || bubble || params.title || "fala", 12);
   const isDuet = mode === "duet";
   const leftTurn = !isDuet || Math.floor(Math.max(0, speech.wordIndex) / 3) % 2 === 0;
+  const camTransform = computeCameraTransform(frame, fps, durationInFrames, params.cameraMode || "auto_cut", isDuet, leftTurn, false);
 
   const groundY = layout.safeBottom - 16 * layout.u;
   const charSize = (layout.vertical ? 300 : 340) * layout.u;
@@ -713,8 +781,10 @@ export const SouthParkStageScene: React.FC<{ params: Any }> = ({ params }) => {
               : environment === "courtroom"
                 ? "#451a03"
                 : "#1e293b",
+        overflow: "hidden",
       }}
     >
+      <AbsoluteFill style={{ transform: camTransform, transformOrigin: "50% 60%", transition: "transform 0.18s steps(3)" }}>
       {/* Camada de fundo estilo papel recortado (Montanhas nevadas e pinheiros) */}
       {environment === "snow_town" && (
         <svg
@@ -840,6 +910,7 @@ export const SouthParkStageScene: React.FC<{ params: Any }> = ({ params }) => {
           {bubble}
         </div>
       ) : null}
+      </AbsoluteFill>
     </AbsoluteFill>
   );
 };
@@ -1102,10 +1173,14 @@ export const RobloxStageScene: React.FC<{ params: Any }> = ({ params }) => {
       st.rig1.legR.rotation.x = swing * 0.65;
     }
 
-    st.camera.position.set(Math.sin(t * 0.35) * 1.4, 2.6, 5.6);
-    st.camera.lookAt(0, 1.6, 0);
+    st.camera.position.set(
+      params.cameraMode === "closeup" ? (action === "duet_3d" ? (Math.floor(t / 2) % 2 === 0 ? -0.9 : 0.9) : 0.3) : Math.sin(t * 0.35) * 1.4,
+      params.cameraMode === "closeup" ? 2.25 : 2.6,
+      params.cameraMode === "closeup" ? 3.9 : 5.6,
+    );
+    st.camera.lookAt(0, 1.65, 0);
     st.renderer.render(st.scene, st.camera);
-  }, [frame, fps, action, skinColor, words, narration, params.bubble, params.title]);
+  }, [frame, fps, action, skinColor, words, narration, params.bubble, params.title, params.cameraMode]);
 
   return (
     <AbsoluteFill
@@ -1173,9 +1248,13 @@ export const MultiplaneStageScene: React.FC<{ params: Any }> = ({ params }) => {
   const talkTilt = speech.talking ? Math.sin(frame * 0.65) * 2.8 : Math.sin(frame / 22) * 1.1;
 
   const stickers: Any[] = Array.isArray(params.stickers) ? params.stickers : [];
+  const isDuet = Boolean(params.secondCharacter);
+  const leftTurn = !isDuet || Math.floor(Math.max(0, speech.wordIndex) / 3) % 2 === 0;
+  const camTransform = computeCameraTransform(frame, fps, durationInFrames, params.cameraMode || "auto_cut", isDuet, leftTurn, false);
 
   return (
     <AbsoluteFill style={{ background: theme.background, overflow: "hidden" }}>
+      <AbsoluteFill style={{ transform: camTransform, transformOrigin: "50% 55%", transition: "transform 0.25s ease-out" }}>
       {/* CAMADA 1: Fundo distante com paralaxe lenta */}
       <AbsoluteFill
         style={{
@@ -1338,6 +1417,394 @@ export const MultiplaneStageScene: React.FC<{ params: Any }> = ({ params }) => {
           </div>
         );
       })}
+      </AbsoluteFill>
+    </AbsoluteFill>
+  );
+};
+
+// ============================================================================
+// MOTOR 5: vrs-news-highlight (Recorte de Jornal / Artigo com Marca-Texto Vox Style)
+// ============================================================================
+
+export const NewsHighlightScene: React.FC<{ params: Any }> = ({ params }) => {
+  const frame = useCurrentFrame();
+  const { fps, durationInFrames } = useVideoConfig();
+  const { theme, layout } = useVrs();
+
+  const t = frame / Math.max(1, durationInFrames);
+  const enter = prog(frame, 0, 16, "out");
+  const sweep = prog(frame, 18, 28, "out");
+  const zoom = 0.96 + 0.08 * t;
+  const tiltY = -6 + 10 * t;
+  const tiltX = 4 - 5 * t;
+
+  const cardW = Math.min(layout.w - layout.padX * 2, 1180 * layout.u);
+  const cardH = layout.safeBottom - layout.padTop - (params.title ? 140 : 40) * layout.u;
+
+  return (
+    <AbsoluteFill style={{ background: `radial-gradient(circle at 50% 35%, #1e293b 0%, ${theme.background} 85%)`, overflow: "hidden" }}>
+      <SceneHeader title={params.title ?? ""} />
+      <div
+        style={{
+          position: "absolute",
+          left: (layout.w - cardW) / 2,
+          top: layout.padTop + (params.title ? 125 : 30) * layout.u,
+          width: cardW,
+          height: cardH,
+          perspective: 1300 * layout.u,
+          opacity: enter,
+        }}
+      >
+        <div
+          style={{
+            width: "100%",
+            height: "100%",
+            background: "#f8f5eb",
+            color: "#0f172a",
+            borderRadius: 16 * layout.u,
+            padding: `${32 * layout.u}px ${42 * layout.u}px`,
+            boxShadow: "0 34px 70px rgba(0,0,0,0.68)",
+            border: "2px solid #cbd5e1",
+            transform: `rotateY(${tiltY}deg) rotateX(${tiltX}deg) scale(${zoom})`,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+          }}
+        >
+          {/* Cabeçalho de jornal / periódico */}
+          <div>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                borderBottom: "4px double #0f172a",
+                paddingBottom: 10 * layout.u,
+                marginBottom: 20 * layout.u,
+                fontFamily: fontStack("serif"),
+              }}
+            >
+              <span style={{ fontWeight: 900, fontSize: 24 * layout.u, letterSpacing: 1.5 }}>
+                {params.sourceName || "BOLETIM CIENTÍFICO & DADOS"}
+              </span>
+              <span style={{ fontFamily: fontStack("mono"), fontSize: 16 * layout.u, color: "#475569", fontWeight: 700 }}>
+                {params.publishDate || "RELATÓRIO OFICIAL"}
+              </span>
+            </div>
+
+            {/* Manchete principal */}
+            <div
+              style={{
+                fontFamily: fontStack("serif"),
+                fontWeight: 900,
+                fontSize: (layout.vertical ? 38 : 44) * layout.u,
+                lineHeight: 1.12,
+                color: "#0f172a",
+                marginBottom: 22 * layout.u,
+              }}
+            >
+              {params.headline || "Estudo revela impacto direto na retenção e clareza cognitiva"}
+            </div>
+
+            {/* Trecho grifado com marca-texto fluorescente */}
+            <div
+              style={{
+                position: "relative",
+                padding: `${16 * layout.u}px ${20 * layout.u}px`,
+                borderRadius: 10 * layout.u,
+                background: "rgba(15,23,42,0.04)",
+                borderLeft: `6px solid #0f172a`,
+                marginBottom: 18 * layout.u,
+              }}
+            >
+              <div
+                style={{
+                  position: "absolute",
+                  left: 12 * layout.u,
+                  top: 10 * layout.u,
+                  bottom: 10 * layout.u,
+                  width: `${Math.round(sweep * 96)}%`,
+                  background: "rgba(250, 204, 21, 0.72)",
+                  borderRadius: 6 * layout.u,
+                  transform: "skewX(-4deg)",
+                }}
+              />
+              <div
+                style={{
+                  position: "relative",
+                  fontFamily: fontStack("serif"),
+                  fontWeight: 800,
+                  fontSize: (layout.vertical ? 28 : 32) * layout.u,
+                  lineHeight: 1.3,
+                  color: "#0f172a",
+                }}
+              >
+                “{params.highlightText || "A combinação de evidência visual e ritmo pausado eleva a compreensão em até 3x."}”
+              </div>
+            </div>
+          </div>
+
+          {/* Rodapé com texto de coluna + imagem opcional */}
+          <div style={{ display: "flex", gap: 24 * layout.u, alignItems: "center" }}>
+            <div
+              style={{
+                flex: 1,
+                fontFamily: fontStack("serif"),
+                fontSize: 22 * layout.u,
+                lineHeight: 1.4,
+                color: "#334155",
+              }}
+            >
+              {params.bodySnippet || "Pesquisadores analisaram centenas de sessões práticas antes e depois da mudança estrutural."}
+            </div>
+            {params.image ? (
+              <div
+                style={{
+                  width: 220 * layout.u,
+                  height: 140 * layout.u,
+                  borderRadius: 10 * layout.u,
+                  overflow: "hidden",
+                  border: "2px solid #0f172a",
+                  flexShrink: 0,
+                }}
+              >
+                <AssetImg src={params.image} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+              </div>
+            ) : null}
+          </div>
+        </div>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+// ============================================================================
+// MOTOR 6: vrs-device-mockup (Mockup 2.5D de Celular / Navegador em Movimento)
+// ============================================================================
+
+export const DeviceMockupScene: React.FC<{ params: Any }> = ({ params }) => {
+  const frame = useCurrentFrame();
+  const { fps, durationInFrames } = useVideoConfig();
+  const { theme, layout } = useVrs();
+
+  const t = frame / Math.max(1, durationInFrames);
+  const enter = pop(frame, fps, 0, 14);
+  const badgePop = pop(frame, fps, 18, 12);
+  const isPhone = (params.deviceType ?? "phone") === "phone";
+
+  const devW = (isPhone ? (layout.vertical ? 440 : 380) : layout.w * 0.72) * layout.u;
+  const devH = (isPhone ? (layout.vertical ? 720 : 540) : layout.h * 0.56) * layout.u;
+
+  return (
+    <AbsoluteFill style={{ background: `radial-gradient(circle at 50% 30%, ${withAlpha(theme.accent2, 0.22)}, ${theme.background} 78%)` }}>
+      <SceneHeader title={params.title ?? ""} align="center" />
+      <div
+        style={{
+          position: "absolute",
+          left: (layout.w - devW) / 2,
+          top: layout.padTop + (params.title ? 125 : 40) * layout.u,
+          width: devW,
+          height: devH,
+          perspective: 1200 * layout.u,
+        }}
+      >
+        <div
+          style={{
+            width: "100%",
+            height: "100%",
+            borderRadius: (isPhone ? 42 : 20) * layout.u,
+            background: "#0f172a",
+            border: `${(isPhone ? 10 : 6) * layout.u}px solid #334155`,
+            boxShadow: `0 30px 70px rgba(0,0,0,0.65), 0 0 40px ${withAlpha(theme.accent, 0.25)}`,
+            transform: `scale(${0.9 + 0.1 * enter}) rotateY(${-8 + 16 * t}deg) rotateX(${4 - 6 * t}deg)`,
+            overflow: "hidden",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          {/* Barra superior do dispositivo */}
+          <div
+            style={{
+              height: 44 * layout.u,
+              background: "#1e293b",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              padding: `0 ${20 * layout.u}px`,
+              borderBottom: "1px solid rgba(255,255,255,0.08)",
+            }}
+          >
+            <div style={{ display: "flex", gap: 6 * layout.u }}>
+              <span style={{ width: 10 * layout.u, height: 10 * layout.u, borderRadius: 99, background: "#ef4444" }} />
+              <span style={{ width: 10 * layout.u, height: 10 * layout.u, borderRadius: 99, background: "#f59e0b" }} />
+              <span style={{ width: 10 * layout.u, height: 10 * layout.u, borderRadius: 99, background: "#22c55e" }} />
+            </div>
+            <span style={{ fontFamily: fontStack("sans"), fontWeight: 700, fontSize: 16 * layout.u, color: "#cbd5e1" }}>
+              {params.appTitle || "Painel em Tempo Real"}
+            </span>
+            <span style={{ width: 24 * layout.u }} />
+          </div>
+
+          {/* Conteúdo rolante dentro da tela */}
+          <div
+            style={{
+              flex: 1,
+              padding: 24 * layout.u,
+              display: "flex",
+              flexDirection: "column",
+              gap: 18 * layout.u,
+              transform: `translateY(${-t * 36 * layout.u}px)`,
+            }}
+          >
+            <div
+              style={{
+                background: `linear-gradient(135deg, ${withAlpha(theme.accent, 0.24)}, rgba(30,41,59,0.9))`,
+                border: `2px solid ${theme.accent}`,
+                borderRadius: 20 * layout.u,
+                padding: 22 * layout.u,
+              }}
+            >
+              <div style={{ fontFamily: fontStack("display"), fontWeight: 900, fontSize: 54 * layout.u, color: theme.accent }}>
+                {params.metricValue || "+142%"}
+              </div>
+              <div style={{ fontFamily: fontStack("sans"), fontWeight: 700, fontSize: 22 * layout.u, color: "#f8fafc", marginTop: 4 * layout.u }}>
+                {params.metricLabel || "Eficiência medida no fluxo"}
+              </div>
+            </div>
+
+            {params.screenAsset ? (
+              <div style={{ flex: 1, borderRadius: 16 * layout.u, overflow: "hidden", background: "#090d16" }}>
+                <AssetImg src={params.screenAsset} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+              </div>
+            ) : (
+              <div style={{ display: "flex", flexDirection: "column", gap: 12 * layout.u }}>
+                {[0.82, 0.64, 0.91].map((wBar, idx) => (
+                  <div
+                    key={idx}
+                    style={{
+                      height: 36 * layout.u,
+                      borderRadius: 10 * layout.u,
+                      background: "rgba(255,255,255,0.06)",
+                      overflow: "hidden",
+                      display: "flex",
+                      alignItems: "center",
+                      padding: `0 ${12 * layout.u}px`,
+                    }}
+                  >
+                    <div
+                      style={{
+                        height: 14 * layout.u,
+                        width: `${Math.round(wBar * prog(frame, 8 + idx * 8, 22, "out") * 100)}%`,
+                        background: idx % 2 === 0 ? theme.accent2 : theme.accent,
+                        borderRadius: 99,
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Notificação flutuante com mola */}
+        {params.badge ? (
+          <div
+            style={{
+              position: "absolute",
+              right: -40 * layout.u,
+              top: 48 * layout.u,
+              transform: `scale(${badgePop})`,
+              background: "#10b981",
+              color: "#052e16",
+              padding: `${12 * layout.u}px ${22 * layout.u}px`,
+              borderRadius: 999,
+              fontFamily: fontStack("rounded"),
+              fontWeight: 900,
+              fontSize: 22 * layout.u,
+              boxShadow: "0 14px 30px rgba(0,0,0,0.45)",
+              border: "3px solid #ffffff",
+            }}
+          >
+            {params.badge}
+          </div>
+        ) : null}
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+// ============================================================================
+// MOTOR 7: vrs-video-broll (Vídeo B-Roll Real + Avatar Reagindo Picture-in-Picture)
+// ============================================================================
+
+export const VideoBrollScene: React.FC<{ params: Any }> = ({ params }) => {
+  const frame = useCurrentFrame();
+  const { fps, durationInFrames } = useVideoConfig();
+  const { theme, layout, words, narration } = useVrs();
+
+  const speech = computeSpeechState(frame, fps, words, narration || params.caption || params.title || "broll");
+  const t = frame / Math.max(1, durationInFrames);
+  const pipPos = params.pipPosition ?? "bottom-right";
+  const pipSize = (layout.vertical ? 230 : 250) * layout.u;
+
+  return (
+    <AbsoluteFill style={{ background: "#050811", overflow: "hidden" }}>
+      {/* Fundo em movimento (Imagem/Frame de arquivo ou grade cinematográfica HUD) */}
+      <AbsoluteFill
+        style={{
+          transform: `scale(${1.05 + 0.08 * t})`,
+          background: `radial-gradient(circle at ${50 + Math.sin(t * 4) * 15}% 45%, ${withAlpha(theme.accent2, 0.28)}, #050811 75%)`,
+        }}
+      >
+        {params.videoAsset && /\.(png|jpg|jpeg|webp|gif|svg)$/i.test(params.videoAsset) ? (
+          <AssetImg src={params.videoAsset} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+        ) : null}
+        {/* Grade HUD documental */}
+        <svg viewBox="0 0 1920 1080" style={{ width: "100%", height: "100%", opacity: 0.24 }}>
+          <line x1={960} y1={120} x2={960} y2={960} stroke={theme.accent2} strokeWidth={2} strokeDasharray="12 12" />
+          <line x1={180} y1={540} x2={1740} y2={540} stroke={theme.accent2} strokeWidth={2} strokeDasharray="12 12" />
+          <circle cx={960} cy={540} r={180 + Math.sin(t * 6) * 25} fill="none" stroke={theme.accent} strokeWidth={3} />
+        </svg>
+      </AbsoluteFill>
+
+      <SceneHeader title={params.title ?? ""} />
+
+      {/* Selo REC / B-Roll no canto superior */}
+      {params.caption ? (
+        <div
+          style={{
+            position: "absolute",
+            left: layout.padX,
+            top: layout.padTop + (params.title ? 130 : 20) * layout.u,
+          }}
+        >
+          <Tag text={`● ${params.caption}`} delay={4} />
+        </div>
+      ) : null}
+
+      {/* Moldura Picture-in-Picture (PiP) com Avatar Reativo */}
+      {params.pipAvatar ? (
+        <div
+          style={{
+            position: "absolute",
+            right: pipPos.includes("right") ? layout.padX : undefined,
+            left: pipPos.includes("left") ? layout.padX : undefined,
+            top: pipPos.includes("top") ? layout.padTop + 120 * layout.u : layout.safeBottom - pipSize - 30 * layout.u,
+            width: pipSize,
+            height: pipSize,
+            borderRadius: 999,
+            background: "#0f172a",
+            border: `${6 * layout.u}px solid ${speech.talking ? theme.accent : theme.accent2}`,
+            boxShadow: speech.talking
+              ? `0 0 ${28 * layout.u}px ${withAlpha(theme.accent, 0.8)}, 0 16px 36px rgba(0,0,0,0.65)`
+              : "0 16px 36px rgba(0,0,0,0.65)",
+            overflow: "hidden",
+            transform: `scale(${1 + (speech.talking ? speech.syllablePulse * 0.06 : 0)})`,
+          }}
+        >
+          <AssetImg src={params.pipAvatar} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+        </div>
+      ) : null}
     </AbsoluteFill>
   );
 };

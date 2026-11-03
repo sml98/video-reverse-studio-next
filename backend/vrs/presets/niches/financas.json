@@ -127,6 +127,23 @@
       "guidance": ""
     },
     {
+      "role": "gráfico",
+      "label": "Simulador no App",
+      "preset_id": "vrs-device-mockup",
+      "duration": 5,
+      "narration": "No painel de simulação, R$ 1.000 viram R$ 1.430 em 36 meses com aportes constantes.",
+      "parameters": {
+        "title": "Simulador de Longo Prazo",
+        "deviceType": "phone",
+        "appTitle": "Carteira · Juros Compostos",
+        "metricValue": "R$ 1.430,77",
+        "metricLabel": "Saldo após 36 meses a 1% a.m.",
+        "screenAsset": "",
+        "badge": "+43,07% EM 36M"
+      },
+      "guidance": "Mockup 3D de celular exibindo resumo claro."
+    },
+    {
       "role": "limites",
       "label": "Limites",
       "preset_id": "vrs-kinetic-quote",
@@ -155,9 +172,17 @@
   "captions": {
     "mode": "word",
     "position": "bottom",
-    "maxWords": 3
+    "maxWords": 3,
+    "style": "hormozi"
   },
   "voice": "faber",
   "schema": "vrs.niche/1",
-  "guide": "skills/vrs-presets/references/financas.md"
+  "guide": "skills/vrs-presets/references/financas.md",
+  "music": "lib:vrs-pro-audio.bgm-corp-finance",
+  "sources": [
+    {
+      "claim": "Simulação matemática: R$ 1.000 a 1% a.m. por 36 meses",
+      "source": "Fórmula de Juros Compostos M = C·(1+i)^t"
+    }
+  ]
 }

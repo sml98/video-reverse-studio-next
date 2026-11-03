@@ -357,7 +357,8 @@
         {"key": "boardTitle", "type": "text", "label": "Título no quadro/bancada", "maxLength": 60, "default": "RESUMO RÁPIDO"},
         {"key": "bullets", "type": "list", "label": "Itens do quadro branco", "maxItems": 4, "item": {"type": "text", "maxLength": 60, "default": "Ponto"}, "default": ["Ideia principal", "Como funciona na prática", "Resultado final"]},
         {"key": "boardAsset", "type": "asset", "label": "Imagem no quadro (opcional)", "default": ""},
-        {"key": "bubble", "type": "text", "label": "Balão de fala (opcional)", "maxLength": 120, "default": ""}
+        {"key": "bubble", "type": "text", "label": "Balão de fala (opcional)", "maxLength": 120, "default": ""},
+        {"key": "cameraMode", "type": "select", "label": "Diretor de Câmera", "options": ["auto_cut", "wide", "closeup"], "default": "auto_cut"}
       ]
     },
     {
@@ -378,7 +379,8 @@
         {"key": "secondCoatColor", "type": "color", "label": "Cor do casaco 2 (dueto)", "default": "#f97316"},
         {"key": "secondHatColor", "type": "color", "label": "Cor do gorro 2 (dueto)", "default": "#22c55e"},
         {"key": "secondCharacterName", "type": "text", "label": "Nome Personagem 2", "maxLength": 24, "default": "Max"},
-        {"key": "bubble", "type": "text", "label": "Balão de fala", "maxLength": 120, "default": ""}
+        {"key": "bubble", "type": "text", "label": "Balão de fala", "maxLength": 120, "default": ""},
+        {"key": "cameraMode", "type": "select", "label": "Diretor de Câmera", "options": ["auto_cut", "wide", "closeup"], "default": "auto_cut"}
       ]
     },
     {
@@ -394,7 +396,8 @@
         {"key": "shirtColor", "type": "color", "label": "Cor do torso/camisa", "default": "#2563eb"},
         {"key": "pantsColor", "type": "color", "label": "Cor das pernas", "default": "#16a34a"},
         {"key": "skinColor", "type": "color", "label": "Tom de pele blocky", "default": "#facc15"},
-        {"key": "bubble", "type": "text", "label": "Fala no topo", "maxLength": 110, "default": ""}
+        {"key": "bubble", "type": "text", "label": "Fala no topo", "maxLength": 110, "default": ""},
+        {"key": "cameraMode", "type": "select", "label": "Diretor de Câmera", "options": ["auto_cut", "wide", "closeup"], "default": "auto_cut"}
       ]
     },
     {
@@ -411,6 +414,7 @@
         {"key": "character", "type": "asset", "label": "Avatar principal (PNG)", "default": ""},
         {"key": "secondCharacter", "type": "asset", "label": "Segundo avatar (opcional)", "default": ""},
         {"key": "bubble", "type": "text", "label": "Legenda na bancada / fala", "maxLength": 120, "default": ""},
+        {"key": "cameraMode", "type": "select", "label": "Diretor de Câmera", "options": ["auto_cut", "wide", "closeup"], "default": "auto_cut"},
         {"key": "stickers", "type": "list", "label": "Stickers Die-Cut", "maxItems": 4,
           "item": {"type": "object", "fields": [
             {"key": "asset", "type": "asset", "label": "Imagem do sticker (opcional)", "default": ""},
@@ -421,6 +425,52 @@
           ]},
           "default": [{"asset": "", "emoji": "🔥", "label": "DESTAQUE", "x": 0.2, "y": 0.35}]
         }
+      ]
+    },
+    {
+      "id": "vrs-news-highlight",
+      "title": "Recorte de Jornal / Artigo com Marca-Texto (Vox Style)",
+      "summary": "Página de notícia/estudo em perspectiva 2.5D com varredura animada de marca-texto fluorescente sobre a citação-chave.",
+      "category": "documentario",
+      "motion": ["perspectiva 2.5D", "marca-texto animado", "zoom editorial"],
+      "params": [
+        {"key": "title", "type": "text", "label": "Título de contexto", "maxLength": 80, "default": ""},
+        {"key": "sourceName", "type": "text", "label": "Veículo / Periódico", "maxLength": 50, "default": "BOLETIM CIENTÍFICO & DADOS"},
+        {"key": "publishDate", "type": "text", "label": "Data / Edição", "maxLength": 40, "default": "EDIÇÃO ESPECIAL · RELATÓRIO"},
+        {"key": "headline", "type": "text", "label": "Manchete do artigo", "maxLength": 110, "default": "Estudo revela impacto direto na retenção e clareza cognitiva"},
+        {"key": "highlightText", "type": "text", "label": "Trecho grifado com marca-texto", "maxLength": 140, "default": "A combinação de evidência visual e ritmo pausado eleva a compreensão em até 3x."},
+        {"key": "bodySnippet", "type": "text", "label": "Texto complementar", "maxLength": 200, "default": "Pesquisadores analisaram centenas de sessões práticas antes e depois da mudança estrutural de rotina."},
+        {"key": "image", "type": "asset", "label": "Foto/gráfico no recorte (opcional)", "default": ""}
+      ]
+    },
+    {
+      "id": "vrs-device-mockup",
+      "title": "Mockup 3D de Celular / Navegador em Movimento",
+      "summary": "Dispositivo flutuante em perspectiva 2.5D com rolagem de tela animada, cards de destaque e notificações.",
+      "category": "tutorial",
+      "motion": ["mockup 2.5D", "scroll de interface", "notificação pop"],
+      "params": [
+        {"key": "title", "type": "text", "label": "Título", "maxLength": 80, "default": ""},
+        {"key": "deviceType", "type": "select", "label": "Dispositivo", "options": ["phone", "browser"], "default": "phone"},
+        {"key": "appTitle", "type": "text", "label": "Nome do App / Site", "maxLength": 40, "default": "Painel em Tempo Real"},
+        {"key": "metricValue", "type": "text", "label": "Métrica em destaque", "maxLength": 30, "default": "+142%"},
+        {"key": "metricLabel", "type": "text", "label": "Rótulo da métrica", "maxLength": 60, "default": "Eficiência medida no fluxo"},
+        {"key": "screenAsset", "type": "asset", "label": "Imagem na tela (opcional)", "default": ""},
+        {"key": "badge", "type": "text", "label": "Notificação / Selo flutuante", "maxLength": 50, "default": "✓ Atualizado agora"}
+      ]
+    },
+    {
+      "id": "vrs-video-broll",
+      "title": "Vídeo B-Roll Real + Avatar Reagindo (PiP)",
+      "summary": "Reproduz clipe de vídeo MP4 da biblioteca no fundo com moldura Picture-in-Picture de personagem reagindo à fala.",
+      "category": "documentario",
+      "motion": ["vídeo real MP4", "avatar PiP reativo", "HUD documental"],
+      "params": [
+        {"key": "title", "type": "text", "label": "Título", "maxLength": 80, "default": ""},
+        {"key": "videoAsset", "type": "asset", "label": "Vídeo de fundo (.mp4)", "default": ""},
+        {"key": "pipAvatar", "type": "asset", "label": "Avatar no canto (PiP)", "default": ""},
+        {"key": "pipPosition", "type": "select", "label": "Posição do PiP", "options": ["bottom-right", "bottom-left", "top-right"], "default": "bottom-right"},
+        {"key": "caption", "type": "text", "label": "Legenda de arquivo / B-Roll", "maxLength": 90, "default": "REGISTRO EM VÍDEO"}
       ]
     },
     {

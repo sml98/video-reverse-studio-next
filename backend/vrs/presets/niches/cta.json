@@ -64,6 +64,23 @@
       "guidance": "Benefícios reais, sem promessas exageradas."
     },
     {
+      "role": "benefício",
+      "label": "Prévia no Celular",
+      "preset_id": "vrs-device-mockup",
+      "duration": 4,
+      "narration": "Veja no celular ou computador o cronograma pronto para aplicar hoje mesmo.",
+      "parameters": {
+        "title": "Seu Plano na Palma da Mão",
+        "deviceType": "phone",
+        "appTitle": "Guia de Estudos Pro",
+        "metricValue": "10 min/dia",
+        "metricLabel": "Revisão espaçada pronta para usar",
+        "screenAsset": "",
+        "badge": "100% GRATUITO"
+      },
+      "guidance": ""
+    },
+    {
       "role": "chamada",
       "label": "Chamada",
       "preset_id": "vrs-cta",
@@ -94,9 +111,11 @@
   "captions": {
     "mode": "word",
     "position": "bottom",
-    "maxWords": 3
+    "maxWords": 3,
+    "style": "hormozi"
   },
   "voice": "faber",
   "schema": "vrs.niche/1",
-  "guide": "skills/vrs-presets/references/cta.md"
+  "guide": "skills/vrs-presets/references/cta.md",
+  "music": "lib:vrs-pro-audio.bgm-blocky-gaming"
 }

@@ -1,5 +1,5 @@
 {
-  "project_id": "pce4c7f78b650",
+  "project_id": "pb7e834993d0f",
   "niche": "cta",
   "review": {
     "technical": "aprovado_tecnicamente",
@@ -8,23 +8,29 @@
       {
         "scene": "s01",
         "component": "vrs-title",
-        "motion": 4.27,
-        "first_half": 5.27
+        "motion": 4.19,
+        "first_half": 5.23
       },
       {
         "scene": "s02",
         "component": "vrs-comparison",
-        "motion": 3.18,
-        "first_half": 2.96
+        "motion": 2.99,
+        "first_half": 2.75
       },
       {
         "scene": "s03",
+        "component": "vrs-device-mockup",
+        "motion": 3.86,
+        "first_half": 3.95
+      },
+      {
+        "scene": "s04",
         "component": "vrs-cta",
-        "motion": 3.25,
-        "first_half": 4.1
+        "motion": 3.14,
+        "first_half": 3.95
       }
     ]
   },
-  "render_seconds": 18.8,
-  "duration_s": 14.0
+  "render_seconds": 26.8,
+  "duration_s": 18.4
 }

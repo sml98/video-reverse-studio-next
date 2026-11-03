@@ -182,6 +182,32 @@ def post_patch(pid: str, req: PatchReq) -> dict[str, Any]:
     return workflow.patch_scene(pid, req.scene_id, req.patch, render_after=req.render)
 
 
+class SceneManageReq(BaseModel):
+    action: str
+    scene_id: str = ""
+    preset_id: str = "vrs-stickman-stage"
+    render: bool = False
+
+
+@app.post("/api/projects/{pid}/scene-manage")
+def post_scene_manage(pid: str, req: SceneManageReq) -> dict[str, Any]:
+    return workflow.manage_scene(pid, req.action, req.scene_id, preset_id=req.preset_id, render_after=req.render)
+
+
+class CloneStyleReq(BaseModel):
+    render: bool = False
+
+
+@app.post("/api/projects/{pid}/clone-reference-style")
+def post_clone_style(pid: str, req: CloneStyleReq) -> dict[str, Any]:
+    return workflow.clone_reference_style(pid, render_after=req.render)
+
+
+@app.post("/api/projects/{pid}/auto-direct")
+def post_auto_direct(pid: str) -> dict[str, Any]:
+    return workflow.auto_direct_project(pid, render_after=True)
+
+
 class ReframeReq(BaseModel):
     aspect: str
     render: bool = False

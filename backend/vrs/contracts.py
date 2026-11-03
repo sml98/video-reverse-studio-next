@@ -81,6 +81,7 @@ class StoryboardScene(Strict):
     parameters_json: str | None = Field(default=None, max_length=20000)
     parameters: dict[str, Any] | None = None
     narration: str = Field(default="", max_length=2000)
+    voice: str = Field(default="", max_length=40)
     asset_path: str = Field(default="", max_length=400)
     asset_ids: list[str] = Field(default_factory=list, max_length=12)
     duration: float = Field(default=5, gt=0, le=MAX_SCENE_SECONDS)
@@ -219,6 +220,7 @@ class PlanScene(Strict):
     params: dict[str, Any] = Field(default_factory=dict)
     durationInFrames: int = Field(gt=0)
     narration: str = Field(default="", max_length=2000)
+    voice: str = Field(default="", max_length=40)
     words: list[WordTiming] = Field(default_factory=list)
     timing: TimingPrecision = "none"
     assets: dict[str, str] = Field(default_factory=dict)
@@ -271,6 +273,7 @@ class CaptionSettings(Strict):
     position: Literal["bottom", "center", "top"] = "bottom"
     maxWords: int = Field(default=3, ge=1, le=6)
     highlight: str = "#ffd23f"
+    style: Literal["hormozi", "karaoke", "cinema", "comic"] = "hormozi"
 
 
 class AudioSettings(Strict):

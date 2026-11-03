@@ -3,7 +3,9 @@
   "title": "O plano infalível no ponto de ônibus",
   "language": "pt-BR",
   "uncertainties": [],
+  "sources": [],
   "illustrative_data": false,
+  "music": "lib:vrs-pro-audio.bgm-quirky-comedy",
   "scenes": [
     {
       "preset_id": "vrs-southpark-stage",
@@ -19,10 +21,12 @@
         "secondCoatColor": "#f97316",
         "secondHatColor": "#22c55e",
         "secondCharacterName": "Max",
-        "bubble": "Tive uma ideia genial!"
+        "bubble": "Tive uma ideia genial!",
+        "cameraMode": "auto_cut"
       },
-      "narration": "Cara, eu tive uma ideia genial para a gente nunca mais acordar cedo.",
-      "duration": 5
+      "narration": "Cara, eu tive uma ideia genial para a gente nunca mais acordar cedo! Fiz até um sistema 10x mais rápido aqui na neve.",
+      "duration": 5,
+      "voice": "duet"
     },
     {
       "preset_id": "vrs-southpark-stage",
@@ -38,10 +42,12 @@
         "secondCoatColor": "#f97316",
         "secondHatColor": "#22c55e",
         "secondCharacterName": "Max",
-        "bubble": "Nem vem com essa!"
+        "bubble": "Nem vem com essa!",
+        "cameraMode": "auto_cut"
       },
-      "narration": "Da última vez que você disse isso, a gente terminou preso na diretoria.",
-      "duration": 5
+      "narration": "Da última vez que você disse isso, a gente terminou preso na diretoria! Eu não vou cair nessa conversa de novo.",
+      "duration": 5,
+      "voice": "duet"
     },
     {
       "preset_id": "vrs-southpark-stage",
@@ -57,7 +63,8 @@
         "secondCoatColor": "#f97316",
         "secondHatColor": "#22c55e",
         "secondCharacterName": "Max",
-        "bubble": "Confia na planilha!"
+        "bubble": "Confia na planilha!",
+        "cameraMode": "closeup"
       },
       "narration": "Relaxa, dessa vez o plano tem gráfico, planilha e zero chance de erro!",
       "duration": 5

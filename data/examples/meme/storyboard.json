@@ -3,7 +3,9 @@
   "title": "Só mais um vídeo",
   "language": "pt-BR",
   "uncertainties": [],
+  "sources": [],
   "illustrative_data": false,
+  "music": "lib:vrs-pro-audio.bgm-quirky-comedy",
   "scenes": [
     {
       "preset_id": "vrs-meme",

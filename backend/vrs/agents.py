@@ -178,6 +178,7 @@ def _openai(prompt: str) -> tuple[str, dict[str, Any]]:
 
 def available() -> list[dict[str, Any]]:
     return [
+        {"id": "auto_local", "label": "Diretor Local Autônomo (Instantâneo na CPU)", "available": True, "note": "Adapta o modelo à sua ideia em português na própria CPU e inicia o render do MP4 imediatamente sem fila externa."},
         {"id": "mcp", "label": "Agente conectado (MCP/CLI)", "available": True, "note": "O agente que você usa (ex.: Antigravity) dirige pelo servidor MCP do VRS; a fila mostra quando aguarda por ele."},
         {"id": "claude", "label": "Claude Code CLI", "available": bool(shutil.which("claude")), "note": "Usa sua conta/autenticação do Claude Code; pode consumir sua cota."},
         {"id": "codex", "label": "Codex CLI", "available": bool(shutil.which("codex")), "note": "Não encontrado nesta máquina." if not shutil.which("codex") else "argv padrão não testado aqui; ajuste VRS_CODEX_ARGV."},

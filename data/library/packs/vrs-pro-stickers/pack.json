@@ -1,0 +1,161 @@
+{
+  "id": "vrs-pro-stickers",
+  "name": "VRS Die-Cut Stickers & Stamps Pack",
+  "license": "CC0-1.0",
+  "source_url": "https://github.com/sml98/video-reverse-studio-next",
+  "description": "8 adesivos die-cut com borda branca recortada e selos de retenção para vídeos virais.",
+  "items": [
+    {
+      "id": "vrs-pro-stickers.sticker-verificado",
+      "name": "Sticker Die-Cut: VERIFICADO",
+      "kind": "image",
+      "path": "stickers/sticker-verificado.png",
+      "tags": [
+        "sticker",
+        "die-cut",
+        "badge",
+        "verificado",
+        "check"
+      ],
+      "license": "CC0-1.0",
+      "source_url": "https://github.com/sml98/video-reverse-studio-next",
+      "author": "Video Reverse Studio Die-Cut Lab",
+      "attribution_required": false,
+      "sha256": "21ad243294ad543cefea1862a7072ca529d9107b032c198515970d20c00f634c",
+      "size": 6733
+    },
+    {
+      "id": "vrs-pro-stickers.sticker-alerta-mito",
+      "name": "Sticker Die-Cut: MITO!",
+      "kind": "image",
+      "path": "stickers/sticker-alerta-mito.png",
+      "tags": [
+        "sticker",
+        "die-cut",
+        "badge",
+        "alerta-mito",
+        "cross"
+      ],
+      "license": "CC0-1.0",
+      "source_url": "https://github.com/sml98/video-reverse-studio-next",
+      "author": "Video Reverse Studio Die-Cut Lab",
+      "attribution_required": false,
+      "sha256": "82df10f06ca9424891e29b11bd981b4a320b9d797b1ac4f66f46bfe41d2cbdd4",
+      "size": 3738
+    },
+    {
+      "id": "vrs-pro-stickers.sticker-foco-10x",
+      "name": "Sticker Die-Cut: FOCO 10X",
+      "kind": "image",
+      "path": "stickers/sticker-foco-10x.png",
+      "tags": [
+        "sticker",
+        "die-cut",
+        "badge",
+        "foco-10x",
+        "bolt"
+      ],
+      "license": "CC0-1.0",
+      "source_url": "https://github.com/sml98/video-reverse-studio-next",
+      "author": "Video Reverse Studio Die-Cut Lab",
+      "attribution_required": false,
+      "sha256": "5c2dbd711205618b8afdd8d99a62a49957d0157b0edf769984893edd1d51c889",
+      "size": 6088
+    },
+    {
+      "id": "vrs-pro-stickers.sticker-spoiler",
+      "name": "Sticker Die-Cut: ALERTA DE SPOILER",
+      "kind": "image",
+      "path": "stickers/sticker-spoiler.png",
+      "tags": [
+        "sticker",
+        "die-cut",
+        "badge",
+        "spoiler",
+        "star"
+      ],
+      "license": "CC0-1.0",
+      "source_url": "https://github.com/sml98/video-reverse-studio-next",
+      "author": "Video Reverse Studio Die-Cut Lab",
+      "attribution_required": false,
+      "sha256": "90c4585809372cdb83a4627247b0666ffc518e1cfc8bbd08792625e6850cbda0",
+      "size": 6628
+    },
+    {
+      "id": "vrs-pro-stickers.sticker-urgente",
+      "name": "Sticker Die-Cut: URGENTE",
+      "kind": "image",
+      "path": "stickers/sticker-urgente.png",
+      "tags": [
+        "sticker",
+        "die-cut",
+        "badge",
+        "urgente",
+        "flame"
+      ],
+      "license": "CC0-1.0",
+      "source_url": "https://github.com/sml98/video-reverse-studio-next",
+      "author": "Video Reverse Studio Die-Cut Lab",
+      "attribution_required": false,
+      "sha256": "13709efb0caff5d29104cdb9b2ffe70e091307bc34d12c130e84db2dd17b8ee6",
+      "size": 4435
+    },
+    {
+      "id": "vrs-pro-stickers.sticker-aprovado",
+      "name": "Sticker Die-Cut: 100% REAL",
+      "kind": "image",
+      "path": "stickers/sticker-aprovado.png",
+      "tags": [
+        "sticker",
+        "die-cut",
+        "badge",
+        "aprovado",
+        "shield"
+      ],
+      "license": "CC0-1.0",
+      "source_url": "https://github.com/sml98/video-reverse-studio-next",
+      "author": "Video Reverse Studio Die-Cut Lab",
+      "attribution_required": false,
+      "sha256": "f1bcd9fcad48b076be5a892630a6c39c564cf40db6c8eebc3306661fcad0e91f",
+      "size": 6173
+    },
+    {
+      "id": "vrs-pro-stickers.sticker-lucro",
+      "name": "Sticker Die-Cut: ALTA RETENÇÃO",
+      "kind": "image",
+      "path": "stickers/sticker-lucro.png",
+      "tags": [
+        "sticker",
+        "die-cut",
+        "badge",
+        "lucro",
+        "trend"
+      ],
+      "license": "CC0-1.0",
+      "source_url": "https://github.com/sml98/video-reverse-studio-next",
+      "author": "Video Reverse Studio Die-Cut Lab",
+      "attribution_required": false,
+      "sha256": "23102e8216ac0a7d3a3dfd127b40ec4ecebbebefc1464edd1c5a1a1cc8de40c3",
+      "size": 6576
+    },
+    {
+      "id": "vrs-pro-stickers.sticker-duvida",
+      "name": "Sticker Die-Cut: SERÁ MESMO?",
+      "kind": "image",
+      "path": "stickers/sticker-duvida.png",
+      "tags": [
+        "sticker",
+        "die-cut",
+        "badge",
+        "duvida",
+        "question"
+      ],
+      "license": "CC0-1.0",
+      "source_url": "https://github.com/sml98/video-reverse-studio-next",
+      "author": "Video Reverse Studio Die-Cut Lab",
+      "attribution_required": false,
+      "sha256": "fa95e7fdf6cb4aecdb86ab6ff6ae8b4cfb1b7afb0884e9b0ae15d1f3cc621042",
+      "size": 6826
+    }
+  ]
+}

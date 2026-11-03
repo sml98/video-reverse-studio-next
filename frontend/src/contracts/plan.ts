@@ -47,6 +47,7 @@ export const PlanSceneSchema = z
     params: z.record(z.string(), z.any()).default({}),
     durationInFrames: z.number().int().positive(),
     narration: z.string().max(2000).default(""),
+    voice: z.string().max(40).default(""),
     words: z.array(WordSchema).default([]),
     timing: z.enum(["user_text", "proportional", "tts_phonemes", "asr_estimated", "forced_aligned", "none"]).default("none"),
     assets: z.record(z.string(), z.string()).default({}),
@@ -80,9 +81,16 @@ export const FilmPlanSchema = z
     fps: z.union([z.literal(24), z.literal(25), z.literal(30), z.literal(60)]).default(30),
     theme: ThemeSchema.default(ThemeSchema.parse({})),
     captions: z
-      .object({ enabled: z.boolean().default(true), mode: z.enum(["word", "phrase", "off"]).default("word"), position: z.enum(["bottom", "center", "top"]).default("bottom"), maxWords: z.number().int().min(1).max(6).default(3), highlight: z.string().default("#ffd23f") })
+      .object({
+        enabled: z.boolean().default(true),
+        mode: z.enum(["word", "phrase", "off"]).default("word"),
+        position: z.enum(["bottom", "center", "top"]).default("bottom"),
+        maxWords: z.number().int().min(1).max(6).default(3),
+        highlight: z.string().default("#ffd23f"),
+        style: z.enum(["hormozi", "karaoke", "cinema", "comic"]).default("hormozi"),
+      })
       .strict()
-      .default({ enabled: true, mode: "word", position: "bottom", maxWords: 3, highlight: "#ffd23f" }),
+      .default({ enabled: true, mode: "word", position: "bottom", maxWords: 3, highlight: "#ffd23f", style: "hormozi" }),
     audio: z
       .object({ narration: z.string().default(""), music: z.string().default(""), musicVolume: z.number().min(0).max(1).default(0.12), duck: z.boolean().default(true), voice: z.string().default("") })
       .strict()

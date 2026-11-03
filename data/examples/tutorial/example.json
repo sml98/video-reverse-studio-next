@@ -1,5 +1,5 @@
 {
-  "project_id": "paf1b8cae227d",
+  "project_id": "p9c061d22ce71",
   "niche": "tutorial",
   "review": {
     "technical": "aprovado_tecnicamente",
@@ -8,23 +8,23 @@
       {
         "scene": "s01",
         "component": "vrs-title",
-        "motion": 4.65,
-        "first_half": 6.08
+        "motion": 5.51,
+        "first_half": 7.58
       },
       {
         "scene": "s02",
         "component": "vrs-steps",
-        "motion": 3.9,
-        "first_half": 3.69
+        "motion": 4.49,
+        "first_half": 4.45
       },
       {
         "scene": "s03",
         "component": "vrs-object-stage",
-        "motion": 5.56,
-        "first_half": 6.93
+        "motion": 6.3,
+        "first_half": 7.34
       }
     ]
   },
-  "render_seconds": 21.3,
+  "render_seconds": 21.8,
   "duration_s": 16.0
 }

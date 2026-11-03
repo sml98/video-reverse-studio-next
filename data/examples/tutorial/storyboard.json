@@ -3,7 +3,9 @@
   "title": "Café coado em 4 passos",
   "language": "pt-BR",
   "uncertainties": [],
+  "sources": [],
   "illustrative_data": false,
+  "music": "lib:vrs-pro-audio.bgm-lofi-explain",
   "scenes": [
     {
       "preset_id": "vrs-title",

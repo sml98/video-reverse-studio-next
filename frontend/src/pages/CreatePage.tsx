@@ -22,7 +22,7 @@ export const CreatePage: React.FC = () => {
   const [refFile, setRefFile] = useState<File | null>(null);
   const [voiceId, setVoiceId] = useState<string>("faber");
   const [captions, setCaptions] = useState<string>("word");
-  const [agent, setAgent] = useState<string>("mcp");
+  const [agent, setAgent] = useState<string>("auto_local");
   const [sogni, setSogni] = useState<boolean>(false);
   const [busy, setBusy] = useState<boolean>(false);
   const [err, setErr] = useState<string>("");

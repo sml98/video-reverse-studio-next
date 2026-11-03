@@ -1,5 +1,5 @@
 {
-  "project_id": "pbd827f64a985",
+  "project_id": "p80b9b783e709",
   "niche": "documentario",
   "review": {
     "technical": "aprovado_tecnicamente",
@@ -8,29 +8,35 @@
       {
         "scene": "s01",
         "component": "vrs-title",
-        "motion": 3.76,
-        "first_half": 4.24
+        "motion": 3.04,
+        "first_half": 3.57
       },
       {
         "scene": "s02",
         "component": "vrs-timeline",
-        "motion": 3.1,
-        "first_half": 3.62
+        "motion": 2.33,
+        "first_half": 2.78
       },
       {
         "scene": "s03",
-        "component": "vrs-map-route",
-        "motion": 3.82,
-        "first_half": 3.73
+        "component": "vrs-news-highlight",
+        "motion": 4.7,
+        "first_half": 4.32
       },
       {
         "scene": "s04",
+        "component": "vrs-map-route",
+        "motion": 2.89,
+        "first_half": 2.81
+      },
+      {
+        "scene": "s05",
         "component": "vrs-stat",
-        "motion": 3.16,
-        "first_half": 3.61
+        "motion": 2.37,
+        "first_half": 3.03
       }
     ]
   },
-  "render_seconds": 33.0,
-  "duration_s": 25.9
+  "render_seconds": 43.5,
+  "duration_s": 32.333
 }

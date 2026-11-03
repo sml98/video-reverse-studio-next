@@ -12,7 +12,7 @@ from .contracts import FilmPlan, Storyboard
 from .jobs import JobCtx, handler
 from .util import VRSError, read_json, write_json
 
-AGENT_MODES = ("mcp", "claude", "codex", "generic", "openai", "draft")
+AGENT_MODES = ("auto_local", "mcp", "claude", "codex", "generic", "openai", "draft")
 STAGES = ["análise", "roteiro/direção", "recursos/animação", "montagem", "revisão", "MP4"]
 
 
@@ -121,6 +121,46 @@ def patch_scene(pid: str, scene_id: str, patch: dict[str, Any], *, render_after:
     n = projects.save_versioned(pid, "plan", new)
     job = jobs.enqueue("render", pid, {}) if render_after else None
     return {"plan_version": n, "job": job}
+
+
+def manage_scene(pid: str, action: str, scene_id: str, *, preset_id: str = "vrs-stickman-stage", render_after: bool = False) -> dict[str, Any]:
+    plan = projects.load(pid, "plan")
+    if not plan:
+        raise VRSError("Projeto sem plano.", code="no_plan")
+    new = expand.manage_scene(pid, plan, action, scene_id, preset_id=preset_id)
+    n = projects.save_versioned(pid, "plan", new)
+    projects.history(pid, "scene_managed", action=action, scene=scene_id, plan_version=n)
+    job = jobs.enqueue("render", pid, {}) if render_after else None
+    return {"plan_version": n, "scenes": len(new["scenes"]), "job": job}
+
+
+def clone_reference_style(pid: str, *, render_after: bool = False) -> dict[str, Any]:
+    """Aplica a paleta medida e cadência de cortes da referência (brief.json) ao FilmPlan do projeto."""
+    import re
+
+    plan = projects.load(pid, "plan")
+    if not plan:
+        raise VRSError("Projeto sem plano.", code="no_plan")
+    brief = projects.load(pid, "brief") or {}
+    measured = brief.get("measured") or {}
+    palette = [c for c in (measured.get("palette") or []) if isinstance(c, str) and re.fullmatch(r"#[0-9a-fA-F]{6}", c)]
+    if len(palette) >= 2:
+        plan["theme"]["background"] = palette[0]
+        plan["theme"]["accent"] = palette[1]
+        if len(palette) >= 3:
+            plan["theme"]["accent2"] = palette[2]
+    validated = FilmPlan.model_validate(plan).model_dump(by_alias=True)
+    n = projects.save_versioned(pid, "plan", validated)
+    projects.history(pid, "reference_style_cloned", palette=palette[:3], plan_version=n)
+    job = jobs.enqueue("render", pid, {}) if render_after else None
+    return {"plan_version": n, "palette": palette[:3], "theme": validated["theme"], "job": job}
+
+
+def auto_direct_project(pid: str, *, render_after: bool = True) -> dict[str, Any]:
+    """Gera storyboard adaptado à ideia do projeto com o diretor local autônomo e inicia a produção."""
+    p = projects.get_project(pid)
+    sb = expand.auto_storyboard_from_idea(p["niche_id"], p.get("idea", ""), p.get("target_seconds"), title=p.get("name", ""))
+    return submit_storyboard(pid, sb, render_after=render_after)
 
 
 def reframe_project(pid: str, aspect: str, *, render_after: bool = False) -> dict[str, Any]:
@@ -243,6 +283,9 @@ def _prepare(ctx: JobCtx) -> dict[str, Any]:
     if mode == "draft":
         sb = expand.storyboard_from_recipe(p["niche_id"])
         return {"next": submit_storyboard(pid, sb)["job"]["id"], "mode": "draft"}
+    if mode == "auto_local":
+        sb = expand.auto_storyboard_from_idea(p["niche_id"], p.get("idea", ""), p.get("target_seconds"), title=p.get("name", ""))
+        return {"next": submit_storyboard(pid, sb)["job"]["id"], "mode": "auto_local"}
     if mode in ("claude", "codex", "generic", "openai"):
         j = jobs.enqueue("agent_run", pid, {})
         return {"next": j["id"], "mode": mode}
@@ -345,6 +388,7 @@ def build_example(niche_id: str) -> dict[str, Any]:
     projects.save_versioned(pid, "plan", plan)
     info = render.render_project(pid)
     rv = review.review_render(pid)
+    projects.update_project(pid, stage="mp4", status=rv["state"])
     out = settings().data / "examples" / niche_id
     out.mkdir(parents=True, exist_ok=True)
     pdir = projects.project_dir(pid)

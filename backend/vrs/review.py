@@ -18,7 +18,19 @@ from . import projects
 from .render import kinocut_bin
 from .util import VRSError, read_json, run, sanitize, write_json
 
-MEDIA_SCENES = {"vrs-doc-montage", "vrs-story-panel"}
+MEDIA_SCENES = {
+    "vrs-doc-montage",
+    "vrs-story-panel",
+    "vrs-stickman-stage",
+    "vrs-southpark-stage",
+    "vrs-roblox-stage",
+    "vrs-multiplane-stage",
+    "vrs-3d-stage",
+    "vrs-parallax-photo",
+    "vrs-video-broll",
+    "vrs-news-highlight",
+    "vrs-device-mockup",
+}
 
 
 def probe(path: Path) -> dict[str, Any]:
@@ -86,8 +98,8 @@ def _edge_activity(p: Path) -> float:
     a = _gray(p, 320)
     h, w = a.shape
     bw = max(2, int(w * 0.015))
-    bh = max(2, int(h * 0.015))
-    strips = np.concatenate([a[:, :bw].ravel(), a[:, -bw:].ravel(), a[:bh, :].ravel(), a[-bh:, :].ravel()])
+    bh = max(3, int(h * 0.02))
+    strips = np.concatenate([a[bh:, :bw].ravel(), a[bh:, -bw:].ravel(), a[-bh:, :].ravel()])
     return float(np.std(strips))
 
 
@@ -172,6 +184,8 @@ def review_render(pid: str, version: int | None = None) -> dict[str, Any]:
     mid_paths = [pdir / f["path"] for f in frames if f["kind"] in ("meio", "inicio")]
     sheet = _contact_sheet(mid_paths, fdir / "contact-sheet.jpg")
     thumb = _best_thumbnail(mp4, frames, pdir, fdir / "thumbnail.jpg", plan["width"])
+    thumb_pro = _build_pro_thumbnail(thumb, fdir / "thumbnail_pro.jpg", plan) if thumb else None
+    pub_kit = _build_publish_kit(plan)
     fg_sat = _foreground_saturation(mid_paths)
 
     kin: dict[str, Any] = {"available": False}
@@ -207,6 +221,8 @@ def review_render(pid: str, version: int | None = None) -> dict[str, Any]:
         "frames": frames,
         "contact_sheet": str(sheet.relative_to(pdir)) if sheet else "",
         "thumbnail": str(thumb.relative_to(pdir)) if thumb else "",
+        "thumbnail_pro": str(thumb_pro.relative_to(pdir)) if thumb_pro else "",
+        "publish_kit": pub_kit,
         "foreground_saturation_pct": fg_sat,
         "timing_precision": sorted({s["timing"] for s in plan["scenes"] if s["words"]}),
         "kinocut": kin,
@@ -250,6 +266,96 @@ def _best_thumbnail(mp4: Path, frames: list[dict[str, Any]], pdir: Path, out: Pa
         if sc > best_score:
             best_score, best_t = sc, float(f["t"])
     return _frame(mp4, best_t, out, min(1280, max(640, width)))
+
+
+def _build_pro_thumbnail(raw_thumb: Path | None, out: Path, plan: dict[str, Any]) -> Path | None:
+    """Gera capa promocional (YouTube/Reels) com gradiente escuro, selo de destaque e título com contorno."""
+    if not raw_thumb or not raw_thumb.exists():
+        return None
+    try:
+        from PIL import ImageDraw, ImageFont
+
+        im = Image.open(raw_thumb).convert("RGBA")
+        w, h = im.size
+        overlay = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+        d = ImageDraw.Draw(overlay)
+        # Vinheta inferior escura para leitura perfeita do título
+        for y in range(int(h * 0.42), h):
+            alpha = int(215 * ((y - h * 0.42) / max(1, h * 0.58)) ** 1.3)
+            d.line([(0, y), (w, y)], fill=(8, 12, 24, min(230, alpha)))
+        # Moldura de destaque sutil
+        accent = plan.get("theme", {}).get("accent", "#ffb02e")
+        d.rectangle([4, 4, w - 5, h - 5], outline=accent, width=max(3, w // 220))
+        try:
+            f_title = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", max(22, w // 22))
+            f_badge = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", max(14, w // 42))
+        except Exception:
+            f_title = ImageFont.load_default()
+            f_badge = f_title
+        badge = str(plan.get("theme", {}).get("visualLanguage") or "STUDIO VRS").upper()[:24]
+        pad_x = int(w * 0.05)
+        by = int(h * 0.66)
+        bb = d.textbbox((0, 0), badge, font=f_badge)
+        bw, bh = bb[2] - bb[0], bb[3] - bb[1]
+        d.rounded_rectangle([pad_x, by, pad_x + bw + 24, by + bh + 14], radius=8, fill=accent)
+        d.text((pad_x + 12, by + 5), badge, fill=(10, 14, 26, 255), font=f_badge)
+
+        title = str(plan.get("title") or "Vídeo Explicativo").upper()
+        words = title.split()
+        lines, cur = [], ""
+        for wd in words:
+            test = (cur + " " + wd).strip()
+            if len(test) <= 28 or not cur:
+                cur = test
+            else:
+                lines.append(cur)
+                cur = wd
+        if cur:
+            lines.append(cur)
+        lines = lines[:2]
+        ty = by + bh + 24
+        for ln in lines:
+            d.text((pad_x, ty), ln, fill=(255, 255, 255, 255), font=f_title, stroke_width=max(2, w // 260), stroke_fill=(0, 0, 0, 240))
+            ty += int(w // 19)
+        merged = Image.alpha_composite(im, overlay).convert("RGB")
+        merged.save(out, quality=90)
+        return out
+    except Exception:
+        return None
+
+
+def _build_publish_kit(plan: dict[str, Any]) -> dict[str, Any]:
+    """Gera kit de publicação (3 títulos sugeridos, capítulos YouTube 00:00 e tags)."""
+    title = str(plan.get("title") or "Vídeo").strip()
+    fps = float(plan.get("fps") or 30)
+    chapters: list[dict[str, Any]] = []
+    cur_s = 0.0
+    for idx, sc in enumerate(plan.get("scenes") or []):
+        mm = int(cur_s // 60)
+        ss = int(cur_s % 60)
+        p = sc.get("params") or {}
+        label = (
+            p.get("title")
+            or p.get("boardTitle")
+            or p.get("headline")
+            or p.get("quote")
+            or sc.get("narration", "")[:38]
+            or f"Cena {idx + 1}"
+        )
+        clean_lbl = str(label).strip().replace("\n", " ")[:48]
+        chapters.append({"timestamp": f"{mm:02d}:{ss:02d}", "seconds": round(cur_s, 1), "scene_id": sc["id"], "label": clean_lbl})
+        cur_s += float(sc.get("durationInFrames") or 90) / fps
+    vl = str(plan.get("theme", {}).get("visualLanguage") or "animacao").replace("-", "")
+    return {
+        "titles": [
+            title,
+            f"{title}: O Que Ninguém Te Conta",
+            f"Como Funciona na Prática: {title}",
+        ],
+        "chapters": chapters,
+        "chapters_text": "\n".join(f"{c['timestamp']} {c['label']}" for c in chapters),
+        "hashtags": [f"#{vl}", "#explicacao", "#animacao2d", "#animacao3d", "#videoreversestudio"],
+    }
 
 
 def _contact_sheet(paths: list[Path], out: Path, cols: int = 4, tw: int = 360) -> Path | None:

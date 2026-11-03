@@ -19,11 +19,12 @@
     "mode": "word",
     "position": "bottom",
     "maxWords": 3,
-    "highlight": "#ffd23f"
+    "highlight": "#ffd23f",
+    "style": "karaoke"
   },
   "audio": {
     "narration": "voice/narration.wav",
-    "music": "",
+    "music": "assets/lib/vrs-pro-audio/bgm-blocky-gaming.wav",
     "musicVolume": 0.12,
     "duck": true,
     "voice": "faber"
@@ -39,82 +40,90 @@
         "shirtColor": "#2563eb",
         "pantsColor": "#16a34a",
         "skinColor": "#facc15",
-        "bubble": "Pula agora!"
+        "bubble": "Pula agora!",
+        "cameraMode": "auto_cut"
       },
-      "durationInFrames": 150,
-      "narration": "No primeiro nível do desafio, cada salto exige precisão no tempo certo.",
+      "durationInFrames": 151,
+      "narration": "No primeiro nível do desafio 3D, cada salto exige precisão no tempo certo.",
+      "voice": "faber",
       "words": [
         {
           "id": "w-1",
           "word": "No",
           "start": 300,
-          "end": 440
+          "end": 416
         },
         {
           "id": "w-2",
           "word": "primeiro",
-          "start": 440,
-          "end": 768
+          "start": 416,
+          "end": 731
         },
         {
           "id": "w-3",
           "word": "nível",
-          "start": 768,
-          "end": 1026
+          "start": 731,
+          "end": 977
         },
         {
           "id": "w-4",
           "word": "do",
-          "start": 1026,
-          "end": 1119
+          "start": 977,
+          "end": 1093
         },
         {
           "id": "w-5",
-          "word": "desafio,",
-          "start": 1119,
-          "end": 1892
+          "word": "desafio",
+          "start": 1093,
+          "end": 1560
         },
         {
           "id": "w-6",
-          "word": "cada",
-          "start": 1892,
-          "end": 2232
+          "word": "3D,",
+          "start": 1560,
+          "end": 2167
         },
         {
           "id": "w-7",
-          "word": "salto",
-          "start": 2232,
-          "end": 2548
+          "word": "cada",
+          "start": 2167,
+          "end": 2553
         },
         {
           "id": "w-8",
-          "word": "exige",
-          "start": 2548,
-          "end": 2853
+          "word": "salto",
+          "start": 2553,
+          "end": 2856
         },
         {
           "id": "w-9",
-          "word": "precisão",
-          "start": 2853,
-          "end": 3333
+          "word": "exige",
+          "start": 2856,
+          "end": 3125
         },
         {
           "id": "w-10",
-          "word": "no",
-          "start": 3333,
-          "end": 3427
+          "word": "precisão",
+          "start": 3125,
+          "end": 3603
         },
         {
           "id": "w-11",
-          "word": "tempo",
-          "start": 3427,
-          "end": 3696
+          "word": "no",
+          "start": 3603,
+          "end": 3685
         },
         {
           "id": "w-12",
+          "word": "tempo",
+          "start": 3685,
+          "end": 3965
+        },
+        {
+          "id": "w-13",
           "word": "certo.",
-          "start": 3696,
-          "end": 4282
+          "start": 3965,
+          "end": 4560
         }
       ],
       "timing": "tts_phonemes",
@@ -133,8 +142,8 @@
       "sfx": [
         {
           "path": "assets/lib/kenney-ui-audio/click1.ogg",
-          "at_ms": 1119,
-          "volume": 0.14,
+          "at_ms": 1093,
+          "volume": 0.16,
           "role": "anchor:w-5"
         }
       ],
@@ -150,10 +159,12 @@
         "shirtColor": "#ef4444",
         "pantsColor": "#1e293b",
         "skinColor": "#facc15",
-        "bubble": "Nova rota desbloqueada!"
+        "bubble": "Nova rota desbloqueada!",
+        "cameraMode": "auto_cut"
       },
       "durationInFrames": 150,
       "narration": "Quando você domina o ritmo dos blocos, o mapa inteiro abre novas rotas.",
+      "voice": "faber",
       "words": [
         {
           "id": "w-1",
@@ -250,14 +261,14 @@
       "sfx": [
         {
           "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
-          "at_ms": 40,
-          "volume": 0.16,
+          "at_ms": 30,
+          "volume": 0.18,
           "role": "transition:zoom"
         },
         {
           "path": "assets/lib/kenney-ui-audio/click1.ogg",
           "at_ms": 1225,
-          "volume": 0.14,
+          "volume": 0.16,
           "role": "anchor:w-5"
         }
       ],
@@ -273,100 +284,114 @@
         "shirtColor": "#22c55e",
         "pantsColor": "#1d4ed8",
         "skinColor": "#facc15",
-        "bubble": "GG! Próxima fase!"
+        "bubble": "GG! Próxima fase!",
+        "cameraMode": "auto_cut"
       },
-      "durationInFrames": 152,
-      "narration": "E no final da fase, a equipe se reúne no acampamento para o próximo desafio!",
+      "durationInFrames": 208,
+      "narration": "Conseguimos passar pela pista nas nuvens! Agora a equipe inteira está pronta para o próximo mapa 3D!",
+      "voice": "duet",
       "words": [
         {
           "id": "w-1",
-          "word": "E",
+          "word": "Conseguimos",
           "start": 300,
-          "end": 381
+          "end": 877
         },
         {
           "id": "w-2",
-          "word": "no",
-          "start": 381,
-          "end": 486
+          "word": "passar",
+          "start": 877,
+          "end": 1226
         },
         {
           "id": "w-3",
-          "word": "final",
-          "start": 486,
-          "end": 812
+          "word": "pela",
+          "start": 1226,
+          "end": 1479
         },
         {
           "id": "w-4",
-          "word": "da",
-          "start": 812,
-          "end": 951
+          "word": "pista",
+          "start": 1479,
+          "end": 1731
         },
         {
           "id": "w-5",
-          "word": "fase,",
-          "start": 951,
-          "end": 1452
+          "word": "nas",
+          "start": 1731,
+          "end": 1924
         },
         {
           "id": "w-6",
-          "word": "a",
-          "start": 1452,
-          "end": 1545
+          "word": "nuvens!",
+          "start": 1924,
+          "end": 2610
         },
         {
           "id": "w-7",
-          "word": "equipe",
-          "start": 1545,
-          "end": 1906
+          "word": "Agora",
+          "start": 2750,
+          "end": 3447
         },
         {
           "id": "w-8",
-          "word": "se",
-          "start": 1906,
-          "end": 2011
+          "word": "a",
+          "start": 3447,
+          "end": 3495
         },
         {
           "id": "w-9",
-          "word": "reúne",
-          "start": 2011,
-          "end": 2360
+          "word": "equipe",
+          "start": 3495,
+          "end": 3784
         },
         {
           "id": "w-10",
-          "word": "no",
-          "start": 2360,
-          "end": 2442
+          "word": "inteira",
+          "start": 3784,
+          "end": 4157
         },
         {
           "id": "w-11",
-          "word": "acampamento",
-          "start": 2442,
-          "end": 3140
+          "word": "está",
+          "start": 4157,
+          "end": 4361
         },
         {
           "id": "w-12",
-          "word": "para",
-          "start": 3140,
-          "end": 3338
+          "word": "pronta",
+          "start": 4361,
+          "end": 4674
         },
         {
           "id": "w-13",
-          "word": "o",
-          "start": 3338,
-          "end": 3396
+          "word": "para",
+          "start": 4674,
+          "end": 4854
         },
         {
           "id": "w-14",
-          "word": "próximo",
-          "start": 3396,
-          "end": 3792
+          "word": "o",
+          "start": 4854,
+          "end": 4926
         },
         {
           "id": "w-15",
-          "word": "desafio!",
-          "start": 3792,
-          "end": 4584
+          "word": "próximo",
+          "start": 4926,
+          "end": 5359
+        },
+        {
+          "id": "w-16",
+          "word": "mapa",
+          "start": 5359,
+          "end": 5636
+        },
+        {
+          "id": "w-17",
+          "word": "3D!",
+          "start": 5636,
+          "end": 6453
         }
       ],
       "timing": "tts_phonemes",
@@ -385,14 +410,14 @@
       "sfx": [
         {
           "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
-          "at_ms": 40,
-          "volume": 0.16,
+          "at_ms": 30,
+          "volume": 0.18,
           "role": "transition:zoom"
         },
         {
           "path": "assets/lib/kenney-ui-audio/click1.ogg",
-          "at_ms": 1452,
-          "volume": 0.14,
+          "at_ms": 1924,
+          "volume": 0.16,
           "role": "anchor:w-6"
         }
       ],
@@ -402,5 +427,7 @@
   "uncertainties": [],
   "sources": [],
   "illustrativeData": false,
-  "warnings": []
+  "warnings": [
+    "Cena s03: a fala (6.9s) não cabe em 5.0s; a cena foi estendida sem cortar palavras."
+  ]
 }

@@ -36,7 +36,7 @@
       "label": "Ponto de Ônibus",
       "preset_id": "vrs-southpark-stage",
       "duration": 5,
-      "narration": "Cara, eu tive uma ideia genial para a gente nunca mais acordar cedo.",
+      "narration": "Cara, eu tive uma ideia genial para a gente nunca mais acordar cedo! Fiz até um sistema 10x mais rápido aqui na neve.",
       "parameters": {
         "title": "Manhã Gelada",
         "mode": "duet",
@@ -49,16 +49,18 @@
         "secondCoatColor": "#f97316",
         "secondHatColor": "#22c55e",
         "secondCharacterName": "Max",
-        "bubble": "Tive uma ideia genial!"
+        "bubble": "Tive uma ideia genial!",
+        "cameraMode": "auto_cut"
       },
-      "guidance": ""
+      "guidance": "",
+      "voice": "duet"
     },
     {
       "role": "discussão",
       "label": "Questionamento",
       "preset_id": "vrs-southpark-stage",
       "duration": 5,
-      "narration": "Da última vez que você disse isso, a gente terminou preso na diretoria.",
+      "narration": "Da última vez que você disse isso, a gente terminou preso na diretoria! Eu não vou cair nessa conversa de novo.",
       "parameters": {
         "title": "",
         "mode": "duet",
@@ -71,9 +73,11 @@
         "secondCoatColor": "#f97316",
         "secondHatColor": "#22c55e",
         "secondCharacterName": "Max",
-        "bubble": "Nem vem com essa!"
+        "bubble": "Nem vem com essa!",
+        "cameraMode": "auto_cut"
       },
-      "guidance": ""
+      "guidance": "",
+      "voice": "duet"
     },
     {
       "role": "desfecho cômico",
@@ -93,7 +97,8 @@
         "secondCoatColor": "#f97316",
         "secondHatColor": "#22c55e",
         "secondCharacterName": "Max",
-        "bubble": "Confia na planilha!"
+        "bubble": "Confia na planilha!",
+        "cameraMode": "closeup"
       },
       "guidance": ""
     }
@@ -111,8 +116,10 @@
   "captions": {
     "mode": "word",
     "position": "bottom",
-    "maxWords": 3
+    "maxWords": 3,
+    "style": "comic"
   },
   "voice": "faber",
-  "schema": "vrs.niche/1"
+  "schema": "vrs.niche/1",
+  "music": "lib:vrs-pro-audio.bgm-quirky-comedy"
 }

@@ -3,7 +3,14 @@
   "title": "A prensa que mudou a Europa",
   "language": "pt-BR",
   "uncertainties": [],
+  "sources": [
+    {
+      "claim": "Prensa de tipos móveis em Mainz (c. 1440–1455)",
+      "source": "Gutenberg-Museum / Encyclopædia Britannica"
+    }
+  ],
   "illustrative_data": false,
+  "music": "lib:vrs-pro-audio.bgm-doc-suspense",
   "scenes": [
     {
       "preset_id": "vrs-title",
@@ -40,6 +47,20 @@
       },
       "narration": "Por volta de 1440, Gutenberg desenvolve a prensa de tipos móveis em Mainz. Por volta de 1455, imprime sua Bíblia.",
       "duration": 8
+    },
+    {
+      "preset_id": "vrs-news-highlight",
+      "parameters": {
+        "title": "Evidência Histórica",
+        "sourceName": "ARQUIVO HISTÓRICO · MAINZ",
+        "publishDate": "c. 1455 · Século XV",
+        "headline": "A Bíblia de 42 linhas inaugura a era da imprensa na Europa",
+        "highlightText": "Dezenas de cópias idênticas foram produzidas em meses em vez de anos.",
+        "bodySnippet": "A revolução tipográfica reduziu drasticamente o custo do conhecimento em todo o continente.",
+        "image": ""
+      },
+      "narration": "Os registros históricos confirmam que a Bíblia de 42 linhas inaugurou a produção em escala na Europa.",
+      "duration": 5
     },
     {
       "preset_id": "vrs-map-route",

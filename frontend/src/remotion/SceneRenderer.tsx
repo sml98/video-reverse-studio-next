@@ -4,12 +4,20 @@ import type { FilmPlan, PlanScene } from "../contracts/plan";
 import { SCENE_SPECS, defaultsFor } from "../contracts/plan";
 import { RENDERCOMP_COMPONENTS } from "./rendercomp/registry.generated";
 import { ease } from "./core/easing";
-import { ThemeProvider, makeLayout, type Ctx } from "./core/theme";
+import { ThemeProvider, fontStack, makeLayout, withAlpha, type Ctx } from "./core/theme";
 import { ViralCaptions } from "./ViralCaptions";
 import { CalcScene, BarChartScene, ComparisonScene, LineChartScene } from "./scenes/data";
 import { MapRouteScene, MechanismScene, StepsScene, TimelineScene } from "./scenes/explain";
 import { CustomLayersScene, DocMontageScene, ObjectStageScene, ParallaxPhotoScene, Stage3DScene, StoryPanelScene } from "./scenes/media";
-import { MultiplaneStageScene, RobloxStageScene, SouthParkStageScene, StickmanStageScene } from "./scenes/characters";
+import {
+  DeviceMockupScene,
+  MultiplaneStageScene,
+  NewsHighlightScene,
+  RobloxStageScene,
+  SouthParkStageScene,
+  StickmanStageScene,
+  VideoBrollScene,
+} from "./scenes/characters";
 import { CodeWalkthroughScene, CtaScene, MemeScene, QuoteScene, StatScene, TitleScene } from "./scenes/text";
 
 const OWN: Record<string, React.FC<{ params: Record<string, any> }>> = {
@@ -36,6 +44,9 @@ const OWN: Record<string, React.FC<{ params: Record<string, any> }>> = {
   "vrs-southpark-stage": SouthParkStageScene,
   "vrs-roblox-stage": RobloxStageScene,
   "vrs-multiplane-stage": MultiplaneStageScene,
+  "vrs-news-highlight": NewsHighlightScene,
+  "vrs-device-mockup": DeviceMockupScene,
+  "vrs-video-broll": VideoBrollScene,
 };
 
 export const KNOWN_COMPONENTS = new Set<string>([...Object.keys(OWN), "vrs-custom", ...Object.keys(RENDERCOMP_COMPONENTS)]);
@@ -93,6 +104,79 @@ const TransitionWrap: React.FC<{ scene: PlanScene; color: string; children: Reac
   );
 };
 
+/** Camada global de acabamento óptico (vinheta sutil, barra de retenção por capítulos e lower-third de fonte). */
+const PostFXOverlay: React.FC<{ plan: FilmPlan; scene: PlanScene }> = ({ plan, scene }) => {
+  const frame = useCurrentFrame();
+  const { width, height } = useVideoConfig();
+  const u = Math.min(width, height) / 1080;
+
+  // Calcula progresso global do vídeo até o quadro atual desta cena
+  let beforeFrames = 0;
+  let sceneIndex = 0;
+  const totalFrames = Math.max(1, plan.scenes.reduce((a, s) => a + s.durationInFrames, 0));
+  for (let i = 0; i < plan.scenes.length; i++) {
+    if (plan.scenes[i].id === scene.id) {
+      sceneIndex = i;
+      break;
+    }
+    beforeFrames += plan.scenes[i].durationInFrames;
+  }
+  const globalPct = Math.min(100, Math.max(0, ((beforeFrames + frame) / totalFrames) * 100));
+  const srcItem = plan.sources && plan.sources.length > 0 ? plan.sources[sceneIndex % plan.sources.length] : null;
+
+  return (
+    <AbsoluteFill style={{ pointerEvents: "none" }}>
+      {/* Vinheta óptica suave */}
+      <AbsoluteFill
+        style={{
+          background: "radial-gradient(circle at 50% 50%, transparent 64%, rgba(0,0,0,0.34) 100%)",
+        }}
+      />
+
+      {/* Barra superior de progresso / capítulos de retenção */}
+      <div
+        style={{
+          position: "absolute",
+          left: 0,
+          right: 0,
+          top: 0,
+          height: Math.max(4, Math.round(6 * u)),
+          background: "rgba(255,255,255,0.12)",
+          display: "flex",
+        }}
+      >
+        <div
+          style={{
+            width: `${globalPct.toFixed(2)}%`,
+            height: "100%",
+            background: `linear-gradient(90deg, ${plan.theme.accent}, ${plan.theme.accent2})`,
+          }}
+        />
+      </div>
+
+      {/* Lower-third discreto de citação/fonte quando o projeto declara sources */}
+      {srcItem && frame > 18 && frame < scene.durationInFrames - 12 ? (
+        <div
+          style={{
+            position: "absolute",
+            left: Math.round(width * 0.05),
+            bottom: Math.round(height * 0.035),
+            background: "rgba(8, 12, 24, 0.72)",
+            borderLeft: `${3 * u}px solid ${plan.theme.accent}`,
+            padding: `${4 * u}px ${12 * u}px`,
+            borderRadius: 6 * u,
+            fontFamily: fontStack("mono"),
+            fontSize: Math.max(11, Math.round(15 * u)),
+            color: withAlpha(plan.theme.foreground, 0.85),
+          }}
+        >
+          Fonte: {srcItem.source}
+        </div>
+      ) : null}
+    </AbsoluteFill>
+  );
+};
+
 /** Destaque palavra a palavra só com tempos derivados do áudio; distribuição proporcional => legenda por frase. */
 export function captionMode(requested: "word" | "phrase" | "off", timing: PlanScene["timing"]): "word" | "phrase" | "off" {
   if (requested !== "word") return requested;
@@ -132,7 +216,19 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({ plan, scene, asset
       <TransitionWrap scene={scene} color={plan.theme.background}>
         {body}
       </TransitionWrap>
-      {captionsOn ? <ViralCaptions words={scene.words} mode={captionMode(plan.captions.mode, scene.timing)} maxWords={plan.captions.maxWords} position={plan.captions.position} highlight={plan.captions.highlight} color={plan.theme.foreground} precision={scene.timing} /> : null}
+      <PostFXOverlay plan={plan} scene={scene} />
+      {captionsOn ? (
+        <ViralCaptions
+          words={scene.words}
+          mode={captionMode(plan.captions.mode, scene.timing)}
+          maxWords={plan.captions.maxWords}
+          position={plan.captions.position}
+          highlight={plan.captions.highlight}
+          color={plan.theme.foreground}
+          stylePreset={(plan.captions as any).style || "hormozi"}
+          precision={scene.timing}
+        />
+      ) : null}
     </ThemeProvider>
   );
 };

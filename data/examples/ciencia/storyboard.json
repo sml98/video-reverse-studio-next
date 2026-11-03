@@ -3,7 +3,14 @@
   "title": "Por que o céu é azul?",
   "language": "pt-BR",
   "uncertainties": [],
+  "sources": [
+    {
+      "claim": "Espalhamento de Rayleigh inversamente proporcional a λ⁴",
+      "source": "Óptica Física — Lei de Rayleigh"
+    }
+  ],
   "illustrative_data": false,
+  "music": "lib:vrs-pro-audio.bgm-lofi-explain",
   "scenes": [
     {
       "preset_id": "vrs-title",

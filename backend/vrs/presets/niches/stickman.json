@@ -38,7 +38,7 @@
       "label": "Quadro Branco",
       "preset_id": "vrs-stickman-stage",
       "duration": 5,
-      "narration": "Todo mundo acha que trabalhar doze horas seguidas dobra o resultado.",
+      "narration": "Todo mundo acha que trabalhar 12h seguidas dobra o resultado em 2D.",
       "parameters": {
         "title": "O Mito das 12 Horas",
         "action": "explain_board",
@@ -51,8 +51,9 @@
           "Cansaço multiplica erros",
           "Descanso faz parte do treino"
         ],
-        "boardAsset": "",
-        "bubble": "Olha para este quadro!"
+        "boardAsset": "lib:vrs-pro-stickers.sticker-foco-10x",
+        "bubble": "Olha para este quadro!",
+        "cameraMode": "auto_cut"
       },
       "guidance": "Boneco palito aponta para a lousa enquanto os itens surgem."
     },
@@ -61,7 +62,7 @@
       "label": "Caminhada e Pânico",
       "preset_id": "vrs-stickman-stage",
       "duration": 5,
-      "narration": "Mas depois da sexta hora sem pausa, o cérebro entra em modo de emergência.",
+      "narration": "Mas depois da sexta hora sem pausa, o cérebro perde 50% da atenção e entra em pânico.",
       "parameters": {
         "title": "Sobrecarga Mental",
         "action": "shrug_panic",
@@ -73,8 +74,9 @@
           "Atenção cai pela metade",
           "Retrabalho no dia seguinte"
         ],
-        "boardAsset": "",
-        "bubble": "Socorro, esqueci tudo!"
+        "boardAsset": "lib:vrs-pro-stickers.sticker-alerta-mito",
+        "bubble": "Socorro, esqueci tudo!",
+        "cameraMode": "auto_cut"
       },
       "guidance": ""
     },
@@ -83,7 +85,7 @@
       "label": "Debate em Dupla",
       "preset_id": "vrs-stickman-stage",
       "duration": 5,
-      "narration": "O segredo não é correr sem parar, e sim proteger os blocos de foco.",
+      "narration": "O segredo não é correr sem parar! O ganho real vem de proteger blocos de foco de 90 minutos.",
       "parameters": {
         "title": "Foco vs. Pressa",
         "action": "duet_debate",
@@ -95,10 +97,12 @@
           "Blocos de 90 minutos",
           "Pausa real longe da tela"
         ],
-        "boardAsset": "",
-        "bubble": "Trabalhe com estratégia!"
+        "boardAsset": "lib:vrs-pro-stickers.sticker-aprovado",
+        "bubble": "Trabalhe com estratégia!",
+        "cameraMode": "auto_cut"
       },
-      "guidance": ""
+      "guidance": "",
+      "voice": "duet"
     }
   ],
   "aspects": [
@@ -114,8 +118,10 @@
   "captions": {
     "mode": "word",
     "position": "bottom",
-    "maxWords": 3
+    "maxWords": 3,
+    "style": "comic"
   },
   "voice": "faber",
-  "schema": "vrs.niche/1"
+  "schema": "vrs.niche/1",
+  "music": "lib:vrs-pro-audio.bgm-lofi-explain"
 }

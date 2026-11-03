@@ -3,7 +3,9 @@
   "title": "Podcast dos Avatares: IA vs Código",
   "language": "pt-BR",
   "uncertainties": [],
+  "sources": [],
   "illustrative_data": false,
+  "music": "lib:vrs-pro-audio.bgm-blocky-gaming",
   "scenes": [
     {
       "preset_id": "vrs-multiplane-stage",
@@ -17,22 +19,23 @@
         "bubble": "Automatizando com código!",
         "stickers": [
           {
-            "asset": "",
+            "asset": "lib:vrs-pro-stickers.sticker-foco-10x",
             "emoji": "🚀",
-            "label": "100% LOCAL",
+            "label": "FOCO 10X",
             "x": 0.18,
             "y": 0.34
           },
           {
-            "asset": "",
+            "asset": "lib:vrs-pro-stickers.sticker-verificado",
             "emoji": "⚡",
-            "label": "RÁPIDO",
+            "label": "100% LOCAL",
             "x": 0.82,
             "y": 0.36
           }
-        ]
+        ],
+        "cameraMode": "auto_cut"
       },
-      "narration": "Bem-vindos ao estúdio! Hoje vamos revelar como automatizar projetos inteiros sem perder qualidade.",
+      "narration": "Bem-vindos ao estúdio! Hoje vamos revelar como automatizar projetos com IA sem perder qualidade.",
       "duration": 5
     },
     {
@@ -47,16 +50,18 @@
         "bubble": "Procedência verificada!",
         "stickers": [
           {
-            "asset": "",
+            "asset": "lib:vrs-pro-stickers.sticker-aprovado",
             "emoji": "⚖️",
             "label": "APROVADO",
             "x": 0.5,
-            "y": 0.28
+            "y": 0.26
           }
-        ]
+        ],
+        "cameraMode": "auto_cut"
       },
-      "narration": "Mas antes de publicar qualquer sistema, cada recurso precisa ter licença limpa e procedência verificada.",
-      "duration": 5
+      "narration": "Automatizar com código economiza horas de trabalho! Mas antes de publicar, cada recurso precisa ter licença limpa e procedência verificada.",
+      "duration": 5,
+      "voice": "duet"
     },
     {
       "preset_id": "vrs-multiplane-stage",
@@ -70,13 +75,14 @@
         "bubble": "Bora criar o próximo vídeo!",
         "stickers": [
           {
-            "asset": "",
+            "asset": "lib:vrs-pro-stickers.sticker-lucro",
             "emoji": "🏆",
-            "label": "SUCESSO",
+            "label": "ALTA RETENÇÃO",
             "x": 0.2,
-            "y": 0.35
+            "y": 0.34
           }
-        ]
+        ],
+        "cameraMode": "auto_cut"
       },
       "narration": "Com cenários em camadas e personagens expressivos, suas histórias ganham vida na tela.",
       "duration": 5

@@ -145,9 +145,17 @@
   "captions": {
     "mode": "word",
     "position": "bottom",
-    "maxWords": 3
+    "maxWords": 3,
+    "style": "hormozi"
   },
   "voice": "faber",
   "schema": "vrs.niche/1",
-  "guide": "skills/vrs-presets/references/ciencia.md"
+  "guide": "skills/vrs-presets/references/ciencia.md",
+  "music": "lib:vrs-pro-audio.bgm-lofi-explain",
+  "sources": [
+    {
+      "claim": "Espalhamento de Rayleigh inversamente proporcional a λ⁴",
+      "source": "Óptica Física — Lei de Rayleigh"
+    }
+  ]
 }

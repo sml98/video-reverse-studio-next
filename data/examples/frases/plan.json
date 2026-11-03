@@ -19,11 +19,12 @@
     "mode": "word",
     "position": "bottom",
     "maxWords": 3,
-    "highlight": "#ffd23f"
+    "highlight": "#ffd23f",
+    "style": "cinema"
   },
   "audio": {
     "narration": "voice/narration.wav",
-    "music": "",
+    "music": "assets/lib/vrs-pro-audio/bgm-doc-suspense.wav",
     "musicVolume": 0.12,
     "duck": true,
     "voice": "faber"
@@ -41,6 +42,7 @@
       },
       "durationInFrames": 210,
       "narration": "Ninguém vê o caminho inteiro. Coragem é dar o próximo passo mesmo assim.",
+      "voice": "faber",
       "words": [
         {
           "id": "w-1",
@@ -134,7 +136,14 @@
         "durationInFrames": 0,
         "color": ""
       },
-      "sfx": [],
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/click1.ogg",
+          "at_ms": 1292,
+          "volume": 0.16,
+          "role": "anchor:w-5"
+        }
+      ],
       "notes": ""
     },
     {
@@ -149,6 +158,7 @@
       },
       "durationInFrames": 120,
       "narration": "Comece pequeno. Continue sempre.",
+      "voice": "faber",
       "words": [
         {
           "id": "w-1",
@@ -188,7 +198,20 @@
         "durationInFrames": 0,
         "color": ""
       },
-      "sfx": [],
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
+          "at_ms": 30,
+          "volume": 0.18,
+          "role": "transition:fade"
+        },
+        {
+          "path": "assets/lib/kenney-ui-audio/click1.ogg",
+          "at_ms": 632,
+          "volume": 0.16,
+          "role": "anchor:w-2"
+        }
+      ],
       "notes": ""
     }
   ],

@@ -19,11 +19,12 @@
     "mode": "word",
     "position": "bottom",
     "maxWords": 3,
-    "highlight": "#ffd23f"
+    "highlight": "#ffd23f",
+    "style": "karaoke"
   },
   "audio": {
     "narration": "voice/narration.wav",
-    "music": "",
+    "music": "assets/lib/vrs-pro-audio/bgm-lofi-explain.wav",
     "musicVolume": 0.12,
     "duck": true,
     "voice": "faber"
@@ -41,6 +42,7 @@
       },
       "durationInFrames": 90,
       "narration": "Quer um café coado sem amargor?",
+      "voice": "faber",
       "words": [
         {
           "id": "w-1",
@@ -92,7 +94,14 @@
         "durationInFrames": 0,
         "color": ""
       },
-      "sfx": [],
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/click1.ogg",
+          "at_ms": 60,
+          "volume": 0.18,
+          "role": "intro:drop"
+        }
+      ],
       "notes": ""
     },
     {
@@ -121,6 +130,7 @@
       },
       "durationInFrames": 270,
       "narration": "Aqueça a água sem ferver. Escalde o filtro. Use cerca de dez gramas para cento e cinquenta mililitros. Despeje devagar, em espiral.",
+      "voice": "faber",
       "words": [
         {
           "id": "w-1",
@@ -268,7 +278,14 @@
         "durationInFrames": 0,
         "color": ""
       },
-      "sfx": [],
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
+          "at_ms": 30,
+          "volume": 0.18,
+          "role": "transition:slide"
+        }
+      ],
       "notes": ""
     },
     {
@@ -297,6 +314,7 @@
       },
       "durationInFrames": 120,
       "narration": "Pronto: um café encorpado e aromático.",
+      "voice": "faber",
       "words": [
         {
           "id": "w-1",
@@ -348,7 +366,14 @@
         "durationInFrames": 0,
         "color": ""
       },
-      "sfx": [],
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
+          "at_ms": 30,
+          "volume": 0.18,
+          "role": "transition:slide"
+        }
+      ],
       "notes": ""
     }
   ],

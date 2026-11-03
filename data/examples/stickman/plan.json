@@ -19,11 +19,12 @@
     "mode": "word",
     "position": "bottom",
     "maxWords": 3,
-    "highlight": "#ffd23f"
+    "highlight": "#ffd23f",
+    "style": "comic"
   },
   "audio": {
     "narration": "voice/narration.wav",
-    "music": "",
+    "music": "assets/lib/vrs-pro-audio/bgm-lofi-explain.wav",
     "musicVolume": 0.12,
     "duck": true,
     "voice": "faber"
@@ -44,81 +45,91 @@
           "Cansaço multiplica erros",
           "Descanso faz parte do treino"
         ],
-        "boardAsset": "",
-        "bubble": "Olha para este quadro!"
+        "boardAsset": "assets/lib/vrs-pro-stickers/sticker-foco-10x.png",
+        "bubble": "Olha para este quadro!",
+        "cameraMode": "auto_cut"
       },
       "durationInFrames": 150,
-      "narration": "Todo mundo acha que trabalhar doze horas seguidas dobra o resultado.",
+      "narration": "Todo mundo acha que trabalhar 12h seguidas dobra o resultado em 2D.",
+      "voice": "faber",
       "words": [
         {
           "id": "w-1",
           "word": "Todo",
           "start": 300,
-          "end": 499
+          "end": 478
         },
         {
           "id": "w-2",
           "word": "mundo",
-          "start": 499,
-          "end": 792
+          "start": 478,
+          "end": 727
         },
         {
           "id": "w-3",
           "word": "acha",
-          "start": 792,
-          "end": 1027
+          "start": 727,
+          "end": 976
         },
         {
           "id": "w-4",
           "word": "que",
-          "start": 1027,
-          "end": 1121
+          "start": 976,
+          "end": 1071
         },
         {
           "id": "w-5",
           "word": "trabalhar",
-          "start": 1121,
-          "end": 1531
+          "start": 1071,
+          "end": 1511
         },
         {
           "id": "w-6",
-          "word": "doze",
-          "start": 1531,
-          "end": 1918
+          "word": "12h",
+          "start": 1511,
+          "end": 2128
         },
         {
           "id": "w-7",
-          "word": "horas",
-          "start": 1918,
-          "end": 2129
+          "word": "seguidas",
+          "start": 2128,
+          "end": 2568
         },
         {
           "id": "w-8",
-          "word": "seguidas",
-          "start": 2129,
-          "end": 2575
+          "word": "dobra",
+          "start": 2568,
+          "end": 2888
         },
         {
           "id": "w-9",
-          "word": "dobra",
-          "start": 2575,
-          "end": 2868
+          "word": "o",
+          "start": 2888,
+          "end": 2960
         },
         {
           "id": "w-10",
-          "word": "o",
-          "start": 2868,
-          "end": 2927
+          "word": "resultado",
+          "start": 2960,
+          "end": 3625
         },
         {
           "id": "w-11",
-          "word": "resultado.",
-          "start": 2927,
-          "end": 3713
+          "word": "em",
+          "start": 3625,
+          "end": 3815
+        },
+        {
+          "id": "w-12",
+          "word": "2D.",
+          "start": 3815,
+          "end": 4456
         }
       ],
       "timing": "tts_phonemes",
-      "assets": {},
+      "assets": {
+        "assets/lib/vrs-pro-stickers/sticker-foco-10x.png": "assets/lib/vrs-pro-stickers/sticker-foco-10x.png"
+      },
       "layers": [],
       "transitionIn": {
         "type": "fade",
@@ -133,9 +144,9 @@
       "sfx": [
         {
           "path": "assets/lib/kenney-ui-audio/click1.ogg",
-          "at_ms": 1027,
-          "volume": 0.14,
-          "role": "anchor:w-4"
+          "at_ms": 1071,
+          "volume": 0.16,
+          "role": "anchor:w-5"
         }
       ],
       "notes": ""
@@ -154,22 +165,24 @@
           "Atenção cai pela metade",
           "Retrabalho no dia seguinte"
         ],
-        "boardAsset": "",
-        "bubble": "Socorro, esqueci tudo!"
+        "boardAsset": "assets/lib/vrs-pro-stickers/sticker-alerta-mito.png",
+        "bubble": "Socorro, esqueci tudo!",
+        "cameraMode": "auto_cut"
       },
-      "durationInFrames": 150,
-      "narration": "Mas depois da sexta hora sem pausa, o cérebro entra em modo de emergência.",
+      "durationInFrames": 185,
+      "narration": "Mas depois da sexta hora sem pausa, o cérebro perde 50% da atenção e entra em pânico.",
+      "voice": "faber",
       "words": [
         {
           "id": "w-1",
           "word": "Mas",
           "start": 300,
-          "end": 489
+          "end": 477
         },
         {
           "id": "w-2",
           "word": "depois",
-          "start": 489,
+          "start": 477,
           "end": 784
         },
         {
@@ -182,71 +195,91 @@
           "id": "w-4",
           "word": "sexta",
           "start": 914,
-          "end": 1316
+          "end": 1268
         },
         {
           "id": "w-5",
           "word": "hora",
-          "start": 1316,
-          "end": 1529
+          "start": 1268,
+          "end": 1457
         },
         {
           "id": "w-6",
           "word": "sem",
-          "start": 1529,
-          "end": 1730
+          "start": 1457,
+          "end": 1682
         },
         {
           "id": "w-7",
           "word": "pausa,",
-          "start": 1730,
-          "end": 2250
+          "start": 1682,
+          "end": 2154
         },
         {
           "id": "w-8",
           "word": "o",
-          "start": 2250,
-          "end": 2356
+          "start": 2154,
+          "end": 2260
         },
         {
           "id": "w-9",
           "word": "cérebro",
-          "start": 2356,
-          "end": 2723
+          "start": 2260,
+          "end": 2639
         },
         {
           "id": "w-10",
-          "word": "entra",
-          "start": 2723,
-          "end": 2935
+          "word": "perde",
+          "start": 2639,
+          "end": 2957
         },
         {
           "id": "w-11",
-          "word": "em",
-          "start": 2935,
-          "end": 3054
+          "word": "50%",
+          "start": 2957,
+          "end": 3950
         },
         {
           "id": "w-12",
-          "word": "modo",
-          "start": 3054,
-          "end": 3326
+          "word": "da",
+          "start": 3950,
+          "end": 4056
         },
         {
           "id": "w-13",
-          "word": "de",
-          "start": 3326,
-          "end": 3420
+          "word": "atenção",
+          "start": 4056,
+          "end": 4659
         },
         {
           "id": "w-14",
-          "word": "emergência.",
-          "start": 3420,
-          "end": 4212
+          "word": "e",
+          "start": 4659,
+          "end": 4789
+        },
+        {
+          "id": "w-15",
+          "word": "entra",
+          "start": 4789,
+          "end": 5037
+        },
+        {
+          "id": "w-16",
+          "word": "em",
+          "start": 5037,
+          "end": 5167
+        },
+        {
+          "id": "w-17",
+          "word": "pânico.",
+          "start": 5167,
+          "end": 5698
         }
       ],
       "timing": "tts_phonemes",
-      "assets": {},
+      "assets": {
+        "assets/lib/vrs-pro-stickers/sticker-alerta-mito.png": "assets/lib/vrs-pro-stickers/sticker-alerta-mito.png"
+      },
       "layers": [],
       "transitionIn": {
         "type": "wipe",
@@ -261,15 +294,15 @@
       "sfx": [
         {
           "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
-          "at_ms": 40,
-          "volume": 0.16,
+          "at_ms": 30,
+          "volume": 0.18,
           "role": "transition:wipe"
         },
         {
           "path": "assets/lib/kenney-ui-audio/click1.ogg",
-          "at_ms": 1316,
-          "volume": 0.14,
-          "role": "anchor:w-5"
+          "at_ms": 1457,
+          "volume": 0.16,
+          "role": "anchor:w-6"
         }
       ],
       "notes": ""
@@ -288,99 +321,133 @@
           "Blocos de 90 minutos",
           "Pausa real longe da tela"
         ],
-        "boardAsset": "",
-        "bubble": "Trabalhe com estratégia!"
+        "boardAsset": "assets/lib/vrs-pro-stickers/sticker-aprovado.png",
+        "bubble": "Trabalhe com estratégia!",
+        "cameraMode": "auto_cut"
       },
-      "durationInFrames": 150,
-      "narration": "O segredo não é correr sem parar, e sim proteger os blocos de foco.",
+      "durationInFrames": 202,
+      "narration": "O segredo não é correr sem parar! O ganho real vem de proteger blocos de foco de 90 minutos.",
+      "voice": "duet",
       "words": [
         {
           "id": "w-1",
           "word": "O",
           "start": 300,
-          "end": 417
+          "end": 393
         },
         {
           "id": "w-2",
           "word": "segredo",
-          "start": 417,
-          "end": 757
+          "start": 393,
+          "end": 755
         },
         {
           "id": "w-3",
           "word": "não",
-          "start": 757,
-          "end": 944
+          "start": 755,
+          "end": 942
         },
         {
           "id": "w-4",
           "word": "é",
-          "start": 944,
-          "end": 1014
+          "start": 942,
+          "end": 1024
         },
         {
           "id": "w-5",
           "word": "correr",
-          "start": 1014,
-          "end": 1343
+          "start": 1024,
+          "end": 1282
         },
         {
           "id": "w-6",
           "word": "sem",
-          "start": 1343,
-          "end": 1507
+          "start": 1282,
+          "end": 1457
         },
         {
           "id": "w-7",
-          "word": "parar,",
-          "start": 1507,
-          "end": 1940
+          "word": "parar!",
+          "start": 1457,
+          "end": 1983
         },
         {
           "id": "w-8",
-          "word": "e",
-          "start": 1940,
-          "end": 2058
+          "word": "O",
+          "start": 2123,
+          "end": 2511
         },
         {
           "id": "w-9",
-          "word": "sim",
-          "start": 2058,
-          "end": 2304
+          "word": "ganho",
+          "start": 2511,
+          "end": 2850
         },
         {
           "id": "w-10",
-          "word": "proteger",
-          "start": 2304,
-          "end": 2691
+          "word": "real",
+          "start": 2850,
+          "end": 3177
         },
         {
           "id": "w-11",
-          "word": "os",
-          "start": 2691,
-          "end": 2796
+          "word": "vem",
+          "start": 3177,
+          "end": 3383
         },
         {
           "id": "w-12",
-          "word": "blocos",
-          "start": 2796,
-          "end": 3218
+          "word": "de",
+          "start": 3383,
+          "end": 3480
         },
         {
           "id": "w-13",
-          "word": "de",
-          "start": 3218,
-          "end": 3370
+          "word": "proteger",
+          "start": 3480,
+          "end": 4038
         },
         {
           "id": "w-14",
-          "word": "foco.",
-          "start": 3370,
-          "end": 3980
+          "word": "blocos",
+          "start": 4038,
+          "end": 4437
+        },
+        {
+          "id": "w-15",
+          "word": "de",
+          "start": 4437,
+          "end": 4546
+        },
+        {
+          "id": "w-16",
+          "word": "foco",
+          "start": 4546,
+          "end": 4886
+        },
+        {
+          "id": "w-17",
+          "word": "de",
+          "start": 4886,
+          "end": 5007
+        },
+        {
+          "id": "w-18",
+          "word": "90",
+          "start": 5007,
+          "end": 5443
+        },
+        {
+          "id": "w-19",
+          "word": "minutos.",
+          "start": 5443,
+          "end": 6279
         }
       ],
       "timing": "tts_phonemes",
-      "assets": {},
+      "assets": {
+        "assets/lib/vrs-pro-stickers/sticker-aprovado.png": "assets/lib/vrs-pro-stickers/sticker-aprovado.png"
+      },
       "layers": [],
       "transitionIn": {
         "type": "wipe",
@@ -395,15 +462,15 @@
       "sfx": [
         {
           "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
-          "at_ms": 40,
-          "volume": 0.16,
+          "at_ms": 30,
+          "volume": 0.18,
           "role": "transition:wipe"
         },
         {
           "path": "assets/lib/kenney-ui-audio/click1.ogg",
-          "at_ms": 1014,
-          "volume": 0.14,
-          "role": "anchor:w-5"
+          "at_ms": 1457,
+          "volume": 0.16,
+          "role": "anchor:w-7"
         }
       ],
       "notes": ""
@@ -412,5 +479,8 @@
   "uncertainties": [],
   "sources": [],
   "illustrativeData": false,
-  "warnings": []
+  "warnings": [
+    "Cena s02: a fala (6.1s) não cabe em 5.0s; a cena foi estendida sem cortar palavras.",
+    "Cena s03: a fala (6.7s) não cabe em 5.0s; a cena foi estendida sem cortar palavras."
+  ]
 }

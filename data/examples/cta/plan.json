@@ -19,11 +19,12 @@
     "mode": "word",
     "position": "bottom",
     "maxWords": 3,
-    "highlight": "#ffd23f"
+    "highlight": "#ffd23f",
+    "style": "hormozi"
   },
   "audio": {
     "narration": "voice/narration.wav",
-    "music": "",
+    "music": "assets/lib/vrs-pro-audio/bgm-blocky-gaming.wav",
     "musicVolume": 0.12,
     "duck": true,
     "voice": "faber"
@@ -41,6 +42,7 @@
       },
       "durationInFrames": 90,
       "narration": "Estuda muito e esquece tudo?",
+      "voice": "faber",
       "words": [
         {
           "id": "w-1",
@@ -86,7 +88,14 @@
         "durationInFrames": 0,
         "color": ""
       },
-      "sfx": [],
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/click1.ogg",
+          "at_ms": 60,
+          "volume": 0.18,
+          "role": "intro:drop"
+        }
+      ],
       "notes": ""
     },
     {
@@ -108,6 +117,7 @@
       },
       "durationInFrames": 180,
       "narration": "Revisar em intervalos ajuda a lembrar mais, com menos horas de estudo.",
+      "voice": "faber",
       "words": [
         {
           "id": "w-1",
@@ -195,11 +205,136 @@
         "durationInFrames": 0,
         "color": ""
       },
-      "sfx": [],
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
+          "at_ms": 30,
+          "volume": 0.18,
+          "role": "transition:zoom"
+        }
+      ],
       "notes": ""
     },
     {
       "id": "s03",
+      "component": "vrs-device-mockup",
+      "params": {
+        "title": "Seu Plano na Palma da Mão",
+        "deviceType": "phone",
+        "appTitle": "Guia de Estudos Pro",
+        "metricValue": "10 min/dia",
+        "metricLabel": "Revisão espaçada pronta para usar",
+        "screenAsset": "",
+        "badge": "100% GRATUITO"
+      },
+      "durationInFrames": 132,
+      "narration": "Veja no celular ou computador o cronograma pronto para aplicar hoje mesmo.",
+      "voice": "faber",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Veja",
+          "start": 300,
+          "end": 510
+        },
+        {
+          "id": "w-2",
+          "word": "no",
+          "start": 510,
+          "end": 603
+        },
+        {
+          "id": "w-3",
+          "word": "celular",
+          "start": 603,
+          "end": 989
+        },
+        {
+          "id": "w-4",
+          "word": "ou",
+          "start": 989,
+          "end": 1082
+        },
+        {
+          "id": "w-5",
+          "word": "computador",
+          "start": 1082,
+          "end": 1690
+        },
+        {
+          "id": "w-6",
+          "word": "o",
+          "start": 1690,
+          "end": 1760
+        },
+        {
+          "id": "w-7",
+          "word": "cronograma",
+          "start": 1760,
+          "end": 2239
+        },
+        {
+          "id": "w-8",
+          "word": "pronto",
+          "start": 2239,
+          "end": 2566
+        },
+        {
+          "id": "w-9",
+          "word": "para",
+          "start": 2566,
+          "end": 2707
+        },
+        {
+          "id": "w-10",
+          "word": "aplicar",
+          "start": 2707,
+          "end": 3092
+        },
+        {
+          "id": "w-11",
+          "word": "hoje",
+          "start": 3092,
+          "end": 3279
+        },
+        {
+          "id": "w-12",
+          "word": "mesmo.",
+          "start": 3279,
+          "end": 3933
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "zoom",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
+          "at_ms": 30,
+          "volume": 0.18,
+          "role": "transition:zoom"
+        },
+        {
+          "path": "assets/lib/kenney-ui-audio/click1.ogg",
+          "at_ms": 1082,
+          "volume": 0.16,
+          "role": "anchor:w-5"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "id": "s04",
       "component": "vrs-cta",
       "params": {
         "hook": "Monte seu plano",
@@ -212,6 +347,7 @@
       },
       "durationInFrames": 150,
       "narration": "Baixe o guia gratuito e monte seu plano em dez minutos.",
+      "voice": "faber",
       "words": [
         {
           "id": "w-1",
@@ -293,12 +429,27 @@
         "durationInFrames": 0,
         "color": ""
       },
-      "sfx": [],
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
+          "at_ms": 30,
+          "volume": 0.18,
+          "role": "transition:zoom"
+        },
+        {
+          "path": "assets/lib/kenney-ui-audio/click1.ogg",
+          "at_ms": 896,
+          "volume": 0.16,
+          "role": "anchor:w-4"
+        }
+      ],
       "notes": ""
     }
   ],
   "uncertainties": [],
   "sources": [],
   "illustrativeData": false,
-  "warnings": []
+  "warnings": [
+    "Duração 18.4s excede o alvo de 14s em mais de 20%: o agente deve encurtar a narração."
+  ]
 }

@@ -1,5 +1,5 @@
 {
-  "project_id": "p6d20f9df545e",
+  "project_id": "p33c645dc3166",
   "niche": "ciencia",
   "review": {
     "technical": "aprovado_tecnicamente",
@@ -8,29 +8,29 @@
       {
         "scene": "s01",
         "component": "vrs-title",
-        "motion": 3.04,
-        "first_half": 3.4
+        "motion": 3.0,
+        "first_half": 3.41
       },
       {
         "scene": "s02",
         "component": "vrs-mechanism",
-        "motion": 3.74,
-        "first_half": 3.91
+        "motion": 3.55,
+        "first_half": 3.81
       },
       {
         "scene": "s03",
         "component": "vrs-bar-chart",
-        "motion": 4.24,
-        "first_half": 5.99
+        "motion": 4.17,
+        "first_half": 5.88
       },
       {
         "scene": "s04",
         "component": "vrs-kinetic-quote",
-        "motion": 3.21,
-        "first_half": 3.5
+        "motion": 3.11,
+        "first_half": 3.41
       }
     ]
   },
-  "render_seconds": 2.8,
+  "render_seconds": 3.1,
   "duration_s": 22.267
 }

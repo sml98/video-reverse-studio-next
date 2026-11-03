@@ -19,11 +19,12 @@
     "mode": "word",
     "position": "bottom",
     "maxWords": 3,
-    "highlight": "#ffd23f"
+    "highlight": "#ffd23f",
+    "style": "hormozi"
   },
   "audio": {
     "narration": "voice/narration.wav",
-    "music": "",
+    "music": "assets/lib/vrs-pro-audio/bgm-corp-finance.wav",
     "musicVolume": 0.12,
     "duck": true,
     "voice": "faber"
@@ -41,6 +42,7 @@
       },
       "durationInFrames": 120,
       "narration": "Juros compostos são juros sobre juros.",
+      "voice": "faber",
       "words": [
         {
           "id": "w-1",
@@ -92,7 +94,14 @@
         "durationInFrames": 0,
         "color": ""
       },
-      "sfx": [],
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/click1.ogg",
+          "at_ms": 60,
+          "volume": 0.18,
+          "role": "intro:drop"
+        }
+      ],
       "notes": ""
     },
     {
@@ -131,6 +140,7 @@
       },
       "durationInFrames": 210,
       "narration": "Mil reais a um por cento ao mês viram cerca de mil cento e vinte e sete em um ano, e mil duzentos e setenta em dois.",
+      "voice": "faber",
       "words": [
         {
           "id": "w-1",
@@ -308,7 +318,20 @@
         "durationInFrames": 0,
         "color": ""
       },
-      "sfx": [],
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
+          "at_ms": 30,
+          "volume": 0.18,
+          "role": "transition:slide"
+        },
+        {
+          "path": "assets/lib/kenney-ui-audio/click1.ogg",
+          "at_ms": 2051,
+          "volume": 0.16,
+          "role": "anchor:w-10"
+        }
+      ],
       "notes": ""
     },
     {
@@ -353,6 +376,7 @@
       },
       "durationInFrames": 180,
       "narration": "A curva acelera porque cada mês rende sobre um valor maior.",
+      "voice": "faber",
       "words": [
         {
           "id": "w-1",
@@ -434,11 +458,154 @@
         "durationInFrames": 0,
         "color": ""
       },
-      "sfx": [],
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
+          "at_ms": 30,
+          "volume": 0.18,
+          "role": "transition:slide"
+        }
+      ],
       "notes": ""
     },
     {
       "id": "s04",
+      "component": "vrs-device-mockup",
+      "params": {
+        "title": "Simulador de Longo Prazo",
+        "deviceType": "phone",
+        "appTitle": "Carteira · Juros Compostos",
+        "metricValue": "R$ 1.430,77",
+        "metricLabel": "Saldo após 36 meses a 1% a.m.",
+        "screenAsset": "",
+        "badge": "+43,07% EM 36M"
+      },
+      "durationInFrames": 219,
+      "narration": "No painel de simulação, R$ 1.000 viram R$ 1.430 em 36 meses com aportes constantes.",
+      "voice": "faber",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "No",
+          "start": 300,
+          "end": 417
+        },
+        {
+          "id": "w-2",
+          "word": "painel",
+          "start": 417,
+          "end": 770
+        },
+        {
+          "id": "w-3",
+          "word": "de",
+          "start": 770,
+          "end": 899
+        },
+        {
+          "id": "w-4",
+          "word": "simulação,",
+          "start": 899,
+          "end": 1687
+        },
+        {
+          "id": "w-5",
+          "word": "R$",
+          "start": 1687,
+          "end": 2028
+        },
+        {
+          "id": "w-6",
+          "word": "1.000",
+          "start": 2028,
+          "end": 2228
+        },
+        {
+          "id": "w-7",
+          "word": "viram",
+          "start": 2228,
+          "end": 2474
+        },
+        {
+          "id": "w-8",
+          "word": "R$",
+          "start": 2474,
+          "end": 2710
+        },
+        {
+          "id": "w-9",
+          "word": "1.430",
+          "start": 2710,
+          "end": 4120
+        },
+        {
+          "id": "w-10",
+          "word": "em",
+          "start": 4120,
+          "end": 4226
+        },
+        {
+          "id": "w-11",
+          "word": "36",
+          "start": 4226,
+          "end": 4932
+        },
+        {
+          "id": "w-12",
+          "word": "meses",
+          "start": 4932,
+          "end": 5261
+        },
+        {
+          "id": "w-13",
+          "word": "com",
+          "start": 5261,
+          "end": 5449
+        },
+        {
+          "id": "w-14",
+          "word": "aportes",
+          "start": 5449,
+          "end": 5837
+        },
+        {
+          "id": "w-15",
+          "word": "constantes.",
+          "start": 5837,
+          "end": 6824
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "slide",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
+          "at_ms": 30,
+          "volume": 0.18,
+          "role": "transition:slide"
+        },
+        {
+          "path": "assets/lib/kenney-ui-audio/click1.ogg",
+          "at_ms": 2028,
+          "volume": 0.16,
+          "role": "anchor:w-6"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "id": "s05",
       "component": "vrs-kinetic-quote",
       "params": {
         "text": "Simulação ilustrativa: sem inflação, impostos ou taxas.",
@@ -449,6 +616,7 @@
       },
       "durationInFrames": 150,
       "narration": "Simulação ilustrativa: não considera inflação, impostos ou taxas.",
+      "voice": "faber",
       "words": [
         {
           "id": "w-1",
@@ -512,12 +680,33 @@
         "durationInFrames": 0,
         "color": ""
       },
-      "sfx": [],
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
+          "at_ms": 30,
+          "volume": 0.18,
+          "role": "transition:slide"
+        },
+        {
+          "path": "assets/lib/kenney-ui-audio/click1.ogg",
+          "at_ms": 1631,
+          "volume": 0.16,
+          "role": "anchor:w-3"
+        }
+      ],
       "notes": ""
     }
   ],
   "uncertainties": [],
-  "sources": [],
+  "sources": [
+    {
+      "claim": "Simulação matemática: R$ 1.000 a 1% a.m. por 36 meses",
+      "source": "Fórmula de Juros Compostos M = C·(1+i)^t"
+    }
+  ],
   "illustrativeData": true,
-  "warnings": []
+  "warnings": [
+    "Cena s04: a fala (7.3s) não cabe em 5.0s; a cena foi estendida sem cortar palavras.",
+    "Duração 29.3s excede o alvo de 22s em mais de 20%: o agente deve encurtar a narração."
+  ]
 }

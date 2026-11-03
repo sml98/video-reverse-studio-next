@@ -124,9 +124,11 @@
   "captions": {
     "mode": "word",
     "position": "bottom",
-    "maxWords": 3
+    "maxWords": 3,
+    "style": "cinema"
   },
   "voice": "faber",
   "schema": "vrs.niche/1",
-  "guide": "skills/vrs-presets/references/historia.md"
+  "guide": "skills/vrs-presets/references/historia.md",
+  "music": "lib:vrs-pro-audio.bgm-doc-suspense"
 }

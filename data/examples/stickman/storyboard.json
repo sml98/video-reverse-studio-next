@@ -3,7 +3,9 @@
   "title": "O paradoxo da produtividade",
   "language": "pt-BR",
   "uncertainties": [],
+  "sources": [],
   "illustrative_data": false,
+  "music": "lib:vrs-pro-audio.bgm-lofi-explain",
   "scenes": [
     {
       "preset_id": "vrs-stickman-stage",
@@ -19,10 +21,11 @@
           "Cansaço multiplica erros",
           "Descanso faz parte do treino"
         ],
-        "boardAsset": "",
-        "bubble": "Olha para este quadro!"
+        "boardAsset": "lib:vrs-pro-stickers.sticker-foco-10x",
+        "bubble": "Olha para este quadro!",
+        "cameraMode": "auto_cut"
       },
-      "narration": "Todo mundo acha que trabalhar doze horas seguidas dobra o resultado.",
+      "narration": "Todo mundo acha que trabalhar 12h seguidas dobra o resultado em 2D.",
       "duration": 5
     },
     {
@@ -38,10 +41,11 @@
           "Atenção cai pela metade",
           "Retrabalho no dia seguinte"
         ],
-        "boardAsset": "",
-        "bubble": "Socorro, esqueci tudo!"
+        "boardAsset": "lib:vrs-pro-stickers.sticker-alerta-mito",
+        "bubble": "Socorro, esqueci tudo!",
+        "cameraMode": "auto_cut"
       },
-      "narration": "Mas depois da sexta hora sem pausa, o cérebro entra em modo de emergência.",
+      "narration": "Mas depois da sexta hora sem pausa, o cérebro perde 50% da atenção e entra em pânico.",
       "duration": 5
     },
     {
@@ -57,11 +61,13 @@
           "Blocos de 90 minutos",
           "Pausa real longe da tela"
         ],
-        "boardAsset": "",
-        "bubble": "Trabalhe com estratégia!"
+        "boardAsset": "lib:vrs-pro-stickers.sticker-aprovado",
+        "bubble": "Trabalhe com estratégia!",
+        "cameraMode": "auto_cut"
       },
-      "narration": "O segredo não é correr sem parar, e sim proteger os blocos de foco.",
-      "duration": 5
+      "narration": "O segredo não é correr sem parar! O ganho real vem de proteger blocos de foco de 90 minutos.",
+      "duration": 5,
+      "voice": "duet"
     }
   ]
 }

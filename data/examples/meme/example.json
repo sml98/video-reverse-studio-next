@@ -1,5 +1,5 @@
 {
-  "project_id": "p39103b8021ff",
+  "project_id": "p04b93e9166cc",
   "niche": "meme",
   "review": {
     "technical": "aprovado_tecnicamente",
@@ -8,17 +8,17 @@
       {
         "scene": "s01",
         "component": "vrs-meme",
-        "motion": 57.48,
-        "first_half": 58.02
+        "motion": 54.86,
+        "first_half": 55.38
       },
       {
         "scene": "s02",
         "component": "vrs-kinetic-quote",
         "motion": 1.6,
-        "first_half": 2.5
+        "first_half": 2.39
       }
     ]
   },
-  "render_seconds": 12.4,
+  "render_seconds": 12.8,
   "duration_s": 9.0
 }

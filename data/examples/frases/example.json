@@ -1,5 +1,5 @@
 {
-  "project_id": "p63a929b4f755",
+  "project_id": "pad2601e98a75",
   "niche": "frases",
   "review": {
     "technical": "aprovado_tecnicamente",
@@ -8,17 +8,17 @@
       {
         "scene": "s01",
         "component": "vrs-kinetic-quote",
-        "motion": 4.32,
-        "first_half": 4.29
+        "motion": 2.96,
+        "first_half": 3.06
       },
       {
         "scene": "s02",
         "component": "vrs-kinetic-quote",
-        "motion": 3.47,
-        "first_half": 4.18
+        "motion": 1.94,
+        "first_half": 2.81
       }
     ]
   },
-  "render_seconds": 14.7,
+  "render_seconds": 15.1,
   "duration_s": 11.0
 }

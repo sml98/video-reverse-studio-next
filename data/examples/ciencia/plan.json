@@ -19,11 +19,12 @@
     "mode": "word",
     "position": "bottom",
     "maxWords": 3,
-    "highlight": "#ffd23f"
+    "highlight": "#ffd23f",
+    "style": "hormozi"
   },
   "audio": {
     "narration": "voice/narration.wav",
-    "music": "",
+    "music": "assets/lib/vrs-pro-audio/bgm-lofi-explain.wav",
     "musicVolume": 0.12,
     "duck": true,
     "voice": "faber"
@@ -41,6 +42,7 @@
       },
       "durationInFrames": 120,
       "narration": "Por que o céu é azul durante o dia?",
+      "voice": "faber",
       "words": [
         {
           "id": "w-1",
@@ -110,7 +112,14 @@
         "durationInFrames": 0,
         "color": ""
       },
-      "sfx": [],
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/click1.ogg",
+          "at_ms": 60,
+          "volume": 0.18,
+          "role": "intro:drop"
+        }
+      ],
       "notes": ""
     },
     {
@@ -152,6 +161,7 @@
       },
       "durationInFrames": 218,
       "narration": "A luz do Sol mistura todas as cores. No ar, moléculas minúsculas espalham muito mais a luz azul, de onda curta.",
+      "voice": "faber",
       "words": [
         {
           "id": "w-1",
@@ -293,7 +303,14 @@
         "durationInFrames": 0,
         "color": ""
       },
-      "sfx": [],
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
+          "at_ms": 30,
+          "volume": 0.18,
+          "role": "transition:wipe"
+        }
+      ],
       "notes": ""
     },
     {
@@ -324,6 +341,7 @@
       },
       "durationInFrames": 180,
       "narration": "Pela lei de Rayleigh, o azul é espalhado quase seis vezes mais que o vermelho.",
+      "voice": "faber",
       "words": [
         {
           "id": "w-1",
@@ -429,7 +447,14 @@
         "durationInFrames": 0,
         "color": ""
       },
-      "sfx": [],
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
+          "at_ms": 30,
+          "volume": 0.18,
+          "role": "transition:wipe"
+        }
+      ],
       "notes": ""
     },
     {
@@ -444,6 +469,7 @@
       },
       "durationInFrames": 150,
       "narration": "Por isso, para qualquer lado que você olhe, chega luz azul espalhada.",
+      "voice": "faber",
       "words": [
         {
           "id": "w-1",
@@ -531,12 +557,30 @@
         "durationInFrames": 0,
         "color": ""
       },
-      "sfx": [],
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
+          "at_ms": 30,
+          "volume": 0.18,
+          "role": "transition:wipe"
+        },
+        {
+          "path": "assets/lib/kenney-ui-audio/click1.ogg",
+          "at_ms": 1332,
+          "volume": 0.16,
+          "role": "anchor:w-5"
+        }
+      ],
       "notes": ""
     }
   ],
   "uncertainties": [],
-  "sources": [],
+  "sources": [
+    {
+      "claim": "Espalhamento de Rayleigh inversamente proporcional a λ⁴",
+      "source": "Óptica Física — Lei de Rayleigh"
+    }
+  ],
   "illustrativeData": false,
   "warnings": []
 }

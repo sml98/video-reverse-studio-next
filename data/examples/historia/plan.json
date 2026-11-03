@@ -19,11 +19,12 @@
     "mode": "word",
     "position": "bottom",
     "maxWords": 3,
-    "highlight": "#ffd23f"
+    "highlight": "#ffd23f",
+    "style": "cinema"
   },
   "audio": {
     "narration": "voice/narration.wav",
-    "music": "",
+    "music": "assets/lib/vrs-pro-audio/bgm-doc-suspense.wav",
     "musicVolume": 0.12,
     "duck": true,
     "voice": "faber"
@@ -43,6 +44,7 @@
       },
       "durationInFrames": 150,
       "narration": "Lia queria plantar uma árvore no quintal.",
+      "voice": "faber",
       "words": [
         {
           "id": "w-1",
@@ -119,6 +121,7 @@
       },
       "durationInFrames": 150,
       "narration": "Mas, depois de uma semana, a muda continuava pequena.",
+      "voice": "faber",
       "words": [
         {
           "id": "w-1",
@@ -190,7 +193,14 @@
         "durationInFrames": 0,
         "color": ""
       },
-      "sfx": [],
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
+          "at_ms": 30,
+          "volume": 0.18,
+          "role": "transition:circle"
+        }
+      ],
       "notes": ""
     },
     {
@@ -215,6 +225,7 @@
       },
       "durationInFrames": 150,
       "narration": "Ela pesquisou, mudou a muda para o sol e passou a regar com cuidado.",
+      "voice": "faber",
       "words": [
         {
           "id": "w-1",
@@ -314,7 +325,14 @@
         "durationInFrames": 0,
         "color": ""
       },
-      "sfx": [],
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
+          "at_ms": 30,
+          "volume": 0.18,
+          "role": "transition:circle"
+        }
+      ],
       "notes": ""
     },
     {
@@ -331,6 +349,7 @@
       },
       "durationInFrames": 150,
       "narration": "Na primavera, as primeiras folhas apareceram.",
+      "voice": "faber",
       "words": [
         {
           "id": "w-1",
@@ -384,7 +403,14 @@
         "durationInFrames": 0,
         "color": ""
       },
-      "sfx": [],
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
+          "at_ms": 30,
+          "volume": 0.18,
+          "role": "transition:circle"
+        }
+      ],
       "notes": ""
     }
   ],

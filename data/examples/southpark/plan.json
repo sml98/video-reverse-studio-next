@@ -19,11 +19,12 @@
     "mode": "word",
     "position": "bottom",
     "maxWords": 3,
-    "highlight": "#ffd23f"
+    "highlight": "#ffd23f",
+    "style": "comic"
   },
   "audio": {
     "narration": "voice/narration.wav",
-    "music": "",
+    "music": "assets/lib/vrs-pro-audio/bgm-quirky-comedy.wav",
     "musicVolume": 0.12,
     "duck": true,
     "voice": "faber"
@@ -44,88 +45,150 @@
         "secondCoatColor": "#f97316",
         "secondHatColor": "#22c55e",
         "secondCharacterName": "Max",
-        "bubble": "Tive uma ideia genial!"
+        "bubble": "Tive uma ideia genial!",
+        "cameraMode": "auto_cut"
       },
-      "durationInFrames": 150,
-      "narration": "Cara, eu tive uma ideia genial para a gente nunca mais acordar cedo.",
+      "durationInFrames": 262,
+      "narration": "Cara, eu tive uma ideia genial para a gente nunca mais acordar cedo! Fiz até um sistema 10x mais rápido aqui na neve.",
+      "voice": "duet",
       "words": [
         {
           "id": "w-1",
           "word": "Cara,",
           "start": 300,
-          "end": 698
+          "end": 726
         },
         {
           "id": "w-2",
           "word": "eu",
-          "start": 698,
-          "end": 874
+          "start": 726,
+          "end": 891
         },
         {
           "id": "w-3",
           "word": "tive",
-          "start": 874,
-          "end": 1097
+          "start": 891,
+          "end": 1105
         },
         {
           "id": "w-4",
           "word": "uma",
-          "start": 1097,
-          "end": 1214
+          "start": 1105,
+          "end": 1223
         },
         {
           "id": "w-5",
           "word": "ideia",
-          "start": 1214,
-          "end": 1472
+          "start": 1223,
+          "end": 1507
         },
         {
           "id": "w-6",
           "word": "genial",
-          "start": 1472,
-          "end": 1871
+          "start": 1507,
+          "end": 1898
         },
         {
           "id": "w-7",
           "word": "para",
-          "start": 1871,
-          "end": 2023
+          "start": 1898,
+          "end": 2064
         },
         {
           "id": "w-8",
           "word": "a",
-          "start": 2023,
-          "end": 2070
+          "start": 2064,
+          "end": 2123
         },
         {
           "id": "w-9",
           "word": "gente",
-          "start": 2070,
-          "end": 2340
+          "start": 2123,
+          "end": 2419
         },
         {
           "id": "w-10",
           "word": "nunca",
-          "start": 2340,
-          "end": 2621
+          "start": 2419,
+          "end": 2715
         },
         {
           "id": "w-11",
           "word": "mais",
-          "start": 2621,
-          "end": 2833
+          "start": 2715,
+          "end": 2951
         },
         {
           "id": "w-12",
           "word": "acordar",
-          "start": 2833,
-          "end": 3208
+          "start": 2951,
+          "end": 3354
         },
         {
           "id": "w-13",
-          "word": "cedo.",
-          "start": 3208,
-          "end": 3794
+          "word": "cedo!",
+          "start": 3354,
+          "end": 3899
+        },
+        {
+          "id": "w-14",
+          "word": "Fiz",
+          "start": 4039,
+          "end": 5033
+        },
+        {
+          "id": "w-15",
+          "word": "até",
+          "start": 5033,
+          "end": 5293
+        },
+        {
+          "id": "w-16",
+          "word": "um",
+          "start": 5293,
+          "end": 5400
+        },
+        {
+          "id": "w-17",
+          "word": "sistema",
+          "start": 5400,
+          "end": 5861
+        },
+        {
+          "id": "w-18",
+          "word": "10x",
+          "start": 5861,
+          "end": 6548
+        },
+        {
+          "id": "w-19",
+          "word": "mais",
+          "start": 6548,
+          "end": 6868
+        },
+        {
+          "id": "w-20",
+          "word": "rápido",
+          "start": 6868,
+          "end": 7294
+        },
+        {
+          "id": "w-21",
+          "word": "aqui",
+          "start": 7294,
+          "end": 7507
+        },
+        {
+          "id": "w-22",
+          "word": "na",
+          "start": 7507,
+          "end": 7661
+        },
+        {
+          "id": "w-23",
+          "word": "neve.",
+          "start": 7661,
+          "end": 8276
         }
       ],
       "timing": "tts_phonemes",
@@ -144,9 +207,9 @@
       "sfx": [
         {
           "path": "assets/lib/kenney-ui-audio/click1.ogg",
-          "at_ms": 1214,
-          "volume": 0.14,
-          "role": "anchor:w-5"
+          "at_ms": 2064,
+          "volume": 0.16,
+          "role": "anchor:w-8"
         }
       ],
       "notes": ""
@@ -166,88 +229,138 @@
         "secondCoatColor": "#f97316",
         "secondHatColor": "#22c55e",
         "secondCharacterName": "Max",
-        "bubble": "Nem vem com essa!"
+        "bubble": "Nem vem com essa!",
+        "cameraMode": "auto_cut"
       },
-      "durationInFrames": 150,
-      "narration": "Da última vez que você disse isso, a gente terminou preso na diretoria.",
+      "durationInFrames": 228,
+      "narration": "Da última vez que você disse isso, a gente terminou preso na diretoria! Eu não vou cair nessa conversa de novo.",
+      "voice": "duet",
       "words": [
         {
           "id": "w-1",
           "word": "Da",
           "start": 300,
-          "end": 418
+          "end": 430
         },
         {
           "id": "w-2",
           "word": "última",
-          "start": 418,
-          "end": 820
+          "start": 430,
+          "end": 787
         },
         {
           "id": "w-3",
           "word": "vez",
-          "start": 820,
-          "end": 1056
+          "start": 787,
+          "end": 1037
         },
         {
           "id": "w-4",
           "word": "que",
-          "start": 1056,
-          "end": 1139
+          "start": 1037,
+          "end": 1144
         },
         {
           "id": "w-5",
           "word": "você",
-          "start": 1139,
-          "end": 1423
+          "start": 1144,
+          "end": 1406
         },
         {
           "id": "w-6",
           "word": "disse",
-          "start": 1423,
-          "end": 1754
+          "start": 1406,
+          "end": 1750
         },
         {
           "id": "w-7",
           "word": "isso,",
-          "start": 1754,
-          "end": 2133
+          "start": 1750,
+          "end": 2143
         },
         {
           "id": "w-8",
           "word": "a",
-          "start": 2133,
-          "end": 2227
+          "start": 2143,
+          "end": 2250
         },
         {
           "id": "w-9",
           "word": "gente",
-          "start": 2227,
-          "end": 2487
+          "start": 2250,
+          "end": 2512
         },
         {
           "id": "w-10",
           "word": "terminou",
-          "start": 2487,
-          "end": 2913
+          "start": 2512,
+          "end": 2952
         },
         {
           "id": "w-11",
           "word": "preso",
-          "start": 2913,
-          "end": 3244
+          "start": 2952,
+          "end": 3320
         },
         {
           "id": "w-12",
           "word": "na",
-          "start": 3244,
-          "end": 3386
+          "start": 3320,
+          "end": 3439
         },
         {
           "id": "w-13",
-          "word": "diretoria.",
-          "start": 3386,
-          "end": 4096
+          "word": "diretoria!",
+          "start": 3439,
+          "end": 4200
+        },
+        {
+          "id": "w-14",
+          "word": "Eu",
+          "start": 4340,
+          "end": 5070
+        },
+        {
+          "id": "w-15",
+          "word": "não",
+          "start": 5070,
+          "end": 5265
+        },
+        {
+          "id": "w-16",
+          "word": "vou",
+          "start": 5265,
+          "end": 5423
+        },
+        {
+          "id": "w-17",
+          "word": "cair",
+          "start": 5423,
+          "end": 5666
+        },
+        {
+          "id": "w-18",
+          "word": "nessa",
+          "start": 5666,
+          "end": 5934
+        },
+        {
+          "id": "w-19",
+          "word": "conversa",
+          "start": 5934,
+          "end": 6469
+        },
+        {
+          "id": "w-20",
+          "word": "de",
+          "start": 6469,
+          "end": 6628
+        },
+        {
+          "id": "w-21",
+          "word": "novo.",
+          "start": 6628,
+          "end": 7138
         }
       ],
       "timing": "tts_phonemes",
@@ -266,15 +379,15 @@
       "sfx": [
         {
           "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
-          "at_ms": 40,
-          "volume": 0.16,
+          "at_ms": 30,
+          "volume": 0.18,
           "role": "transition:slide"
         },
         {
           "path": "assets/lib/kenney-ui-audio/click1.ogg",
-          "at_ms": 1139,
-          "volume": 0.14,
-          "role": "anchor:w-5"
+          "at_ms": 2143,
+          "volume": 0.16,
+          "role": "anchor:w-8"
         }
       ],
       "notes": ""
@@ -294,10 +407,12 @@
         "secondCoatColor": "#f97316",
         "secondHatColor": "#22c55e",
         "secondCharacterName": "Max",
-        "bubble": "Confia na planilha!"
+        "bubble": "Confia na planilha!",
+        "cameraMode": "closeup"
       },
       "durationInFrames": 150,
       "narration": "Relaxa, dessa vez o plano tem gráfico, planilha e zero chance de erro!",
+      "voice": "faber",
       "words": [
         {
           "id": "w-1",
@@ -394,14 +509,14 @@
       "sfx": [
         {
           "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
-          "at_ms": 40,
-          "volume": 0.16,
+          "at_ms": 30,
+          "volume": 0.18,
           "role": "transition:slide"
         },
         {
           "path": "assets/lib/kenney-ui-audio/click1.ogg",
           "at_ms": 1529,
-          "volume": 0.14,
+          "volume": 0.16,
           "role": "anchor:w-5"
         }
       ],
@@ -411,5 +526,9 @@
   "uncertainties": [],
   "sources": [],
   "illustrativeData": false,
-  "warnings": []
+  "warnings": [
+    "Cena s01: a fala (8.7s) não cabe em 5.0s; a cena foi estendida sem cortar palavras.",
+    "Cena s02: a fala (7.6s) não cabe em 5.0s; a cena foi estendida sem cortar palavras.",
+    "Duração 21.3s excede o alvo de 16s em mais de 20%: o agente deve encurtar a narração."
+  ]
 }

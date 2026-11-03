@@ -35,6 +35,11 @@ const QUICK_ASSETS = [
   { label: "🌄 Colinas Verdes 2D (Kenney)", value: "lib:kenney-background-elements.hills1" },
   { label: "☁️ Céu 2D (Kenney)", value: "lib:kenney-background-elements.sky" },
   { label: "🏃 Personagem 3D Quaternius (.glb)", value: "lib:quaternius-standard.animationlibrary-standard" },
+  { label: "✅ Sticker Die-Cut: VERIFICADO", value: "lib:vrs-pro-stickers.sticker-verificado" },
+  { label: "❌ Sticker Die-Cut: MITO!", value: "lib:vrs-pro-stickers.sticker-alerta-mito" },
+  { label: "⚡ Sticker Die-Cut: FOCO 10X", value: "lib:vrs-pro-stickers.sticker-foco-10x" },
+  { label: "🚨 Sticker Die-Cut: URGENTE", value: "lib:vrs-pro-stickers.sticker-urgente" },
+  { label: "🛡️ Sticker Die-Cut: 100% REAL", value: "lib:vrs-pro-stickers.sticker-aprovado" },
 ];
 
 /** Etapa do backend (texto livre em PT) → índice do stepper de 6 etapas. */
@@ -126,6 +131,8 @@ export const ProjectPage: React.FC<{ id: string }> = ({ id }) => {
           component: sceneEdit.component,
           durationInFrames: Number(sceneEdit.durationInFrames) || 180,
           notes: sceneEdit.notes || "",
+          narration: sceneEdit.narration ?? "",
+          voice: sceneEdit.voice || "",
           params: sceneEdit.params,
           ...(Array.isArray(sceneEdit.sfx) ? { sfx: sceneEdit.sfx } : {}),
         },
@@ -216,6 +223,52 @@ export const ProjectPage: React.FC<{ id: string }> = ({ id }) => {
     }
   };
 
+  const generateWithAutoDirect = async () => {
+    if (!proj) return;
+    setErr("");
+    setMsg("Gerando roteiro adaptado à sua ideia na CPU e iniciando render…");
+    try {
+      await api.post(`/api/projects/${id}/auto-direct`, {});
+      await load();
+      setMsg("Roteiro adaptado enviado para renderização.");
+    } catch (ex: any) {
+      setErr(ex.message || String(ex));
+    }
+  };
+
+  const manageSceneAction = async (action: "add" | "duplicate" | "move_up" | "move_down" | "delete") => {
+    if (!proj || !sceneEdit) return;
+    setErr("");
+    setMsg(`Atualizando linha do tempo (${action})…`);
+    try {
+      await api.post(`/api/projects/${id}/scene-manage`, {
+        action,
+        scene_id: sceneEdit.id,
+        preset_id: sceneEdit.component || "vrs-stickman-stage",
+        render: false,
+      });
+      setSceneEdit(null);
+      await load();
+      setMsg(`Linha do tempo atualizada (${action}). Clique em Re-renderizar MP4 quando terminar.`);
+    } catch (ex: any) {
+      setErr(ex.message || String(ex));
+    }
+  };
+
+  const cloneReferenceStyle = async () => {
+    if (!proj) return;
+    setErr("");
+    setMsg("Clonando paleta medida da referência para o tema do projeto…");
+    try {
+      const r = await api.post<any>(`/api/projects/${id}/clone-reference-style`, { render: false });
+      await load();
+      setViewMode("player");
+      setMsg(`Cores da referência aplicadas (${(r.palette || []).join(", ")}).`);
+    } catch (ex: any) {
+      setErr(ex.message || String(ex));
+    }
+  };
+
   const approveContent = async (decision: "approved" | "needs_adjustment") => {
     if (!version) return;
     try {
@@ -295,6 +348,11 @@ export const ProjectPage: React.FC<{ id: string }> = ({ id }) => {
               </button>
             ))}
           </div>
+          {(proj as any).brief_available && (
+            <button type="button" className="btn" onClick={cloneReferenceStyle} title="Aplicar paleta medida do vídeo de referência">
+              🎨 Clonar Cores da Referência
+            </button>
+          )}
           <a className="btn" href={`/api/projects/${proj.id}/export`} download>
             ⬇ Exportar projeto (.zip)
           </a>
@@ -335,9 +393,12 @@ export const ProjectPage: React.FC<{ id: string }> = ({ id }) => {
             <code>vrs_get_agent_task(project_id="{proj.id}")</code> e enviar o storyboard original em{" "}
             <code>vrs_submit_storyboard</code>. Se quiser ver algo agora, o botão abaixo renderiza só o <strong>rascunho do modelo</strong> (o exemplo do nicho, sem adaptar à sua ideia).
           </p>
-          <div className="row" style={{ gap: 10 }}>
-            <button className="btn primary" onClick={generateWithRecipeFallback}>
-              ⚡ Renderizar rascunho do modelo
+          <div className="row" style={{ gap: 10, flexWrap: "wrap" }}>
+            <button className="btn primary" onClick={generateWithAutoDirect}>
+              ⚡ Gerar Vídeo Adaptado à Minha Ideia Agora (Autônomo)
+            </button>
+            <button className="btn" onClick={generateWithRecipeFallback}>
+              📄 Renderizar rascunho do modelo
             </button>
             {agentTask && (
               <span className="muted" style={{ fontSize: 12 }}>
@@ -406,6 +467,11 @@ export const ProjectPage: React.FC<{ id: string }> = ({ id }) => {
                       <a className="btn" href={media(proj.id, `renders/v${curRender.version}/captions.vtt`)} download={`${proj.id}-v${curRender.version}.vtt`}>
                         Legendas .VTT
                       </a>
+                      {rev?.thumbnail_pro && (
+                        <a className="btn primary" href={media(proj.id, rev.thumbnail_pro)} download={`${proj.id}-v${curRender.version}-capa-pro.jpg`}>
+                          🔥 Capa Pro .JPG
+                        </a>
+                      )}
                       {rev?.thumbnail && (
                         <a className="btn" href={media(proj.id, rev.thumbnail)} download={`${proj.id}-v${curRender.version}-thumb.jpg`}>
                           🖼 Capa .JPG
@@ -585,6 +651,40 @@ export const ProjectPage: React.FC<{ id: string }> = ({ id }) => {
                   })}
                 </div>
               )}
+
+              {rev.publish_kit && (
+                <div className="col" style={{ gap: 8, marginTop: 6, padding: 12, background: "var(--bg-elev)", borderRadius: 8, border: "1px solid var(--border)" }}>
+                  <div className="row spread">
+                    <strong>🚀 Kit de Publicação Automático (YouTube / Reels / TikTok)</strong>
+                    {rev.thumbnail_pro && (
+                      <a className="btn" href={media(proj.id, rev.thumbnail_pro)} download={`${proj.id}-capa-pro.jpg`} style={{ fontSize: 12, padding: "4px 10px" }}>
+                        ⬇ Baixar Capa Pro .JPG
+                      </a>
+                    )}
+                  </div>
+                  <div className="col" style={{ gap: 4, fontSize: 12.5 }}>
+                    <span className="muted">Sugestões de título:</span>
+                    {(rev.publish_kit.titles || []).map((t: string, i: number) => (
+                      <div key={i} className="mono" style={{ padding: "4px 8px", background: "rgba(0,0,0,0.22)", borderRadius: 6 }}>
+                        {t}
+                      </div>
+                    ))}
+                  </div>
+                  {rev.publish_kit.chapters_text && (
+                    <div className="col" style={{ gap: 4, fontSize: 12 }}>
+                      <span className="muted">Capítulos automáticos (copie para a descrição):</span>
+                      <pre className="mono" style={{ margin: 0, padding: 8, background: "rgba(0,0,0,0.28)", borderRadius: 6, whiteSpace: "pre-wrap" }}>
+                        {rev.publish_kit.chapters_text}
+                      </pre>
+                    </div>
+                  )}
+                  <div className="row" style={{ gap: 6, flexWrap: "wrap" }}>
+                    {(rev.publish_kit.hashtags || []).map((tag: string) => (
+                      <span key={tag} className="pill">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           )}
 
@@ -680,6 +780,23 @@ export const ProjectPage: React.FC<{ id: string }> = ({ id }) => {
                     <span className="pill ok">{sceneEdit.component}</span>
                     <span className="muted mono" style={{ fontSize: 12 }}>id: {sceneEdit.id}</span>
                   </div>
+                  <div className="row" style={{ gap: 6, flexWrap: "wrap" }}>
+                    <button type="button" className="btn" style={{ padding: "4px 8px", fontSize: 11.5 }} onClick={() => manageSceneAction("add")} title="Adicionar nova cena após esta">
+                      ➕ Cena
+                    </button>
+                    <button type="button" className="btn" style={{ padding: "4px 8px", fontSize: 11.5 }} onClick={() => manageSceneAction("duplicate")} title="Duplicar esta cena">
+                      📄 Duplicar
+                    </button>
+                    <button type="button" className="btn" style={{ padding: "4px 8px", fontSize: 11.5 }} onClick={() => manageSceneAction("move_up")} disabled={selectedSceneIdx === 0} title="Mover cena para trás">
+                      ⬅️
+                    </button>
+                    <button type="button" className="btn" style={{ padding: "4px 8px", fontSize: 11.5 }} onClick={() => manageSceneAction("move_down")} disabled={selectedSceneIdx >= plan.scenes.length - 1} title="Mover cena para frente">
+                      ➡️
+                    </button>
+                    <button type="button" className="btn" style={{ padding: "4px 8px", fontSize: 11.5 }} onClick={() => manageSceneAction("delete")} disabled={plan.scenes.length <= 1} title="Excluir cena">
+                      🗑️
+                    </button>
+                  </div>
                   <div>
                     <label>Motor / Estilo visual da cena</label>
                     <select
@@ -720,9 +837,27 @@ export const ProjectPage: React.FC<{ id: string }> = ({ id }) => {
                       onChange={(e) => setSceneEdit({ ...sceneEdit, durationInFrames: Number(e.target.value) })}
                     />
                   </div>
-                  <div>
-                    <label>Fala / Narração (somente leitura no patch rápido; edite via Storyboard p/ re-sintetizar voz)</label>
-                    <textarea rows={2} value={sceneEdit.narration || ""} readOnly style={{ opacity: 0.75 }} />
+                  <div className="col" style={{ gap: 6 }}>
+                    <div className="row spread">
+                      <label style={{ margin: 0 }}>Fala / Narração da cena (re-sintetiza voz ao salvar)</label>
+                      <select
+                        value={sceneEdit.voice || plan?.audio?.voice || "faber"}
+                        onChange={(e) => setSceneEdit({ ...sceneEdit, voice: e.target.value })}
+                        style={{ width: 150, padding: "3px 6px", fontSize: 11.5 }}
+                        title="Voz desta cena"
+                      >
+                        <option value="faber">Voz: faber (PT-BR)</option>
+                        <option value="cadu">Voz: cadu (PT-BR)</option>
+                        <option value="jeff">Voz: jeff (PT-BR)</option>
+                        <option value="duet">Dueto: faber + cadu</option>
+                      </select>
+                    </div>
+                    <textarea
+                      rows={2}
+                      value={sceneEdit.narration || ""}
+                      onChange={(e) => setSceneEdit({ ...sceneEdit, narration: e.target.value })}
+                      placeholder="Digite a fala desta cena em português…"
+                    />
                   </div>
 
                   {/* Pílulas clicáveis de palavras sincronizadas (WordAnchor) */}
@@ -771,23 +906,69 @@ export const ProjectPage: React.FC<{ id: string }> = ({ id }) => {
                   {(SPEC_MAP[sceneEdit.component]?.params || []).map((p: any) => {
                     const val = sceneEdit.params?.[p.key] ?? p.default;
                     if (p.type === "list") {
+                      const items: any[] = Array.isArray(val) ? val : [];
+                      const isObjList = p.item?.type === "object" && Array.isArray(p.item?.fields);
                       return (
-                        <div key={p.key}>
-                          <label>{p.label} (JSON)</label>
-                          <textarea
-                            rows={4}
-                            className="mono"
-                            style={{ fontSize: 11.5 }}
-                            value={typeof val === "string" ? val : JSON.stringify(val, null, 2)}
-                            onChange={(e) => {
-                              try {
-                                const parsed = JSON.parse(e.target.value);
-                                setSceneEdit({ ...sceneEdit, params: { ...sceneEdit.params, [p.key]: parsed } });
-                              } catch {
-                                // aguarda JSON válido
-                              }
-                            }}
-                          />
+                        <div key={p.key} className="col" style={{ gap: 6, padding: 8, background: "var(--bg-elev)", borderRadius: 8, border: "1px solid var(--border)" }}>
+                          <div className="row spread">
+                            <label style={{ margin: 0 }}>{p.label} ({items.length})</label>
+                            <button
+                              type="button"
+                              className="btn"
+                              style={{ padding: "2px 8px", fontSize: 11 }}
+                              onClick={() => {
+                                const newItem = isObjList
+                                  ? Object.fromEntries((p.item.fields as any[]).map((f: any) => [f.key, f.default ?? ""]))
+                                  : p.item?.default ?? "Novo item";
+                                setSceneEdit({ ...sceneEdit, params: { ...sceneEdit.params, [p.key]: [...items, newItem] } });
+                              }}
+                            >
+                              + Adicionar
+                            </button>
+                          </div>
+                          {items.map((it: any, idxItem: number) => (
+                            <div key={idxItem} className="row" style={{ gap: 6, alignItems: "center", flexWrap: "wrap", padding: "4px 6px", background: "rgba(0,0,0,0.18)", borderRadius: 6 }}>
+                              {isObjList ? (
+                                (p.item.fields as any[]).map((f: any) => (
+                                  <input
+                                    key={f.key}
+                                    type={f.type === "number" ? "number" : "text"}
+                                    placeholder={f.label || f.key}
+                                    value={String(it?.[f.key] ?? "")}
+                                    style={{ flex: "1 1 90px", fontSize: 11.5, padding: "4px 6px" }}
+                                    onChange={(e) => {
+                                      const next = items.map((row, rIdx) =>
+                                        rIdx === idxItem ? { ...row, [f.key]: f.type === "number" ? Number(e.target.value) : e.target.value } : row,
+                                      );
+                                      setSceneEdit({ ...sceneEdit, params: { ...sceneEdit.params, [p.key]: next } });
+                                    }}
+                                  />
+                                ))
+                              ) : (
+                                <input
+                                  type="text"
+                                  value={String(it ?? "")}
+                                  style={{ flex: 1, fontSize: 12, padding: "4px 6px" }}
+                                  onChange={(e) => {
+                                    const next = items.map((row, rIdx) => (rIdx === idxItem ? e.target.value : row));
+                                    setSceneEdit({ ...sceneEdit, params: { ...sceneEdit.params, [p.key]: next } });
+                                  }}
+                                />
+                              )}
+                              <button
+                                type="button"
+                                className="btn ghost"
+                                style={{ padding: "2px 6px", fontSize: 11 }}
+                                onClick={() => {
+                                  const next = items.filter((_, rIdx) => rIdx !== idxItem);
+                                  setSceneEdit({ ...sceneEdit, params: { ...sceneEdit.params, [p.key]: next } });
+                                }}
+                                title="Remover item"
+                              >
+                                🗑
+                              </button>
+                            </div>
+                          ))}
                         </div>
                       );
                     }

@@ -6,6 +6,7 @@ ajusta durações à fala sem cortar palavras e aplica tema/transições do mode
 """
 from __future__ import annotations
 
+import copy
 import math
 import re
 import shutil
@@ -13,37 +14,122 @@ from typing import Any, Callable
 
 from . import catalog, library, projects, voice
 from .contracts import ASPECTS, PREVIEW_ASPECTS, FilmPlan, Storyboard
-from .util import VRSError, safe_join, write_json
+from .util import VRSError, read_json, safe_join, write_json
 
 LEAD_MS = 300  # respiro antes da fala (após a transição de entrada)
 TAIL_MS = 450  # respiro depois da fala
 TRANSITIONS = ["fade", "wipe", "slide", "zoom", "circle"]
-NICHE_TRANSITION = {"ciencia": "wipe", "documentario": "fade", "meme": "flash", "cta": "zoom", "financas": "slide", "frases": "fade", "tutorial": "slide", "historia": "circle", "stickman": "wipe", "southpark": "slide", "roblox": "zoom", "multiplane": "fade"}
-PRIMARY_ASSET = {"vrs-title": "backgroundAsset", "vrs-story-panel": "character", "vrs-meme": "image", "vrs-3d-stage": "model", "vrs-parallax-photo": "image", "vrs-stickman-stage": "boardAsset", "vrs-multiplane-stage": "character"}
+NICHE_TRANSITION = {
+    "ciencia": "wipe",
+    "documentario": "fade",
+    "meme": "flash",
+    "cta": "zoom",
+    "financas": "slide",
+    "frases": "fade",
+    "tutorial": "slide",
+    "historia": "circle",
+    "stickman": "wipe",
+    "southpark": "slide",
+    "roblox": "zoom",
+    "multiplane": "fade",
+}
+NICHE_BGM = {
+    "ciencia": "lib:vrs-pro-audio.bgm-lofi-explain",
+    "tutorial": "lib:vrs-pro-audio.bgm-lofi-explain",
+    "stickman": "lib:vrs-pro-audio.bgm-lofi-explain",
+    "southpark": "lib:vrs-pro-audio.bgm-quirky-comedy",
+    "meme": "lib:vrs-pro-audio.bgm-quirky-comedy",
+    "roblox": "lib:vrs-pro-audio.bgm-blocky-gaming",
+    "multiplane": "lib:vrs-pro-audio.bgm-blocky-gaming",
+    "cta": "lib:vrs-pro-audio.bgm-blocky-gaming",
+    "documentario": "lib:vrs-pro-audio.bgm-doc-suspense",
+    "historia": "lib:vrs-pro-audio.bgm-doc-suspense",
+    "frases": "lib:vrs-pro-audio.bgm-doc-suspense",
+    "financas": "lib:vrs-pro-audio.bgm-corp-finance",
+}
+NICHE_CAPTION_STYLE = {
+    "southpark": "comic",
+    "stickman": "comic",
+    "meme": "hormozi",
+    "cta": "hormozi",
+    "roblox": "karaoke",
+    "multiplane": "karaoke",
+    "documentario": "cinema",
+    "historia": "cinema",
+    "frases": "cinema",
+    "ciencia": "hormozi",
+    "financas": "hormozi",
+    "tutorial": "karaoke",
+}
+PRIMARY_ASSET = {
+    "vrs-title": "backgroundAsset",
+    "vrs-story-panel": "character",
+    "vrs-meme": "image",
+    "vrs-3d-stage": "model",
+    "vrs-parallax-photo": "image",
+    "vrs-stickman-stage": "boardAsset",
+    "vrs-multiplane-stage": "character",
+    "vrs-news-highlight": "image",
+    "vrs-device-mockup": "screenAsset",
+    "vrs-video-broll": "videoAsset",
+}
 
 Progress = Callable[[str, float], None]
 
 
 def _auto_sfx(pid: str, idx: int, preset_id: str, tr: str, words: list[dict[str, Any]], opts: dict[str, Any]) -> list[dict[str, Any]]:
-    """Injeta SFX sutis da biblioteca local nas transições e palavras-âncora quando disponíveis."""
+    """Injeta SFX cinematográficos da biblioteca local nas transições e palavras-âncora quando disponíveis."""
     if not opts.get("auto_sfx", True):
         return []
     try:
-        items = library.search("", "sfx", "", limit=12).get("items") or []
+        items = library.search("", "sfx", "", limit=24).get("items") or []
     except Exception:
         return []
     if not items:
         return []
-    rollover = next((it["id"] for it in items if "rollover" in it["id"] or "switch" in it["id"]), items[0]["id"])
-    click = next((it["id"] for it in items if "click" in it["id"]), items[-1]["id"])
+    by_id = {it["id"]: it["id"] for it in items}
+    whoosh = by_id.get("vrs-pro-audio.sfx-whoosh") or next((it["id"] for it in items if "rollover" in it["id"] or "switch" in it["id"]), items[0]["id"])
+    pop_sfx = by_id.get("vrs-pro-audio.sfx-pop-spring") or next((it["id"] for it in items if "click" in it["id"]), items[-1]["id"])
+    sub_sfx = by_id.get("vrs-pro-audio.sfx-sub-drop") or pop_sfx
+    marker_sfx = by_id.get("vrs-pro-audio.sfx-marker-write") or pop_sfx
+    ding_sfx = by_id.get("vrs-pro-audio.sfx-ding-check") or pop_sfx
+
     cues: list[dict[str, Any]] = []
     if idx > 0 and tr != "none":
-        rel = library.import_into_project(pid, rollover)
-        cues.append({"path": rel, "at_ms": 40, "volume": 0.16, "role": f"transition:{tr}"})
-    if words and preset_id in ("vrs-stat", "vrs-meme", "vrs-cta", "vrs-kinetic-quote", "vrs-calc", "vrs-code-walkthrough", "vrs-parallax-photo", "vrs-stickman-stage", "vrs-southpark-stage", "vrs-roblox-stage", "vrs-multiplane-stage"):
+        rel = library.import_into_project(pid, whoosh)
+        cues.append({"path": rel, "at_ms": 30, "volume": 0.18, "role": f"transition:{tr}"})
+    elif idx == 0 and preset_id in ("vrs-title", "vrs-stat"):
+        rel = library.import_into_project(pid, sub_sfx)
+        cues.append({"path": rel, "at_ms": 60, "volume": 0.18, "role": "intro:drop"})
+
+    if words and preset_id in (
+        "vrs-stat",
+        "vrs-meme",
+        "vrs-cta",
+        "vrs-kinetic-quote",
+        "vrs-calc",
+        "vrs-code-walkthrough",
+        "vrs-parallax-photo",
+        "vrs-stickman-stage",
+        "vrs-southpark-stage",
+        "vrs-roblox-stage",
+        "vrs-multiplane-stage",
+        "vrs-news-highlight",
+        "vrs-device-mockup",
+        "vrs-video-broll",
+    ):
         anchor = words[min(len(words) - 1, max(0, len(words) // 3))]
-        rel_c = library.import_into_project(pid, click)
-        cues.append({"path": rel_c, "at_ms": int(anchor["start"]), "volume": 0.14, "role": f"anchor:{anchor['id']}"})
+        chosen = (
+            marker_sfx
+            if preset_id in ("vrs-news-highlight", "vrs-stickman-stage")
+            else ding_sfx
+            if preset_id == "vrs-cta"
+            else sub_sfx
+            if preset_id == "vrs-stat"
+            else pop_sfx
+        )
+        rel_c = library.import_into_project(pid, chosen)
+        cues.append({"path": rel_c, "at_ms": int(anchor["start"]), "volume": 0.16, "role": f"anchor:{anchor['id']}"})
     return cues
 
 
@@ -88,6 +174,18 @@ def theme_for(project: dict[str, Any]) -> dict[str, Any]:
     return {}
 
 
+def _is_duet_scene(preset_id: str, params: dict[str, Any]) -> bool:
+    if preset_id == "vrs-stickman-stage" and params.get("action") == "duet_debate":
+        return True
+    if preset_id == "vrs-southpark-stage" and params.get("mode") == "duet":
+        return True
+    if preset_id == "vrs-roblox-stage" and params.get("action") == "duet_3d":
+        return True
+    if preset_id == "vrs-multiplane-stage" and bool(params.get("secondCharacter")):
+        return True
+    return False
+
+
 def expand(pid: str, storyboard: dict[str, Any], *, progress: Progress | None = None) -> dict[str, Any]:
     p = projects.get_project(pid)
     opts = p.get("options") or {}
@@ -98,10 +196,12 @@ def expand(pid: str, storyboard: dict[str, Any], *, progress: Progress | None = 
     voice_id = opts.get("voice", "faber")
     use_voice = opts.get("narration", True) and voice_id != "none"
     captions = opts.get("captions", "word")
-    niche = catalog.niches().get(p.get("niche_id", ""), {})
-    default_tr = NICHE_TRANSITION.get(p.get("niche_id", ""), "fade")
+    niche_id = p.get("niche_id", "")
+    niche = catalog.niches().get(niche_id, {})
+    default_tr = NICHE_TRANSITION.get(niche_id, "fade")
     vdir = projects.project_dir(pid) / "voice"
     vdir.mkdir(exist_ok=True)
+    installed_voices = {v["id"] for v in voice.list_voices()}
 
     scenes: list[dict[str, Any]] = []
     warnings: list[str] = []
@@ -121,16 +221,17 @@ def expand(pid: str, storyboard: dict[str, Any], *, progress: Progress | None = 
         words: list[dict[str, Any]] = []
         timing = "none"
         min_ms = 0
+        sc_voice = s.voice or ("duet" if (_is_duet_scene(s.preset_id, params) and "duet" in installed_voices) else voice_id)
         if s.narration.strip() and use_voice:
             if progress:
-                progress(f"cena {i + 1}/{n}: voz local", (i + 0.5) / max(1, n))
-            info = voice.synthesize_cached(s.narration, voice_id)
+                progress(f"cena {i + 1}/{n}: voz local ({sc_voice})", (i + 0.5) / max(1, n))
+            info = voice.synthesize_cached(s.narration, sc_voice if sc_voice in installed_voices else voice_id)
             dst = vdir / f"{sid}.wav"
             shutil.copyfile(info["wav"], dst)
             words = [{**wd, "start": wd["start"] + LEAD_MS, "end": wd["end"] + LEAD_MS} for wd in info["words"]]
             timing = info["timing"]
             min_ms = LEAD_MS + info["duration_ms"] + TAIL_MS
-            timings[sid] = {"wav": f"voice/{sid}.wav", "offset_ms": LEAD_MS, "duration_ms": info["duration_ms"], "timing": timing, "cached": info.get("cached", False)}
+            timings[sid] = {"wav": f"voice/{sid}.wav", "offset_ms": LEAD_MS, "duration_ms": info["duration_ms"], "timing": timing, "cached": info.get("cached", False), "voice": sc_voice}
         elif s.narration.strip():
             timing = "user_text"
         dur_ms = max(int(s.duration * 1000), min_ms)
@@ -145,6 +246,7 @@ def expand(pid: str, storyboard: dict[str, Any], *, progress: Progress | None = 
                 "params": params,
                 "durationInFrames": frames,
                 "narration": s.narration,
+                "voice": sc_voice if timings.get(sid) else "",
                 "words": words,
                 "timing": timing,
                 "assets": assets,
@@ -162,8 +264,18 @@ def expand(pid: str, storyboard: dict[str, Any], *, progress: Progress | None = 
     elif total < target * 0.7:
         warnings.append(f"Duração {total:.1f}s ficou bem abaixo do alvo de {target:.0f}s.")
     music_rel = ""
-    if sb.music:
-        music_rel = _resolve_asset(pid, sb.music)
+    wanted_music = sb.music or opts.get("music") or ""
+    if wanted_music and wanted_music != "none":
+        try:
+            music_rel = _resolve_asset(pid, wanted_music)
+        except Exception:
+            music_rel = ""
+    elif not wanted_music and opts.get("auto_bgm", True) and niche_id in NICHE_BGM:
+        try:
+            music_rel = _resolve_asset(pid, NICHE_BGM[niche_id])
+        except Exception:
+            music_rel = ""
+    cap_style = opts.get("caption_style") or niche.get("captions", {}).get("style") or NICHE_CAPTION_STYLE.get(niche_id, "hormozi")
     plan = {
         "schema": "vrs.filmplan/1",
         "title": sb.title,
@@ -172,7 +284,14 @@ def expand(pid: str, storyboard: dict[str, Any], *, progress: Progress | None = 
         "height": h,
         "fps": fps,
         "theme": {**{"background": "#0b1020", "foreground": "#f5f7ff", "accent": "#ffb02e", "accent2": "#5ad1ff", "muted": "#8a93b8", "font": "sans", "visualLanguage": "motion-graphics"}, **theme_for(p), **(opts.get("theme") or {})},
-        "captions": {"enabled": captions != "off", "mode": captions if captions in ("word", "phrase", "off") else "word", "position": "bottom", "maxWords": int(niche.get("captions", {}).get("maxWords", 3)), "highlight": "#ffd23f"},
+        "captions": {
+            "enabled": captions != "off",
+            "mode": captions if captions in ("word", "phrase", "off") else "word",
+            "position": "bottom",
+            "maxWords": int(niche.get("captions", {}).get("maxWords", 3)),
+            "highlight": "#ffd23f",
+            "style": cap_style if cap_style in ("hormozi", "karaoke", "cinema", "comic") else "hormozi",
+        },
         "audio": {"narration": "voice/narration.wav" if timings else "", "music": music_rel, "musicVolume": float(opts.get("music_volume", 0.12)), "duck": True, "voice": voice_id if timings else ""},
         "scenes": scenes,
         "uncertainties": sb.uncertainties,
@@ -193,20 +312,81 @@ def storyboard_from_recipe(niche_id: str, *, title: str | None = None) -> dict[s
         "title": title or n["example"]["title"],
         "language": "pt-BR",
         "uncertainties": [],
+        "sources": n.get("sources", []),
         "illustrative_data": any(s["parameters"].get("illustrative") for s in n["recipe"]),
+        "music": n.get("music", ""),
         "scenes": [
-            {"preset_id": s["preset_id"], "parameters": s["parameters"], "narration": s["narration"], "duration": s["duration"], **({"transition": s["transition"]} if s.get("transition") else {})}
+            {
+                "preset_id": s["preset_id"],
+                "parameters": copy.deepcopy(s["parameters"]),
+                "narration": s["narration"],
+                "duration": s["duration"],
+                **({"voice": s["voice"]} if s.get("voice") else {}),
+                **({"transition": s["transition"]} if s.get("transition") else {}),
+            }
             for s in n["recipe"]
         ],
     }
 
 
+def auto_storyboard_from_idea(niche_id: str, idea: str, target_seconds: float | None = None, *, title: str = "") -> dict[str, Any]:
+    """Diretor local autônomo: adapta a receita editorial do nicho à ideia do usuário sem esperar agente externo."""
+    n = catalog.get_niche(niche_id)
+    clean_idea = re.sub(r"\s+", " ", (idea or "").strip())
+    if not clean_idea:
+        return storyboard_from_recipe(niche_id, title=title or None)
+
+    sentences = [s.strip() for s in re.split(r"[.!?;\n]+", clean_idea) if len(s.strip()) > 3]
+    headline = title.strip() or (sentences[0][:68] if sentences else clean_idea[:68])
+    words_only = [w for w in re.findall(r"[A-Za-zÀ-ÿ0-9]{4,}", clean_idea) if w.lower() not in {"como", "para", "sobre", "quero", "vídeo", "video", "fazer", "explicar", "explique", "estilo", "cenas", "segundos"}]
+    topic = " ".join(words_only[:4]).title() or headline[:36]
+
+    base = storyboard_from_recipe(niche_id, title=headline)
+    scenes = base["scenes"]
+    num_sc = len(scenes)
+    scale = max(0.6, min(1.8, float(target_seconds or n["defaultDuration"]) / max(1.0, sum(s["duration"] for s in scenes))))
+
+    for i, sc in enumerate(scenes):
+        sc["duration"] = round(max(3.5, sc["duration"] * scale), 1)
+        p = sc["parameters"]
+        pid_preset = sc["preset_id"]
+        user_sent = sentences[i % len(sentences)] if sentences else clean_idea
+
+        if i == 0:
+            if "title" in p:
+                p["title"] = headline[:85]
+            if "subtitle" in p:
+                p["subtitle"] = f"Guia visual: {topic}"[:110]
+            if "kicker" in p:
+                p["kicker"] = n["title"].upper()[:36]
+            if len(sentences) == 1 and len(clean_idea) <= 180:
+                sc["narration"] = f"{clean_idea.rstrip('.!?')}. Vamos ver na prática como isso funciona."
+            else:
+                sc["narration"] = f"{user_sent.rstrip('.!?')}. Entenda os pontos essenciais sobre {topic.lower()}."
+        elif i == num_sc - 1 and pid_preset == "vrs-cta":
+            p["headline"] = f"Gostou de entender {topic}?"[:80]
+            sc["narration"] = f"Se essa explicação sobre {topic.lower()} ajudou você, salve este vídeo e compartilhe!"
+        else:
+            if "title" in p and p["title"]:
+                p["title"] = f"{topic}: Etapa {i}"[:80]
+            if pid_preset == "vrs-stickman-stage" and len(sentences) > 1:
+                p["boardTitle"] = topic.upper()[:42]
+                p["bullets"] = [s[:48] for s in sentences[:3]]
+            elif pid_preset == "vrs-news-highlight":
+                p["headline"] = headline[:90]
+                p["highlightText"] = user_sent[:110]
+            if len(sentences) > i:
+                sc["narration"] = f"{sentences[i].rstrip('.!?')}."
+    return base
+
+
 def patch_scene(plan: dict[str, Any], scene_id: str, patch: dict[str, Any], *, pid: str | None = None) -> dict[str, Any]:
-    """Altera parâmetros/componente/duração/transição de uma cena; o cache re-renderiza só ela."""
-    allowed = {"component", "params", "durationInFrames", "transitionIn", "transitionOut", "layers", "sfx", "notes"}
+    """Altera parâmetros/componente/duração/transição/narração de uma cena; o cache re-renderiza só ela."""
+    allowed = {"component", "params", "durationInFrames", "transitionIn", "transitionOut", "layers", "sfx", "notes", "narration", "voice"}
     bad = set(patch) - allowed
     if bad:
         raise VRSError(f"Campos não editáveis por patch: {', '.join(sorted(bad))}")
+    fps = int(plan.get("fps", 30))
     for sc in plan["scenes"]:
         if sc["id"] == scene_id:
             if "component" in patch and patch["component"] != sc["component"]:
@@ -223,10 +403,91 @@ def patch_scene(plan: dict[str, Any], scene_id: str, patch: dict[str, Any], *, p
             for k in ("durationInFrames", "transitionIn", "transitionOut", "layers", "sfx", "notes"):
                 if k in patch:
                     sc[k] = patch[k]
-            if sc["words"] and sc["words"][-1]["end"] > sc["durationInFrames"] * 1000 / plan["fps"]:
+            if ("narration" in patch or "voice" in patch) and pid:
+                new_narr = str(patch.get("narration", sc.get("narration", ""))).strip()
+                new_voice = str(patch.get("voice", sc.get("voice") or plan.get("audio", {}).get("voice") or "faber")).strip() or "faber"
+                sc["narration"] = new_narr
+                sc["voice"] = new_voice
+                if new_narr and new_voice != "none":
+                    vdir = projects.project_dir(pid) / "voice"
+                    vdir.mkdir(exist_ok=True)
+                    info = voice.synthesize_cached(new_narr, new_voice)
+                    shutil.copyfile(info["wav"], vdir / f"{scene_id}.wav")
+                    sc["words"] = [{**wd, "start": wd["start"] + LEAD_MS, "end": wd["end"] + LEAD_MS} for wd in info["words"]]
+                    sc["timing"] = info["timing"]
+                    min_ms = LEAD_MS + info["duration_ms"] + TAIL_MS
+                    sc["durationInFrames"] = max(int(sc["durationInFrames"]), math.ceil(min_ms * fps / 1000))
+                    timings = read_json(vdir / "timings.json", {}) or {}
+                    timings[scene_id] = {"wav": f"voice/{scene_id}.wav", "offset_ms": LEAD_MS, "duration_ms": info["duration_ms"], "timing": info["timing"], "cached": info.get("cached", False), "voice": new_voice}
+                    write_json(vdir / "timings.json", timings)
+                    plan["audio"]["narration"] = "voice/narration.wav"
+            if sc["words"] and sc["words"][-1]["end"] > sc["durationInFrames"] * 1000 / fps:
                 raise VRSError("A nova duração cortaria a narração da cena.", code="would_cut_words")
             return FilmPlan.model_validate(plan).model_dump(by_alias=True)
     raise VRSError(f"Cena não encontrada: {scene_id}", code="not_found", status=404)
+
+
+def manage_scene(pid: str, plan: dict[str, Any], action: str, scene_id: str, *, preset_id: str = "vrs-stickman-stage") -> dict[str, Any]:
+    """Adiciona, duplica, move (move_up/move_down) ou remove uma cena na linha do tempo do FilmPlan."""
+    scenes: list[dict[str, Any]] = list(plan.get("scenes") or [])
+    idx = next((i for i, s in enumerate(scenes) if s["id"] == scene_id), -1)
+    if idx < 0 and action != "add":
+        raise VRSError(f"Cena não encontrada: {scene_id}", code="not_found", status=404)
+
+    existing_ids = {s["id"] for s in scenes}
+    n_idx = len(scenes) + 1
+    while f"s{n_idx:02d}" in existing_ids:
+        n_idx += 1
+    new_sid = f"s{n_idx:02d}"
+
+    vdir = projects.project_dir(pid) / "voice"
+    timings = read_json(vdir / "timings.json", {}) or {}
+
+    if action == "move_up" and idx > 0:
+        scenes[idx - 1], scenes[idx] = scenes[idx], scenes[idx - 1]
+    elif action == "move_down" and 0 <= idx < len(scenes) - 1:
+        scenes[idx + 1], scenes[idx] = scenes[idx], scenes[idx + 1]
+    elif action == "delete":
+        if len(scenes) <= 1:
+            raise VRSError("O vídeo precisa ter pelo menos 1 cena.")
+        removed = scenes.pop(idx)
+        timings.pop(removed["id"], None)
+        write_json(vdir / "timings.json", timings)
+    elif action == "duplicate":
+        clone = copy.deepcopy(scenes[idx])
+        clone["id"] = new_sid
+        if scene_id in timings and (vdir / f"{scene_id}.wav").exists():
+            shutil.copyfile(vdir / f"{scene_id}.wav", vdir / f"{new_sid}.wav")
+            timings[new_sid] = {**timings[scene_id], "wav": f"voice/{new_sid}.wav"}
+            write_json(vdir / "timings.json", timings)
+        scenes.insert(idx + 1, clone)
+    elif action == "add":
+        catalog.get_scene(preset_id)
+        params = catalog.validate_params(preset_id, {})
+        assets = _apply_assets(pid, preset_id, params, "", [])
+        new_sc = {
+            "id": new_sid,
+            "component": preset_id,
+            "params": params,
+            "durationInFrames": int(plan.get("fps", 30)) * 4,
+            "narration": "",
+            "voice": plan.get("audio", {}).get("voice") or "faber",
+            "words": [],
+            "timing": "none",
+            "assets": assets,
+            "layers": [],
+            "transitionIn": {"type": "fade", "durationInFrames": 10, "color": ""},
+            "transitionOut": {"type": "none", "durationInFrames": 0, "color": ""},
+            "sfx": [],
+            "notes": "Nova cena adicionada pelo estúdio",
+        }
+        ins_at = idx + 1 if idx >= 0 else len(scenes)
+        scenes.insert(ins_at, new_sc)
+    else:
+        raise VRSError(f"Ação de timeline inválida: {action}")
+
+    plan["scenes"] = scenes
+    return FilmPlan.model_validate(plan).model_dump(by_alias=True)
 
 
 def slugify_title(t: str) -> str:

@@ -29,7 +29,8 @@
   },
   "assets_hint": [
     "user-avatars",
-    "kenney-background-elements"
+    "kenney-background-elements",
+    "vrs-pro-stickers"
   ],
   "recipe": [
     {
@@ -37,7 +38,7 @@
       "label": "Abertura no Estúdio",
       "preset_id": "vrs-multiplane-stage",
       "duration": 5,
-      "narration": "Bem-vindos ao estúdio! Hoje vamos revelar como automatizar projetos inteiros sem perder qualidade.",
+      "narration": "Bem-vindos ao estúdio! Hoje vamos revelar como automatizar projetos com IA sem perder qualidade.",
       "parameters": {
         "title": "Estúdio VRS · Episódio 1",
         "environment": "podcast_studio",
@@ -48,20 +49,21 @@
         "bubble": "Automatizando com código!",
         "stickers": [
           {
-            "asset": "",
+            "asset": "lib:vrs-pro-stickers.sticker-foco-10x",
             "emoji": "🚀",
-            "label": "100% LOCAL",
+            "label": "FOCO 10X",
             "x": 0.18,
             "y": 0.34
           },
           {
-            "asset": "",
+            "asset": "lib:vrs-pro-stickers.sticker-verificado",
             "emoji": "⚡",
-            "label": "RÁPIDO",
+            "label": "100% LOCAL",
             "x": 0.82,
             "y": 0.36
           }
-        ]
+        ],
+        "cameraMode": "auto_cut"
       },
       "guidance": ""
     },
@@ -70,7 +72,7 @@
       "label": "Debate na Bancada",
       "preset_id": "vrs-multiplane-stage",
       "duration": 5,
-      "narration": "Mas antes de publicar qualquer sistema, cada recurso precisa ter licença limpa e procedência verificada.",
+      "narration": "Automatizar com código economiza horas de trabalho! Mas antes de publicar, cada recurso precisa ter licença limpa e procedência verificada.",
       "parameters": {
         "title": "Código & Regras Claras",
         "environment": "city_neon",
@@ -81,15 +83,17 @@
         "bubble": "Procedência verificada!",
         "stickers": [
           {
-            "asset": "",
+            "asset": "lib:vrs-pro-stickers.sticker-aprovado",
             "emoji": "⚖️",
             "label": "APROVADO",
             "x": 0.5,
-            "y": 0.28
+            "y": 0.26
           }
-        ]
+        ],
+        "cameraMode": "auto_cut"
       },
-      "guidance": ""
+      "guidance": "",
+      "voice": "duet"
     },
     {
       "role": "cenário épico",
@@ -107,13 +111,14 @@
         "bubble": "Bora criar o próximo vídeo!",
         "stickers": [
           {
-            "asset": "",
+            "asset": "lib:vrs-pro-stickers.sticker-lucro",
             "emoji": "🏆",
-            "label": "SUCESSO",
+            "label": "ALTA RETENÇÃO",
             "x": 0.2,
-            "y": 0.35
+            "y": 0.34
           }
-        ]
+        ],
+        "cameraMode": "auto_cut"
       },
       "guidance": ""
     }
@@ -131,8 +136,10 @@
   "captions": {
     "mode": "word",
     "position": "bottom",
-    "maxWords": 3
+    "maxWords": 3,
+    "style": "karaoke"
   },
   "voice": "faber",
-  "schema": "vrs.niche/1"
+  "schema": "vrs.niche/1",
+  "music": "lib:vrs-pro-audio.bgm-blocky-gaming"
 }

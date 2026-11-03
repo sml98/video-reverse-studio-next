@@ -1,36 +1,30 @@
 {
-  "project_id": "p575b67cba176",
+  "project_id": "p893f285dcb9f",
   "niche": "multiplane",
   "review": {
-    "technical": "aprovado_com_achados",
-    "findings": [
-      {
-        "kind": "conteudo_na_borda",
-        "scene": "s03",
-        "detail": "atividade nas margens 31 — verificar texto cortado"
-      }
-    ],
+    "technical": "aprovado_tecnicamente",
+    "findings": [],
     "motion": [
       {
         "scene": "s01",
         "component": "vrs-multiplane-stage",
-        "motion": 5.62,
-        "first_half": 5.43
+        "motion": 19.35,
+        "first_half": 23.16
       },
       {
         "scene": "s02",
         "component": "vrs-multiplane-stage",
-        "motion": 6.1,
-        "first_half": 5.23
+        "motion": 23.35,
+        "first_half": 17.69
       },
       {
         "scene": "s03",
         "component": "vrs-multiplane-stage",
-        "motion": 5.12,
-        "first_half": 5.02
+        "motion": 12.67,
+        "first_half": 12.59
       }
     ]
   },
-  "render_seconds": 27.6,
-  "duration_s": 18.267
+  "render_seconds": 38.3,
+  "duration_s": 22.2
 }

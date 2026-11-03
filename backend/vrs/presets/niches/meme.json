@@ -71,9 +71,11 @@
   "captions": {
     "mode": "word",
     "position": "bottom",
-    "maxWords": 3
+    "maxWords": 3,
+    "style": "hormozi"
   },
   "voice": "faber",
   "schema": "vrs.niche/1",
-  "guide": "skills/vrs-presets/references/meme.md"
+  "guide": "skills/vrs-presets/references/meme.md",
+  "music": "lib:vrs-pro-audio.bgm-quirky-comedy"
 }

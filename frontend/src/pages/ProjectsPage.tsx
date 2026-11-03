@@ -20,7 +20,7 @@ const STATUS_BADGE: Record<string, { cls: string; label: string }> = {
 
 export const ProjectsPage: React.FC = () => {
   const [items, setItems] = useState<Project[]>([]);
-  const [showExamples, setShowExamples] = useState<boolean>(false);
+  const [showExamples, setShowExamples] = useState<boolean>(true);
   const [loading, setLoading] = useState<boolean>(true);
 
   const load = () => {

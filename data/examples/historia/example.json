@@ -1,5 +1,5 @@
 {
-  "project_id": "p775425e6db3f",
+  "project_id": "pec37f5883e0d",
   "niche": "historia",
   "review": {
     "technical": "aprovado_tecnicamente",
@@ -8,29 +8,29 @@
       {
         "scene": "s01",
         "component": "vrs-story-panel",
-        "motion": 1.67,
-        "first_half": 2.91
+        "motion": 1.35,
+        "first_half": 2.37
       },
       {
         "scene": "s02",
         "component": "vrs-story-panel",
-        "motion": 2.68,
-        "first_half": 3.58
+        "motion": 1.86,
+        "first_half": 2.91
       },
       {
         "scene": "s03",
         "component": "vrs-steps",
-        "motion": 2.99,
-        "first_half": 3.09
+        "motion": 2.31,
+        "first_half": 2.34
       },
       {
         "scene": "s04",
         "component": "vrs-story-panel",
-        "motion": 7.74,
-        "first_half": 8.87
+        "motion": 6.79,
+        "first_half": 7.8
       }
     ]
   },
-  "render_seconds": 25.9,
+  "render_seconds": 26.7,
   "duration_s": 20.0
 }

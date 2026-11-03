@@ -295,3 +295,55 @@ def test_new_scenes_reframe_and_auto_sfx(tmp_path: Path):
     assert ref["aspect"] == "vertical"
     plan_v = projects.load(pid, "plan")
     assert plan_v["width"] == 1080 and plan_v["height"] == 1920
+
+
+def test_pro_pillars_and_autonomous_director(tmp_path: Path):
+    from vrs import review, workflow
+
+    catalog._specs.cache_clear()
+    catalog.scenes.cache_clear()
+    catalog.niches.cache_clear()
+
+    # 1. Novas cenas profissionais registradas
+    for sc_id in ("vrs-news-highlight", "vrs-device-mockup", "vrs-video-broll"):
+        assert sc_id in catalog.scenes()
+
+    # 2. Normalização fonética PT-BR preservando tokens visuais
+    assert "dois dê" in voice._spoken_word("2D")
+    assert "inteligência artificial" in voice._spoken_word("IA")
+    assert "por cento" in voice._spoken_word("50%")
+
+    # 3. Diretor autônomo local adapta a ideia do usuário e gerencia timeline
+    p = projects.create_project(
+        name="Diretor Pro",
+        idea="Como a inteligência artificial acelera o código em 10x sem perder segurança. Primeiro planeje a arquitetura. Depois automatize os testes.",
+        niche_id="southpark",
+        aspect="landscape",
+        target_seconds=15,
+        options={"narration": False},
+    )
+    pid = p["id"]
+    sb = expand.auto_storyboard_from_idea("southpark", p["idea"], 15, title="IA e Código 10x")
+    assert len(sb["scenes"]) >= 3
+    assert "IA" in sb["scenes"][0]["parameters"].get("title", "")
+
+    plan = expand.expand(pid, sb)
+    assert plan["captions"]["style"] in ("hormozi", "karaoke", "cinema", "comic")
+    projects.save_versioned(pid, "plan", plan)
+
+    # 4. Operações de timeline (add, duplicate, move_up, delete)
+    n0 = len(plan["scenes"])
+    plan = expand.manage_scene(pid, plan, "add", "", preset_id="vrs-news-highlight")
+    assert len(plan["scenes"]) == n0 + 1
+    added_id = plan["scenes"][-1]["id"]
+    plan = expand.manage_scene(pid, plan, "move_up", added_id)
+    assert plan["scenes"][-2]["id"] == added_id
+    plan = expand.manage_scene(pid, plan, "delete", added_id)
+    assert len(plan["scenes"]) == n0
+
+    # 5. Kit de publicação automático (títulos, capítulos 00:00 e hashtags)
+    kit = review._build_publish_kit(plan)
+    assert len(kit["titles"]) == 3
+    assert kit["chapters_text"].startswith("00:00 ")
+    assert len(kit["hashtags"]) >= 3
+

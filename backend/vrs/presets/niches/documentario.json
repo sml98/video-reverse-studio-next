@@ -74,6 +74,23 @@
     },
     {
       "role": "evidências",
+      "label": "Manchete Histórica",
+      "preset_id": "vrs-news-highlight",
+      "duration": 5,
+      "narration": "Os registros históricos confirmam que a Bíblia de 42 linhas inaugurou a produção em escala na Europa.",
+      "parameters": {
+        "title": "Evidência Histórica",
+        "sourceName": "ARQUIVO HISTÓRICO · MAINZ",
+        "publishDate": "c. 1455 · Século XV",
+        "headline": "A Bíblia de 42 linhas inaugura a era da imprensa na Europa",
+        "highlightText": "Dezenas de cópias idênticas foram produzidas em meses em vez de anos.",
+        "bodySnippet": "A revolução tipográfica reduziu drasticamente o custo do conhecimento em todo o continente.",
+        "image": ""
+      },
+      "guidance": "Recorte documental com marca-texto animado."
+    },
+    {
+      "role": "evidências",
       "label": "Mapa esquemático",
       "preset_id": "vrs-map-route",
       "duration": 6,
@@ -138,9 +155,17 @@
   "captions": {
     "mode": "word",
     "position": "bottom",
-    "maxWords": 3
+    "maxWords": 3,
+    "style": "cinema"
   },
   "voice": "faber",
   "schema": "vrs.niche/1",
-  "guide": "skills/vrs-presets/references/documentario.md"
+  "guide": "skills/vrs-presets/references/documentario.md",
+  "music": "lib:vrs-pro-audio.bgm-doc-suspense",
+  "sources": [
+    {
+      "claim": "Prensa de tipos móveis em Mainz (c. 1440–1455)",
+      "source": "Gutenberg-Museum / Encyclopædia Britannica"
+    }
+  ]
 }
