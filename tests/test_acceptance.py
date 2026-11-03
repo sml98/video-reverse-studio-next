@@ -234,3 +234,45 @@ def test_api_loopback_and_csrf_protection():
     # Bloqueia POST cross-origin (CSRF)
     bad_origin = client.post("/api/library/reindex", headers={"origin": "https://evil.example.com"})
     assert bad_origin.status_code == 403
+
+
+def test_new_scenes_reframe_and_auto_sfx(tmp_path: Path):
+    from vrs import workflow
+
+    catalog._specs.cache_clear()
+    catalog.scenes.cache_clear()
+    assert "vrs-3d-stage" in catalog.scenes()
+    assert "vrs-parallax-photo" in catalog.scenes()
+    assert "vrs-code-walkthrough" in catalog.scenes()
+
+    p = projects.create_project(name="Novas Cenas", idea="Teste incremental", niche_id="tutorial", aspect="landscape", target_seconds=12, options={"narration": False})
+    pid = p["id"]
+    sb = {
+        "schema": "vrs.storyboard/1",
+        "title": "Teste Novas Cenas",
+        "scenes": [
+            {
+                "id": "s1",
+                "preset_id": "vrs-code-walkthrough",
+                "duration": 5,
+                "narration": "Veja a linha dois do código.",
+                "parameters": {"title": "Exemplo", "filename": "calc.py", "code": "x = 10\ny = x * 2", "focusLine": 2},
+            },
+            {
+                "id": "s2",
+                "preset_id": "vrs-parallax-photo",
+                "duration": 5,
+                "narration": "Foto em destaque.",
+                "parameters": {"title": "Arquivo", "callout": "Ponto focal", "focusX": 0.5, "focusY": 0.5},
+            },
+        ],
+    }
+    plan = expand.expand(pid, sb)
+    projects.save_versioned(pid, "plan", plan)
+    assert plan["width"] == 1920 and plan["height"] == 1080
+
+    # Reenquadramento 1-clique para vertical (9:16)
+    ref = workflow.reframe_project(pid, "vertical", render_after=False)
+    assert ref["aspect"] == "vertical"
+    plan_v = projects.load(pid, "plan")
+    assert plan_v["width"] == 1080 and plan_v["height"] == 1920

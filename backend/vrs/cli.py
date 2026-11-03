@@ -9,7 +9,7 @@ import time
 from pathlib import Path
 from typing import Any
 
-from .config import HOST, PORT, ROOT, limit_threads, settings
+from .config import HOST, PORT, RUN_PORT, ROOT, limit_threads, settings
 
 
 def _print(obj: Any) -> None:
@@ -24,7 +24,7 @@ def cmd_serve(a: argparse.Namespace) -> None:
 
     worker = jobs.Worker().start()
     try:
-        uvicorn.run(app, host=HOST, port=PORT, log_level="warning", workers=1)
+        uvicorn.run(app, host=HOST, port=RUN_PORT, log_level="warning", workers=1)
     finally:
         worker.stop()
 

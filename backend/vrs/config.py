@@ -11,7 +11,12 @@ ROOT = Path(__file__).resolve().parents[2]
 # explícita e segura configurada fora desta instalação.
 HOST = "127.0.0.1"
 PORT = 8765
-ALLOWED_ORIGINS = {f"http://{HOST}:{PORT}", f"http://localhost:{PORT}"}
+# Porta alternativa só em loopback (ex.: 8766 quando 8765 está ocupada); host nunca muda.
+try:
+    RUN_PORT = int(os.environ.get("VRS_PORT", PORT))
+except ValueError:
+    RUN_PORT = PORT
+ALLOWED_ORIGINS = {f"http://{HOST}:{p}" for p in {PORT, RUN_PORT}} | {f"http://localhost:{p}" for p in {PORT, RUN_PORT}}
 
 
 def _load_dotenv(path: Path) -> None:

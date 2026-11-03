@@ -19,9 +19,32 @@ LEAD_MS = 300  # respiro antes da fala (após a transição de entrada)
 TAIL_MS = 450  # respiro depois da fala
 TRANSITIONS = ["fade", "wipe", "slide", "zoom", "circle"]
 NICHE_TRANSITION = {"ciencia": "wipe", "documentario": "fade", "meme": "flash", "cta": "zoom", "financas": "slide", "frases": "fade", "tutorial": "slide", "historia": "circle"}
-PRIMARY_ASSET = {"vrs-title": "backgroundAsset", "vrs-story-panel": "character", "vrs-meme": "image"}
+PRIMARY_ASSET = {"vrs-title": "backgroundAsset", "vrs-story-panel": "character", "vrs-meme": "image", "vrs-3d-stage": "model", "vrs-parallax-photo": "image"}
 
 Progress = Callable[[str, float], None]
+
+
+def _auto_sfx(pid: str, idx: int, preset_id: str, tr: str, words: list[dict[str, Any]], opts: dict[str, Any]) -> list[dict[str, Any]]:
+    """Injeta SFX sutis da biblioteca local nas transições e palavras-âncora quando disponíveis."""
+    if not opts.get("auto_sfx", True):
+        return []
+    try:
+        items = library.search("", "sfx", "", limit=12).get("items") or []
+    except Exception:
+        return []
+    if not items:
+        return []
+    rollover = next((it["id"] for it in items if "rollover" in it["id"] or "switch" in it["id"]), items[0]["id"])
+    click = next((it["id"] for it in items if "click" in it["id"]), items[-1]["id"])
+    cues: list[dict[str, Any]] = []
+    if idx > 0 and tr != "none":
+        rel = library.import_into_project(pid, rollover)
+        cues.append({"path": rel, "at_ms": 40, "volume": 0.16, "role": f"transition:{tr}"})
+    if words and preset_id in ("vrs-stat", "vrs-meme", "vrs-cta", "vrs-kinetic-quote", "vrs-calc", "vrs-code-walkthrough", "vrs-parallax-photo"):
+        anchor = words[min(len(words) - 1, max(0, len(words) // 3))]
+        rel_c = library.import_into_project(pid, click)
+        cues.append({"path": rel_c, "at_ms": int(anchor["start"]), "volume": 0.14, "role": f"anchor:{anchor['id']}"})
+    return cues
 
 
 def _resolve_asset(pid: str, value: str) -> str:
@@ -128,7 +151,7 @@ def expand(pid: str, storyboard: dict[str, Any], *, progress: Progress | None = 
                 "layers": [],
                 "transitionIn": {"type": tr, "durationInFrames": 10 if tr != "none" else 0, "color": ""},
                 "transitionOut": {"type": "none", "durationInFrames": 0, "color": ""},
-                "sfx": [],
+                "sfx": _auto_sfx(pid, i, s.preset_id, tr, words, opts),
                 "notes": "",
             }
         )
@@ -180,7 +203,7 @@ def storyboard_from_recipe(niche_id: str, *, title: str | None = None) -> dict[s
 
 def patch_scene(plan: dict[str, Any], scene_id: str, patch: dict[str, Any]) -> dict[str, Any]:
     """Altera parâmetros/duração/transição de uma cena; o cache re-renderiza só ela."""
-    allowed = {"params", "durationInFrames", "transitionIn", "transitionOut", "layers", "notes"}
+    allowed = {"params", "durationInFrames", "transitionIn", "transitionOut", "layers", "sfx", "notes"}
     bad = set(patch) - allowed
     if bad:
         raise VRSError(f"Campos não editáveis por patch: {', '.join(sorted(bad))}")
@@ -189,7 +212,7 @@ def patch_scene(plan: dict[str, Any], scene_id: str, patch: dict[str, Any]) -> d
             if "params" in patch:
                 merged = {**sc["params"], **patch["params"]}
                 sc["params"] = catalog.validate_params(sc["component"], merged)
-            for k in ("durationInFrames", "transitionIn", "transitionOut", "layers", "notes"):
+            for k in ("durationInFrames", "transitionIn", "transitionOut", "layers", "sfx", "notes"):
                 if k in patch:
                     sc[k] = patch[k]
             if sc["words"] and sc["words"][-1]["end"] > sc["durationInFrames"] * 1000 / plan["fps"]:

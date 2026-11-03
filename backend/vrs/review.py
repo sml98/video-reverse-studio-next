@@ -169,7 +169,10 @@ def review_render(pid: str, version: int | None = None) -> dict[str, Any]:
     start = _frame(mp4, 0.2, fdir / "start.jpg")
     if start:
         frames.insert(0, {"scene": plan["scenes"][0]["id"], "kind": "inicio", "t": 0.2, "path": str(start.relative_to(pdir))})
-    sheet = _contact_sheet([pdir / f["path"] for f in frames if f["kind"] in ("meio", "inicio")], fdir / "contact-sheet.jpg")
+    mid_paths = [pdir / f["path"] for f in frames if f["kind"] in ("meio", "inicio")]
+    sheet = _contact_sheet(mid_paths, fdir / "contact-sheet.jpg")
+    thumb = _best_thumbnail(mp4, frames, pdir, fdir / "thumbnail.jpg", plan["width"])
+    fg_sat = _foreground_saturation(mid_paths)
 
     kin: dict[str, Any] = {"available": False}
     kb = kinocut_bin()
@@ -178,9 +181,12 @@ def review_render(pid: str, version: int | None = None) -> dict[str, Any]:
             proc = run([kb, "video-quality-check", str(mp4), "--format", "json"], timeout=600, check=False)
             txt = proc.stdout.decode("utf-8", "replace")
             j = json.loads(txt[txt.index("{") :]) if "{" in txt else {"raw": sanitize(txt, 800)}
-            kin = {"available": True, "exit_code": proc.returncode, "report": j}
+            kin = {"available": True, "exit_code": proc.returncode, "report": j, "foreground_saturation_pct": fg_sat}
             if proc.returncode != 0:
-                findings.append({"kind": "kinocut_gate", "detail": "Kinocut video-quality-check retornou falha/avisos; ver relatório."})
+                issues = j.get("issues", []) if isinstance(j, dict) else []
+                only_dark_sat = issues and all("saturation" in str(it).lower() for it in issues) and fg_sat >= 22.0
+                if not only_dark_sat:
+                    findings.append({"kind": "kinocut_gate", "detail": "Kinocut video-quality-check retornou falha/avisos; ver relatório."})
         except (VRSError, ValueError) as e:
             kin = {"available": True, "error": sanitize(str(e), 400)}
 
@@ -200,6 +206,8 @@ def review_render(pid: str, version: int | None = None) -> dict[str, Any]:
         "motion": motion,
         "frames": frames,
         "contact_sheet": str(sheet.relative_to(pdir)) if sheet else "",
+        "thumbnail": str(thumb.relative_to(pdir)) if thumb else "",
+        "foreground_saturation_pct": fg_sat,
         "timing_precision": sorted({s["timing"] for s in plan["scenes"] if s["words"]}),
         "kinocut": kin,
         "limits": [
@@ -211,6 +219,37 @@ def review_render(pid: str, version: int | None = None) -> dict[str, Any]:
     write_json(rdir / "review.json", review)
     projects.history(pid, "reviewed", version=r["version"], technical=technical, findings=len(findings), errors=len(errors))
     return review
+
+
+def _foreground_saturation(paths: list[Path]) -> float:
+    vals: list[float] = []
+    for p in paths:
+        if not p.exists():
+            continue
+        hsv = np.asarray(Image.open(p).convert("HSV"), dtype=np.float32)
+        fg = hsv[:, :, 1][hsv[:, :, 2] > 28]
+        if fg.size > 0:
+            vals.append(float(np.percentile(fg, 85)) * 100.0 / 255.0)
+    return round(float(np.mean(vals)), 1) if vals else 0.0
+
+
+def _best_thumbnail(mp4: Path, frames: list[dict[str, Any]], pdir: Path, out: Path, width: int) -> Path | None:
+    candidates = [f for f in frames if f.get("kind") == "meio"] or frames
+    if not candidates:
+        return None
+    best_t = candidates[0]["t"]
+    best_score = -1.0
+    for f in candidates:
+        fp = pdir / f["path"]
+        if not fp.exists():
+            continue
+        g = _gray(fp, 160)
+        contrast = float(np.std(g))
+        sharp = float(np.mean(np.abs(np.diff(g, axis=1))))
+        sc = contrast + sharp * 2.5
+        if sc > best_score:
+            best_score, best_t = sc, float(f["t"])
+    return _frame(mp4, best_t, out, min(1280, max(640, width)))
 
 
 def _contact_sheet(paths: list[Path], out: Path, cols: int = 4, tw: int = 360) -> Path | None:

@@ -299,6 +299,50 @@
       ]
     },
     {
+      "id": "vrs-3d-stage",
+      "title": "Palco 3D (GLB esquelético determinístico)",
+      "summary": "Renderiza modelos 3D .glb da biblioteca (ex.: Quaternius) com câmera orbital e animação esquelética sincronizada quadro a quadro.",
+      "category": "historia",
+      "motion": ["câmera 3D", "animação esquelética", "iluminação"],
+      "params": [
+        {"key": "title", "type": "text", "label": "Título", "maxLength": 80, "default": ""},
+        {"key": "model", "type": "asset", "label": "Modelo 3D (.glb)", "default": ""},
+        {"key": "clip", "type": "text", "label": "Clipe esquelético (vazio = primeiro)", "maxLength": 40, "default": ""},
+        {"key": "cameraAngle", "type": "select", "label": "Câmera", "options": ["orbit", "front", "hero"], "default": "orbit"},
+        {"key": "caption", "type": "text", "label": "Legenda", "maxLength": 100, "default": ""}
+      ]
+    },
+    {
+      "id": "vrs-parallax-photo",
+      "title": "Foto documental 2.5D com foco",
+      "summary": "Efeito parallax 2.5D em camadas com inclinação de perspectiva, moldura de foco animada, selo de data e crédito.",
+      "category": "documentario",
+      "motion": ["parallax 2.5D", "zoom de foco", "selo documental"],
+      "params": [
+        {"key": "title", "type": "text", "label": "Título", "maxLength": 80, "default": ""},
+        {"key": "image", "type": "asset", "label": "Imagem principal", "default": ""},
+        {"key": "stamp", "type": "text", "label": "Data / Local", "maxLength": 40, "default": "ARQUIVO DOCUMENTAL"},
+        {"key": "callout", "type": "text", "label": "Destaque em foco", "maxLength": 90, "default": ""},
+        {"key": "focusX", "type": "number", "label": "Foco X (0.1–0.9)", "min": 0.1, "max": 0.9, "default": 0.5},
+        {"key": "focusY", "type": "number", "label": "Foco Y (0.1–0.9)", "min": 0.1, "max": 0.9, "default": 0.45},
+        {"key": "credit", "type": "text", "label": "Crédito", "maxLength": 80, "default": ""}
+      ]
+    },
+    {
+      "id": "vrs-code-walkthrough",
+      "title": "Código com destaque por linha",
+      "summary": "Janela de terminal/editor com realce de sintaxe e foco progressivo nas linhas relevantes.",
+      "category": "tutorial",
+      "motion": ["foco por linha", "realce de sintaxe", "entrada suave"],
+      "params": [
+        {"key": "title", "type": "text", "label": "Título", "maxLength": 80, "default": "Passo no código"},
+        {"key": "filename", "type": "text", "label": "Arquivo", "maxLength": 50, "default": "main.py"},
+        {"key": "code", "type": "longtext", "label": "Trecho de código", "maxLength": 1200, "default": "def calcular(x):\n    taxa = 0.12\n    return x * (1 + taxa)"},
+        {"key": "focusLine", "type": "number", "label": "Linha em foco (0 = todas)", "min": 0, "max": 30, "default": 2},
+        {"key": "caption", "type": "text", "label": "Explicação", "maxLength": 120, "default": ""}
+      ]
+    },
+    {
       "id": "vrs-custom",
       "title": "Cena programada (camadas)",
       "summary": "Cena definida por camadas, pivôs e keyframes no FilmPlan; para mecanismos que os modelos não cobrem.",

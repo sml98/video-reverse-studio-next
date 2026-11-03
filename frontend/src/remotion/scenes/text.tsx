@@ -3,7 +3,7 @@ import { AbsoluteFill, useCurrentFrame, useVideoConfig } from "remotion";
 import { pop, prog } from "../core/easing";
 import { fmtNumber, fontStack, useVrs, withAlpha } from "../core/theme";
 import { Icon } from "../core/icons";
-import { AssetImg, Backdrop, KineticWords, Tag } from "./common";
+import { AssetImg, Backdrop, KineticWords, Note, SceneHeader, Tag } from "./common";
 
 type Any = Record<string, any>;
 
@@ -183,6 +183,99 @@ export const StatScene: React.FC<{ params: Any }> = ({ params }) => {
         {params.context ? <div style={{ marginTop: 30 * layout.u, maxWidth: layout.w - layout.padX * 2, textAlign: "center", fontFamily: fontStack("sans"), fontSize: 32 * layout.u, color: theme.muted, opacity: prog(frame, 30, 14) }}>{params.context}</div> : null}
         {params.illustrative ? <div style={{ marginTop: 16 * layout.u }}><Tag text="DADO ILUSTRATIVO" delay={20} /></div> : null}
       </AbsoluteFill>
+    </AbsoluteFill>
+  );
+};
+
+const KW_RE = /\b(def|return|import|from|class|if|else|elif|for|while|const|let|var|function|async|await|export|true|false|None)\b/g;
+
+function colorizeLine(line: string, accent: string, accent2: string, fg: string, muted: string): React.ReactNode {
+  const commentIdx = line.indexOf("#") !== -1 ? line.indexOf("#") : line.indexOf("//");
+  const codePart = commentIdx >= 0 ? line.slice(0, commentIdx) : line;
+  const commentPart = commentIdx >= 0 ? line.slice(commentIdx) : "";
+  const tokens = codePart.split(KW_RE);
+  return (
+    <>
+      {tokens.map((tok, idx) =>
+        idx % 2 === 1 ? (
+          <span key={idx} style={{ color: accent, fontWeight: 700 }}>{tok}</span>
+        ) : (
+          <span key={idx} style={{ color: /\d/.test(tok) ? accent2 : fg }}>{tok}</span>
+        ),
+      )}
+      {commentPart ? <span style={{ color: muted, fontStyle: "italic" }}>{commentPart}</span> : null}
+    </>
+  );
+}
+
+/** Janela de código com destaque de sintaxe e foco progressivo por linha. */
+export const CodeWalkthroughScene: React.FC<{ params: Any }> = ({ params }) => {
+  const frame = useCurrentFrame();
+  const { durationInFrames } = useVideoConfig();
+  const { theme, layout } = useVrs();
+  const raw: string = String(params.code ?? "");
+  const lines = raw.split("\n").slice(0, 16);
+  const focusParam = Number(params.focusLine ?? 0);
+  const enter = prog(frame, 0, 16, "out");
+  const activeLine = focusParam > 0 ? focusParam : Math.min(lines.length, 1 + Math.floor((frame / Math.max(1, durationInFrames * 0.8)) * lines.length));
+  const top = layout.padTop + (params.title ? 150 : 50) * layout.u;
+  return (
+    <AbsoluteFill>
+      <Backdrop variant="grid" />
+      <SceneHeader title={params.title ?? ""} />
+      <div
+        style={{
+          position: "absolute",
+          left: layout.padX,
+          right: layout.padX,
+          top,
+          maxHeight: layout.safeBottom - top - 50 * layout.u,
+          background: "rgba(10, 15, 28, 0.92)",
+          border: `${2 * layout.u}px solid ${withAlpha(theme.accent2, 0.32)}`,
+          borderRadius: 20 * layout.u,
+          boxShadow: `0 ${24 * layout.u}px ${56 * layout.u}px rgba(0,0,0,0.6)`,
+          overflow: "hidden",
+          opacity: enter,
+          transform: `translateY(${(1 - enter) * 28 * layout.u}px)`,
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: `${16 * layout.u}px ${24 * layout.u}px`, background: "rgba(255,255,255,0.04)", borderBottom: `1px solid ${withAlpha(theme.foreground, 0.1)}` }}>
+          <div style={{ display: "flex", gap: 10 * layout.u }}>
+            <div style={{ width: 14 * layout.u, height: 14 * layout.u, borderRadius: 99, background: "#ef4444" }} />
+            <div style={{ width: 14 * layout.u, height: 14 * layout.u, borderRadius: 99, background: "#f59e0b" }} />
+            <div style={{ width: 14 * layout.u, height: 14 * layout.u, borderRadius: 99, background: "#10b981" }} />
+          </div>
+          <div style={{ fontFamily: fontStack("mono"), fontSize: 22 * layout.u, color: theme.muted }}>{params.filename || "snippet.py"}</div>
+        </div>
+        <div style={{ padding: `${22 * layout.u}px 0`, display: "flex", flexDirection: "column", gap: 4 * layout.u }}>
+          {lines.map((ln, idx) => {
+            const lineNum = idx + 1;
+            const focused = focusParam === 0 || lineNum === activeLine;
+            const lp = prog(frame, 6 + idx * 3, 10, "out");
+            return (
+              <div
+                key={idx}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  padding: `${6 * layout.u}px ${26 * layout.u}px`,
+                  background: focused && focusParam > 0 ? withAlpha(theme.accent, 0.14) : "transparent",
+                  borderLeft: `${5 * layout.u}px solid ${focused && focusParam > 0 ? theme.accent : "transparent"}`,
+                  opacity: lp * (focused ? 1 : 0.36),
+                  transform: `translateX(${(1 - lp) * 18 * layout.u}px)`,
+                  fontFamily: fontStack("mono"),
+                  fontSize: (layout.vertical ? 26 : 30) * layout.u,
+                  whiteSpace: "pre",
+                }}
+              >
+                <span style={{ width: 48 * layout.u, color: theme.muted, userSelect: "none", opacity: 0.6 }}>{lineNum}</span>
+                <span>{colorizeLine(ln, theme.accent, theme.accent2, theme.foreground, theme.muted)}</span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <Note text={params.caption} delay={16} />
     </AbsoluteFill>
   );
 };

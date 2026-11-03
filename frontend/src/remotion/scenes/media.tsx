@@ -1,9 +1,11 @@
-import React from "react";
-import { AbsoluteFill, useCurrentFrame, useVideoConfig } from "remotion";
+import React, { useEffect, useRef, useState } from "react";
+import { AbsoluteFill, continueRender, delayRender, useCurrentFrame, useVideoConfig } from "remotion";
+import * as THREE from "three";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { pop, prog, sampleKeyframes, type Kf } from "../core/easing";
 import { fontStack, useVrs, withAlpha } from "../core/theme";
 import { Icon } from "../core/icons";
-import { AssetImg, Backdrop, KineticWords, SceneHeader } from "./common";
+import { AssetImg, Backdrop, KineticWords, Note, SceneHeader, Tag } from "./common";
 import type { Layer } from "../../contracts/plan";
 
 type Any = Record<string, any>;
@@ -223,6 +225,253 @@ export const CustomLayersScene: React.FC<{ params: Any; layers: Layer[] }> = ({ 
       </svg>
       <SceneHeader title={params.title ?? ""} />
       {children(null).map(render)}
+    </AbsoluteFill>
+  );
+};
+
+/** Palco 3D determinístico para modelos .glb (ex.: Quaternius) dirigido por useCurrentFrame(). */
+export const Stage3DScene: React.FC<{ params: Any }> = ({ params }) => {
+  const frame = useCurrentFrame();
+  const { fps, durationInFrames } = useVideoConfig();
+  const { theme, layout, assetUrl } = useVrs();
+  const mountRef = useRef<HTMLDivElement>(null);
+  const stateRef = useRef<{
+    renderer: THREE.WebGLRenderer;
+    scene: THREE.Scene;
+    camera: THREE.PerspectiveCamera;
+    pivot: THREE.Group;
+    mixer: THREE.AnimationMixer | null;
+    clipDur: number;
+  } | null>(null);
+  const [ready, setReady] = useState(false);
+  const url = params.model ? assetUrl(params.model) : "";
+  const w = Math.round(layout.w - layout.padX * 2);
+  const h = Math.round(layout.safeBottom - layout.padTop - (params.title ? 160 : 60) * layout.u);
+
+  useEffect(() => {
+    const el = mountRef.current;
+    if (!el || !url) return;
+    let handle: number | null = null;
+    try {
+      handle = delayRender("load-glb-stage");
+    } catch {
+      handle = null;
+    }
+    let disposed = false;
+    let renderer: THREE.WebGLRenderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true });
+    } catch {
+      if (handle !== null) continueRender(handle);
+      return;
+    }
+    renderer.setSize(w, h);
+    el.innerHTML = "";
+    el.appendChild(renderer.domElement);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(38, w / Math.max(1, h), 0.1, 100);
+    scene.add(new THREE.AmbientLight(0xffffff, 1.25));
+    const keyLight = new THREE.DirectionalLight(0xffffff, 1.8);
+    keyLight.position.set(3, 6, 4);
+    scene.add(keyLight);
+    const grid = new THREE.GridHelper(6, 12, 0x38bdf8, 0x1e293b);
+    scene.add(grid);
+    const pivot = new THREE.Group();
+    scene.add(pivot);
+
+    const loader = new GLTFLoader();
+    loader.load(
+      url,
+      (gltf) => {
+        if (disposed) return;
+        const root = gltf.scene;
+        const box = new THREE.Box3().setFromObject(root);
+        const size = box.getSize(new THREE.Vector3());
+        const center = box.getCenter(new THREE.Vector3());
+        const scale = 2.2 / Math.max(size.x, size.y, size.z, 0.001);
+        root.scale.setScalar(scale);
+        root.position.set(-center.x * scale, -box.min.y * scale, -center.z * scale);
+        pivot.add(root);
+        let mixer: THREE.AnimationMixer | null = null;
+        let clipDur = 1;
+        if (gltf.animations && gltf.animations.length > 0) {
+          mixer = new THREE.AnimationMixer(root);
+          const wanted = String(params.clip || "").toLowerCase();
+          const chosen = gltf.animations.find((a) => a.name.toLowerCase().includes(wanted)) || gltf.animations[0];
+          clipDur = Math.max(0.1, chosen.duration || 1);
+          mixer.clipAction(chosen).play();
+        }
+        stateRef.current = { renderer, scene, camera, pivot, mixer, clipDur };
+        setReady(true);
+        if (handle !== null) continueRender(handle);
+      },
+      undefined,
+      () => {
+        if (handle !== null) continueRender(handle);
+      },
+    );
+    return () => {
+      disposed = true;
+      stateRef.current?.mixer?.stopAllAction();
+      renderer.dispose();
+      stateRef.current = null;
+    };
+  }, [url, w, h, params.clip]);
+
+  useEffect(() => {
+    const st = stateRef.current;
+    if (!st) return;
+    const t = frame / fps;
+    const angle = params.cameraAngle ?? "orbit";
+    if (angle === "orbit") {
+      st.pivot.rotation.y = t * 0.65;
+      st.camera.position.set(0, 1.7, 4.1);
+    } else if (angle === "hero") {
+      st.pivot.rotation.y = -0.35 + Math.sin(t * 0.8) * 0.15;
+      st.camera.position.set(0.6, 1.1, 3.4);
+    } else {
+      st.pivot.rotation.y = Math.sin(t * 0.5) * 0.12;
+      st.camera.position.set(0, 1.5, 3.8);
+    }
+    st.camera.lookAt(0, 1.0, 0);
+    if (st.mixer) st.mixer.setTime(t % st.clipDur);
+    st.renderer.render(st.scene, st.camera);
+  }, [frame, fps, ready, params.cameraAngle]);
+
+  const enter = pop(frame, fps, 0, 14);
+  return (
+    <AbsoluteFill>
+      <Backdrop variant="glow" seed="3d-stage" />
+      <SceneHeader title={params.title ?? ""} align="center" />
+      <div
+        ref={mountRef}
+        style={{
+          position: "absolute",
+          left: layout.padX,
+          top: layout.padTop + (params.title ? 140 : 40) * layout.u,
+          width: w,
+          height: h,
+          transform: `scale(${0.92 + 0.08 * enter})`,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        {!url && (
+          <div style={{ textAlign: "center" }}>
+            <Icon name="planet" size={160 * layout.u} color={theme.foreground} accent={theme.accent} progress={prog(frame, 0, durationInFrames * 0.5)} />
+          </div>
+        )}
+      </div>
+      <Note text={params.caption} delay={12} />
+    </AbsoluteFill>
+  );
+};
+
+/** Foto documental 2.5D em camadas com perspectiva, moldura de foco animada e selo. */
+export const ParallaxPhotoScene: React.FC<{ params: Any }> = ({ params }) => {
+  const frame = useCurrentFrame();
+  const { fps, durationInFrames } = useVideoConfig();
+  const { theme, layout } = useVrs();
+  const t = frame / Math.max(1, durationInFrames);
+  const enter = prog(frame, 0, 16, "out");
+  const focusP = pop(frame, fps, 18, 12);
+  const fx = Math.min(0.88, Math.max(0.12, Number(params.focusX ?? 0.5)));
+  const fy = Math.min(0.85, Math.max(0.15, Number(params.focusY ?? 0.45)));
+  const tiltY = -4 + 8 * t;
+  const tiltX = 2 - 4 * t;
+  const cardTop = layout.padTop + (params.title ? 145 : 50) * layout.u;
+  const cardH = layout.safeBottom - cardTop - 50 * layout.u;
+  const cardW = layout.w - layout.padX * 2;
+  return (
+    <AbsoluteFill style={{ background: theme.background }}>
+      {params.image ? (
+        <AbsoluteFill style={{ transform: `scale(${1.28 - 0.08 * t}) translate(${(0.5 - t) * 30}px, ${(t - 0.5) * 20}px)`, filter: "blur(24px) brightness(0.38)" }}>
+          <AssetImg src={params.image} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+        </AbsoluteFill>
+      ) : (
+        <Backdrop variant="grid" />
+      )}
+      <SceneHeader title={params.title ?? ""} />
+      <div
+        style={{
+          position: "absolute",
+          left: layout.padX,
+          top: cardTop,
+          width: cardW,
+          height: cardH,
+          perspective: 1200 * layout.u,
+          opacity: enter,
+        }}
+      >
+        <div
+          style={{
+            width: "100%",
+            height: "100%",
+            position: "relative",
+            borderRadius: 22 * layout.u,
+            overflow: "hidden",
+            transform: `rotateY(${tiltY}deg) rotateX(${tiltX}deg) scale(${0.96 + 0.06 * t})`,
+            boxShadow: `0 ${28 * layout.u}px ${60 * layout.u}px rgba(0,0,0,0.65)`,
+            border: `${2 * layout.u}px solid ${withAlpha(theme.foreground, 0.18)}`,
+            background: withAlpha(theme.background, 0.7),
+          }}
+        >
+          {params.image ? (
+            <AssetImg src={params.image} style={{ width: "100%", height: "100%", objectFit: "contain", transform: `scale(${1.02 + 0.06 * t})` }} />
+          ) : null}
+          {params.stamp ? (
+            <div style={{ position: "absolute", left: 24 * layout.u, top: 22 * layout.u }}>
+              <Tag text={params.stamp} delay={6} />
+            </div>
+          ) : null}
+          {params.callout ? (
+            <div
+              style={{
+                position: "absolute",
+                left: `${fx * 100}%`,
+                top: `${fy * 100}%`,
+                transform: `translate(-50%, -50%) scale(${focusP})`,
+                pointerEvents: "none",
+              }}
+            >
+              <div
+                style={{
+                  width: 150 * layout.u,
+                  height: 150 * layout.u,
+                  borderRadius: 999,
+                  border: `${4 * layout.u}px solid ${theme.accent}`,
+                  boxShadow: `0 0 ${32 * layout.u}px ${withAlpha(theme.accent, 0.75)}`,
+                  margin: "0 auto",
+                }}
+              />
+              <div
+                style={{
+                  marginTop: 12 * layout.u,
+                  background: withAlpha(theme.background, 0.92),
+                  color: theme.foreground,
+                  border: `${2 * layout.u}px solid ${theme.accent}`,
+                  borderRadius: 12 * layout.u,
+                  padding: `${8 * layout.u}px ${18 * layout.u}px`,
+                  fontFamily: fontStack("sans"),
+                  fontWeight: 800,
+                  fontSize: 26 * layout.u,
+                  whiteSpace: "nowrap",
+                  textAlign: "center",
+                }}
+              >
+                {params.callout}
+              </div>
+            </div>
+          ) : null}
+          {params.credit ? (
+            <div style={{ position: "absolute", right: 20 * layout.u, bottom: 16 * layout.u, fontFamily: fontStack("mono"), fontSize: 18 * layout.u, color: "rgba(255,255,255,0.75)" }}>
+              {params.credit}
+            </div>
+          ) : null}
+        </div>
+      </div>
     </AbsoluteFill>
   );
 };

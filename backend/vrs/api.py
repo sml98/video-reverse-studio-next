@@ -182,6 +182,44 @@ def post_patch(pid: str, req: PatchReq) -> dict[str, Any]:
     return workflow.patch_scene(pid, req.scene_id, req.patch, render_after=req.render)
 
 
+class ReframeReq(BaseModel):
+    aspect: str
+    render: bool = False
+
+
+@app.post("/api/projects/{pid}/reframe")
+def post_reframe(pid: str, req: ReframeReq) -> dict[str, Any]:
+    return workflow.reframe_project(pid, req.aspect, render_after=req.render)
+
+
+@app.post("/api/projects/{pid}/scenes/{sid}/voice-upload")
+async def post_scene_voice_upload(
+    pid: str,
+    sid: str,
+    file: UploadFile = File(...),
+    transcript: str = Form(""),
+    render: bool = Form(False),
+) -> dict[str, Any]:
+    ext = Path(file.filename or "").suffix.lower()
+    if ext not in {".wav", ".mp3", ".ogg", ".m4a", ".webm"}:
+        raise VRSError("Envie arquivo de áudio (.wav, .mp3, .ogg ou .m4a).")
+    tmp = settings().inputs / f"vup-{new_id()}{ext}"
+    tmp.parent.mkdir(parents=True, exist_ok=True)
+    size = 0
+    try:
+        with open(tmp, "wb") as f:
+            while chunk := await file.read(1 << 18):
+                size += len(chunk)
+                if size > 50 * 1024 * 1024:
+                    f.close()
+                    tmp.unlink(missing_ok=True)
+                    raise VRSError("Áudio grande demais (máx. 50 MB).")
+                f.write(chunk)
+        return workflow.upload_scene_voice(pid, sid, tmp, transcript_text=transcript, render_after=render)
+    finally:
+        tmp.unlink(missing_ok=True)
+
+
 @app.post("/api/projects/{pid}/render")
 def post_render(pid: str) -> dict[str, Any]:
     if not projects.load(pid, "plan"):

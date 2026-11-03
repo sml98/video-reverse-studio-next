@@ -157,6 +157,27 @@ def _palette(paths: list[Path], k: int = 6) -> list[dict[str, Any]]:
     return [{"hex": "#%02x%02x%02x" % tuple(pal[i * 3 : i * 3 + 3]), "share": round(c / total, 3)} for c, i in counts]
 
 
+def _audio_energy_peaks(wav_path: Path, top_k: int = 8) -> list[float]:
+    import wave
+
+    if not wav_path.exists():
+        return []
+    try:
+        with wave.open(str(wav_path), "rb") as wf:
+            sr = wf.getframerate() or 16000
+            pcm = np.frombuffer(wf.readframes(wf.getnframes()), dtype=np.int16).astype(np.float32) / 32768.0
+        win = max(1, sr // 10)  # janelas de 100 ms (10 Hz)
+        n = len(pcm) // win
+        if n < 3:
+            return []
+        rms = np.sqrt(np.mean(pcm[: n * win].reshape(n, win) ** 2, axis=1))
+        onset = np.maximum(0.0, np.diff(rms, prepend=rms[0]))
+        idxs = np.argsort(onset)[-top_k:][::-1]
+        return sorted(round(float(i * 0.1), 1) for i in idxs if onset[i] > float(np.mean(onset)) * 1.5)
+    except Exception:
+        return []
+
+
 def _asr(audio_src: Path, language: str | None) -> dict[str, Any]:
     import wave
 
@@ -229,6 +250,9 @@ def analyze(pid: str, *, progress: Progress | None = None) -> dict[str, Any]:
     bounds = [0.0] + cuts + [dur]
     shots = [{"id": f"shot-{i + 1}", "start": round(a, 2), "end": round(b, 2), "dur": round(b - a, 2)} for i, (a, b) in enumerate(zip(bounds, bounds[1:]))]
     lens = [s["dur"] for s in shots] or [dur]
+    hook_avg = float(np.mean(lens[:2])) if len(lens) >= 3 else float(np.mean(lens))
+    tail_avg = float(np.mean(lens[2:])) if len(lens) >= 3 else float(np.mean(lens))
+    pacing_curve = "gancho_rapido_depois_estavel" if hook_avg < tail_avg * 0.75 else ("acelerando" if tail_avg < hook_avg * 0.75 else "constante")
     rhythm = {
         "shots": len(shots),
         "avg_shot_s": round(float(np.mean(lens)), 2),
@@ -236,6 +260,7 @@ def analyze(pid: str, *, progress: Progress | None = None) -> dict[str, Any]:
         "cuts_per_min": round(len(cuts) / max(dur / 60, 1e-6), 1),
         "first_cut_s": cuts[0] if cuts else None,
         "pacing": "rápido" if np.median(lens) < 2.5 else "médio" if np.median(lens) < 6 else "lento",
+        "pacing_curve": pacing_curve,
         "method": "ffmpeg scene>0.32 em 320px (candidatos; dissolves podem não ser detectados)",
     }
     write_json(edir / "shots.json", {"shots": shots, "rhythm": rhythm})
@@ -285,7 +310,8 @@ def analyze(pid: str, *, progress: Progress | None = None) -> dict[str, Any]:
         se = [float(x) for x in re.findall(r"silence_end: ([\d.]+)", err)]
         silent = sum(max(0, (se[i] if i < len(se) else dur) - ss[i]) for i in range(len(ss)))
         lufs = re.findall(r"I:\s+([\-\d.]+) LUFS", err)
-        audio.update({"non_silent_ratio": round(1 - silent / max(dur, 1e-6), 2), "pauses": len(ss), "integrated_lufs": float(lufs[-1]) if lufs else None, "method": "silencedetect -38 dB/0.4 s; não identifica música nem falantes"})
+        energy_peaks = _audio_energy_peaks(wav)
+        audio.update({"non_silent_ratio": round(1 - silent / max(dur, 1e-6), 2), "pauses": len(ss), "integrated_lufs": float(lufs[-1]) if lufs else None, "energy_peaks_s": energy_peaks, "method": "silencedetect -38 dB/0.4 s + picos RMS 10 Hz; não identifica música nem falantes"})
     write_json(edir / "audio.json", audio)
 
     say("transcrição local (se houver pesos)", 0.7)
@@ -305,7 +331,7 @@ def analyze(pid: str, *, progress: Progress | None = None) -> dict[str, Any]:
         "measured": {
             "duration_s": round(dur, 2),
             "video": meta["video"],
-            "audio": {k: audio.get(k) for k in ("present", "non_silent_ratio", "pauses", "integrated_lufs")},
+            "audio": {k: audio.get(k) for k in ("present", "non_silent_ratio", "pauses", "integrated_lufs", "energy_peaks_s")},
             "rhythm": {k: v for k, v in rhythm.items() if k != "method"},
             "shots_sample": [{"id": s["id"], "start": s["start"], "dur": s["dur"]} for s in shots[:24]],
             "hook_frames": [f["id"] for f in frames if f["role"].startswith("gancho")],

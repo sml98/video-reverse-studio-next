@@ -123,6 +123,60 @@ def patch_scene(pid: str, scene_id: str, patch: dict[str, Any], *, render_after:
     return {"plan_version": n, "job": job}
 
 
+def reframe_project(pid: str, aspect: str, *, render_after: bool = False) -> dict[str, Any]:
+    """Reenquadra o projeto (landscape 16:9 ↔ vertical 9:16 ↔ square 1:1) preservando cenas e vozes."""
+    from .contracts import ASPECTS, PREVIEW_ASPECTS
+
+    if aspect not in ASPECTS:
+        raise VRSError(f"Formato inválido: {aspect}")
+    p = projects.get_project(pid)
+    projects.update_project(pid, aspect=aspect)
+    plan = projects.load(pid, "plan")
+    plan_v = None
+    if plan:
+        quality = (p.get("options") or {}).get("quality", "final")
+        w, h = (PREVIEW_ASPECTS if quality == "preview" else ASPECTS)[aspect]
+        plan["width"], plan["height"] = w, h
+        validated = FilmPlan.model_validate(plan).model_dump(by_alias=True)
+        plan_v = projects.save_versioned(pid, "plan", validated)
+    projects.history(pid, "reframed", aspect=aspect, plan_version=plan_v)
+    job = jobs.enqueue("render", pid, {}) if (render_after and plan_v) else None
+    return {"aspect": aspect, "plan_version": plan_v, "job": job}
+
+
+def upload_scene_voice(pid: str, scene_id: str, src_audio: Path, transcript_text: str = "", *, render_after: bool = False) -> dict[str, Any]:
+    """Importa gravação de voz própria na cena, alinha palavras (forced_aligned/asr_estimated) e atualiza o plano."""
+    import math
+
+    plan = projects.load(pid, "plan")
+    if not plan:
+        raise VRSError("Projeto sem plano.", code="no_plan")
+    target = next((sc for sc in plan["scenes"] if sc["id"] == scene_id), None)
+    if not target:
+        raise VRSError(f"Cena não encontrada: {scene_id}", code="not_found", status=404)
+    vdir = projects.project_dir(pid) / "voice"
+    vdir.mkdir(exist_ok=True)
+    dst = vdir / f"{scene_id}.wav"
+    info = voice.align_uploaded_voice(src_audio, dst, transcript_text=transcript_text or target.get("narration", ""))
+    lead, tail = expand.LEAD_MS, expand.TAIL_MS
+    target["words"] = [{**wd, "start": wd["start"] + lead, "end": wd["end"] + lead} for wd in info["words"]]
+    target["timing"] = info["timing"]
+    if info.get("narration"):
+        target["narration"] = info["narration"]
+    min_ms = lead + info["duration_ms"] + tail
+    fps = int(plan.get("fps", 30))
+    target["durationInFrames"] = max(int(target["durationInFrames"]), math.ceil(min_ms * fps / 1000))
+    plan["audio"]["narration"] = "voice/narration.wav"
+    timings = read_json(vdir / "timings.json", {}) or {}
+    timings[scene_id] = {"wav": f"voice/{scene_id}.wav", "offset_ms": lead, "duration_ms": info["duration_ms"], "timing": info["timing"], "cached": False}
+    write_json(vdir / "timings.json", timings)
+    validated = FilmPlan.model_validate(plan).model_dump(by_alias=True)
+    n = projects.save_versioned(pid, "plan", validated)
+    projects.history(pid, "scene_voice_uploaded", scene=scene_id, timing=info["timing"], words=len(info["words"]))
+    job = jobs.enqueue("render", pid, {}) if render_after else None
+    return {"plan_version": n, "scene": scene_id, "timing": info["timing"], "words": target["words"], "job": job}
+
+
 def request_adjustment(pid: str, message: str) -> dict[str, Any]:
     p = projects.get_project(pid)
     projects.history(pid, "adjustment_requested", message=message[:1000])

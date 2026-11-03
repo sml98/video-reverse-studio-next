@@ -31,21 +31,35 @@ def list_voices() -> list[dict[str, Any]]:
     vd = settings().voices_dir
     for onnx in sorted(vd.glob("*/*.onnx")):
         cfg = onnx.with_suffix(".onnx.json")
-        if not cfg.exists():
-            continue
-        meta = json.loads(cfg.read_text(encoding="utf-8"))
+        vbin = onnx.parent / "voices.bin"
         card = onnx.parent / "MODEL_CARD"
-        out.append(
-            {
-                "id": onnx.parent.name,
-                "file": onnx.name,
-                "language": meta.get("language", {}).get("code", meta.get("espeak", {}).get("voice", "")),
-                "quality": meta.get("audio", {}).get("quality", ""),
-                "sample_rate": meta.get("audio", {}).get("sample_rate", 22050),
-                "model_card": card.read_text(encoding="utf-8", errors="ignore")[:600] if card.exists() else "",
-                "audition": f"/media/voices/{onnx.parent.name}/audition.wav" if (onnx.parent / "audition.wav").exists() else "",
-            }
-        )
+        if cfg.exists():
+            meta = json.loads(cfg.read_text(encoding="utf-8"))
+            out.append(
+                {
+                    "id": onnx.parent.name,
+                    "engine": "piper",
+                    "file": onnx.name,
+                    "language": meta.get("language", {}).get("code", meta.get("espeak", {}).get("voice", "")),
+                    "quality": meta.get("audio", {}).get("quality", ""),
+                    "sample_rate": meta.get("audio", {}).get("sample_rate", 22050),
+                    "model_card": card.read_text(encoding="utf-8", errors="ignore")[:600] if card.exists() else "",
+                    "audition": f"/media/voices/{onnx.parent.name}/audition.wav" if (onnx.parent / "audition.wav").exists() else "",
+                }
+            )
+        elif vbin.exists():
+            out.append(
+                {
+                    "id": onnx.parent.name,
+                    "engine": "kokoro-onnx",
+                    "file": onnx.name,
+                    "language": "pt-BR",
+                    "quality": "neural-82m",
+                    "sample_rate": 24000,
+                    "model_card": card.read_text(encoding="utf-8", errors="ignore")[:600] if card.exists() else "Kokoro-82M ONNX CPU (pt-BR)",
+                    "audition": f"/media/voices/{onnx.parent.name}/audition.wav" if (onnx.parent / "audition.wav").exists() else "",
+                }
+            )
     return out
 
 
@@ -268,3 +282,64 @@ def synthesize_cached(text: str, voice_id: str, *, length_scale: float = 1.0) ->
     write_json(meta, info)
     info["cached"] = False
     return info
+
+
+def align_uploaded_voice(src_audio: Path, out_wav: Path, *, transcript_text: str = "", language: str = "pt") -> dict[str, Any]:
+    """Normaliza áudio gravado pelo usuário e extrai tempos de palavras (forced_aligned/asr_estimated/proportional)."""
+    from .util import run
+
+    out_wav.parent.mkdir(parents=True, exist_ok=True)
+    run(["ffmpeg", "-v", "error", "-y", "-i", str(src_audio), "-ac", "1", "-ar", "22050", "-sample_fmt", "s16", str(out_wav)], timeout=180)
+    audio, sr = read_wav(out_wav)
+    dur_ms = max(100, int(len(audio) * 1000 / sr))
+    words: list[dict[str, Any]] = []
+    timing = "proportional"
+    spoken_text = transcript_text.strip()
+
+    model_dir = next((settings().asr_dir / m for m in ("whisper-base", "whisper-tiny") if (settings().asr_dir / m / "model.bin").exists()), None)
+    if model_dir:
+        tmp16 = settings().cache / "tmp" / f"align-{out_wav.stem}.wav"
+        tmp16.parent.mkdir(parents=True, exist_ok=True)
+        try:
+            from faster_whisper import WhisperModel
+
+            run(["ffmpeg", "-v", "error", "-y", "-i", str(out_wav), "-ac", "1", "-ar", "16000", str(tmp16)], timeout=120)
+            with wave.open(str(tmp16), "rb") as wf:
+                pcm = np.frombuffer(wf.readframes(wf.getnframes()), dtype=np.int16).astype(np.float32) / 32768.0
+            model = WhisperModel(str(model_dir), device="cpu", compute_type="int8", cpu_threads=settings().threads, num_workers=1)
+            segs, _ = model.transcribe(pcm, language=language, beam_size=1, vad_filter=False, word_timestamps=True)
+            asr_words: list[tuple[str, int, int]] = []
+            for seg in segs:
+                for wd in getattr(seg, "words", None) or []:
+                    w_txt = wd.word.strip()
+                    if w_txt:
+                        a = max(0, int(round(wd.start * 1000)))
+                        b = max(a + 10, min(dur_ms, int(round(wd.end * 1000))))
+                        asr_words.append((w_txt, a, b))
+            if asr_words:
+                user_toks = WORD_RE.findall(spoken_text) if spoken_text else []
+                if user_toks and len(user_toks) == len(asr_words):
+                    words = [{"id": f"w-{i + 1}", "word": uw, "start": a, "end": b} for i, (uw, (_, a, b)) in enumerate(zip(user_toks, asr_words))]
+                    timing = "forced_aligned"
+                else:
+                    words = [{"id": f"w-{i + 1}", "word": w, "start": a, "end": b} for i, (w, a, b) in enumerate(asr_words)]
+                    timing = "forced_aligned" if user_toks else "asr_estimated"
+                    if not spoken_text:
+                        spoken_text = " ".join(w for w, _, _ in asr_words)
+        except Exception:
+            pass
+        finally:
+            tmp16.unlink(missing_ok=True)
+
+    if not words:
+        toks = WORD_RE.findall(spoken_text or "narração gravada")
+        spans, _ = _word_timings_for_chunk(toks, None, 0.0, float(dur_ms))
+        words = [{"id": f"w-{i + 1}", "word": w, "start": int(a), "end": int(max(a + 1, b))} for i, (w, a, b) in enumerate(spans)]
+        timing = "proportional"
+
+    for i in range(1, len(words)):
+        if words[i]["start"] < words[i - 1]["end"]:
+            words[i]["start"] = words[i - 1]["end"]
+        if words[i]["end"] <= words[i]["start"]:
+            words[i]["end"] = words[i]["start"] + 1
+    return {"wav": str(out_wav), "duration_ms": dur_ms, "sample_rate": sr, "words": words, "timing": timing, "narration": spoken_text, "voice": "user_upload"}

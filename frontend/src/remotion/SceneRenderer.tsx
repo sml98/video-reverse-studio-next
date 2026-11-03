@@ -8,8 +8,8 @@ import { ThemeProvider, makeLayout, type Ctx } from "./core/theme";
 import { ViralCaptions } from "./ViralCaptions";
 import { CalcScene, BarChartScene, ComparisonScene, LineChartScene } from "./scenes/data";
 import { MapRouteScene, MechanismScene, StepsScene, TimelineScene } from "./scenes/explain";
-import { CustomLayersScene, DocMontageScene, ObjectStageScene, StoryPanelScene } from "./scenes/media";
-import { CtaScene, MemeScene, QuoteScene, StatScene, TitleScene } from "./scenes/text";
+import { CustomLayersScene, DocMontageScene, ObjectStageScene, ParallaxPhotoScene, Stage3DScene, StoryPanelScene } from "./scenes/media";
+import { CodeWalkthroughScene, CtaScene, MemeScene, QuoteScene, StatScene, TitleScene } from "./scenes/text";
 
 const OWN: Record<string, React.FC<{ params: Record<string, any> }>> = {
   "vrs-title": TitleScene,
@@ -28,6 +28,9 @@ const OWN: Record<string, React.FC<{ params: Record<string, any> }>> = {
   "vrs-cta": CtaScene,
   "vrs-stat": StatScene,
   "vrs-object-stage": ObjectStageScene,
+  "vrs-3d-stage": Stage3DScene,
+  "vrs-parallax-photo": ParallaxPhotoScene,
+  "vrs-code-walkthrough": CodeWalkthroughScene,
 };
 
 export const KNOWN_COMPONENTS = new Set<string>([...Object.keys(OWN), "vrs-custom", ...Object.keys(RENDERCOMP_COMPONENTS)]);

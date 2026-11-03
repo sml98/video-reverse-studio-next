@@ -29,7 +29,7 @@ function stageIndex(stage: string, awaiting: boolean): number {
 
 export const ProjectPage: React.FC<{ id: string }> = ({ id }) => {
   const [proj, setProj] = useState<Project | null>(null);
-  const [viewMode, setViewMode] = useState<"mp4" | "player">("mp4");
+  const [viewMode, setViewMode] = useState<"mp4" | "player" | "compare">("mp4");
   const [version, setVersion] = useState<number>(0);
   const [rev, setRev] = useState<any>(null);
   const [selectedSceneIdx, setSelectedSceneIdx] = useState<number>(0);
@@ -105,6 +105,7 @@ export const ProjectPage: React.FC<{ id: string }> = ({ id }) => {
           durationInFrames: Number(sceneEdit.durationInFrames) || 180,
           notes: sceneEdit.notes || "",
           params: sceneEdit.params,
+          ...(Array.isArray(sceneEdit.sfx) ? { sfx: sceneEdit.sfx } : {}),
         },
         render: true,
       });
@@ -113,6 +114,53 @@ export const ProjectPage: React.FC<{ id: string }> = ({ id }) => {
     } catch (e: any) {
       setErr(e.message || String(e));
     }
+  };
+
+  const reframeAspect = async (aspect: string) => {
+    if (!proj) return;
+    setErr("");
+    setMsg(`Reenquadrando projeto para ${aspect}…`);
+    try {
+      await api.post(`/api/projects/${id}/reframe`, { aspect, render: false });
+      await load();
+      setViewMode("player");
+      setMsg(`Plano reenquadrado para ${aspect}.Confira na prévia interativa ou clique em Re-renderizar MP4.`);
+    } catch (e: any) {
+      setErr(e.message || String(e));
+    }
+  };
+
+  const uploadSceneVoice = async (file: File) => {
+    if (!proj || !sceneEdit) return;
+    setErr("");
+    setMsg(`Alinhando voz própria na cena ${sceneEdit.id}…`);
+    try {
+      const fd = new FormData();
+      fd.append("file", file);
+      fd.append("transcript", sceneEdit.narration || "");
+      fd.append("render", "false");
+      const r = await api.post<any>(`/api/projects/${id}/scenes/${sceneEdit.id}/voice-upload`, fd);
+      await load();
+      setMsg(`Voz alinhada (${r.timing}, ${r.words?.length || 0} palavras).`);
+    } catch (e: any) {
+      setErr(e.message || String(e));
+    }
+  };
+
+  const toggleWordEmphasis = (word: string) => {
+    if (!sceneEdit) return;
+    const clean = word.replace(/[.,!?;:"'()]/g, "").trim();
+    if (!clean) return;
+    const cur = String(sceneEdit.params?.emphasis || "")
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean);
+    const next = cur.includes(clean) ? cur.filter((w) => w !== clean) : [...cur, clean];
+    setSceneEdit({
+      ...sceneEdit,
+      params: { ...sceneEdit.params, ...(sceneEdit.params && "emphasis" in sceneEdit.params ? { emphasis: next.join(", ") } : {}) },
+      notes: `Âncora selecionada: ${clean}`,
+    });
   };
 
   const askAdjustment = async (e: React.FormEvent) => {
@@ -205,7 +253,26 @@ export const ProjectPage: React.FC<{ id: string }> = ({ id }) => {
             Ideia: {proj.idea || "Demonstração do modelo"}
           </p>
         </div>
-        <div className="row" style={{ gap: 8 }}>
+        <div className="row" style={{ gap: 8, flexWrap: "wrap" }}>
+          <div className="row" style={{ gap: 4 }}>
+            <span className="muted" style={{ fontSize: 12 }}>Formato:</span>
+            {[
+              { id: "landscape", label: "16:9" },
+              { id: "vertical", label: "9:16" },
+              { id: "square", label: "1:1" },
+            ].map((a) => (
+              <button
+                key={a.id}
+                type="button"
+                className={`btn ${proj.aspect === a.id ? "primary" : ""}`}
+                onClick={() => reframeAspect(a.id)}
+                style={{ padding: "4px 8px", fontSize: 12 }}
+                title={`Reenquadrar projeto para ${a.label}`}
+              >
+                {a.label}
+              </button>
+            ))}
+          </div>
           <a className="btn" href={`/api/projects/${proj.id}/export`} download>
             ⬇ Exportar projeto (.zip)
           </a>
@@ -266,13 +333,18 @@ export const ProjectPage: React.FC<{ id: string }> = ({ id }) => {
         <div className="col" style={{ gap: 16 }}>
           <div className="panel col" style={{ gap: 12 }}>
             <div className="row spread">
-              <div className="row" style={{ gap: 8 }}>
+              <div className="row" style={{ gap: 8, flexWrap: "wrap" }}>
                 <button className={`btn ${viewMode === "mp4" ? "primary" : ""}`} onClick={() => setViewMode("mp4")}>
                   ▶ Vídeo MP4
                 </button>
                 <button className={`btn ${viewMode === "player" ? "primary" : ""}`} onClick={() => setViewMode("player")} disabled={!plan}>
                   ✦ Prévia interativa (Remotion Player)
                 </button>
+                {(proj as any).reference?.file && (
+                  <button className={`btn ${viewMode === "compare" ? "primary" : ""}`} onClick={() => setViewMode("compare")}>
+                    ⇄ Comparar c/ Referência
+                  </button>
+                )}
               </div>
               {proj.renders?.length > 0 && (
                 <div className="row" style={{ gap: 8 }}>
@@ -312,6 +384,11 @@ export const ProjectPage: React.FC<{ id: string }> = ({ id }) => {
                       <a className="btn" href={media(proj.id, `renders/v${curRender.version}/captions.vtt`)} download={`${proj.id}-v${curRender.version}.vtt`}>
                         Legendas .VTT
                       </a>
+                      {rev?.thumbnail && (
+                        <a className="btn" href={media(proj.id, rev.thumbnail)} download={`${proj.id}-v${curRender.version}-thumb.jpg`}>
+                          🖼 Capa .JPG
+                        </a>
+                      )}
                     </div>
                     <span className={`pill ${curRender.review_state === "approved" || curRender.review_state === "technical_passed" ? "ok" : "warn"}`}>
                       Revisão: {curRender.review_state}
@@ -323,6 +400,21 @@ export const ProjectPage: React.FC<{ id: string }> = ({ id }) => {
                   O MP4 ainda não foi renderizado para este projeto.
                 </div>
               )
+            ) : viewMode === "compare" && (proj as any).reference?.file ? (
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+                <div className="col" style={{ gap: 6 }}>
+                  <span className="muted" style={{ fontSize: 12 }}>Referência original (somente leitura):</span>
+                  <video src={media(proj.id, (proj as any).reference.file)} controls playsInline style={{ width: "100%", maxHeight: 340, background: "#000", borderRadius: 8 }} />
+                </div>
+                <div className="col" style={{ gap: 6 }}>
+                  <span className="muted" style={{ fontSize: 12 }}>Vídeo gerado pelo VRS:</span>
+                  {curRender ? (
+                    <video src={media(proj.id, curRender.mp4)} controls playsInline style={{ width: "100%", maxHeight: 340, background: "#000", borderRadius: 8 }} />
+                  ) : (
+                    <div className="muted" style={{ padding: 24 }}>Renderize o MP4 para comparar lado a lado.</div>
+                  )}
+                </div>
+              </div>
             ) : plan ? (
               <div style={{ background: "#000", borderRadius: 10, overflow: "hidden", border: "1px solid var(--border)" }}>
                 <Player
@@ -343,6 +435,53 @@ export const ProjectPage: React.FC<{ id: string }> = ({ id }) => {
                   controls
                   style={{ width: "100%", maxHeight: 460 }}
                 />
+              </div>
+            ) : null}
+
+            {/* Mini-timeline visual proporcional das cenas */}
+            {plan?.scenes?.length ? (
+              <div className="col" style={{ gap: 6, marginTop: 4 }}>
+                <div className="row spread">
+                  <span className="muted" style={{ fontSize: 12 }}>
+                    Linha do tempo ({plan.scenes.length} cenas · {(totalFrames / fps).toFixed(1)}s total · clique para editar):
+                  </span>
+                  <span className="muted" style={{ fontSize: 11.5 }}>
+                    {plan.width}×{plan.height} @ {fps}fps
+                  </span>
+                </div>
+                <div style={{ display: "flex", gap: 4, width: "100%", overflowX: "auto", paddingBottom: 4 }}>
+                  {plan.scenes.map((s: any, idx: number) => {
+                    const sec = (s.durationInFrames || 90) / fps;
+                    const active = idx === selectedSceneIdx;
+                    const sfxCount = Array.isArray(s.sfx) ? s.sfx.length : 0;
+                    return (
+                      <button
+                        key={s.id}
+                        type="button"
+                        onClick={() => selectScene(idx)}
+                        style={{
+                          flex: `${Math.max(1, s.durationInFrames || 90)} 1 0`,
+                          minWidth: 74,
+                          padding: "6px 8px",
+                          borderRadius: 8,
+                          border: active ? "2px solid var(--accent, #38bdf8)" : "1px solid var(--border)",
+                          background: active ? "rgba(56, 189, 248, 0.14)" : "var(--bg-elev)",
+                          color: "inherit",
+                          textAlign: "left",
+                          cursor: "pointer",
+                        }}
+                      >
+                        <div className="row spread" style={{ fontSize: 11, fontWeight: 700 }}>
+                          <span>#{idx + 1} {s.id}</span>
+                          <span className="muted">{sec.toFixed(1)}s</span>
+                        </div>
+                        <div className="muted" style={{ fontSize: 10.5, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                          {s.component.replace(/^vrs-/, "")} {sfxCount ? `· 🔊${sfxCount}` : ""}
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
             ) : null}
           </div>
@@ -540,6 +679,48 @@ export const ProjectPage: React.FC<{ id: string }> = ({ id }) => {
                   <div>
                     <label>Fala / Narração (somente leitura no patch rápido; edite via Storyboard p/ re-sintetizar voz)</label>
                     <textarea rows={2} value={sceneEdit.narration || ""} readOnly style={{ opacity: 0.75 }} />
+                  </div>
+
+                  {/* Pílulas clicáveis de palavras sincronizadas (WordAnchor) */}
+                  {Array.isArray(sceneEdit.words) && sceneEdit.words.length > 0 && (
+                    <div className="col" style={{ gap: 6 }}>
+                      <label>
+                        Palavras sincronizadas ({sceneEdit.timing || "tts"} · clique p/ marcar ênfase/âncora):
+                      </label>
+                      <div className="row" style={{ gap: 4, flexWrap: "wrap", maxHeight: 110, overflowY: "auto", padding: 6, background: "var(--bg-elev)", borderRadius: 8 }}>
+                        {sceneEdit.words.map((w: any) => {
+                          const clean = String(w.word || "").replace(/[.,!?;:"'()]/g, "").trim();
+                          const emphList = String(sceneEdit.params?.emphasis || "").toLowerCase().split(",").map((x) => x.trim());
+                          const isEmph = clean && emphList.includes(clean.toLowerCase());
+                          return (
+                            <button
+                              key={w.id}
+                              type="button"
+                              className={`pill ${isEmph ? "ok" : ""}`}
+                              style={{ cursor: "pointer", border: "1px solid var(--border)", fontSize: 11 }}
+                              onClick={() => toggleWordEmphasis(w.word)}
+                              title={`${w.id}: ${(w.start / 1000).toFixed(2)}s – ${(w.end / 1000).toFixed(2)}s`}
+                            >
+                              {w.word} <span className="muted" style={{ fontSize: 9.5 }}>{(w.start / 1000).toFixed(1)}s</span>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Upload opcional de gravação de voz própria (forced_aligned) */}
+                  <div className="col" style={{ gap: 4 }}>
+                    <label>Substituir por gravação de voz própria (.wav/.mp3 · alinhamento local):</label>
+                    <input
+                      type="file"
+                      accept=".wav,.mp3,.ogg,.m4a"
+                      style={{ fontSize: 11.5 }}
+                      onChange={(e) => {
+                        const f = e.target.files?.[0];
+                        if (f) uploadSceneVoice(f);
+                      }}
+                    />
                   </div>
 
                   {/* Parâmetros do preset baseados em scene-specs.json */}
