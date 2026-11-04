@@ -25,7 +25,7 @@
   "example": {
     "title": "Juros compostos",
     "idea": "Explique juros compostos com R$ 1.000 a 1% ao mês.",
-    "aspect": "landscape"
+    "aspect": "vertical"
   },
   "recipe": [
     {
@@ -177,7 +177,6 @@
   },
   "voice": "faber",
   "schema": "vrs.niche/1",
-  "guide": "skills/vrs-presets/references/financas.md",
   "music": "lib:vrs-pro-audio.bgm-corp-finance",
   "sources": [
     {

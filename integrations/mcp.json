@@ -1,9 +1,8 @@
 {
   "mcpServers": {
     "video-reverse-studio": {
-      "command": "/home/s-m-l/video-reverse-studio-next/.venv/bin/python",
-      "args": ["-m", "vrs.mcp_server"],
-      "cwd": "/home/s-m-l/video-reverse-studio-next",
+      "command": "./scripts/run-mcp.sh",
+      "cwd": ".",
       "env": {
         "OMP_NUM_THREADS": "2",
         "MKL_NUM_THREADS": "2",

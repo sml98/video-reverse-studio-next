@@ -1,60 +1,33 @@
 ---
 name: vrs-direct
-description: Direção criativa, escrita de roteiro e montagem de StoryboardSpec no Video Reverse Studio.
+description: Direção criativa e storyboard original no motor local VRS.
 ---
 
-# Direção Criativa e Storyboard (`vrs-direct`)
+# Direção e storyboard
 
-## Contrato compacto (`StoryboardSpec`)
+Consulte `get_brief`, `search_scenes`, `get_scene_preset` e `search_library` antes de escrever. Os aliases `vrs_get_agent_task`, `vrs_search_catalog`, `vrs_get_scene_spec`, `vrs_search_library` continuam aceitos.
 
-O agente cria o `StoryboardSpec` enxuto; o aplicativo valida contra `schemas/storyboard.schema.json`, sintetiza a voz local, extrai tempos de palavras e expande para `FilmPlan`.
+Envie por `submit_preset_storyboard(project_id, storyboard_json)` ou `vrs submit-storyboard PROJECT storyboard.json`. O contrato real está em `schemas/storyboard.schema.json`.
 
-Estrutura essencial:
 ```json
 {
-  "title": "Título original",
-  "nicheId": "documentario",
-  "visualLanguage": "documentary-data",
-  "aspect": "landscape",
-  "fps": 30,
+  "schema": "vrs.storyboard/1",
+  "title": "Uma ideia ganha forma",
+  "nicheId": "pandora",
+  "aspect": "vertical",
   "voice": "faber",
-  "captions": "word",
-  "theme": {
-    "background": "#0b0e14",
-    "surface": "#131926",
-    "primary": "#f59e0b",
-    "secondary": "#a855f7",
-    "text": "#f8fafc",
-    "muted": "#94a3b8",
-    "fontHeading": "Playfair Display",
-    "fontBody": "Inter"
-  },
-  "scenes": [
-    {
-      "id": "abertura",
-      "role": "contexto",
-      "presetId": "vrs-title",
-      "title": "Abertura",
-      "duration": 8,
-      "narration": "Texto falado em português claro e natural.",
-      "transition": "fade",
-      "sfx": "lib:kenney-ui-audio.switch2",
-      "params": {
-        "label": "ORIGENS HISTÓRICAS",
-        "title": "De onde veio o Halloween?",
-        "subtitle": "Do festival celta Samhain à cultura pop moderna",
-        "style": "cinematic"
-      },
-      "anchors": [
-        { "word": "Samhain", "occurrence": 1, "effect": "highlight" }
-      ]
-    }
-  ]
+  "captions": "hormozi",
+  "theme": {"background":"#111015","primary":"#C3FF5F","secondary":"#9C7BFF","text":"#F1EDDF"},
+  "scenes": [{
+    "presetId":"vrs-pandora-cutout",
+    "duration":5,
+    "narration":"Uma ideia pode ganhar forma.",
+    "params":{"title":"Uma ideia ganha forma","metricValue":1,"metricLabel":"Exemplo ilustrativo","cards":[]},
+    "anchors":[{"word":"ideia","occurrence":1,"spanWords":1,"effect":"badge_flash","label":"SUA IDEIA"}]
+  }]
 }
 ```
 
-## Diretrizes de qualidade editorial
+`preset_id`/`parameters` são canônicos; `presetId`/`params` são aliases de entrada. `theme` aceita as cores e a fonte enumerada do contrato; `primary`, `secondary` e `text` são normalizados para `accent`, `accent2` e `foreground`. Não envie campos de estilo de versões antigas como `surface`, `fontHeading`, `fontBody`, `fps` ou `visualLanguage` na raiz do storyboard.
 
-1. **Adaptação real ao novo tema**: se a referência era sobre asteroides da NASA e o pedido do usuário é sobre a origem do Halloween, nenhuma cena pode falar de asteroides nem exibir imagens de asteroides. Use a referência apenas para calibrar duração por cena, alternância entre título/linha do tempo/objetos/gráfico e cadência da narração.
-2. **Movimento narrativo**: combine variedade visual (`vrs-title`, `vrs-timeline`, `vrs-object-stage`, `vrs-bar-chart`/`vrs-stat`, `vrs-map-route`, `vrs-mechanism`, `vrs-kinetic-quote`) em vez de repetir o mesmo cartão estático.
-3. **Integridade de autoria**: em `vrs-kinetic-quote`, use `authorship="autoral"` ou `"sem_atribuicao"` quando a frase foi criada para o vídeo. Só preencha `author` + `authorship="citacao_verificada"` quando a citação for historicamente verificada.
+A referência orienta ritmo e estrutura; a narrativa é original. Não copie fatos, imagens ou assunto de uma referência para outro tema. Dados numéricos precisam de fonte ou indicação de ilustração. Frases próprias usam `authorship="autoral"` ou `"sem_atribuicao"`. A duração final acompanha a voz natural; reduza o texto em vez de acelerar a fala. Âncoras recebem tempos da nova narração e são omitidas quando o gatilho deixa de existir.

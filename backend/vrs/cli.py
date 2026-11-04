@@ -55,7 +55,7 @@ def cmd_doctor(a: argparse.Namespace) -> None:
     ok("ASR local (opcional)", True, ", ".join(asr) or "sem pesos — transcrição desativada (não baixa automaticamente)")
     ok("cenas", len(catalog.scenes()) >= 60, f"{len(catalog.scenes())} cenas")
     ok("nichos", len(catalog.niches()) >= 8, f"{len(catalog.niches())} modelos")
-    ok("loopback", HOST == "127.0.0.1", f"{HOST}:{PORT}")
+    ok("loopback", HOST == "127.0.0.1", f"{HOST}:{RUN_PORT}")
     free = shutil.disk_usage(settings().data).free / 1e9
     ok("disco livre", free > 3, f"{free:.1f} GB")
     try:
@@ -208,6 +208,28 @@ def cmd_schemas(a: argparse.Namespace) -> None:
     _print({"written": list(json_schemas())})
 
 
+
+def cmd_niches(a):
+    from . import catalog
+    _print([catalog.niche_summary(n) for n in catalog.niches().values()])
+def cmd_scenes(a):
+    from . import catalog
+    _print(catalog.search_catalog(a.query,'scene',a.limit))
+def cmd_projects(a):
+    from . import projects
+    _print(projects.list_projects(limit=a.limit))
+def cmd_project(a):
+    from . import projects
+    _print(projects.get_project(a.project))
+def cmd_approve(a):
+    from . import review,projects
+    renders=projects.list_renders(a.project)
+    if not renders:raise ValueError('Projeto sem render para revisar.')
+    _print(review.set_content_review(a.project,a.version or renders[-1]['version'],'aprovado_conteudo',a.notes))
+def cmd_hypit_clone(a):
+    from . import hypit
+    _print(hypit.clone_with_hypit(a.project,a.idea,a.niche,not a.no_render))
+
 def main(argv: list[str] | None = None) -> None:
     limit_threads()
     p = argparse.ArgumentParser(prog="vrs", description="Video Reverse Studio (local, CPU)")
@@ -228,10 +250,10 @@ def main(argv: list[str] | None = None) -> None:
     c.add_argument("--quality", default="final", choices=["final", "preview"])
     c.add_argument("--name")
     c.set_defaults(fn=cmd_create)
-    b = sub.add_parser("brief")
+    b = sub.add_parser("brief", aliases=["agent-task"])
     b.add_argument("project")
     b.set_defaults(fn=cmd_brief)
-    s = sub.add_parser("storyboard", help="envia storyboard JSON")
+    s = sub.add_parser("storyboard", aliases=["submit-storyboard"], help="envia storyboard JSON")
     s.add_argument("project")
     s.add_argument("file")
     s.add_argument("--no-render", action="store_true")
@@ -256,7 +278,7 @@ def main(argv: list[str] | None = None) -> None:
     w.add_argument("--timeout", type=float, default=3600)
     w.set_defaults(fn=cmd_wait)
     wk = sub.add_parser("worker")
-    wk.add_argument("--drain", action="store_true")
+    wk.add_argument("--drain", "--once", dest="drain", action="store_true")
     wk.set_defaults(fn=cmd_worker)
     sub.add_parser("index").set_defaults(fn=cmd_index)
     se = sub.add_parser("search")
@@ -265,7 +287,7 @@ def main(argv: list[str] | None = None) -> None:
     se.add_argument("--limit", type=int, default=20)
     se.set_defaults(fn=cmd_search)
     il = sub.add_parser("install-library", help="copia packs leves de uma instalação local (opt-in)")
-    il.add_argument("--from-dir", default="~/video-reverse-studio/data/library/packs")
+    il.add_argument("--from-dir", required=True)
     il.add_argument("--only", default="")
     il.set_defaults(fn=cmd_install_library)
     v = sub.add_parser("voice")
@@ -279,6 +301,13 @@ def main(argv: list[str] | None = None) -> None:
     e.add_argument("project")
     e.set_defaults(fn=cmd_export)
     sub.add_parser("schemas").set_defaults(fn=cmd_schemas)
+    sub.add_parser('niches').set_defaults(fn=cmd_niches)
+    c=sub.add_parser('scenes');c.add_argument('query',nargs='?',default='');c.add_argument('--limit',type=int,default=20);c.set_defaults(fn=cmd_scenes)
+    c=sub.add_parser('library');c.add_argument('query',nargs='?',default='');c.add_argument('--kind',default='');c.add_argument('--limit',type=int,default=20);c.set_defaults(fn=cmd_search)
+    c=sub.add_parser('projects');c.add_argument('--limit',type=int,default=20);c.set_defaults(fn=cmd_projects)
+    c=sub.add_parser('project');c.add_argument('project');c.set_defaults(fn=cmd_project)
+    c=sub.add_parser('approve');c.add_argument('project');c.add_argument('--version',type=int);c.add_argument('--notes',nargs='*',default=[]);c.set_defaults(fn=cmd_approve)
+    c=sub.add_parser('hypit-clone');c.add_argument('project');c.add_argument('--idea',default='');c.add_argument('--niche',default='pandora');c.add_argument('--no-render',action='store_true');c.set_defaults(fn=cmd_hypit_clone)
     a = p.parse_args(argv)
     a.fn(a)
 

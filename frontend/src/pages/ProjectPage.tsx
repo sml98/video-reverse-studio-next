@@ -58,6 +58,8 @@ export const ProjectPage: React.FC<{ id: string }> = ({ id }) => {
   const [viewMode, setViewMode] = useState<"mp4" | "player" | "compare">("mp4");
   const [version, setVersion] = useState<number>(0);
   const [rev, setRev] = useState<any>(null);
+  const [anchorEffect,setAnchorEffect]=useState<"highlight"|"zoom_punch"|"sticker_pop"|"broll_overlay"|"badge_flash"|"camera_shake">("badge_flash");
+  const [anchorAsset,setAnchorAsset]=useState("");
   const [selectedSceneIdx, setSelectedSceneIdx] = useState<number>(0);
   const [sceneEdit, setSceneEdit] = useState<any>(null);
   const [adjustMsg, setAdjustMsg] = useState<string>("");
@@ -134,6 +136,7 @@ export const ProjectPage: React.FC<{ id: string }> = ({ id }) => {
           narration: sceneEdit.narration ?? "",
           voice: sceneEdit.voice || "",
           params: sceneEdit.params,
+          anchors: sceneEdit.anchors || [],
           ...(Array.isArray(sceneEdit.sfx) ? { sfx: sceneEdit.sfx } : {}),
         },
         render: true,
@@ -255,6 +258,19 @@ export const ProjectPage: React.FC<{ id: string }> = ({ id }) => {
     }
   };
 
+  const toggleAnchor=(w:any)=>{
+    if(!sceneEdit)return;
+    const list=sceneEdit.anchors||[];const found=list.find((a:any)=>a.wordId===w.id&&a.effect===anchorEffect);
+    setSceneEdit({...sceneEdit,anchors:found?list.filter((a:any)=>a!==found):[...list,{word:w.word,wordId:w.id,occurrence:1,spanWords:1,effect:anchorEffect,label:w.word,asset:anchorAsset,sfx:""}]});
+  };
+  const cloneHypit=async()=>{
+    setErr('');setMsg('Adaptando estrutura medida da referência…');
+    try{const r=await api.post<any>(`/api/projects/${id}/hypit-clone`,{render:true});go(`#/projetos/${r.project_id}`);}catch(e:any){setErr(e.message||String(e));}
+  };
+  const uploadCutout=async(file:File)=>{
+    if(!sceneEdit)return;setErr('');
+    try{const fd=new FormData();fd.append('file',file);const r=await api.post<any>(`/api/projects/${id}/cutout-upload`,fd);const key=sceneEdit.component==='vrs-pandora-cutout'?'presenterAsset':'character';setSceneEdit({...sceneEdit,params:{...sceneEdit.params,[key]:r.path},assets:{...sceneEdit.assets,[r.path]:r.path}});setMsg('PNG recortado. Confira as bordas e salve a cena.');}catch(e:any){setErr(e.message||String(e));}
+  };
   const cloneReferenceStyle = async () => {
     if (!proj) return;
     setErr("");
@@ -349,9 +365,9 @@ export const ProjectPage: React.FC<{ id: string }> = ({ id }) => {
             ))}
           </div>
           {(proj as any).brief_available && (
-            <button type="button" className="btn" onClick={cloneReferenceStyle} title="Aplicar paleta medida do vídeo de referência">
+            <><button type="button" className="btn" onClick={cloneReferenceStyle} title="Aplicar paleta medida do vídeo de referência">
               🎨 Clonar Cores da Referência
-            </button>
+            </button><button type="button" className="btn" onClick={cloneHypit}>🧬 Clonar estrutura e gatilhos (Hypit)</button></>
           )}
           <a className="btn" href={`/api/projects/${proj.id}/export`} download>
             ⬇ Exportar projeto (.zip)
@@ -860,9 +876,13 @@ export const ProjectPage: React.FC<{ id: string }> = ({ id }) => {
                     />
                   </div>
 
+                  {['vrs-pandora-cutout','vrs-multiplane-stage','vrs-story-panel'].includes(sceneEdit.component) && <label>✂️ Recortar apresentador/imagem<input type="file" accept="image/png,image/jpeg,image/webp" onChange={e=>{const f=e.target.files?.[0];if(f)uploadCutout(f);}}/></label>}
+                  {!!sceneEdit.anchors?.length && <div className="col">{sceneEdit.anchors.map((a:any,i:number)=><div key={i} className="row"><span>{a.word}: {a.effect}</span><button type="button" className="btn ghost" onClick={()=>setSceneEdit({...sceneEdit,anchors:sceneEdit.anchors.filter((_:any,j:number)=>j!==i)})}>Remover</button></div>)}</div>}
                   {/* Pílulas clicáveis de palavras sincronizadas (WordAnchor) */}
                   {Array.isArray(sceneEdit.words) && sceneEdit.words.length > 0 && (
                     <div className="col" style={{ gap: 6 }}>
+                      <label>Efeito na palavra<select value={anchorEffect} onChange={e=>setAnchorEffect(e.target.value as any)}>{['highlight','zoom_punch','sticker_pop','broll_overlay','badge_flash','camera_shake'].map(x=><option key={x}>{({highlight:"Destaque",zoom_punch:"Zoom rápido",sticker_pop:"Sticker animado",broll_overlay:"Vídeo ou imagem de apoio",badge_flash:"Selo de destaque",camera_shake:"Tremor leve"} as Record<string,string>)[x] || x}</option>)}</select></label>
+                      <label>Mídia do efeito (caminho do projeto ou lib:id)<input value={anchorAsset} onChange={e=>setAnchorAsset(e.target.value)} placeholder="assets/… ou lib:…"/></label>
                       <label>
                         Palavras sincronizadas ({sceneEdit.timing || "tts"} · clique p/ marcar ênfase/âncora):
                       </label>
@@ -870,14 +890,14 @@ export const ProjectPage: React.FC<{ id: string }> = ({ id }) => {
                         {sceneEdit.words.map((w: any) => {
                           const clean = String(w.word || "").replace(/[.,!?;:"'()]/g, "").trim();
                           const emphList = String(sceneEdit.params?.emphasis || "").toLowerCase().split(",").map((x) => x.trim());
-                          const isEmph = clean && emphList.includes(clean.toLowerCase());
+                          const isEmph = (sceneEdit.anchors||[]).some((a:any)=>a.wordId===w.id) || (clean && emphList.includes(clean.toLowerCase()));
                           return (
                             <button
                               key={w.id}
                               type="button"
                               className={`pill ${isEmph ? "ok" : ""}`}
                               style={{ cursor: "pointer", border: "1px solid var(--border)", fontSize: 11 }}
-                              onClick={() => toggleWordEmphasis(w.word)}
+                              onClick={() => toggleAnchor(w)}
                               title={`${w.id}: ${(w.start / 1000).toFixed(2)}s – ${(w.end / 1000).toFixed(2)}s`}
                             >
                               {w.word} <span className="muted" style={{ fontSize: 9.5 }}>{(w.start / 1000).toFixed(1)}s</span>

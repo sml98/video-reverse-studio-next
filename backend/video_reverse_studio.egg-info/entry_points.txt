@@ -1,2 +1,0 @@
-[console_scripts]
-vrs = vrs.cli:main

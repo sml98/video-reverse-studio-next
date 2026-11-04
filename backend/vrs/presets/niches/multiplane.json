@@ -25,7 +25,7 @@
   "example": {
     "title": "Podcast dos Avatares: IA vs Código",
     "idea": "O Panda Programador e o Tubarão Advogado debatem tecnologia em um estúdio multi-plano com stickers.",
-    "aspect": "landscape"
+    "aspect": "vertical"
   },
   "assets_hint": [
     "user-avatars",

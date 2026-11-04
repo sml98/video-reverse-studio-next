@@ -11,7 +11,7 @@ import math
 import re
 from typing import Any, Literal
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, field_validator, model_validator
 
 STORYBOARD_SCHEMA = "vrs.storyboard/1"
 FILMPLAN_SCHEMA = "vrs.filmplan/1"
@@ -75,7 +75,42 @@ def validate_words(words: list[WordTiming]) -> None:
 # --------------------------------------------------------------------------
 # Storyboard compacto
 # --------------------------------------------------------------------------
+class SceneAnchor(Strict):
+    word: str = Field(default="", max_length=80, validation_alias=AliasChoices("word", "triggerWord"))
+    occurrence: int = Field(default=1, ge=1, le=2000)
+    spanWords: int = Field(default=1, ge=1, le=100)
+    wordId: str = Field(default="", max_length=64)
+    effect: Literal["highlight", "zoom_punch", "sticker_pop", "broll_overlay", "badge_flash", "camera_shake"] = "highlight"
+    asset: str = Field(default="", max_length=400)
+    label: str = Field(default="", max_length=160)
+    sfx: str = Field(default="", max_length=400)
+    model_config = ConfigDict(extra="forbid", populate_by_name=True, str_strip_whitespace=True)
+
+    @model_validator(mode="after")
+    def _target(self) -> "SceneAnchor":
+        if not self.word and not self.wordId:
+            raise ValueError("Âncora exige word/triggerWord ou wordId.")
+        return self
+
+
 class StoryboardScene(Strict):
+    role: str = Field(default="", max_length=80)
+    title: str = Field(default="", max_length=160)
+    sfx: str = Field(default="", max_length=400)
+    anchors: list[SceneAnchor] = Field(default_factory=list, max_length=24)
+
+    @model_validator(mode="before")
+    @classmethod
+    def _aliases(cls, value: Any) -> Any:
+        if not isinstance(value, dict):
+            return value
+        value = dict(value)
+        for alias, canonical in (("presetId", "preset_id"), ("params", "parameters")):
+            if alias in value:
+                if canonical in value and value[canonical] != value[alias]:
+                    raise ValueError(f"{alias} e {canonical} divergem.")
+                value[canonical] = value.pop(alias)
+        return value
     id: str | None = None
     preset_id: str = Field(min_length=1, max_length=80)
     parameters_json: str | None = Field(default=None, max_length=20000)
@@ -118,6 +153,12 @@ class Source(Strict):
 
 
 class Storyboard(Strict):
+    niche_id: str = Field(default="", max_length=80, alias="nicheId")
+    aspect: Literal["", "vertical", "landscape", "square"] = ""
+    voice: str = Field(default="", max_length=40)
+    captions: str = Field(default="", max_length=20)
+    theme: dict[str, Any] | None = None
+    style_mix: dict[str, Any] | None = None
     schema_: Literal["vrs.storyboard/1"] = Field(default=STORYBOARD_SCHEMA, alias="schema")
     title: str = Field(min_length=1, max_length=160)
     language: str = Field(default="pt-BR", max_length=16)
@@ -215,6 +256,7 @@ class Transition(Strict):
 
 
 class PlanScene(Strict):
+    anchors: list[SceneAnchor] = Field(default_factory=list, max_length=24)
     id: str
     component: str = Field(min_length=1, max_length=80)
     params: dict[str, Any] = Field(default_factory=dict)
@@ -227,7 +269,7 @@ class PlanScene(Strict):
     layers: list[Layer] = Field(default_factory=list, max_length=80)
     transitionIn: Transition = Field(default_factory=Transition)
     transitionOut: Transition = Field(default_factory=lambda: Transition(type="none", durationInFrames=0))
-    sfx: list[dict[str, Any]] = Field(default_factory=list, max_length=8)
+    sfx: list[dict[str, Any]] = Field(default_factory=list, max_length=32)
     notes: str = Field(default="", max_length=1000)
 
     @field_validator("id")

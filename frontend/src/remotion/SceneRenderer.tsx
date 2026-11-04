@@ -1,4 +1,6 @@
 import React from "react";
+import {HypitWordAnchorLayer,WordMotionWrap} from "./HypitEffects";
+import {PandoraCutoutScene} from "./scenes/PandoraCutout";
 import { AbsoluteFill, useCurrentFrame, useVideoConfig } from "remotion";
 import type { FilmPlan, PlanScene } from "../contracts/plan";
 import { SCENE_SPECS, defaultsFor } from "../contracts/plan";
@@ -21,6 +23,7 @@ import {
 import { CodeWalkthroughScene, CtaScene, MemeScene, QuoteScene, StatScene, TitleScene } from "./scenes/text";
 
 const OWN: Record<string, React.FC<{ params: Record<string, any> }>> = {
+  "vrs-pandora-cutout": PandoraCutoutScene,
   "vrs-title": TitleScene,
   "vrs-kinetic-quote": QuoteScene,
   "vrs-timeline": TimelineScene,
@@ -214,7 +217,8 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({ plan, scene, asset
   return (
     <ThemeProvider value={ctx}>
       <TransitionWrap scene={scene} color={plan.theme.background}>
-        {body}
+        <WordMotionWrap scene={scene}>{body}</WordMotionWrap>
+        <HypitWordAnchorLayer plan={plan} scene={scene} assetUrls={assetUrls}/>
       </TransitionWrap>
       <PostFXOverlay plan={plan} scene={scene} />
       {captionsOn ? (

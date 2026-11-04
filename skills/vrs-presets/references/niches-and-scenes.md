@@ -1,34 +1,34 @@
-# Referência Rápida de Cenas VRS (`vrs-*`) e Pacotes Locais
+# Cenas VRS instaladas
 
-## Cenas VRS nativas (17 componentes com movimento narrativo)
+Consulte `get_scene_preset` para tipos, padrões e limites; `search_scenes` inclui também os templates RenderComp MIT. Não use IDs de versões antigas.
 
-| Preset ID | Uso principal | Parâmetros principais (`params`) |
+| ID | Cena | Parâmetros |
 |---|---|---|
-| `vrs-title` | Abertura / capítulo | `label`, `title`, `subtitle`, `style` (`cinematic`/`bold`/`minimal`), `backgroundAsset` |
-| `vrs-kinetic-quote` | Frase tipográfica animada | `text`, `emphasis`, `author`, `authorship` (`autoral`/`citacao_verificada`/`sem_atribuicao`), `style` |
-| `vrs-timeline` | Linha do tempo progressiva | `title`, `events` (`[{year, label, detail}]`) |
-| `vrs-mechanism` | Diagrama causa → efeito | `title`, `nodes` (`[{label, icon, sub}]`), `note` |
-| `vrs-bar-chart` | Gráfico de barras animado | `title`, `unit`, `bars` (`[{label, value}]`), `footnote` |
-| `vrs-line-chart` | Curva / série temporal | `title`, `unit`, `points` (`[{label, value}]`), `highlightIndex` |
-| `vrs-stat` | Número de impacto | `kicker`, `value`, `suffix`, `prefix`, `caption`, `delta` |
-| `vrs-comparison` | Comparação lado a lado | `title`, `leftTitle`, `leftPoints`, `rightTitle`, `rightPoints`, `verdict` |
-| `vrs-steps` | Etapas numeradas | `title`, `steps` (`[{title, detail}]`), `result` |
-| `vrs-checklist` | Lista verificada | `title`, `items` (`[string]`) |
-| `vrs-meme-punch` | Setup → expectativa → punchline | `tag`, `setup`, `expectation`, `punchline`, `propAsset` |
-| `vrs-cta-endcard` | Chamada para ação | `badge`, `headline`, `benefit`, `action`, `subnote` |
-| `vrs-story-stage` | Palco de história ilustrada | `heading`, `characterName`, `poseAsset`, `propAsset`, `speech`, `outcome`, `style` |
-| `vrs-map-route` | Mapa estilizado com rota | `title`, `fromLabel`, `fromX`, `fromY`, `toLabel`, `toX`, `toY`, `note` |
-| `vrs-object-stage` | Cartões de objetos/recortes | `title`, `items` (`[{asset, label, caption}]`) |
-| `vrs-video-clip` | Clipe de vídeo com legenda | `videoAsset`, `caption`, `kicker`, `trimStart` |
-| `vrs-code-terminal` | Terminal digitado ao vivo | `title`, `lines` (`[string]`), `result` |
-
-## Referência de recursos locais (`lib:<resource_id>`)
-
-Em qualquer parâmetro `asset`, `poseAsset`, `propAsset`, `backgroundAsset` ou `items[].asset`, passe `"lib:<resource_id>"`. O expansor importa automaticamente o arquivo da biblioteca para o projeto, registra SHA256 e licença em `provenance.json` e substitui pelo ID de asset local.
-
-Exemplos de recursos verificados:
-- Halloween (`kenney-halloween`): `lib:kenney-halloween.pumpkincarved-ne`, `lib:kenney-halloween.ghost-ne`, `lib:kenney-halloween.crypt-ne`, `lib:kenney-halloween.firebasket-ne`, `lib:kenney-halloween.coffin-ne`, `lib:kenney-halloween.altarstone-ne`
-- Personagens 2D (`open-peeps`): `lib:open-peeps.peep-1`, `lib:open-peeps.peep-12`, `lib:open-peeps.peep-25`, `lib:open-peeps.peep-standing-5`
-- Cenários/Natureza (`kenney-background-elements`, `kenney-nature-kit`): `lib:kenney-background-elements.castle`, `lib:kenney-background-elements.pyramid`, `lib:kenney-nature-kit.tree-oak-ne`
-- Efeitos sonoros (`kenney-ui-audio`): `lib:kenney-ui-audio.click1`, `lib:kenney-ui-audio.switch2`, `lib:kenney-ui-audio.rollover2`
-- Vídeo NASA domínio público (`nasa-documentary`): `lib:nasa-documentary.sunlight-asteroids`
+| `vrs-title` | Título de capítulo animado | `label`, `title`, `subtitle`, `style`, `backgroundAsset` |
+| `vrs-kinetic-quote` | Frase tipográfica animada | `text`, `emphasis`, `author`, `authorship`, `style` |
+| `vrs-timeline` | Linha do tempo progressiva | `title`, `events` |
+| `vrs-mechanism` | Diagrama de mecanismo | `title`, `nodes`, `edges`, `caption`, `layout` |
+| `vrs-bar-chart` | Gráfico de barras construído | `title`, `unit`, `bars`, `note`, `illustrative` |
+| `vrs-line-chart` | Gráfico de linha desenhado | `title`, `unit`, `points`, `annotationIndex`, `annotationText`, `illustrative` |
+| `vrs-calc` | Cálculo passo a passo | `title`, `steps`, `conclusion`, `illustrative` |
+| `vrs-comparison` | Comparação lado a lado | `title`, `leftTitle`, `rightTitle`, `leftItems`, `rightItems`, `verdict` |
+| `vrs-steps` | Passos de tutorial | `title`, `steps` |
+| `vrs-map-route` | Mapa esquemático com rota | `title`, `points`, `mapStyle`, `note` |
+| `vrs-doc-montage` | Montagem documental com imagens | `title`, `images`, `motion` |
+| `vrs-story-panel` | Painel de história ilustrada | `background`, `character`, `characterSide`, `action`, `props`, `bubble`, `caption` |
+| `vrs-meme` | Meme: preparação → punchline | `setup`, `punchline`, `image`, `emoji`, `style` |
+| `vrs-cta` | Chamada para ação | `hook`, `benefits`, `button`, `handle` |
+| `vrs-stat` | Número em destaque | `value`, `prefix`, `suffix`, `decimals`, `label`, `context`, `illustrative` |
+| `vrs-object-stage` | Palco de objetos | `title`, `objects`, `layout` |
+| `vrs-3d-stage` | Palco 3D (GLB esquelético determinístico) | `title`, `model`, `clip`, `cameraAngle`, `caption` |
+| `vrs-parallax-photo` | Foto documental 2.5D com foco | `title`, `image`, `stamp`, `callout`, `focusX`, `focusY`, `credit` |
+| `vrs-code-walkthrough` | Código com destaque por linha | `title`, `filename`, `code`, `focusLine`, `caption` |
+| `vrs-stickman-stage` | Boneco Palito Articulado 2D + Quadro | `title`, `action`, `expression`, `accessory`, `environment`, `boardTitle`, `bullets`, `boardAsset`, `bubble`, `cameraMode` |
+| `vrs-southpark-stage` | Bonecos Estilo South Park (Paper Cutout + Lip-Sync) | `title`, `mode`, `environment`, `expression`, `hatStyle`, `coatColor`, `hatColor`, `characterName`, `secondCoatColor`, `secondHatColor`, `secondCharacterName`, `bubble`, `cameraMode` |
+| `vrs-roblox-stage` | Mundo Roblox / Blocky 3D (Bonecos + Obby) | `title`, `action`, `environment`, `shirtColor`, `pantsColor`, `skinColor`, `bubble`, `cameraMode` |
+| `vrs-multiplane-stage` | Cenário Multi-Plano 2.5D + Avatares & Stickers | `title`, `environment`, `farBackground`, `midground`, `character`, `secondCharacter`, `bubble`, `cameraMode`, `stickers` |
+| `vrs-news-highlight` | Recorte de Jornal / Artigo com Marca-Texto (Vox Style) | `title`, `sourceName`, `publishDate`, `headline`, `highlightText`, `bodySnippet`, `image` |
+| `vrs-device-mockup` | Mockup 3D de Celular / Navegador em Movimento | `title`, `deviceType`, `appTitle`, `metricValue`, `metricLabel`, `screenAsset`, `badge` |
+| `vrs-video-broll` | Vídeo B-Roll Real + Avatar Reagindo (PiP) | `title`, `videoAsset`, `pipAvatar`, `pipPosition`, `caption` |
+| `vrs-custom` | Cena programada (camadas) | `title` |
+| `vrs-pandora-cutout` | Pandora: apresentador e motion | `title`, `kicker`, `metricPrefix`, `metricSuffix`, `metricLabel`, `highlightBadge`, `metricValue`, `presenterAsset`, `backgroundAsset`, `stickerAsset`, `presenterSide`, `cameraMode`, `cards` |

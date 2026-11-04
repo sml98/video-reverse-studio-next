@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { api, Catalog, Niche, Resource } from "../api";
 import { go } from "../App";
+import {redistributeMix} from "../studioMix";
 
 const ASPECT_LABELS: Record<string, string> = {
   landscape: "Horizontal (16:9)",
@@ -9,12 +10,18 @@ const ASPECT_LABELS: Record<string, string> = {
 };
 
 export const CreatePage: React.FC = () => {
+  const [mode,setMode]=useState<"presets"|"clone"|"studio">("presets");
+  const [cloneFull,setCloneFull]=useState(true);
+  const [sliders,setSliders]=useState({motion_pct:40,cutout_pct:30,gameplay_pct:10,broll_pct:20,pacing:"medium",sfx_density:"normal",caption_style:"hormozi",theme_override:{background:"#111015",accent:"#C3FF5F",accent2:"#9C7BFF"}});
+  const setMix=(key:"motion_pct"|"cutout_pct"|"gameplay_pct"|"broll_pct",value:number)=>{
+    setSliders(old=>redistributeMix(old,key,value));
+  };
   const [cat, setCat] = useState<Catalog | null>(null);
   const [libVideos, setLibVideos] = useState<Resource[]>([]);
   const [selected, setSelected] = useState<Niche | null>(null);
   const [idea, setIdea] = useState<string>("");
   const [name, setName] = useState<string>("");
-  const [aspect, setAspect] = useState<string>("landscape");
+  const [aspect, setAspect] = useState<string>("vertical");
   const [duration, setDuration] = useState<number>(36);
   const [refKind, setRefKind] = useState<"none" | "library" | "upload" | "url">("none");
   const [refLibraryId, setRefLibraryId] = useState<string>("nasa-documentary.sunlight-asteroids");
@@ -31,10 +38,10 @@ export const CreatePage: React.FC = () => {
     api.get<Catalog>("/api/creation/catalog").then((c) => {
       setCat(c);
       if (c.niches.length > 0) {
-        const first = c.niches[0];
+        const first = c.niches.find(n=>n.id==="pandora") || c.niches[0];
         setSelected(first);
         setDuration(first.defaultDuration);
-        setAspect(first.example.aspect || "landscape");
+        setAspect(first.example.aspect || "vertical");
       }
     }).catch((e) => setErr(String(e.message || e)));
     api.get<{ items: Resource[] }>("/api/creation/resources?kind=video&limit=30").then((r) => {
@@ -102,6 +109,8 @@ export const CreatePage: React.FC = () => {
         fd.append("captions", captions);
         fd.append("agent", agent);
         fd.append("quality", "final");
+        fd.append("clone_full",String(mode==="clone" && cloneFull));
+        if(mode==="studio")fd.append("studio_sliders",JSON.stringify(sliders));
         res = await api.post("/api/creation/start-upload", fd);
       } else {
         const reference =
@@ -122,6 +131,8 @@ export const CreatePage: React.FC = () => {
           agent,
           quality: "final",
           sogni,
+          clone_full:mode==="clone" && cloneFull,
+          studio_sliders:mode==="studio"?sliders:undefined,
         });
       }
       go(`#/projetos/${res.project.id}`);
@@ -217,13 +228,17 @@ export const CreatePage: React.FC = () => {
         </div>
       </header>
 
+      <div role="tablist" aria-label="Modo de criação" className="row" style={{gap:10,flexWrap:"wrap"}}>
+        {([['presets','📚 Biblioteca de Presets'],['clone','🧬 Clonar Vídeo / Link'],['studio','🎛️ Criar do Zero']] as const).map(([key,label])=><button key={key} type="button" role="tab" aria-selected={mode===key} className={`btn ${mode===key?'primary':''}`} onClick={()=>{setMode(key);if(key==='clone'&&refKind==='none')setRefKind('url');if(key==='studio')setRefKind('none');}}>{label}</button>)}
+      </div>
+      {mode!=="presets" && <div className="panel"><label htmlFor="target-niche">Direção visual</label><select id="target-niche" value={selected?.id||''} onChange={e=>{const n=cat?.niches.find(n=>n.id===e.target.value);if(n)chooseNiche(n);}}>{cat?.niches.map(n=><option key={n.id} value={n.id}>{n.emoji} {n.title}</option>)}</select></div>}
       {err && (
         <div className="panel" style={{ borderColor: "var(--bad)", color: "#fecaca" }}>
           {err}
         </div>
       )}
 
-      <section className="col" style={{ gap: 10 }}>
+      <section hidden={mode!=="presets"} className="col" style={{ gap: 10,display:mode==="presets"?undefined:"none" }}>
         <div className="row spread">
           <h2>1. Escolha um nicho e modelo completo</h2>
           <span className="muted" style={{ fontSize: 13 }}>
@@ -291,7 +306,17 @@ export const CreatePage: React.FC = () => {
       {selected && (
         <form onSubmit={submit} className="create-layout">
           <div className="panel col" style={{ gap: 16 }}>
-            <h2>2. Descreva sua ideia e referências</h2>
+            <h2>{mode==='studio'?'Monte sua direção visual':mode==='clone'?'Adapte uma referência':'Descreva sua ideia'}</h2>
+            {mode==='studio' && <section className="col" style={{gap:14}} aria-label="Mix visual">
+              {([['motion_pct','Motion graphics e dados'],['cutout_pct','Apresentador e stickers'],['gameplay_pct','Animação 2D/3D e gameplay'],['broll_pct','B-roll e mídia']] as const).map(([key,label])=><label key={key} className="col">{label}: {sliders[key]}%<input aria-label={label} type="range" min={0} max={100} value={sliders[key]} onChange={e=>setMix(key,Number(e.target.value))}/></label>)}
+              <p className="muted">Mix total: 100%. As proporções orientam o tempo planejado de cada linguagem. Escolha as mídias de B-roll no editor.</p>
+              <label>Ritmo de cortes<select value={sliders.pacing} onChange={e=>setSliders({...sliders,pacing:e.target.value})}><option value="fast">Rápido · cerca de 3,5s</option><option value="medium">Dinâmico · cerca de 5s</option><option value="doc">Documental · cerca de 8s</option></select></label>
+              <label>Efeitos sonoros<select value={sliders.sfx_density} onChange={e=>setSliders({...sliders,sfx_density:e.target.value})}><option value="high">Mais acentos</option><option value="normal">Equilibrados</option><option value="none">Desativados</option></select></label>
+              <label>Estilo das legendas<select value={sliders.caption_style} onChange={e=>setSliders({...sliders,caption_style:e.target.value})}>{['hormozi','karaoke','cinema','comic'].map(v=><option key={v}>{v}</option>)}</select></label>
+              <div className="row" style={{gap:12}}>{([['accent','Cor principal'],['accent2','Cor secundária'],['background','Fundo']] as const).map(([key,label])=><label key={key}>{label}<input type="color" value={sliders.theme_override[key]} onChange={e=>setSliders({...sliders,theme_override:{...sliders.theme_override,[key]:e.target.value}})}/></label>)}</div>
+            </section>}
+            {mode==='clone' && <label style={{display:'flex',gap:10,alignItems:'center'}}><input type="checkbox" style={{width:18}} checked={cloneFull} onChange={e=>setCloneFull(e.target.checked)}/>Adaptar cortes, paleta e efeitos por palavra (Hypit)</label>}
+
 
             <div className="col" style={{ gap: 6 }}>
               <label htmlFor="idea-input" style={{ fontSize: 15, fontWeight: 700, color: "var(--text)" }}>
@@ -507,7 +532,7 @@ export const CreatePage: React.FC = () => {
                 />
               ) : (
                 <div style={{ padding: 32, textAlign: "center" }} className="muted">
-                  Exemplo em geração…
+                  Prévia ainda não gerada.
                 </div>
               )}
             </div>

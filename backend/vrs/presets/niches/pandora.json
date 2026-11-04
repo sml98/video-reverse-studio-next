@@ -1,0 +1,106 @@
+{
+  "id": "pandora",
+  "title": "Estilo Pandora: Motion + Apresentador Cutout",
+  "emoji": "⚡",
+  "description": "Gancho, exemplo e conclusão com apresentador e efeitos ancorados às palavras.",
+  "arc": [
+    "gancho",
+    "exemplo",
+    "evidência",
+    "fechamento"
+  ],
+  "visualLanguages": [
+    "cutout",
+    "motion",
+    "dados"
+  ],
+  "theme": {
+    "background": "#111015",
+    "foreground": "#F1EDDF",
+    "accent": "#C3FF5F",
+    "accent2": "#9C7BFF",
+    "muted": "#8fb3a2",
+    "font": "sans",
+    "visualLanguage": "infografico"
+  },
+  "example": {
+    "title": "Uma ideia ganha forma",
+    "idea": "Uma ideia vira um vídeo em três etapas: roteiro, cenas e edição.",
+    "aspect": "vertical"
+  },
+  "recipe": [
+    {
+      "role": "gancho",
+      "label": "Gancho",
+      "preset_id": "vrs-pandora-cutout",
+      "duration": 5,
+      "narration": "Uma ideia pode ganhar uma nova forma.",
+      "parameters": {
+        "title": "Da ideia ao vídeo",
+        "metricValue": 3,
+        "metricLabel": "Etapas neste exemplo",
+        "cards": [
+          "Roteiro",
+          "Cenas",
+          "Edição"
+        ]
+      },
+      "guidance": "Exemplo ilustrativo, sem promessa de desempenho."
+    },
+    {
+      "role": "exemplo",
+      "label": "Exemplo",
+      "preset_id": "vrs-steps",
+      "duration": 7,
+      "narration": "Primeiro, organize o roteiro. Depois, escolha as cenas. Por fim, ajuste a edição.",
+      "parameters": {},
+      "guidance": "Adapte o texto aos parâmetros da cena."
+    },
+    {
+      "role": "evidência",
+      "label": "Evidência",
+      "preset_id": "vrs-news-highlight",
+      "duration": 6,
+      "narration": "Cada escolha ajuda a contar a história com clareza.",
+      "parameters": {
+        "headline": "Clareza em cada escolha",
+        "highlightText": "Conteúdo ilustrativo"
+      },
+      "guidance": "Use evidências fornecidas ou descreva como ilustração."
+    },
+    {
+      "role": "fechamento",
+      "label": "Fechamento",
+      "preset_id": "vrs-pandora-cutout",
+      "duration": 6,
+      "narration": "Encontre seu ritmo e dê o primeiro passo.",
+      "parameters": {
+        "title": "Dê o primeiro passo",
+        "metricValue": 1,
+        "metricLabel": "Uma ideia para começar",
+        "cards": []
+      },
+      "guidance": "Conclua sem inventar resultados."
+    }
+  ],
+  "aspects": [
+    "vertical",
+    "landscape",
+    "square"
+  ],
+  "durationRange": [
+    10,
+    120
+  ],
+  "defaultDuration": 24,
+  "captions": {
+    "mode": "word",
+    "position": "bottom",
+    "maxWords": 3,
+    "style": "hormozi"
+  },
+  "voice": "faber",
+  "schema": "vrs.niche/1",
+  "music": "lib:vrs-pro-audio.bgm-corp-finance",
+  "sources": []
+}

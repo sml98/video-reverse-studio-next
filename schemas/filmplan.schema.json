@@ -73,6 +73,17 @@
           "default": "#ffd23f",
           "title": "Highlight",
           "type": "string"
+        },
+        "style": {
+          "default": "hormozi",
+          "enum": [
+            "hormozi",
+            "karaoke",
+            "cinema",
+            "comic"
+          ],
+          "title": "Style",
+          "type": "string"
         }
       },
       "title": "CaptionSettings",
@@ -269,6 +280,14 @@
     "PlanScene": {
       "additionalProperties": false,
       "properties": {
+        "anchors": {
+          "items": {
+            "$ref": "#/$defs/SceneAnchor"
+          },
+          "maxItems": 24,
+          "title": "Anchors",
+          "type": "array"
+        },
         "id": {
           "title": "Id",
           "type": "string"
@@ -293,6 +312,12 @@
           "default": "",
           "maxLength": 2000,
           "title": "Narration",
+          "type": "string"
+        },
+        "voice": {
+          "default": "",
+          "maxLength": 40,
+          "title": "Voice",
           "type": "string"
         },
         "words": {
@@ -341,7 +366,7 @@
             "additionalProperties": true,
             "type": "object"
           },
-          "maxItems": 8,
+          "maxItems": 32,
           "title": "Sfx",
           "type": "array"
         },
@@ -358,6 +383,70 @@
         "durationInFrames"
       ],
       "title": "PlanScene",
+      "type": "object"
+    },
+    "SceneAnchor": {
+      "additionalProperties": false,
+      "properties": {
+        "word": {
+          "default": "",
+          "maxLength": 80,
+          "title": "Word",
+          "type": "string"
+        },
+        "occurrence": {
+          "default": 1,
+          "maximum": 2000,
+          "minimum": 1,
+          "title": "Occurrence",
+          "type": "integer"
+        },
+        "spanWords": {
+          "default": 1,
+          "maximum": 100,
+          "minimum": 1,
+          "title": "Spanwords",
+          "type": "integer"
+        },
+        "wordId": {
+          "default": "",
+          "maxLength": 64,
+          "title": "Wordid",
+          "type": "string"
+        },
+        "effect": {
+          "default": "highlight",
+          "enum": [
+            "highlight",
+            "zoom_punch",
+            "sticker_pop",
+            "broll_overlay",
+            "badge_flash",
+            "camera_shake"
+          ],
+          "title": "Effect",
+          "type": "string"
+        },
+        "asset": {
+          "default": "",
+          "maxLength": 400,
+          "title": "Asset",
+          "type": "string"
+        },
+        "label": {
+          "default": "",
+          "maxLength": 160,
+          "title": "Label",
+          "type": "string"
+        },
+        "sfx": {
+          "default": "",
+          "maxLength": 400,
+          "title": "Sfx",
+          "type": "string"
+        }
+      },
+      "title": "SceneAnchor",
       "type": "object"
     },
     "Source": {

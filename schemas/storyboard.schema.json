@@ -1,5 +1,69 @@
 {
   "$defs": {
+    "SceneAnchor": {
+      "additionalProperties": false,
+      "properties": {
+        "word": {
+          "default": "",
+          "maxLength": 80,
+          "title": "Word",
+          "type": "string"
+        },
+        "occurrence": {
+          "default": 1,
+          "maximum": 2000,
+          "minimum": 1,
+          "title": "Occurrence",
+          "type": "integer"
+        },
+        "spanWords": {
+          "default": 1,
+          "maximum": 100,
+          "minimum": 1,
+          "title": "Spanwords",
+          "type": "integer"
+        },
+        "wordId": {
+          "default": "",
+          "maxLength": 64,
+          "title": "Wordid",
+          "type": "string"
+        },
+        "effect": {
+          "default": "highlight",
+          "enum": [
+            "highlight",
+            "zoom_punch",
+            "sticker_pop",
+            "broll_overlay",
+            "badge_flash",
+            "camera_shake"
+          ],
+          "title": "Effect",
+          "type": "string"
+        },
+        "asset": {
+          "default": "",
+          "maxLength": 400,
+          "title": "Asset",
+          "type": "string"
+        },
+        "label": {
+          "default": "",
+          "maxLength": 160,
+          "title": "Label",
+          "type": "string"
+        },
+        "sfx": {
+          "default": "",
+          "maxLength": 400,
+          "title": "Sfx",
+          "type": "string"
+        }
+      },
+      "title": "SceneAnchor",
+      "type": "object"
+    },
     "Source": {
       "additionalProperties": false,
       "properties": {
@@ -24,6 +88,32 @@
     "StoryboardScene": {
       "additionalProperties": false,
       "properties": {
+        "role": {
+          "default": "",
+          "maxLength": 80,
+          "title": "Role",
+          "type": "string"
+        },
+        "title": {
+          "default": "",
+          "maxLength": 160,
+          "title": "Title",
+          "type": "string"
+        },
+        "sfx": {
+          "default": "",
+          "maxLength": 400,
+          "title": "Sfx",
+          "type": "string"
+        },
+        "anchors": {
+          "items": {
+            "$ref": "#/$defs/SceneAnchor"
+          },
+          "maxItems": 24,
+          "title": "Anchors",
+          "type": "array"
+        },
         "id": {
           "anyOf": [
             {
@@ -72,6 +162,12 @@
           "default": "",
           "maxLength": 2000,
           "title": "Narration",
+          "type": "string"
+        },
+        "voice": {
+          "default": "",
+          "maxLength": 40,
+          "title": "Voice",
           "type": "string"
         },
         "asset_path": {
@@ -126,6 +222,61 @@
   },
   "additionalProperties": false,
   "properties": {
+    "nicheId": {
+      "default": "",
+      "maxLength": 80,
+      "title": "Nicheid",
+      "type": "string"
+    },
+    "aspect": {
+      "default": "",
+      "enum": [
+        "",
+        "vertical",
+        "landscape",
+        "square"
+      ],
+      "title": "Aspect",
+      "type": "string"
+    },
+    "voice": {
+      "default": "",
+      "maxLength": 40,
+      "title": "Voice",
+      "type": "string"
+    },
+    "captions": {
+      "default": "",
+      "maxLength": 20,
+      "title": "Captions",
+      "type": "string"
+    },
+    "theme": {
+      "anyOf": [
+        {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Theme"
+    },
+    "style_mix": {
+      "anyOf": [
+        {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Style Mix"
+    },
     "schema": {
       "const": "vrs.storyboard/1",
       "default": "vrs.storyboard/1",

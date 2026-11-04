@@ -3,7 +3,8 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 
-PIDFILE="data/logs/vrs.pid"
+PORT="${VRS_PORT:-8765}"
+PIDFILE="data/logs/vrs-$PORT.pid"
 if [ -f "$PIDFILE" ]; then
   PID="$(cat "$PIDFILE")"
   if kill -0 "$PID" 2>/dev/null; then

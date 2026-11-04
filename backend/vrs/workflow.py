@@ -33,14 +33,21 @@ def start_creation(
     name: str = "",
     sogni: bool = False,
     music: str = "",
+    studio_sliders: dict[str, Any] | None = None,
+    clone_full: bool = False,
 ) -> dict[str, Any]:
     niche = catalog.get_niche(niche_id)
+    if studio_sliders is not None:
+        from .studio import StudioSliders
+        studio_sliders = StudioSliders.model_validate(studio_sliders).model_dump()
+        if sum(studio_sliders[k] for k in ("motion_pct", "cutout_pct", "gameplay_pct", "broll_pct")) <= 0:
+            raise VRSError("Escolha ao menos uma linguagem visual.")
     if agent not in AGENT_MODES:
         raise VRSError(f"Modo de agente inválido: {agent}")
     if not idea.strip() and agent != "draft":
         raise VRSError("Escreva sua ideia para o agente adaptar o modelo.")
     ref = reference or {"kind": "niche_example"}
-    opts = {"voice": voice_id, "captions": captions, "agent": agent, "quality": quality, "sogni_requested": bool(sogni), "music": music}
+    opts = {"voice": voice_id, "captions": captions, "agent": agent, "quality": quality, "sogni_requested": bool(sogni), "music": music, "studio_sliders": studio_sliders, "clone_full": clone_full, "auto_sfx": not studio_sliders or studio_sliders.get("sfx_density") != "none"}
     p = projects.create_project(
         name=name or (idea.strip()[:60] or niche["example"]["title"]),
         idea=idea,
@@ -134,10 +141,13 @@ def manage_scene(pid: str, action: str, scene_id: str, *, preset_id: str = "vrs-
     return {"plan_version": n, "scenes": len(new["scenes"]), "job": job}
 
 
-def clone_reference_style(pid: str, *, render_after: bool = False) -> dict[str, Any]:
+def clone_reference_style(pid: str, *, render_after: bool = False, full_structure: bool = False) -> dict[str, Any]:
     """Aplica a paleta medida e cadência de cortes da referência (brief.json) ao FilmPlan do projeto."""
     import re
 
+    if full_structure:
+        from . import hypit
+        return hypit.clone_with_hypit(pid, render_after=render_after, create_new=False)
     plan = projects.load(pid, "plan")
     if not plan:
         raise VRSError("Projeto sem plano.", code="no_plan")
@@ -159,7 +169,7 @@ def clone_reference_style(pid: str, *, render_after: bool = False) -> dict[str, 
 def auto_direct_project(pid: str, *, render_after: bool = True) -> dict[str, Any]:
     """Gera storyboard adaptado à ideia do projeto com o diretor local autônomo e inicia a produção."""
     p = projects.get_project(pid)
-    sb = expand.auto_storyboard_from_idea(p["niche_id"], p.get("idea", ""), p.get("target_seconds"), title=p.get("name", ""))
+    sb = expand.auto_storyboard_from_idea(p["niche_id"], p.get("idea", ""), p.get("target_seconds"), title=p.get("name", ""), studio_sliders=(p.get("options") or {}).get("studio_sliders"))
     return submit_storyboard(pid, sb, render_after=render_after)
 
 
@@ -280,11 +290,14 @@ def _prepare(ctx: JobCtx) -> dict[str, Any]:
         ctx.checkpoint("analyzed", res)
     projects.update_project(pid, stage="aguardando direção")
     mode = (p.get("options") or {}).get("agent", "mcp")
+    if (p.get("options") or {}).get("clone_full"):
+        from . import hypit
+        return {"next": hypit.clone_with_hypit(pid, create_new=False)["job"]["id"], "mode": "hypit"}
     if mode == "draft":
         sb = expand.storyboard_from_recipe(p["niche_id"])
         return {"next": submit_storyboard(pid, sb)["job"]["id"], "mode": "draft"}
     if mode == "auto_local":
-        sb = expand.auto_storyboard_from_idea(p["niche_id"], p.get("idea", ""), p.get("target_seconds"), title=p.get("name", ""))
+        sb = expand.auto_storyboard_from_idea(p["niche_id"], p.get("idea", ""), p.get("target_seconds"), title=p.get("name", ""), studio_sliders=(p.get("options") or {}).get("studio_sliders"))
         return {"next": submit_storyboard(pid, sb)["job"]["id"], "mode": "auto_local"}
     if mode in ("claude", "codex", "generic", "openai"):
         j = jobs.enqueue("agent_run", pid, {})
@@ -401,3 +414,10 @@ def build_example(niche_id: str) -> dict[str, Any]:
     write_json(out / "plan.json", plan)
     write_json(out / "example.json", {"project_id": pid, "niche": niche_id, "review": {k: rv[k] for k in ("technical", "findings", "motion")}, "render_seconds": info["seconds"], "duration_s": info["duration_s"]})
     return {"project_id": pid, "technical": rv["technical"], "duration_s": info["duration_s"], "seconds": info["seconds"]}
+
+
+@handler("hypit_variants")
+def _hypit_variants(ctx: JobCtx) -> dict[str, Any]:
+    from . import hypit
+    result=hypit.generate_variants(ctx.project_id,ctx.params["hooks"],ctx.params.get("voices"),render_after=ctx.params.get("render",True))
+    return {"variants":result}

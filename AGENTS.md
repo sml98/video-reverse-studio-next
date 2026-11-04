@@ -27,3 +27,11 @@
 - `skills/vrs-direct/SKILL.md` — Escrita de `StoryboardSpec` original adaptado ao tema.
 - `skills/vrs-produce/SKILL.md` — Síntese de voz, expansão, cache por cena e renderização.
 - `skills/vrs-review/SKILL.md` — Inspeção de quadros reais, movimento, áudio LUFS e gate Kinocut.
+
+## 4. Inicialização comum a Codex, Claude Code, Antigravity e outros agentes
+
+- Execute `./scripts/doctor.sh` antes de operar. O pacote não baixa modelos durante upload, análise ou criação.
+- Verifique `http://127.0.0.1:8765/api/health`; use `./scripts/start.sh` se o serviço estiver parado. Informe o link local ao usuário. Preserve jobs/projetos existentes; não encerre um processo desconhecido na porta.
+- A UI oferece Biblioteca de Presets, Clonar Vídeo/Link e Criar do Zero com mix de linguagens. MCP e CLI usam o mesmo núcleo. `integrations/mcp.json` é relativo à raiz do repositório; configure o diretório de trabalho no cliente MCP se ele não resolver caminhos relativos.
+- Leia `skills/vrs-hypit/SKILL.md` ao adaptar estrutura medida ou gerar variantes. É uma implementação VRS inspirada em âncoras por palavra, não integração com o runtime externo Hypit.
+- Clonagem estrutural e seleção de visemas são heurísticas. Não prometa recuperação exata de edição, segmentação semântica de fundo ou sincronização labial fonética.

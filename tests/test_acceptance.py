@@ -347,3 +347,112 @@ def test_pro_pillars_and_autonomous_director(tmp_path: Path):
     assert kit["chapters_text"].startswith("00:00 ")
     assert len(kit["hashtags"]) >= 3
 
+
+
+def test_scene_anchor_aliases_limits_and_conflicts():
+    anchor=contracts.SceneAnchor.model_validate({'triggerWord':'Olá','effect':'zoom_punch'})
+    assert anchor.word=='Olá'
+    scene=contracts.StoryboardScene.model_validate({'presetId':'vrs-pandora-cutout','params':{},'anchors':[anchor.model_dump()]})
+    assert scene.preset_id=='vrs-pandora-cutout'
+    for data in [{'word':'oi','occurrence':0},{'word':'oi','spanWords':0},{'effect':'zoom_punch'}]:
+        with pytest.raises(ValidationError):contracts.SceneAnchor.model_validate(data)
+    with pytest.raises(ValidationError):contracts.StoryboardScene.model_validate({'presetId':'vrs-title','preset_id':'vrs-stat'})
+
+
+def test_word_anchor_expansion_and_patch(monkeypatch, tmp_path):
+    import wave
+    from vrs import anchors
+    source=tmp_path/'voice.wav'
+    with wave.open(str(source),'wb') as f:f.setnchannels(1);f.setsampwidth(2);f.setframerate(16000);f.writeframes(b'\0\0'*16000)
+    def synth(text,voice_id):
+        return {'wav':str(source),'duration_ms':1000,'timing':'tts_phonemes','words':[{'id':f'w{i}','word':w,'start':i*180,'end':i*180+150} for i,w in enumerate(text.split())]}
+    monkeypatch.setattr(voice,'synthesize_cached',synth)
+    monkeypatch.setattr(voice,'list_voices',lambda:[{'id':'faber'}])
+    p=projects.create_project(name='Anchor test',niche_id='pandora',options={'voice':'faber','auto_sfx':False})
+    sb={'title':'Cue test','theme':{'primary':'#12ff34'},'scenes':[{'preset_id':'vrs-pandora-cutout','narration':'Veja a lua','duration':2,'anchors':[{'word':'lua','effect':'zoom_punch'}]}]}
+    plan=expand.expand(p['id'],sb);sc=plan['scenes'][0]
+    assert plan['theme']['accent']=='#12ff34'
+    assert anchors.resolve_anchor(sc['words'],sc['anchors'][0])[0]==660
+    patched=expand.patch_scene(plan,sc['id'],{'narration':'Agora veja a lua'},pid=p['id'])
+    assert anchors.resolve_anchor(patched['scenes'][0]['words'],patched['scenes'][0]['anchors'][0])[0]==840
+    assert patched['scenes'][0]['durationInFrames']>=sc['durationInFrames']
+
+
+def test_studio_mix_budgets_and_bad_requests():
+    from vrs.studio import mix_storyboard
+    cfg={'motion_pct':40,'cutout_pct':30,'gameplay_pct':10,'broll_pct':20,'pacing':'fast'}
+    sb=mix_storyboard('pandora','Uma ideia. Uma história. Um final.',30,cfg)
+    assert sb['style_mix']['planned_frames']=={'motion':360,'cutout':270,'gameplay':90,'broll':180}
+    assert abs(sum(s['duration'] for s in sb['scenes'])-30)<1e-8
+    contracts.Storyboard.model_validate(sb)
+    for sc in sb['scenes']:catalog.validate_params(sc['preset_id'],sc['parameters'])
+    with pytest.raises(util.VRSError):mix_storyboard('pandora','Ideia',30,{k:0 for k in cfg if k.endswith('_pct')})
+    c=TestClient(api.app)
+    assert c.post('/api/creation/start',json={'niche_id':'pandora','idea':'Uma ideia','studio_sliders':{'motion_pct':101}}).status_code==422
+
+
+def test_cutout_preserves_transparency_and_separates_border():
+    from vrs.cutout import create_cutout
+    from PIL import Image,ImageDraw
+    from io import BytesIO
+    p=projects.create_project(name='Cutout test')
+    im=Image.new('RGB',(128,128),'white');ImageDraw.Draw(im).rectangle((40,30,90,110),fill='purple')
+    data=BytesIO();im.save(data,format='PNG')
+    result=create_cutout(p['id'],data.getvalue());out=Image.open(projects.resolve(p['id'],result['path']))
+    assert out.getpixel((0,0))[3]==0 and out.getpixel((65,65))[3]>240
+    assert result['method']=='border_flood_fill'
+    im=Image.new('RGBA',(24,24),(10,20,30,100));data=BytesIO();im.save(data,format='PNG')
+    result=create_cutout(p['id'],data.getvalue());assert result['method']=='existing_alpha'
+    assert Image.open(projects.resolve(p['id'],result['path'])).getpixel((0,0))[3]==100
+    with pytest.raises(util.VRSError):create_cutout(p['id'],b'not an image')
+
+
+def test_hypit_template_microcuts_and_clone_does_not_mutate_source():
+    from vrs import hypit
+    p=projects.create_project(name='Original',idea='Primeira parte. Segunda parte.',niche_id='pandora',options={'voice':'none','narration':False})
+    d=projects.project_dir(p['id'])
+    util.write_json(d/'brief.json',{'measured':{'palette':['#111111','#88ff33','#aa88ff']}})
+    util.write_json(d/'evidence/shots.json',{'shots':[{'start':0,'end':.6},{'start':.6,'end':1.2},{'start':1.2,'end':4},{'start':4,'end':8}]})
+    util.write_json(d/'evidence/audio.json',{'energy_peaks_s':[.7,5]})
+    template=hypit.extract_hypit_template(p['id']);assert template['segments'][0]['micro_cuts']==[.6,1.2]
+    cloned=hypit.clone_with_hypit(p['id'],render_after=False)
+    assert cloned['project_id']!=p['id'] and projects.load(p['id'],'storyboard') is None
+    sb=projects.load(cloned['project_id'],'storyboard');assert sb['scenes'][0]['anchors']
+    assert sb['theme']['accent']=='#88ff33'
+    assert cloned['job']['kind']=='produce'
+
+
+def test_hypit_variants_retain_body_scene_cache(monkeypatch,tmp_path):
+    from vrs import hypit,render
+    import wave
+    wav=tmp_path/'s.wav'
+    with wave.open(str(wav),'wb') as f:f.setnchannels(1);f.setsampwidth(2);f.setframerate(16000);f.writeframes(b'\0\0'*16000)
+    monkeypatch.setattr(voice,'list_voices',lambda:[{'id':'faber'}])
+    monkeypatch.setattr(voice,'synthesize_cached',lambda text,vid:{'wav':str(wav),'duration_ms':1000,'timing':'tts_phonemes','words':[{'id':'w0','word':text,'start':0,'end':900}]})
+    p=projects.create_project(name='Variants',niche_id='pandora',options={'voice':'none'})
+    plan=expand.expand(p['id'],{'title':'Body stays','scenes':[{'preset_id':'vrs-title','duration':2},{'preset_id':'vrs-title','duration':2}]})
+    projects.save_versioned(p['id'],'plan',plan)
+    out=hypit.generate_variants(p['id'],['Novo gancho'],render_after=False);new=projects.load(out[0]['project_id'],'plan')
+    assert render.scene_cache_key(p['id'],plan,plan['scenes'][1],'source')==render.scene_cache_key(out[0]['project_id'],new,new['scenes'][1],'source')
+    assert new['scenes'][0]['narration']=='Novo gancho'
+    assert projects.load(p['id'],'plan')['scenes'][0]['narration']==''
+
+
+def test_mcp_aliases_have_real_signatures():
+    import asyncio
+    from vrs.mcp_server import mcp
+    tools=asyncio.run(mcp.list_tools());by_name={t.name:t for t in tools}
+    assert 'vrs_get_agent_task' in by_name and 'hypit_clone_workflow' in by_name
+    schema=by_name['vrs_get_agent_task'].inputSchema
+    assert 'project_id' in schema['properties'] and 'a' not in schema['properties']
+
+
+def test_legacy_mcp_arguments_are_compatible(monkeypatch):
+    from vrs import mcp_server
+    monkeypatch.setattr(mcp_server,'_ensure_worker',lambda:None)
+    assert 'items' in mcp_server.vrs_search_catalog('Pandora',kind='scene')
+    assert 'items' in mcp_server.vrs_search_library('',kind='image',pack='')
+    p=projects.create_project(name='MCP alias',niche_id='pandora',options={'voice':'none'})
+    result=mcp_server.vrs_submit_storyboard(p['id'],{'title':'Aliases','scenes':[{'presetId':'vrs-title','params':{},'duration':2}]},render=False)
+    assert result['job']['kind']=='produce'
+    assert mcp_server.vrs_get_evidence(p['id'],kind='brief') is None

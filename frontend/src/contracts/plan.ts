@@ -40,6 +40,14 @@ export const LayerSchema = z
 const transitionType = z.enum(["none", "fade", "wipe", "slide", "zoom", "circle", "flash"]);
 export const TransitionSchema = z.object({ type: transitionType.default("fade"), durationInFrames: z.number().int().min(0).max(90).default(12), color: z.string().default("") }).strict();
 
+export const SceneAnchorSchema = z.object({
+  word: z.string().max(80).default(""), occurrence: z.number().int().min(1).max(2000).default(1),
+  spanWords: z.number().int().min(1).max(100).default(1), wordId: z.string().max(64).default(""),
+  effect: z.enum(["highlight", "zoom_punch", "sticker_pop", "broll_overlay", "badge_flash", "camera_shake"]).default("highlight"),
+  asset: z.string().max(400).default(""), label: z.string().max(160).default(""), sfx: z.string().max(400).default(""),
+}).strict().refine(a => !!(a.word || a.wordId), "Âncora exige palavra ou ID");
+export type SceneAnchor = z.infer<typeof SceneAnchorSchema>;
+
 export const PlanSceneSchema = z
   .object({
     id: z.string().regex(/^[a-z0-9][a-z0-9_\-]{0,63}$/),
@@ -49,12 +57,13 @@ export const PlanSceneSchema = z
     narration: z.string().max(2000).default(""),
     voice: z.string().max(40).default(""),
     words: z.array(WordSchema).default([]),
+    anchors: z.array(SceneAnchorSchema).max(24).default([]),
     timing: z.enum(["user_text", "proportional", "tts_phonemes", "asr_estimated", "forced_aligned", "none"]).default("none"),
     assets: z.record(z.string(), z.string()).default({}),
     layers: z.array(LayerSchema).max(80).default([]),
     transitionIn: TransitionSchema.default({ type: "fade", durationInFrames: 12, color: "" }),
     transitionOut: TransitionSchema.default({ type: "none", durationInFrames: 0, color: "" }),
-    sfx: z.array(z.record(z.string(), z.any())).max(8).default([]),
+    sfx: z.array(z.record(z.string(), z.any())).max(32).default([]),
     notes: z.string().max(1000).default(""),
   })
   .strict();

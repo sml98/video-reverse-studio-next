@@ -6,6 +6,7 @@ Se o serviço local não estiver rodando, um worker embutido processa a fila nes
 from __future__ import annotations
 
 import json
+from functools import wraps
 from typing import Any
 
 from mcp.server.fastmcp import FastMCP
@@ -26,6 +27,7 @@ def _ensure_worker() -> None:
 
 
 def _safe(fn):
+    @wraps(fn)
     def wrap(*a, **k):
         try:
             return fn(*a, **k)
@@ -212,6 +214,113 @@ def set_content_review(project_id: str, version: int, decision: str, notes_json:
 def export_project(project_id: str) -> dict[str, Any]:
     """Pacote ZIP do projeto sem credenciais (plano, storyboard, legendas, mídias, procedência)."""
     return {"zip": str(projects.export_project(project_id))}
+
+
+
+@mcp.tool()
+@_safe
+def clone_reference_style(project_id: str, full_structure: bool = True, render: bool = False) -> dict[str,Any]:
+    """Adapta estrutura e âncoras medidas ou apenas as cores; mantém a fala na velocidade original."""
+    result=workflow.clone_reference_style(project_id,full_structure=full_structure,render_after=render)
+    _ensure_worker()
+    return result
+
+@mcp.tool()
+@_safe
+def hypit_clone_workflow(project_id: str,new_idea: str='',target_niche: str='pandora',render: bool=True) -> dict[str,Any]:
+    """Cria novo projeto original com estrutura medida e gatilhos por palavra. Não usa o runtime externo Hypit."""
+    from . import hypit
+    result=hypit.clone_with_hypit(project_id,new_idea,target_niche,render)
+    _ensure_worker()
+    return result
+
+@mcp.tool()
+@_safe
+def generate_hypit_variants(project_id: str,hooks_json: str='[]',voices_json: str='[]') -> dict[str,Any]:
+    """Enfileira até doze variantes de gancho/voz, preservando o projeto original."""
+    hooks=json.loads(hooks_json);voices=json.loads(voices_json)
+    if not isinstance(hooks,list) or not isinstance(voices,list) or not hooks or len(hooks)*max(1,len(voices))>12:
+        raise VRSError('Forneça até doze combinações de ganchos e vozes.')
+    result={"job":jobs.enqueue('hypit_variants',project_id,{'hooks':hooks,'voices':voices})};_ensure_worker();return result
+
+@mcp.tool()
+@_safe
+def auto_direct_project(project_id: str,render: bool=True) -> dict[str,Any]:
+    """Monta um rascunho local usando a ideia e o mix configurado."""
+    result=workflow.auto_direct_project(project_id,render_after=render);_ensure_worker();return result
+
+@mcp.tool()
+@_safe
+def reframe_project(project_id: str,aspect: str,render: bool=False) -> dict[str,Any]:
+    """Alterna 9:16, 16:9 e 1:1 preservando a duração da fala."""
+    result=workflow.reframe_project(project_id,aspect,render_after=render)
+    if render:_ensure_worker()
+    return result
+
+@mcp.tool()
+@_safe
+def manage_scene(project_id: str,action: str,scene_id: str,preset_id: str='vrs-pandora-cutout',render: bool=False) -> dict[str,Any]:
+    """Adiciona, duplica, remove ou move uma cena do plano."""
+    result=workflow.manage_scene(project_id,action,scene_id,preset_id=preset_id,render_after=render)
+    if render:_ensure_worker()
+    return result
+
+@mcp.tool()
+@_safe
+def vrs_get_agent_task(project_id: str) -> dict[str,Any]:
+    """Alias compatível: tarefa compacta com brief."""
+    return get_brief(project_id)
+
+@mcp.tool()
+@_safe
+def vrs_get_evidence(project_id: str,kind: str='brief') -> Any:
+    """Alias compatível: brief ou evidência por kind."""
+    return projects.load(project_id,'brief') if kind=='brief' else read_evidence(project_id,kind)
+
+@mcp.tool()
+@_safe
+def vrs_search_catalog(query: str='',kind: str='',limit: int=12,offset: int=0) -> dict[str,Any]:
+    """Busca em cenas/nichos, com filtro kind opcional."""
+    if kind not in ('','niche','scene'):raise VRSError('kind deve ser niche ou scene.')
+    return catalog.search_catalog(query,kind,limit,offset)
+
+@mcp.tool()
+@_safe
+def vrs_search_library(query: str='',kind: str='',pack: str='',limit: int=12,offset: int=0) -> dict[str,Any]:
+    """Busca compatível na biblioteca, incluindo pack."""
+    return library.search(query,kind,pack,limit,offset)
+
+@mcp.tool()
+@_safe
+def vrs_get_scene_spec(scene_id: str) -> dict[str,Any]:
+    """Alias da especificação de cena."""
+    return get_scene_preset(scene_id)
+
+@mcp.tool()
+@_safe
+def vrs_submit_storyboard(project_id: str,storyboard: dict[str,Any]|str,render: bool=True) -> dict[str,Any]:
+    """Aceita storyboard como objeto ou JSON e enfileira produção."""
+    result=workflow.submit_storyboard(project_id,json.loads(storyboard) if isinstance(storyboard,str) else storyboard,render_after=render);_ensure_worker();return result
+
+@mcp.tool()
+@_safe
+def vrs_patch_scene(project_id: str,scene_id: str,patch: dict[str,Any]|str,render: bool=True) -> dict[str,Any]:
+    """Aceita patch como objeto ou JSON."""
+    result=workflow.patch_scene(project_id,scene_id,json.loads(patch) if isinstance(patch,str) else patch,render_after=render)
+    if render:_ensure_worker()
+    return result
+
+@mcp.tool()
+@_safe
+def vrs_get_review(project_id: str,version: int=0) -> dict[str,Any]:
+    """Alias da revisão do render."""
+    return get_render_review(project_id,version)
+
+@mcp.tool()
+@_safe
+def vrs_record_content_review(project_id: str,version: int,decision: str,notes: list[str]|None=None) -> dict[str,Any]:
+    """Registra revisão real, com notas como lista."""
+    return {"content":review.set_content_review(project_id,version,decision,notes or [])["content"]}
 
 
 def main() -> None:

@@ -119,6 +119,5 @@
   },
   "voice": "faber",
   "schema": "vrs.niche/1",
-  "guide": "skills/vrs-presets/references/tutorial.md",
   "music": "lib:vrs-pro-audio.bgm-lofi-explain"
 }

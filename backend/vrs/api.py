@@ -8,13 +8,14 @@ from typing import Any
 
 from fastapi import FastAPI, File, Form, HTTPException, Request, UploadFile
 from fastapi.responses import FileResponse, JSONResponse
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ValidationError
 
-from . import agents, analysis, catalog, jobs, library, projects, review, sogni, voice, workflow
+from . import agents, analysis, catalog, jobs, library, projects, review, sogni, voice, workflow, hypit, cutout
+from .studio import StudioSliders
 from .config import ALLOWED_ORIGINS, settings
 from .util import VRSError, new_id, safe_join
 
-MEDIA_EXT = {".mp4", ".webm", ".jpg", ".jpeg", ".png", ".webp", ".gif", ".wav", ".mp3", ".ogg", ".srt", ".vtt", ".glb", ".gltf", ".bin", ".json"}
+MEDIA_EXT = {".mp4", ".mov", ".webm", ".jpg", ".jpeg", ".png", ".webp", ".gif", ".wav", ".mp3", ".ogg", ".srt", ".vtt", ".glb", ".gltf", ".bin", ".json"}
 PROJECT_JSON_OK = {"plan.json", "storyboard.json", "brief.json", "review.json", "render.json", "words.json", "provenance.json", "timings.json", "reference.json"}
 MAX_UPLOAD = 600 * 1024 * 1024
 
@@ -43,6 +44,11 @@ async def guard(request: Request, call_next):
 @app.exception_handler(VRSError)
 async def vrs_error(_: Request, e: VRSError):
     return JSONResponse({"error": str(e), "code": e.code}, status_code=e.status)
+
+
+@app.exception_handler(ValidationError)
+async def validation_error(_: Request, e: ValidationError):
+    return JSONResponse({"error":"Dados inválidos", "details":e.errors(include_context=False)},status_code=422)
 
 
 # ---------------------------------------------------------------------------
@@ -90,9 +96,11 @@ def creation_resources(q: str = "", kind: str = "", pack: str = "", limit: int =
 
 
 class StartReq(BaseModel):
+    studio_sliders: StudioSliders | None = None
+    clone_full: bool = False
     niche_id: str
     idea: str = Field(default="", max_length=4000)
-    aspect: str = "landscape"
+    aspect: str = "vertical"
     duration: float | None = None
     reference: dict[str, Any] | None = None
     voice: str = "faber"
@@ -107,7 +115,7 @@ class StartReq(BaseModel):
 def creation_start(req: StartReq) -> dict[str, Any]:
     if req.reference and req.reference.get("kind") == "upload":
         raise VRSError("Para upload, use /api/creation/start-upload (multipart).")
-    return workflow.start_creation(niche_id=req.niche_id, idea=req.idea, aspect=req.aspect, duration=req.duration, reference=req.reference, voice_id=req.voice, captions=req.captions, agent=req.agent, quality=req.quality, name=req.name, sogni=req.sogni)
+    return workflow.start_creation(niche_id=req.niche_id, idea=req.idea, aspect=req.aspect, duration=req.duration, reference=req.reference, voice_id=req.voice, captions=req.captions, agent=req.agent, quality=req.quality, name=req.name, sogni=req.sogni, studio_sliders=req.studio_sliders.model_dump() if req.studio_sliders else None, clone_full=req.clone_full)
 
 
 @app.post("/api/creation/start-upload")
@@ -121,6 +129,8 @@ async def creation_start_upload(
     captions: str = Form("word"),
     agent: str = Form("mcp"),
     quality: str = Form("final"),
+    studio_sliders: str = Form(""),
+    clone_full: bool = Form(False),
 ) -> dict[str, Any]:
     ext = Path(file.filename or "").suffix.lower()
     if ext not in analysis.VIDEO_EXT:
@@ -135,7 +145,7 @@ async def creation_start_upload(
                 tmp.unlink(missing_ok=True)
                 raise VRSError("Arquivo grande demais (máx. 600 MB).")
             f.write(chunk)
-    res = workflow.start_creation(niche_id=niche_id, idea=idea, aspect=aspect, duration=duration or None, reference={"kind": "upload"}, voice_id=voice_id, captions=captions, agent=agent, quality=quality)
+    res = workflow.start_creation(niche_id=niche_id, idea=idea, aspect=aspect, duration=duration or None, reference={"kind": "upload"}, voice_id=voice_id, captions=captions, agent=agent, quality=quality, studio_sliders=StudioSliders.model_validate_json(studio_sliders).model_dump() if studio_sliders else None, clone_full=clone_full)
     analysis.import_upload(res["project"]["id"], tmp, file.filename or "upload" + ext)
     return res
 
@@ -195,12 +205,40 @@ def post_scene_manage(pid: str, req: SceneManageReq) -> dict[str, Any]:
 
 
 class CloneStyleReq(BaseModel):
+    full_structure: bool = False
     render: bool = False
 
 
 @app.post("/api/projects/{pid}/clone-reference-style")
 def post_clone_style(pid: str, req: CloneStyleReq) -> dict[str, Any]:
-    return workflow.clone_reference_style(pid, render_after=req.render)
+    return workflow.clone_reference_style(pid, render_after=req.render, full_structure=req.full_structure)
+
+
+class HypitCloneReq(BaseModel):
+    new_idea: str = Field(default="", max_length=4000)
+    target_niche: str = "pandora"
+    render: bool = True
+
+@app.post("/api/projects/{pid}/hypit-clone")
+def post_hypit_clone(pid: str, req: HypitCloneReq) -> dict[str, Any]:
+    return hypit.clone_with_hypit(pid,req.new_idea,req.target_niche,req.render)
+
+class HypitVariantsReq(BaseModel):
+    hooks: list[str] = Field(min_length=1,max_length=12)
+    voices: list[str] = Field(default_factory=list,max_length=4)
+    render: bool = True
+
+@app.post("/api/projects/{pid}/hypit-variants")
+def post_hypit_variants(pid: str,req: HypitVariantsReq) -> dict[str, Any]:
+    projects.get_project(pid)
+    if len(req.hooks)*max(1,len(req.voices))>12:
+        raise VRSError("Limite de 12 variantes por solicitação.")
+    return {"job":jobs.enqueue("hypit_variants",pid,req.model_dump())}
+
+@app.post("/api/projects/{pid}/cutout-upload")
+async def post_cutout_upload(pid: str,file: UploadFile=File(...)) -> dict[str,Any]:
+    data=await file.read(25*1024*1024+1)
+    return cutout.create_cutout(pid,data)
 
 
 @app.post("/api/projects/{pid}/auto-direct")

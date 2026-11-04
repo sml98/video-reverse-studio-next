@@ -129,6 +129,5 @@
   },
   "voice": "faber",
   "schema": "vrs.niche/1",
-  "guide": "skills/vrs-presets/references/historia.md",
   "music": "lib:vrs-pro-audio.bgm-doc-suspense"
 }

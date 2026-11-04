@@ -13,6 +13,7 @@ import shutil
 from typing import Any, Callable
 
 from . import catalog, library, projects, voice
+from .anchors import resolve_anchor, normalize_token
 from .contracts import ASPECTS, PREVIEW_ASPECTS, FilmPlan, Storyboard
 from .util import VRSError, read_json, safe_join, write_json
 
@@ -62,6 +63,7 @@ NICHE_CAPTION_STYLE = {
     "tutorial": "karaoke",
 }
 PRIMARY_ASSET = {
+    "vrs-pandora-cutout": "presenterAsset",
     "vrs-title": "backgroundAsset",
     "vrs-story-panel": "character",
     "vrs-meme": "image",
@@ -103,6 +105,7 @@ def _auto_sfx(pid: str, idx: int, preset_id: str, tr: str, words: list[dict[str,
         cues.append({"path": rel, "at_ms": 60, "volume": 0.18, "role": "intro:drop"})
 
     if words and preset_id in (
+        "vrs-pandora-cutout",
         "vrs-stat",
         "vrs-meme",
         "vrs-cta",
@@ -192,10 +195,12 @@ def expand(pid: str, storyboard: dict[str, Any], *, progress: Progress | None = 
     sb = Storyboard.model_validate(storyboard)
     quality = opts.get("quality", "final")
     w, h = (PREVIEW_ASPECTS if quality == "preview" else ASPECTS)[p["aspect"]]
+    if sb.aspect:
+        w, h = (PREVIEW_ASPECTS if quality == "preview" else ASPECTS)[sb.aspect]
     fps = int(opts.get("fps", 30))
-    voice_id = opts.get("voice", "faber")
+    voice_id = sb.voice or opts.get("voice", "faber")
     use_voice = opts.get("narration", True) and voice_id != "none"
-    captions = opts.get("captions", "word")
+    captions = sb.captions or opts.get("captions", "word")
     niche_id = p.get("niche_id", "")
     niche = catalog.niches().get(niche_id, {})
     default_tr = NICHE_TRANSITION.get(niche_id, "fade")
@@ -239,6 +244,21 @@ def expand(pid: str, storyboard: dict[str, Any], *, progress: Progress | None = 
             warnings.append(f"Cena {sid}: a fala ({min_ms / 1000:.1f}s) não cabe em {s.duration:.1f}s; a cena foi estendida sem cortar palavras.")
         frames = math.ceil(dur_ms * fps / 1000)
         tr = s.transition or (default_tr if i else "fade")
+        anchors = [a.model_dump() for a in s.anchors]
+        scene_sfx = _auto_sfx(pid, i, s.preset_id, tr, words, opts)
+        if s.sfx:
+            scene_sfx.append({"path": _resolve_asset(pid, s.sfx), "at_ms": words[0]["start"] if words else 0, "volume": 0.16, "role": "scene"})
+        for anchor in anchors:
+            if anchor["asset"]:
+                rel = _resolve_asset(pid, anchor["asset"])
+                anchor["asset"] = rel
+                assets[rel] = rel
+            try:
+                start_ms, _ = resolve_anchor(words, anchor)
+                if anchor["sfx"]:
+                    scene_sfx.append({"path": _resolve_asset(pid, anchor["sfx"]), "at_ms": start_ms, "volume": 0.16, "role": "word_anchor"})
+            except VRSError:
+                warnings.append(f"Cena {sid}: âncora '{anchor['word'] or anchor['wordId']}' sem tempo válido nesta narração; efeito não será exibido.")
         scenes.append(
             {
                 "id": sid,
@@ -253,7 +273,8 @@ def expand(pid: str, storyboard: dict[str, Any], *, progress: Progress | None = 
                 "layers": [],
                 "transitionIn": {"type": tr, "durationInFrames": 10 if tr != "none" else 0, "color": ""},
                 "transitionOut": {"type": "none", "durationInFrames": 0, "color": ""},
-                "sfx": _auto_sfx(pid, i, s.preset_id, tr, words, opts),
+                "sfx": scene_sfx[:32],
+                "anchors": anchors,
                 "notes": "",
             }
         )
@@ -275,7 +296,11 @@ def expand(pid: str, storyboard: dict[str, Any], *, progress: Progress | None = 
             music_rel = _resolve_asset(pid, NICHE_BGM[niche_id])
         except Exception:
             music_rel = ""
-    cap_style = opts.get("caption_style") or niche.get("captions", {}).get("style") or NICHE_CAPTION_STYLE.get(niche_id, "hormozi")
+    override_theme = dict(sb.theme or {})
+    for alias, key in (("primary", "accent"), ("secondary", "accent2"), ("text", "foreground")):
+        if alias in override_theme:
+            override_theme[key] = override_theme.pop(alias)
+    cap_style = (sb.captions if sb.captions in ("hormozi", "karaoke", "cinema", "comic") else "") or opts.get("caption_style") or niche.get("captions", {}).get("style") or NICHE_CAPTION_STYLE.get(niche_id, "hormozi")
     plan = {
         "schema": "vrs.filmplan/1",
         "title": sb.title,
@@ -283,7 +308,7 @@ def expand(pid: str, storyboard: dict[str, Any], *, progress: Progress | None = 
         "width": w,
         "height": h,
         "fps": fps,
-        "theme": {**{"background": "#0b1020", "foreground": "#f5f7ff", "accent": "#ffb02e", "accent2": "#5ad1ff", "muted": "#8a93b8", "font": "sans", "visualLanguage": "motion-graphics"}, **theme_for(p), **(opts.get("theme") or {})},
+        "theme": {**{"background": "#0b1020", "foreground": "#f5f7ff", "accent": "#ffb02e", "accent2": "#5ad1ff", "muted": "#8a93b8", "font": "sans", "visualLanguage": "motion-graphics"}, **theme_for(p), **(opts.get("theme") or {}), **override_theme},
         "captions": {
             "enabled": captions != "off",
             "mode": captions if captions in ("word", "phrase", "off") else "word",
@@ -329,8 +354,11 @@ def storyboard_from_recipe(niche_id: str, *, title: str | None = None) -> dict[s
     }
 
 
-def auto_storyboard_from_idea(niche_id: str, idea: str, target_seconds: float | None = None, *, title: str = "") -> dict[str, Any]:
+def auto_storyboard_from_idea(niche_id: str, idea: str, target_seconds: float | None = None, *, title: str = "", studio_sliders: dict[str, Any] | None = None) -> dict[str, Any]:
     """Diretor local autônomo: adapta a receita editorial do nicho à ideia do usuário sem esperar agente externo."""
+    if studio_sliders is not None:
+        from .studio import mix_storyboard
+        return mix_storyboard(niche_id, idea, float(target_seconds or 30), studio_sliders, title=title)
     n = catalog.get_niche(niche_id)
     clean_idea = re.sub(r"\s+", " ", (idea or "").strip())
     if not clean_idea:
@@ -382,7 +410,8 @@ def auto_storyboard_from_idea(niche_id: str, idea: str, target_seconds: float | 
 
 def patch_scene(plan: dict[str, Any], scene_id: str, patch: dict[str, Any], *, pid: str | None = None) -> dict[str, Any]:
     """Altera parâmetros/componente/duração/transição/narração de uma cena; o cache re-renderiza só ela."""
-    allowed = {"component", "params", "durationInFrames", "transitionIn", "transitionOut", "layers", "sfx", "notes", "narration", "voice"}
+    plan = copy.deepcopy(plan)
+    allowed = {"component", "params", "durationInFrames", "transitionIn", "transitionOut", "layers", "sfx", "notes", "narration", "voice", "anchors"}
     bad = set(patch) - allowed
     if bad:
         raise VRSError(f"Campos não editáveis por patch: {', '.join(sorted(bad))}")
@@ -400,12 +429,22 @@ def patch_scene(plan: dict[str, Any], scene_id: str, patch: dict[str, Any], *, p
                 if pid:
                     extra_assets = _apply_assets(pid, sc["component"], sc["params"], "", [])
                     sc["assets"] = {**(sc.get("assets") or {}), **extra_assets}
-            for k in ("durationInFrames", "transitionIn", "transitionOut", "layers", "sfx", "notes"):
+            for k in ("durationInFrames", "transitionIn", "transitionOut", "layers", "sfx", "notes", "anchors"):
                 if k in patch:
                     sc[k] = patch[k]
+            previous_narration = sc.get("narration", "")
+            previous_words = sc.get("words", [])
             if ("narration" in patch or "voice" in patch) and pid:
                 new_narr = str(patch.get("narration", sc.get("narration", ""))).strip()
                 new_voice = str(patch.get("voice", sc.get("voice") or plan.get("audio", {}).get("voice") or "faber")).strip() or "faber"
+                if new_narr != previous_narration:
+                    for anchor in sc.get("anchors", []):
+                        if anchor.get("wordId"):
+                            old_index = next((i for i,w in enumerate(previous_words) if w["id"] == anchor["wordId"]), -1)
+                            if old_index >= 0:
+                                anchor["word"] = previous_words[old_index]["word"]
+                                anchor["occurrence"] = sum(normalize_token(w["word"]) == normalize_token(anchor["word"]) for w in previous_words[:old_index+1])
+                                anchor["wordId"] = ""
                 sc["narration"] = new_narr
                 sc["voice"] = new_voice
                 if new_narr and new_voice != "none":
@@ -421,6 +460,24 @@ def patch_scene(plan: dict[str, Any], scene_id: str, patch: dict[str, Any], *, p
                     timings[scene_id] = {"wav": f"voice/{scene_id}.wav", "offset_ms": LEAD_MS, "duration_ms": info["duration_ms"], "timing": info["timing"], "cached": info.get("cached", False), "voice": new_voice}
                     write_json(vdir / "timings.json", timings)
                     plan["audio"]["narration"] = "voice/narration.wav"
+            if pid and "anchors" in patch:
+                from .contracts import SceneAnchor
+                sc["anchors"] = [SceneAnchor.model_validate(a).model_dump() for a in sc.get("anchors", [])]
+                for anchor in sc["anchors"]:
+                    if anchor["asset"]:
+                        rel = _resolve_asset(pid, anchor["asset"])
+                        anchor["asset"] = rel
+                        sc["assets"][rel] = rel
+            if pid and ("anchors" in patch or "narration" in patch or "voice" in patch):
+                sc["sfx"] = [cue for cue in sc.get("sfx", []) if cue.get("role") != "word_anchor"]
+                for anchor in sc.get("anchors", []):
+                    if anchor.get("sfx"):
+                        try:
+                            at_ms, _ = resolve_anchor(sc["words"], anchor)
+                        except VRSError:
+                            continue
+                        sc["sfx"].append({"path": _resolve_asset(pid, anchor["sfx"]), "at_ms": at_ms, "volume": 0.16, "role": "word_anchor"})
+                sc["sfx"] = sc["sfx"][:32]
             if sc["words"] and sc["words"][-1]["end"] > sc["durationInFrames"] * 1000 / fps:
                 raise VRSError("A nova duração cortaria a narração da cena.", code="would_cut_words")
             return FilmPlan.model_validate(plan).model_dump(by_alias=True)

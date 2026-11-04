@@ -482,6 +482,124 @@
       "params": [
         {"key": "title", "type": "text", "label": "Título (opcional)", "maxLength": 80, "default": ""}
       ]
+    },
+    {
+      "id": "vrs-pandora-cutout",
+      "title": "Pandora: apresentador e motion",
+      "summary": "Mídia real ou grade dimensional, apresentador recortado, indicador ilustrativo e destaques por palavra.",
+      "category": "personagens",
+      "motion": [
+        "spring",
+        "cutout 2.5D",
+        "word anchors"
+      ],
+      "params": [
+        {
+          "key": "title",
+          "type": "text",
+          "label": "title",
+          "default": "Sua ideia em movimento",
+          "maxLength": 100
+        },
+        {
+          "key": "kicker",
+          "type": "text",
+          "label": "kicker",
+          "default": "ESTÚDIO",
+          "maxLength": 100
+        },
+        {
+          "key": "metricPrefix",
+          "type": "text",
+          "label": "metricPrefix",
+          "default": "",
+          "maxLength": 100
+        },
+        {
+          "key": "metricSuffix",
+          "type": "text",
+          "label": "metricSuffix",
+          "default": "",
+          "maxLength": 100
+        },
+        {
+          "key": "metricLabel",
+          "type": "text",
+          "label": "metricLabel",
+          "default": "Exemplo ilustrativo",
+          "maxLength": 100
+        },
+        {
+          "key": "highlightBadge",
+          "type": "text",
+          "label": "highlightBadge",
+          "default": "",
+          "maxLength": 100
+        },
+        {
+          "key": "metricValue",
+          "type": "number",
+          "label": "metricValue",
+          "default": 100,
+          "min": -1000000000.0,
+          "max": 1000000000.0
+        },
+        {
+          "key": "presenterAsset",
+          "type": "asset",
+          "label": "presenterAsset",
+          "default": ""
+        },
+        {
+          "key": "backgroundAsset",
+          "type": "asset",
+          "label": "backgroundAsset",
+          "default": ""
+        },
+        {
+          "key": "stickerAsset",
+          "type": "asset",
+          "label": "stickerAsset",
+          "default": ""
+        },
+        {
+          "key": "presenterSide",
+          "type": "select",
+          "label": "presenterSide",
+          "default": "right",
+          "options": [
+            "left",
+            "right"
+          ]
+        },
+        {
+          "key": "cameraMode",
+          "type": "select",
+          "label": "cameraMode",
+          "default": "wide",
+          "options": [
+            "wide",
+            "closeup",
+            "auto_cut"
+          ]
+        },
+        {
+          "key": "cards",
+          "type": "list",
+          "label": "cards",
+          "default": [
+            "Ideia",
+            "Edição",
+            "Resultado"
+          ],
+          "maxItems": 4,
+          "item": {
+            "type": "text",
+            "maxLength": 80
+          }
+        }
+      ]
     }
+
   ]
 }

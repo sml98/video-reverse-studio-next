@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { AbsoluteFill, useCurrentFrame, useVideoConfig } from "remotion";
+import { AbsoluteFill, OffthreadVideo, useCurrentFrame, useVideoConfig } from "remotion";
 import * as THREE from "three";
 import { pop, prog } from "../core/easing";
 import { fontStack, useVrs, withAlpha, type WordTiming } from "../core/theme";
@@ -7,7 +7,7 @@ import { AssetImg, SceneHeader, Tag } from "./common";
 
 type Any = Record<string, any>;
 
-export type Viseme = "closed" | "A" | "O" | "E" | "M" | "smile";
+export type Viseme = "closed" | "A" | "O" | "E" | "M" | "F" | "smile";
 
 /** Extrai o visema labial e estado de fala em tempo real a partir das WordAnchors (ou cadência de fallback). */
 export function computeSpeechState(
@@ -21,20 +21,21 @@ export function computeSpeechState(
   const ms = (effFrame / fps) * 1000;
 
   if (words && words.length > 0) {
-    const idx = words.findIndex((w) => ms >= w.start - 30 && ms <= w.end + 40);
+    const idx = words.findIndex((w) => ms >= w.start && ms < w.end);
     if (idx >= 0) {
       const w = words[idx];
       const dur = Math.max(80, w.end - w.start);
       const local = Math.max(0, Math.min(1, (ms - w.start) / dur));
-      const clean = (w.word || "").toLowerCase();
-      const subOsc = Math.sin(local * Math.PI * Math.max(1, Math.min(3, Math.ceil(clean.length / 3))));
-      if (subOsc < -0.55) {
-        return { talking: true, viseme: "M", syllablePulse: 0.2, wordIndex: idx, activeWord: w.word };
-      }
-      let v: Viseme = "A";
-      if (/[oóôõuú]/.test(clean)) v = local < 0.55 ? "O" : "A";
-      else if (/[eéêií]/.test(clean)) v = local < 0.55 ? "E" : "A";
-      else if (/^[mpb]/.test(clean) && local < 0.25) v = "M";
+      // Orthographic approximation within measured word bounds, not phoneme alignment.
+      const clean = (w.word || "").toLowerCase().replace(/[^a-zà-ÿ]/g, "");
+      const ch = clean[Math.min(clean.length-1, Math.floor(local*clean.length))] || "";
+      let v: Viseme = "closed";
+      if (/[mpb]/.test(ch)) v = "M";
+      else if (/[fv]/.test(ch)) v = "F";
+      else if (/[oóôõuú]/.test(ch)) v = "O";
+      else if (/[eéêií]/.test(ch)) v = "E";
+      else if (/[aáâã]/.test(ch)) v = "A";
+      else v = "E";
       return {
         talking: true,
         viseme: v,
@@ -101,7 +102,7 @@ export function computeCameraTransform(
 // MOTOR 1: vrs-stickman-stage (Bonequinho Palito Articulado 2D + Quadro/Cenário)
 // ============================================================================
 
-const StickFigureSVG: React.FC<{
+export const StickFigureSVG: React.FC<{
   frame: number;
   fps: number;
   action: string;
@@ -266,7 +267,7 @@ const StickFigureSVG: React.FC<{
           <ellipse cx={2} cy={19} rx={9} ry={11} fill="#111827" />
         ) : viseme === "A" ? (
           <path d="M -13 13 Q 2 32 17 13 Z" fill="#111827" />
-        ) : viseme === "E" ? (
+        ) : (viseme === "E" || viseme === "F") ? (
           <rect x={-13} y={13} width={28} height={10} rx={5} fill="#111827" />
         ) : expression === "happy" || viseme === "smile" ? (
           <path d="M -14 14 Q 2 27 18 14" stroke="#111827" strokeWidth={4.5} fill="none" strokeLinecap="round" />
@@ -698,7 +699,7 @@ const PaperCutoutPuppet: React.FC<{
               </g>
             ) : viseme === "O" ? (
               <ellipse cx={0} cy={34} rx={12} ry={14} fill="#0f172a" />
-            ) : viseme === "E" ? (
+            ) : (viseme === "E" || viseme === "F") ? (
               <g>
                 <rect x={-20} y={26} width={40} height={13} rx={4} fill="#ffffff" stroke="#0f172a" strokeWidth={2.5} />
                 <line x1={-20} y1={32.5} x2={20} y2={32.5} stroke="#0f172a" strokeWidth={2} />
@@ -1740,7 +1741,7 @@ export const DeviceMockupScene: React.FC<{ params: Any }> = ({ params }) => {
 export const VideoBrollScene: React.FC<{ params: Any }> = ({ params }) => {
   const frame = useCurrentFrame();
   const { fps, durationInFrames } = useVideoConfig();
-  const { theme, layout, words, narration } = useVrs();
+  const { theme, layout, words, narration, assetUrl } = useVrs();
 
   const speech = computeSpeechState(frame, fps, words, narration || params.caption || params.title || "broll");
   const t = frame / Math.max(1, durationInFrames);
@@ -1756,7 +1757,7 @@ export const VideoBrollScene: React.FC<{ params: Any }> = ({ params }) => {
           background: `radial-gradient(circle at ${50 + Math.sin(t * 4) * 15}% 45%, ${withAlpha(theme.accent2, 0.28)}, #050811 75%)`,
         }}
       >
-        {params.videoAsset && /\.(png|jpg|jpeg|webp|gif|svg)$/i.test(params.videoAsset) ? (
+        {params.videoAsset && /\.(mp4|webm|mov)$/i.test(params.videoAsset) ? <OffthreadVideo src={assetUrl(params.videoAsset)} muted style={{width:"100%",height:"100%",objectFit:"cover"}}/> : params.videoAsset && /\.(png|jpg|jpeg|webp|gif|svg)$/i.test(params.videoAsset) ? (
           <AssetImg src={params.videoAsset} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
         ) : null}
         {/* Grade HUD documental */}

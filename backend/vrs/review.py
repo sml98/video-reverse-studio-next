@@ -27,7 +27,7 @@ MEDIA_SCENES = {
     "vrs-multiplane-stage",
     "vrs-3d-stage",
     "vrs-parallax-photo",
-    "vrs-video-broll",
+    "vrs-video-broll", "vrs-pandora-cutout",
     "vrs-news-highlight",
     "vrs-device-mockup",
 }
