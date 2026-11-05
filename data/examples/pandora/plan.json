@@ -1,0 +1,493 @@
+{
+  "schema": "vrs.filmplan/1",
+  "title": "Uma ideia ganha forma",
+  "language": "pt-BR",
+  "width": 720,
+  "height": 1280,
+  "fps": 30,
+  "theme": {
+    "background": "#111015",
+    "foreground": "#F1EDDF",
+    "accent": "#C3FF5F",
+    "accent2": "#9C7BFF",
+    "muted": "#8fb3a2",
+    "font": "sans",
+    "visualLanguage": "infografico"
+  },
+  "captions": {
+    "enabled": true,
+    "mode": "word",
+    "position": "bottom",
+    "maxWords": 3,
+    "highlight": "#ffd23f",
+    "style": "hormozi"
+  },
+  "audio": {
+    "narration": "voice/narration.wav",
+    "music": "assets/lib/vrs-pro-audio/bgm-corp-finance.wav",
+    "musicVolume": 0.12,
+    "duck": true,
+    "voice": "faber"
+  },
+  "scenes": [
+    {
+      "anchors": [
+        {
+          "word": "ideia",
+          "occurrence": 1,
+          "spanWords": 1,
+          "wordId": "",
+          "effect": "zoom_punch",
+          "asset": "",
+          "label": "IDEIA",
+          "sfx": ""
+        },
+        {
+          "word": "forma",
+          "occurrence": 1,
+          "spanWords": 1,
+          "wordId": "",
+          "effect": "badge_flash",
+          "asset": "",
+          "label": "NOVA FORMA",
+          "sfx": ""
+        }
+      ],
+      "id": "s01",
+      "component": "vrs-pandora-cutout",
+      "params": {
+        "title": "Da ideia ao vídeo",
+        "kicker": "ESTÚDIO",
+        "metricPrefix": "",
+        "metricSuffix": "",
+        "metricLabel": "Etapas neste exemplo",
+        "highlightBadge": "",
+        "metricValue": 3,
+        "presenterAsset": "",
+        "backgroundAsset": "",
+        "stickerAsset": "",
+        "presenterSide": "right",
+        "cameraMode": "wide",
+        "cards": [
+          "Roteiro",
+          "Cenas",
+          "Edição"
+        ]
+      },
+      "durationInFrames": 150,
+      "narration": "Uma ideia pode ganhar uma nova forma.",
+      "voice": "faber",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Uma",
+          "start": 300,
+          "end": 504
+        },
+        {
+          "id": "w-2",
+          "word": "ideia",
+          "start": 504,
+          "end": 756
+        },
+        {
+          "id": "w-3",
+          "word": "pode",
+          "start": 756,
+          "end": 1033
+        },
+        {
+          "id": "w-4",
+          "word": "ganhar",
+          "start": 1033,
+          "end": 1357
+        },
+        {
+          "id": "w-5",
+          "word": "uma",
+          "start": 1357,
+          "end": 1526
+        },
+        {
+          "id": "w-6",
+          "word": "nova",
+          "start": 1526,
+          "end": 1814
+        },
+        {
+          "id": "w-7",
+          "word": "forma.",
+          "start": 1814,
+          "end": 2343
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "fade",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/click1.ogg",
+          "at_ms": 756,
+          "volume": 0.16,
+          "role": "anchor:w-3"
+        },
+        {
+          "path": "assets/lib/vrs-pro-audio/sfx-whoosh.wav",
+          "at_ms": 504,
+          "volume": 0.14,
+          "role": "word_anchor_auto"
+        },
+        {
+          "path": "assets/lib/vrs-pro-audio/sfx-pop-spring.wav",
+          "at_ms": 1814,
+          "volume": 0.14,
+          "role": "word_anchor_auto"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "anchors": [],
+      "id": "s02",
+      "component": "vrs-steps",
+      "params": {
+        "title": "Da Ideia à Tela",
+        "steps": [
+          {
+            "title": "Organize o roteiro",
+            "detail": "Foco na mensagem principal"
+          },
+          {
+            "title": "Escolha as cenas",
+            "detail": "Motion, cutout e evidências"
+          },
+          {
+            "title": "Ajuste a edição",
+            "detail": "Âncoras sincronizadas às palavras"
+          }
+        ]
+      },
+      "durationInFrames": 210,
+      "narration": "Primeiro, organize o roteiro. Depois, escolha as cenas. Por fim, ajuste a edição.",
+      "voice": "faber",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Primeiro,",
+          "start": 300,
+          "end": 879
+        },
+        {
+          "id": "w-2",
+          "word": "organize",
+          "start": 879,
+          "end": 1375
+        },
+        {
+          "id": "w-3",
+          "word": "o",
+          "start": 1375,
+          "end": 1435
+        },
+        {
+          "id": "w-4",
+          "word": "roteiro.",
+          "start": 1435,
+          "end": 2087
+        },
+        {
+          "id": "w-5",
+          "word": "Depois,",
+          "start": 2227,
+          "end": 2742
+        },
+        {
+          "id": "w-6",
+          "word": "escolha",
+          "start": 2742,
+          "end": 3081
+        },
+        {
+          "id": "w-7",
+          "word": "as",
+          "start": 3081,
+          "end": 3163
+        },
+        {
+          "id": "w-8",
+          "word": "cenas.",
+          "start": 3163,
+          "end": 3853
+        },
+        {
+          "id": "w-9",
+          "word": "Por",
+          "start": 3993,
+          "end": 4150
+        },
+        {
+          "id": "w-10",
+          "word": "fim,",
+          "start": 4150,
+          "end": 4439
+        },
+        {
+          "id": "w-11",
+          "word": "ajuste",
+          "start": 4439,
+          "end": 4837
+        },
+        {
+          "id": "w-12",
+          "word": "a",
+          "start": 4837,
+          "end": 4885
+        },
+        {
+          "id": "w-13",
+          "word": "edição.",
+          "start": 4885,
+          "end": 5560
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "zoom",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
+          "at_ms": 30,
+          "volume": 0.18,
+          "role": "transition:zoom"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "anchors": [],
+      "id": "s03",
+      "component": "vrs-news-highlight",
+      "params": {
+        "title": "",
+        "sourceName": "BOLETIM CIENTÍFICO & DADOS",
+        "publishDate": "EDIÇÃO ESPECIAL · RELATÓRIO",
+        "headline": "Clareza em cada escolha",
+        "highlightText": "Conteúdo ilustrativo",
+        "bodySnippet": "Pesquisadores analisaram centenas de sessões práticas antes e depois da mudança estrutural de rotina.",
+        "image": ""
+      },
+      "durationInFrames": 180,
+      "narration": "Cada escolha ajuda a contar a história com clareza.",
+      "voice": "faber",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Cada",
+          "start": 300,
+          "end": 510
+        },
+        {
+          "id": "w-2",
+          "word": "escolha",
+          "start": 510,
+          "end": 804
+        },
+        {
+          "id": "w-3",
+          "word": "ajuda",
+          "start": 804,
+          "end": 1073
+        },
+        {
+          "id": "w-4",
+          "word": "a",
+          "start": 1073,
+          "end": 1132
+        },
+        {
+          "id": "w-5",
+          "word": "contar",
+          "start": 1132,
+          "end": 1460
+        },
+        {
+          "id": "w-6",
+          "word": "a",
+          "start": 1460,
+          "end": 1530
+        },
+        {
+          "id": "w-7",
+          "word": "história",
+          "start": 1530,
+          "end": 1870
+        },
+        {
+          "id": "w-8",
+          "word": "com",
+          "start": 1870,
+          "end": 2046
+        },
+        {
+          "id": "w-9",
+          "word": "clareza.",
+          "start": 2046,
+          "end": 2738
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "zoom",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
+          "at_ms": 30,
+          "volume": 0.18,
+          "role": "transition:zoom"
+        },
+        {
+          "path": "assets/lib/kenney-ui-audio/click1.ogg",
+          "at_ms": 1073,
+          "volume": 0.16,
+          "role": "anchor:w-4"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "anchors": [],
+      "id": "s04",
+      "component": "vrs-pandora-cutout",
+      "params": {
+        "title": "Dê o primeiro passo",
+        "kicker": "ESTÚDIO",
+        "metricPrefix": "",
+        "metricSuffix": "",
+        "metricLabel": "Uma ideia para começar",
+        "highlightBadge": "",
+        "metricValue": 1,
+        "presenterAsset": "",
+        "backgroundAsset": "",
+        "stickerAsset": "",
+        "presenterSide": "right",
+        "cameraMode": "wide",
+        "cards": []
+      },
+      "durationInFrames": 180,
+      "narration": "Encontre seu ritmo e dê o primeiro passo.",
+      "voice": "faber",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Encontre",
+          "start": 300,
+          "end": 810
+        },
+        {
+          "id": "w-2",
+          "word": "seu",
+          "start": 810,
+          "end": 964
+        },
+        {
+          "id": "w-3",
+          "word": "ritmo",
+          "start": 964,
+          "end": 1260
+        },
+        {
+          "id": "w-4",
+          "word": "e",
+          "start": 1260,
+          "end": 1320
+        },
+        {
+          "id": "w-5",
+          "word": "dê",
+          "start": 1320,
+          "end": 1450
+        },
+        {
+          "id": "w-6",
+          "word": "o",
+          "start": 1450,
+          "end": 1509
+        },
+        {
+          "id": "w-7",
+          "word": "primeiro",
+          "start": 1509,
+          "end": 1889
+        },
+        {
+          "id": "w-8",
+          "word": "passo.",
+          "start": 1889,
+          "end": 2482
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {},
+      "layers": [],
+      "transitionIn": {
+        "type": "zoom",
+        "durationInFrames": 10,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/kenney-ui-audio/rollover1.ogg",
+          "at_ms": 30,
+          "volume": 0.18,
+          "role": "transition:zoom"
+        },
+        {
+          "path": "assets/lib/kenney-ui-audio/click1.ogg",
+          "at_ms": 964,
+          "volume": 0.16,
+          "role": "anchor:w-3"
+        }
+      ],
+      "notes": ""
+    }
+  ],
+  "uncertainties": [],
+  "sources": [],
+  "illustrativeData": false,
+  "warnings": []
+}

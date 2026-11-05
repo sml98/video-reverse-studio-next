@@ -1,5 +1,5 @@
 {
-  "project_id": "p4df3da0b0395",
+  "project_id": "peea73780360f",
   "niche": "financas",
   "review": {
     "technical": "aprovado_tecnicamente",
@@ -8,35 +8,35 @@
       {
         "scene": "s01",
         "component": "vrs-title",
-        "motion": 3.2,
-        "first_half": 3.41
+        "motion": 3.27,
+        "first_half": 3.62
       },
       {
         "scene": "s02",
         "component": "vrs-calc",
-        "motion": 3.58,
-        "first_half": 4.56
+        "motion": 4.09,
+        "first_half": 4.86
       },
       {
         "scene": "s03",
         "component": "vrs-line-chart",
-        "motion": 3.84,
-        "first_half": 5.08
+        "motion": 4.08,
+        "first_half": 5.25
       },
       {
         "scene": "s04",
         "component": "vrs-device-mockup",
-        "motion": 2.31,
-        "first_half": 2.07
+        "motion": 3.83,
+        "first_half": 3.57
       },
       {
         "scene": "s05",
         "component": "vrs-kinetic-quote",
-        "motion": 3.2,
-        "first_half": 3.02
+        "motion": 3.86,
+        "first_half": 3.67
       }
     ]
   },
-  "render_seconds": 41.9,
+  "render_seconds": 50.7,
   "duration_s": 29.3
 }

@@ -2,8 +2,8 @@
   "schema": "vrs.filmplan/1",
   "title": "Juros compostos",
   "language": "pt-BR",
-  "width": 1280,
-  "height": 720,
+  "width": 720,
+  "height": 1280,
   "fps": 30,
   "theme": {
     "background": "#08130f",
@@ -31,6 +31,7 @@
   },
   "scenes": [
     {
+      "anchors": [],
       "id": "s01",
       "component": "vrs-title",
       "params": {
@@ -105,6 +106,7 @@
       "notes": ""
     },
     {
+      "anchors": [],
       "id": "s02",
       "component": "vrs-calc",
       "params": {
@@ -335,6 +337,7 @@
       "notes": ""
     },
     {
+      "anchors": [],
       "id": "s03",
       "component": "vrs-line-chart",
       "params": {
@@ -469,6 +472,7 @@
       "notes": ""
     },
     {
+      "anchors": [],
       "id": "s04",
       "component": "vrs-device-mockup",
       "params": {
@@ -605,6 +609,7 @@
       "notes": ""
     },
     {
+      "anchors": [],
       "id": "s05",
       "component": "vrs-kinetic-quote",
       "params": {

@@ -1,5 +1,5 @@
 {
-  "project_id": "p893f285dcb9f",
+  "project_id": "p51e3c68cd63a",
   "niche": "multiplane",
   "review": {
     "technical": "aprovado_tecnicamente",
@@ -8,23 +8,23 @@
       {
         "scene": "s01",
         "component": "vrs-multiplane-stage",
-        "motion": 19.35,
-        "first_half": 23.16
+        "motion": 24.26,
+        "first_half": 28.76
       },
       {
         "scene": "s02",
         "component": "vrs-multiplane-stage",
-        "motion": 23.35,
-        "first_half": 17.69
+        "motion": 27.35,
+        "first_half": 24.83
       },
       {
         "scene": "s03",
         "component": "vrs-multiplane-stage",
-        "motion": 12.67,
-        "first_half": 12.59
+        "motion": 17.74,
+        "first_half": 18.14
       }
     ]
   },
-  "render_seconds": 38.3,
+  "render_seconds": 49.4,
   "duration_s": 22.2
 }

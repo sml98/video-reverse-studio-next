@@ -1,0 +1,84 @@
+{
+  "schema": "vrs.storyboard/1",
+  "title": "Uma ideia ganha forma",
+  "language": "pt-BR",
+  "uncertainties": [],
+  "sources": [],
+  "illustrative_data": false,
+  "music": "lib:vrs-pro-audio.bgm-corp-finance",
+  "scenes": [
+    {
+      "preset_id": "vrs-pandora-cutout",
+      "parameters": {
+        "title": "Da ideia ao vídeo",
+        "metricValue": 3,
+        "metricLabel": "Etapas neste exemplo",
+        "cards": [
+          "Roteiro",
+          "Cenas",
+          "Edição"
+        ]
+      },
+      "narration": "Uma ideia pode ganhar uma nova forma.",
+      "duration": 5,
+      "anchors": [
+        {
+          "word": "ideia",
+          "occurrence": 1,
+          "spanWords": 1,
+          "effect": "zoom_punch",
+          "label": "IDEIA"
+        },
+        {
+          "word": "forma",
+          "occurrence": 1,
+          "spanWords": 1,
+          "effect": "badge_flash",
+          "label": "NOVA FORMA"
+        }
+      ]
+    },
+    {
+      "preset_id": "vrs-steps",
+      "parameters": {
+        "title": "Da Ideia à Tela",
+        "steps": [
+          {
+            "title": "Organize o roteiro",
+            "detail": "Foco na mensagem principal"
+          },
+          {
+            "title": "Escolha as cenas",
+            "detail": "Motion, cutout e evidências"
+          },
+          {
+            "title": "Ajuste a edição",
+            "detail": "Âncoras sincronizadas às palavras"
+          }
+        ]
+      },
+      "narration": "Primeiro, organize o roteiro. Depois, escolha as cenas. Por fim, ajuste a edição.",
+      "duration": 7
+    },
+    {
+      "preset_id": "vrs-news-highlight",
+      "parameters": {
+        "headline": "Clareza em cada escolha",
+        "highlightText": "Conteúdo ilustrativo"
+      },
+      "narration": "Cada escolha ajuda a contar a história com clareza.",
+      "duration": 6
+    },
+    {
+      "preset_id": "vrs-pandora-cutout",
+      "parameters": {
+        "title": "Dê o primeiro passo",
+        "metricValue": 1,
+        "metricLabel": "Uma ideia para começar",
+        "cards": []
+      },
+      "narration": "Encontre seu ritmo e dê o primeiro passo.",
+      "duration": 6
+    }
+  ]
+}

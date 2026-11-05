@@ -2,8 +2,8 @@
   "schema": "vrs.filmplan/1",
   "title": "Podcast dos Avatares: IA vs Código",
   "language": "pt-BR",
-  "width": 1280,
-  "height": 720,
+  "width": 720,
+  "height": 1280,
   "fps": 30,
   "theme": {
     "background": "#0b1020",
@@ -31,6 +31,7 @@
   },
   "scenes": [
     {
+      "anchors": [],
       "id": "s01",
       "component": "vrs-multiplane-stage",
       "params": {
@@ -176,6 +177,7 @@
       "notes": ""
     },
     {
+      "anchors": [],
       "id": "s02",
       "component": "vrs-multiplane-stage",
       "params": {
@@ -356,6 +358,7 @@
       "notes": ""
     },
     {
+      "anchors": [],
       "id": "s03",
       "component": "vrs-multiplane-stage",
       "params": {

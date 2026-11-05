@@ -2,8 +2,8 @@
   "schema": "vrs.filmplan/1",
   "title": "O paradoxo da produtividade",
   "language": "pt-BR",
-  "width": 1280,
-  "height": 720,
+  "width": 720,
+  "height": 1280,
   "fps": 30,
   "theme": {
     "background": "#0f172a",
@@ -31,6 +31,7 @@
   },
   "scenes": [
     {
+      "anchors": [],
       "id": "s01",
       "component": "vrs-stickman-stage",
       "params": {
@@ -152,6 +153,7 @@
       "notes": ""
     },
     {
+      "anchors": [],
       "id": "s02",
       "component": "vrs-stickman-stage",
       "params": {
@@ -308,6 +310,7 @@
       "notes": ""
     },
     {
+      "anchors": [],
       "id": "s03",
       "component": "vrs-stickman-stage",
       "params": {

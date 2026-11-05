@@ -1,5 +1,5 @@
 {
-  "project_id": "p2f00a5939fbd",
+  "project_id": "pa7d5be2cf406",
   "niche": "stickman",
   "review": {
     "technical": "aprovado_tecnicamente",
@@ -8,23 +8,23 @@
       {
         "scene": "s01",
         "component": "vrs-stickman-stage",
-        "motion": 23.04,
-        "first_half": 20.33
+        "motion": 22.47,
+        "first_half": 25.23
       },
       {
         "scene": "s02",
         "component": "vrs-stickman-stage",
-        "motion": 6.94,
-        "first_half": 7.57
+        "motion": 8.05,
+        "first_half": 8.82
       },
       {
         "scene": "s03",
         "component": "vrs-stickman-stage",
-        "motion": 11.23,
-        "first_half": 13.86
+        "motion": 12.35,
+        "first_half": 14.56
       }
     ]
   },
-  "render_seconds": 26.6,
+  "render_seconds": 24.5,
   "duration_s": 17.9
 }

@@ -2,8 +2,8 @@
   "schema": "vrs.filmplan/1",
   "title": "Desafio no Obby das Nuvens",
   "language": "pt-BR",
-  "width": 1280,
-  "height": 720,
+  "width": 720,
+  "height": 1280,
   "fps": 30,
   "theme": {
     "background": "#0f172a",
@@ -31,6 +31,7 @@
   },
   "scenes": [
     {
+      "anchors": [],
       "id": "s01",
       "component": "vrs-roblox-stage",
       "params": {
@@ -150,6 +151,7 @@
       "notes": ""
     },
     {
+      "anchors": [],
       "id": "s02",
       "component": "vrs-roblox-stage",
       "params": {
@@ -275,6 +277,7 @@
       "notes": ""
     },
     {
+      "anchors": [],
       "id": "s03",
       "component": "vrs-roblox-stage",
       "params": {

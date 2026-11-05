@@ -1,0 +1,36 @@
+{
+  "project_id": "p0e3ed584b419",
+  "niche": "pandora",
+  "review": {
+    "technical": "aprovado_tecnicamente",
+    "findings": [],
+    "motion": [
+      {
+        "scene": "s01",
+        "component": "vrs-pandora-cutout",
+        "motion": 6.39,
+        "first_half": 9.31
+      },
+      {
+        "scene": "s02",
+        "component": "vrs-steps",
+        "motion": 3.28,
+        "first_half": 3.08
+      },
+      {
+        "scene": "s03",
+        "component": "vrs-news-highlight",
+        "motion": 7.59,
+        "first_half": 7.35
+      },
+      {
+        "scene": "s04",
+        "component": "vrs-pandora-cutout",
+        "motion": 2.81,
+        "first_half": 2.83
+      }
+    ]
+  },
+  "render_seconds": 52.9,
+  "duration_s": 24.0
+}

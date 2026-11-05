@@ -45,6 +45,22 @@
           "Edição"
         ]
       },
+      "anchors": [
+        {
+          "word": "ideia",
+          "occurrence": 1,
+          "spanWords": 1,
+          "effect": "zoom_punch",
+          "label": "IDEIA"
+        },
+        {
+          "word": "forma",
+          "occurrence": 1,
+          "spanWords": 1,
+          "effect": "badge_flash",
+          "label": "NOVA FORMA"
+        }
+      ],
       "guidance": "Exemplo ilustrativo, sem promessa de desempenho."
     },
     {
@@ -53,7 +69,23 @@
       "preset_id": "vrs-steps",
       "duration": 7,
       "narration": "Primeiro, organize o roteiro. Depois, escolha as cenas. Por fim, ajuste a edição.",
-      "parameters": {},
+      "parameters": {
+        "title": "Da Ideia à Tela",
+        "steps": [
+          {
+            "title": "Organize o roteiro",
+            "detail": "Foco na mensagem principal"
+          },
+          {
+            "title": "Escolha as cenas",
+            "detail": "Motion, cutout e evidências"
+          },
+          {
+            "title": "Ajuste a edição",
+            "detail": "Âncoras sincronizadas às palavras"
+          }
+        ]
+      },
       "guidance": "Adapte o texto aos parâmetros da cena."
     },
     {

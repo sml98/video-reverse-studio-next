@@ -33,6 +33,7 @@ NICHE_TRANSITION = {
     "southpark": "slide",
     "roblox": "zoom",
     "multiplane": "fade",
+    "pandora": "zoom",
 }
 NICHE_BGM = {
     "ciencia": "lib:vrs-pro-audio.bgm-lofi-explain",
@@ -47,6 +48,7 @@ NICHE_BGM = {
     "historia": "lib:vrs-pro-audio.bgm-doc-suspense",
     "frases": "lib:vrs-pro-audio.bgm-doc-suspense",
     "financas": "lib:vrs-pro-audio.bgm-corp-finance",
+    "pandora": "lib:vrs-pro-audio.bgm-corp-finance",
 }
 NICHE_CAPTION_STYLE = {
     "southpark": "comic",
@@ -61,6 +63,7 @@ NICHE_CAPTION_STYLE = {
     "ciencia": "hormozi",
     "financas": "hormozi",
     "tutorial": "karaoke",
+    "pandora": "hormozi",
 }
 PRIMARY_ASSET = {
     "vrs-pandora-cutout": "presenterAsset",
@@ -257,6 +260,12 @@ def expand(pid: str, storyboard: dict[str, Any], *, progress: Progress | None = 
                 start_ms, _ = resolve_anchor(words, anchor)
                 if anchor["sfx"]:
                     scene_sfx.append({"path": _resolve_asset(pid, anchor["sfx"]), "at_ms": start_ms, "volume": 0.16, "role": "word_anchor"})
+                elif opts.get("auto_sfx", True):
+                    auto_id = "lib:vrs-pro-audio.sfx-whoosh" if anchor.get("effect") in ("zoom_punch", "camera_shake") else "lib:vrs-pro-audio.sfx-pop-spring"
+                    try:
+                        scene_sfx.append({"path": _resolve_asset(pid, auto_id), "at_ms": start_ms, "volume": 0.14, "role": "word_anchor_auto"})
+                    except Exception:
+                        pass
             except VRSError:
                 warnings.append(f"Cena {sid}: âncora '{anchor['word'] or anchor['wordId']}' sem tempo válido nesta narração; efeito não será exibido.")
         scenes.append(
@@ -348,6 +357,7 @@ def storyboard_from_recipe(niche_id: str, *, title: str | None = None) -> dict[s
                 "duration": s["duration"],
                 **({"voice": s["voice"]} if s.get("voice") else {}),
                 **({"transition": s["transition"]} if s.get("transition") else {}),
+                **({"anchors": copy.deepcopy(s["anchors"])} if s.get("anchors") else {}),
             }
             for s in n["recipe"]
         ],

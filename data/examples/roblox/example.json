@@ -1,5 +1,5 @@
 {
-  "project_id": "pd5d2cb9990b2",
+  "project_id": "pd01560b4943d",
   "niche": "roblox",
   "review": {
     "technical": "aprovado_tecnicamente",
@@ -8,23 +8,23 @@
       {
         "scene": "s01",
         "component": "vrs-roblox-stage",
-        "motion": 4.67,
-        "first_half": 4.32
+        "motion": 10.61,
+        "first_half": 8.85
       },
       {
         "scene": "s02",
         "component": "vrs-roblox-stage",
-        "motion": 3.27,
-        "first_half": 3.28
+        "motion": 6.15,
+        "first_half": 5.72
       },
       {
         "scene": "s03",
         "component": "vrs-roblox-stage",
-        "motion": 3.21,
-        "first_half": 3.92
+        "motion": 4.69,
+        "first_half": 5.58
       }
     ]
   },
-  "render_seconds": 28.9,
+  "render_seconds": 41.0,
   "duration_s": 16.967
 }
