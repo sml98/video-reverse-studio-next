@@ -1,0 +1,974 @@
+{
+  "schema": "vrs.words/1",
+  "precision": [
+    "asr_estimated"
+  ],
+  "words": [
+    {
+      "id": "s01-w-1",
+      "word": "Você",
+      "start": 300,
+      "end": 540
+    },
+    {
+      "id": "s01-w-2",
+      "word": "sempre",
+      "start": 540,
+      "end": 820
+    },
+    {
+      "id": "s01-w-3",
+      "word": "sonhou",
+      "start": 820,
+      "end": 1180
+    },
+    {
+      "id": "s01-w-4",
+      "word": "em",
+      "start": 1180,
+      "end": 1380
+    },
+    {
+      "id": "s01-w-5",
+      "word": "ter",
+      "start": 1380,
+      "end": 1500
+    },
+    {
+      "id": "s01-w-6",
+      "word": "um",
+      "start": 1500,
+      "end": 1620
+    },
+    {
+      "id": "s01-w-7",
+      "word": "canal",
+      "start": 1620,
+      "end": 1840
+    },
+    {
+      "id": "s01-w-8",
+      "word": "dark,",
+      "start": 1840,
+      "end": 2240
+    },
+    {
+      "id": "s01-w-9",
+      "word": "mas",
+      "start": 2740,
+      "end": 2820
+    },
+    {
+      "id": "s01-w-10",
+      "word": "nunca",
+      "start": 2820,
+      "end": 3080
+    },
+    {
+      "id": "s01-w-11",
+      "word": "soube",
+      "start": 3080,
+      "end": 3440
+    },
+    {
+      "id": "s01-w-12",
+      "word": "por",
+      "start": 3440,
+      "end": 3640
+    },
+    {
+      "id": "s01-w-13",
+      "word": "onde",
+      "start": 3640,
+      "end": 3860
+    },
+    {
+      "id": "s01-w-14",
+      "word": "começar?",
+      "start": 3860,
+      "end": 4280
+    },
+    {
+      "id": "s02-w-1",
+      "word": "Conheça",
+      "start": 5433,
+      "end": 5913
+    },
+    {
+      "id": "s02-w-2",
+      "word": "o",
+      "start": 5913,
+      "end": 5993
+    },
+    {
+      "id": "s02-w-3",
+      "word": "FrameRise.",
+      "start": 5993,
+      "end": 6953
+    },
+    {
+      "id": "s02-w-4",
+      "word": "Seu",
+      "start": 6953,
+      "end": 7273
+    },
+    {
+      "id": "s02-w-5",
+      "word": "espaço",
+      "start": 7273,
+      "end": 7693
+    },
+    {
+      "id": "s02-w-6",
+      "word": "para",
+      "start": 7693,
+      "end": 7973
+    },
+    {
+      "id": "s02-w-7",
+      "word": "criar",
+      "start": 7973,
+      "end": 8273
+    },
+    {
+      "id": "s02-w-8",
+      "word": "vídeos",
+      "start": 8273,
+      "end": 8693
+    },
+    {
+      "id": "s02-w-9",
+      "word": "e",
+      "start": 8693,
+      "end": 8973
+    },
+    {
+      "id": "s02-w-10",
+      "word": "tirar",
+      "start": 8973,
+      "end": 9273
+    },
+    {
+      "id": "s02-w-11",
+      "word": "essa",
+      "start": 9273,
+      "end": 9573
+    },
+    {
+      "id": "s02-w-12",
+      "word": "ideia",
+      "start": 9573,
+      "end": 9793
+    },
+    {
+      "id": "s02-w-13",
+      "word": "do",
+      "start": 9793,
+      "end": 9973
+    },
+    {
+      "id": "s02-w-14",
+      "word": "papel.",
+      "start": 9973,
+      "end": 10293
+    },
+    {
+      "id": "s03-w-1",
+      "word": "Você",
+      "start": 11300,
+      "end": 11620
+    },
+    {
+      "id": "s03-w-2",
+      "word": "digita",
+      "start": 11620,
+      "end": 12140
+    },
+    {
+      "id": "s03-w-3",
+      "word": "o",
+      "start": 12140,
+      "end": 12220
+    },
+    {
+      "id": "s03-w-4",
+      "word": "tema.",
+      "start": 12220,
+      "end": 12500
+    },
+    {
+      "id": "s03-w-5",
+      "word": "Vou",
+      "start": 13080,
+      "end": 13200
+    },
+    {
+      "id": "s03-w-6",
+      "word": "escolher",
+      "start": 13200,
+      "end": 13560
+    },
+    {
+      "id": "s03-w-7",
+      "word": "uma",
+      "start": 13560,
+      "end": 13720
+    },
+    {
+      "id": "s03-w-8",
+      "word": "história",
+      "start": 13720,
+      "end": 14080
+    },
+    {
+      "id": "s03-w-9",
+      "word": "à",
+      "start": 14080,
+      "end": 14300
+    },
+    {
+      "id": "s03-w-10",
+      "word": "luz",
+      "start": 14300,
+      "end": 14440
+    },
+    {
+      "id": "s03-w-11",
+      "word": "da",
+      "start": 14440,
+      "end": 14660
+    },
+    {
+      "id": "s03-w-12",
+      "word": "lua.",
+      "start": 14660,
+      "end": 14940
+    },
+    {
+      "id": "s04-w-1",
+      "word": "O",
+      "start": 15967,
+      "end": 16167
+    },
+    {
+      "id": "s04-w-2",
+      "word": "roteiro",
+      "start": 16167,
+      "end": 16547
+    },
+    {
+      "id": "s04-w-3",
+      "word": "organiza",
+      "start": 16547,
+      "end": 17027
+    },
+    {
+      "id": "s04-w-4",
+      "word": "a",
+      "start": 17027,
+      "end": 17067
+    },
+    {
+      "id": "s04-w-5",
+      "word": "história",
+      "start": 17067,
+      "end": 17487
+    },
+    {
+      "id": "s04-w-6",
+      "word": "e",
+      "start": 17487,
+      "end": 17947
+    },
+    {
+      "id": "s04-w-7",
+      "word": "orienta",
+      "start": 17947,
+      "end": 18467
+    },
+    {
+      "id": "s04-w-8",
+      "word": "a",
+      "start": 18467,
+      "end": 18587
+    },
+    {
+      "id": "s04-w-9",
+      "word": "montagem",
+      "start": 18587,
+      "end": 19087
+    },
+    {
+      "id": "s04-w-10",
+      "word": "das",
+      "start": 19087,
+      "end": 19287
+    },
+    {
+      "id": "s04-w-11",
+      "word": "cenas.",
+      "start": 19287,
+      "end": 19647
+    },
+    {
+      "id": "s05-w-1",
+      "word": "A",
+      "start": 20867,
+      "end": 21047
+    },
+    {
+      "id": "s05-w-2",
+      "word": "narração",
+      "start": 21047,
+      "end": 21487
+    },
+    {
+      "id": "s05-w-3",
+      "word": "entra,",
+      "start": 21487,
+      "end": 21887
+    },
+    {
+      "id": "s05-w-4",
+      "word": "e",
+      "start": 21887,
+      "end": 22247
+    },
+    {
+      "id": "s05-w-5",
+      "word": "as",
+      "start": 22247,
+      "end": 22387
+    },
+    {
+      "id": "s05-w-6",
+      "word": "legendas",
+      "start": 22387,
+      "end": 22867
+    },
+    {
+      "id": "s05-w-7",
+      "word": "acompanham",
+      "start": 22867,
+      "end": 23367
+    },
+    {
+      "id": "s05-w-8",
+      "word": "cada",
+      "start": 23367,
+      "end": 23587
+    },
+    {
+      "id": "s05-w-9",
+      "word": "fala.",
+      "start": 23587,
+      "end": 23987
+    },
+    {
+      "id": "s06-w-1",
+      "word": "Imagens,",
+      "start": 25000,
+      "end": 25600
+    },
+    {
+      "id": "s06-w-2",
+      "word": "cenários",
+      "start": 25920,
+      "end": 26320
+    },
+    {
+      "id": "s06-w-3",
+      "word": "e",
+      "start": 26320,
+      "end": 26520
+    },
+    {
+      "id": "s06-w-4",
+      "word": "animações",
+      "start": 26520,
+      "end": 27140
+    },
+    {
+      "id": "s06-w-5",
+      "word": "começam",
+      "start": 27140,
+      "end": 27800
+    },
+    {
+      "id": "s06-w-6",
+      "word": "a",
+      "start": 27800,
+      "end": 27900
+    },
+    {
+      "id": "s06-w-7",
+      "word": "dar",
+      "start": 27900,
+      "end": 27980
+    },
+    {
+      "id": "s06-w-8",
+      "word": "vida",
+      "start": 27980,
+      "end": 28160
+    },
+    {
+      "id": "s06-w-9",
+      "word": "ao",
+      "start": 28160,
+      "end": 28320
+    },
+    {
+      "id": "s06-w-10",
+      "word": "vídeo.",
+      "start": 28320,
+      "end": 28600
+    },
+    {
+      "id": "s07-w-1",
+      "word": "Quer",
+      "start": 29600,
+      "end": 29780
+    },
+    {
+      "id": "s07-w-2",
+      "word": "mudar",
+      "start": 29780,
+      "end": 30040
+    },
+    {
+      "id": "s07-w-3",
+      "word": "o",
+      "start": 30040,
+      "end": 30180
+    },
+    {
+      "id": "s07-w-4",
+      "word": "estilo?",
+      "start": 30180,
+      "end": 30600
+    },
+    {
+      "id": "s07-w-5",
+      "word": "Escolha",
+      "start": 31060,
+      "end": 31400
+    },
+    {
+      "id": "s07-w-6",
+      "word": "outro",
+      "start": 31400,
+      "end": 31620
+    },
+    {
+      "id": "s07-w-7",
+      "word": "visual",
+      "start": 31620,
+      "end": 32040
+    },
+    {
+      "id": "s07-w-8",
+      "word": "e",
+      "start": 32040,
+      "end": 32320
+    },
+    {
+      "id": "s07-w-9",
+      "word": "acompanhe",
+      "start": 32320,
+      "end": 32920
+    },
+    {
+      "id": "s07-w-10",
+      "word": "a",
+      "start": 32920,
+      "end": 33000
+    },
+    {
+      "id": "s07-w-11",
+      "word": "transformação.",
+      "start": 33000,
+      "end": 33760
+    },
+    {
+      "id": "s08-w-1",
+      "word": "Olha",
+      "start": 34733,
+      "end": 34973
+    },
+    {
+      "id": "s08-w-2",
+      "word": "essa",
+      "start": 34973,
+      "end": 35153
+    },
+    {
+      "id": "s08-w-3",
+      "word": "mesma",
+      "start": 35153,
+      "end": 35393
+    },
+    {
+      "id": "s08-w-4",
+      "word": "cena",
+      "start": 35393,
+      "end": 35733
+    },
+    {
+      "id": "s08-w-5",
+      "word": "antes",
+      "start": 35733,
+      "end": 36093
+    },
+    {
+      "id": "s08-w-6",
+      "word": "da",
+      "start": 36093,
+      "end": 36293
+    },
+    {
+      "id": "s08-w-7",
+      "word": "edição.",
+      "start": 36293,
+      "end": 36673
+    },
+    {
+      "id": "s09-w-1",
+      "word": "Agora,",
+      "start": 37733,
+      "end": 38093
+    },
+    {
+      "id": "s09-w-2",
+      "word": "com",
+      "start": 38093,
+      "end": 38473
+    },
+    {
+      "id": "s09-w-3",
+      "word": "movimento,",
+      "start": 38473,
+      "end": 38813
+    },
+    {
+      "id": "s09-w-4",
+      "word": "cortes",
+      "start": 39213,
+      "end": 39573
+    },
+    {
+      "id": "s09-w-5",
+      "word": "e",
+      "start": 39573,
+      "end": 39673
+    },
+    {
+      "id": "s09-w-6",
+      "word": "efeitos.",
+      "start": 39673,
+      "end": 40173
+    },
+    {
+      "id": "s09-w-7",
+      "word": "Sentiu",
+      "start": 40473,
+      "end": 40873
+    },
+    {
+      "id": "s09-w-8",
+      "word": "a",
+      "start": 40873,
+      "end": 40953
+    },
+    {
+      "id": "s09-w-9",
+      "word": "diferença?",
+      "start": 40953,
+      "end": 41273
+    },
+    {
+      "id": "s10-w-1",
+      "word": "O",
+      "start": 42600,
+      "end": 42780
+    },
+    {
+      "id": "s10-w-2",
+      "word": "FrameRise",
+      "start": 42780,
+      "end": 43400
+    },
+    {
+      "id": "s10-w-3",
+      "word": "reúne",
+      "start": 43400,
+      "end": 43860
+    },
+    {
+      "id": "s10-w-4",
+      "word": "essas",
+      "start": 43860,
+      "end": 44220
+    },
+    {
+      "id": "s10-w-5",
+      "word": "etapas",
+      "start": 44220,
+      "end": 44920
+    },
+    {
+      "id": "s10-w-6",
+      "word": "em",
+      "start": 44920,
+      "end": 45040
+    },
+    {
+      "id": "s10-w-7",
+      "word": "um",
+      "start": 45040,
+      "end": 45200
+    },
+    {
+      "id": "s10-w-8",
+      "word": "fluxo",
+      "start": 45200,
+      "end": 45680
+    },
+    {
+      "id": "s10-w-9",
+      "word": "automatizado,",
+      "start": 45680,
+      "end": 46500
+    },
+    {
+      "id": "s10-w-10",
+      "word": "com",
+      "start": 46500,
+      "end": 47060
+    },
+    {
+      "id": "s10-w-11",
+      "word": "ajustes",
+      "start": 47060,
+      "end": 47640
+    },
+    {
+      "id": "s10-w-12",
+      "word": "do",
+      "start": 47640,
+      "end": 47720
+    },
+    {
+      "id": "s10-w-13",
+      "word": "seu",
+      "start": 47720,
+      "end": 47900
+    },
+    {
+      "id": "s10-w-14",
+      "word": "jeito.",
+      "start": 47900,
+      "end": 48280
+    },
+    {
+      "id": "s11-w-1",
+      "word": "Troque",
+      "start": 49400,
+      "end": 49740
+    },
+    {
+      "id": "s11-w-2",
+      "word": "uma",
+      "start": 49740,
+      "end": 49880
+    },
+    {
+      "id": "s11-w-3",
+      "word": "cena,",
+      "start": 49880,
+      "end": 50240
+    },
+    {
+      "id": "s11-w-4",
+      "word": "ajuste",
+      "start": 50580,
+      "end": 50980
+    },
+    {
+      "id": "s11-w-5",
+      "word": "o",
+      "start": 50980,
+      "end": 51000
+    },
+    {
+      "id": "s11-w-6",
+      "word": "ritmo",
+      "start": 51000,
+      "end": 51340
+    },
+    {
+      "id": "s11-w-7",
+      "word": "e",
+      "start": 51340,
+      "end": 51440
+    },
+    {
+      "id": "s11-w-8",
+      "word": "confira",
+      "start": 51440,
+      "end": 51820
+    },
+    {
+      "id": "s11-w-9",
+      "word": "a",
+      "start": 51820,
+      "end": 51940
+    },
+    {
+      "id": "s11-w-10",
+      "word": "prévia.",
+      "start": 51940,
+      "end": 52280
+    },
+    {
+      "id": "s12-w-1",
+      "word": "A",
+      "start": 53267,
+      "end": 53353
+    },
+    {
+      "id": "s12-w-2",
+      "word": "trilha",
+      "start": 53353,
+      "end": 53867
+    },
+    {
+      "id": "s12-w-3",
+      "word": "e",
+      "start": 53867,
+      "end": 53967
+    },
+    {
+      "id": "s12-w-4",
+      "word": "os",
+      "start": 53967,
+      "end": 54087
+    },
+    {
+      "id": "s12-w-5",
+      "word": "efeitos",
+      "start": 54087,
+      "end": 54487
+    },
+    {
+      "id": "s12-w-6",
+      "word": "completam",
+      "start": 54487,
+      "end": 55067
+    },
+    {
+      "id": "s12-w-7",
+      "word": "a",
+      "start": 55067,
+      "end": 55167
+    },
+    {
+      "id": "s12-w-8",
+      "word": "experiência.",
+      "start": 55167,
+      "end": 55787
+    },
+    {
+      "id": "s13-w-1",
+      "word": "E",
+      "start": 57034,
+      "end": 57234
+    },
+    {
+      "id": "s13-w-2",
+      "word": "eu",
+      "start": 57234,
+      "end": 57334
+    },
+    {
+      "id": "s13-w-3",
+      "word": "acompanho",
+      "start": 57334,
+      "end": 57874
+    },
+    {
+      "id": "s13-w-4",
+      "word": "você",
+      "start": 57874,
+      "end": 58094
+    },
+    {
+      "id": "s13-w-5",
+      "word": "para",
+      "start": 58094,
+      "end": 58294
+    },
+    {
+      "id": "s13-w-6",
+      "word": "apresentar",
+      "start": 58294,
+      "end": 58874
+    },
+    {
+      "id": "s13-w-7",
+      "word": "cada",
+      "start": 58874,
+      "end": 59174
+    },
+    {
+      "id": "s13-w-8",
+      "word": "detalhe!",
+      "start": 59174,
+      "end": 59774
+    },
+    {
+      "id": "s14-w-1",
+      "word": "Gostou",
+      "start": 60701,
+      "end": 61181
+    },
+    {
+      "id": "s14-w-2",
+      "word": "do",
+      "start": 61181,
+      "end": 61281
+    },
+    {
+      "id": "s14-w-3",
+      "word": "resultado?",
+      "start": 61281,
+      "end": 61721
+    },
+    {
+      "id": "s14-w-4",
+      "word": "É",
+      "start": 62321,
+      "end": 62421
+    },
+    {
+      "id": "s14-w-5",
+      "word": "só",
+      "start": 62421,
+      "end": 62601
+    },
+    {
+      "id": "s14-w-6",
+      "word": "exportar",
+      "start": 62601,
+      "end": 63081
+    },
+    {
+      "id": "s14-w-7",
+      "word": "o",
+      "start": 63081,
+      "end": 63221
+    },
+    {
+      "id": "s14-w-8",
+      "word": "vídeo",
+      "start": 63221,
+      "end": 63441
+    },
+    {
+      "id": "s14-w-9",
+      "word": "pronto.",
+      "start": 63441,
+      "end": 63821
+    },
+    {
+      "id": "s15-w-1",
+      "word": "Seu",
+      "start": 65068,
+      "end": 65328
+    },
+    {
+      "id": "s15-w-2",
+      "word": "sonho",
+      "start": 65328,
+      "end": 65568
+    },
+    {
+      "id": "s15-w-3",
+      "word": "de",
+      "start": 65568,
+      "end": 65648
+    },
+    {
+      "id": "s15-w-4",
+      "word": "ter",
+      "start": 65648,
+      "end": 65788
+    },
+    {
+      "id": "s15-w-5",
+      "word": "um",
+      "start": 65788,
+      "end": 65928
+    },
+    {
+      "id": "s15-w-6",
+      "word": "canal",
+      "start": 65928,
+      "end": 66148
+    },
+    {
+      "id": "s15-w-7",
+      "word": "dark",
+      "start": 66148,
+      "end": 66628
+    },
+    {
+      "id": "s15-w-8",
+      "word": "pode",
+      "start": 66628,
+      "end": 66908
+    },
+    {
+      "id": "s15-w-9",
+      "word": "começar",
+      "start": 66908,
+      "end": 67328
+    },
+    {
+      "id": "s15-w-10",
+      "word": "hoje.",
+      "start": 67328,
+      "end": 67708
+    },
+    {
+      "id": "s15-w-11",
+      "word": "FrameRise.",
+      "start": 67708,
+      "end": 69188
+    },
+    {
+      "id": "s15-w-12",
+      "word": "Vamos",
+      "start": 69188,
+      "end": 69488
+    },
+    {
+      "id": "s15-w-13",
+      "word": "criar",
+      "start": 69488,
+      "end": 69808
+    },
+    {
+      "id": "s15-w-14",
+      "word": "o",
+      "start": 69808,
+      "end": 69988
+    },
+    {
+      "id": "s15-w-15",
+      "word": "seu?",
+      "start": 69988,
+      "end": 70148
+    }
+  ]
+}

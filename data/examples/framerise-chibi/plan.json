@@ -1,0 +1,2578 @@
+{
+  "schema": "vrs.filmplan/1",
+  "title": "Seu canal pode começar aqui",
+  "language": "pt-BR",
+  "width": 720,
+  "height": 1280,
+  "fps": 30,
+  "theme": {
+    "background": "#111015",
+    "foreground": "#F1EDDF",
+    "accent": "#C3FF5F",
+    "accent2": "#9C7BFF",
+    "muted": "#a69bb5",
+    "font": "sans",
+    "visualLanguage": "ilustrado"
+  },
+  "captions": {
+    "enabled": true,
+    "mode": "word",
+    "position": "top",
+    "maxWords": 4,
+    "highlight": "#C3FF5F",
+    "style": "cinema"
+  },
+  "audio": {
+    "narration": "voice/narration.wav",
+    "music": "assets/lib/vrs-pro-audio/bgm-lofi-explain.wav",
+    "musicVolume": 0.12,
+    "duck": true,
+    "voice": "supertonic-f2"
+  },
+  "scenes": [
+    {
+      "anchors": [],
+      "id": "s01",
+      "component": "vrs-framerise-chibi",
+      "params": {
+        "mode": "hello",
+        "title": "SEU CANAL PODE COMEÇAR AQUI",
+        "appName": "FrameRise",
+        "prompt": "Uma viagem pela luz da lua.",
+        "cta": "DÊ O PRIMEIRO PASSO",
+        "fileName": "historia-da-lua.mp4",
+        "backgroundAsset": "assets/lib/framerise-chibi/observatory.png",
+        "poses": [
+          {
+            "asset": "assets/lib/framerise-chibi/pose-0.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-1.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-2.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-3.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-4.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-5.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-6.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-7.png"
+          }
+        ],
+        "previews": [
+          {
+            "asset": "assets/lib/framerise-chibi/moon.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/island.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/observatory.png"
+          }
+        ],
+        "pose": 0,
+        "reactToSpeech": true,
+        "motion": 1,
+        "actionProgress": 0.72,
+        "accent": "#C3FF5F",
+        "secondary": "#9C7BFF",
+        "footer": "FrameRise · demonstração visual",
+        "soundEnabled": true,
+        "soundLevel": 0.65
+      },
+      "durationInFrames": 154,
+      "narration": "Você sempre sonhou em ter um canal dark, mas nunca soube por onde começar?",
+      "voice": "supertonic-f2",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Você",
+          "start": 300,
+          "end": 540
+        },
+        {
+          "id": "w-2",
+          "word": "sempre",
+          "start": 540,
+          "end": 820
+        },
+        {
+          "id": "w-3",
+          "word": "sonhou",
+          "start": 820,
+          "end": 1180
+        },
+        {
+          "id": "w-4",
+          "word": "em",
+          "start": 1180,
+          "end": 1380
+        },
+        {
+          "id": "w-5",
+          "word": "ter",
+          "start": 1380,
+          "end": 1500
+        },
+        {
+          "id": "w-6",
+          "word": "um",
+          "start": 1500,
+          "end": 1620
+        },
+        {
+          "id": "w-7",
+          "word": "canal",
+          "start": 1620,
+          "end": 1840
+        },
+        {
+          "id": "w-8",
+          "word": "dark,",
+          "start": 1840,
+          "end": 2240
+        },
+        {
+          "id": "w-9",
+          "word": "mas",
+          "start": 2740,
+          "end": 2820
+        },
+        {
+          "id": "w-10",
+          "word": "nunca",
+          "start": 2820,
+          "end": 3080
+        },
+        {
+          "id": "w-11",
+          "word": "soube",
+          "start": 3080,
+          "end": 3440
+        },
+        {
+          "id": "w-12",
+          "word": "por",
+          "start": 3440,
+          "end": 3640
+        },
+        {
+          "id": "w-13",
+          "word": "onde",
+          "start": 3640,
+          "end": 3860
+        },
+        {
+          "id": "w-14",
+          "word": "começar?",
+          "start": 3860,
+          "end": 4280
+        }
+      ],
+      "timing": "asr_estimated",
+      "assets": {
+        "assets/lib/framerise-chibi/observatory.png": "assets/lib/framerise-chibi/observatory.png",
+        "assets/lib/framerise-chibi/pose-0.png": "assets/lib/framerise-chibi/pose-0.png",
+        "assets/lib/framerise-chibi/pose-1.png": "assets/lib/framerise-chibi/pose-1.png",
+        "assets/lib/framerise-chibi/pose-2.png": "assets/lib/framerise-chibi/pose-2.png",
+        "assets/lib/framerise-chibi/pose-3.png": "assets/lib/framerise-chibi/pose-3.png",
+        "assets/lib/framerise-chibi/pose-4.png": "assets/lib/framerise-chibi/pose-4.png",
+        "assets/lib/framerise-chibi/pose-5.png": "assets/lib/framerise-chibi/pose-5.png",
+        "assets/lib/framerise-chibi/pose-6.png": "assets/lib/framerise-chibi/pose-6.png",
+        "assets/lib/framerise-chibi/pose-7.png": "assets/lib/framerise-chibi/pose-7.png",
+        "assets/lib/framerise-chibi/moon.png": "assets/lib/framerise-chibi/moon.png",
+        "assets/lib/framerise-chibi/island.png": "assets/lib/framerise-chibi/island.png"
+      },
+      "layers": [],
+      "transitionIn": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/vrs-pro-audio/sfx-whoosh.wav",
+          "at_ms": 40,
+          "volume": 0.09100000000000001,
+          "role": "chibi:sfx-whoosh"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "anchors": [],
+      "id": "s02",
+      "component": "vrs-framerise-chibi",
+      "params": {
+        "mode": "brand",
+        "title": "CONHEÇA O FRAMERISE",
+        "appName": "FrameRise",
+        "prompt": "Uma viagem pela luz da lua.",
+        "cta": "DÊ O PRIMEIRO PASSO",
+        "fileName": "historia-da-lua.mp4",
+        "backgroundAsset": "assets/lib/framerise-chibi/engine.png",
+        "poses": [
+          {
+            "asset": "assets/lib/framerise-chibi/pose-0.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-1.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-2.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-3.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-4.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-5.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-6.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-7.png"
+          }
+        ],
+        "previews": [
+          {
+            "asset": "assets/lib/framerise-chibi/moon.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/island.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/observatory.png"
+          }
+        ],
+        "pose": 0,
+        "reactToSpeech": true,
+        "motion": 1,
+        "actionProgress": 0.72,
+        "accent": "#C3FF5F",
+        "secondary": "#9C7BFF",
+        "footer": "FrameRise · demonstração visual",
+        "soundEnabled": true,
+        "soundLevel": 0.65
+      },
+      "durationInFrames": 176,
+      "narration": "Conheça o FrameRise. Seu espaço para criar vídeos e tirar essa ideia do papel.",
+      "voice": "supertonic-f2",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Conheça",
+          "start": 300,
+          "end": 780
+        },
+        {
+          "id": "w-2",
+          "word": "o",
+          "start": 780,
+          "end": 860
+        },
+        {
+          "id": "w-3",
+          "word": "FrameRise.",
+          "start": 860,
+          "end": 1820
+        },
+        {
+          "id": "w-4",
+          "word": "Seu",
+          "start": 1820,
+          "end": 2140
+        },
+        {
+          "id": "w-5",
+          "word": "espaço",
+          "start": 2140,
+          "end": 2560
+        },
+        {
+          "id": "w-6",
+          "word": "para",
+          "start": 2560,
+          "end": 2840
+        },
+        {
+          "id": "w-7",
+          "word": "criar",
+          "start": 2840,
+          "end": 3140
+        },
+        {
+          "id": "w-8",
+          "word": "vídeos",
+          "start": 3140,
+          "end": 3560
+        },
+        {
+          "id": "w-9",
+          "word": "e",
+          "start": 3560,
+          "end": 3840
+        },
+        {
+          "id": "w-10",
+          "word": "tirar",
+          "start": 3840,
+          "end": 4140
+        },
+        {
+          "id": "w-11",
+          "word": "essa",
+          "start": 4140,
+          "end": 4440
+        },
+        {
+          "id": "w-12",
+          "word": "ideia",
+          "start": 4440,
+          "end": 4660
+        },
+        {
+          "id": "w-13",
+          "word": "do",
+          "start": 4660,
+          "end": 4840
+        },
+        {
+          "id": "w-14",
+          "word": "papel.",
+          "start": 4840,
+          "end": 5160
+        }
+      ],
+      "timing": "asr_estimated",
+      "assets": {
+        "assets/lib/framerise-chibi/engine.png": "assets/lib/framerise-chibi/engine.png",
+        "assets/lib/framerise-chibi/pose-0.png": "assets/lib/framerise-chibi/pose-0.png",
+        "assets/lib/framerise-chibi/pose-1.png": "assets/lib/framerise-chibi/pose-1.png",
+        "assets/lib/framerise-chibi/pose-2.png": "assets/lib/framerise-chibi/pose-2.png",
+        "assets/lib/framerise-chibi/pose-3.png": "assets/lib/framerise-chibi/pose-3.png",
+        "assets/lib/framerise-chibi/pose-4.png": "assets/lib/framerise-chibi/pose-4.png",
+        "assets/lib/framerise-chibi/pose-5.png": "assets/lib/framerise-chibi/pose-5.png",
+        "assets/lib/framerise-chibi/pose-6.png": "assets/lib/framerise-chibi/pose-6.png",
+        "assets/lib/framerise-chibi/pose-7.png": "assets/lib/framerise-chibi/pose-7.png",
+        "assets/lib/framerise-chibi/moon.png": "assets/lib/framerise-chibi/moon.png",
+        "assets/lib/framerise-chibi/island.png": "assets/lib/framerise-chibi/island.png",
+        "assets/lib/framerise-chibi/observatory.png": "assets/lib/framerise-chibi/observatory.png"
+      },
+      "layers": [],
+      "transitionIn": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/vrs-pro-audio/sfx-whoosh.wav",
+          "at_ms": 40,
+          "volume": 0.09100000000000001,
+          "role": "chibi:sfx-whoosh"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "anchors": [],
+      "id": "s03",
+      "component": "vrs-framerise-chibi",
+      "params": {
+        "mode": "prompt",
+        "title": "ESCREVA A SUA IDEIA",
+        "appName": "FrameRise",
+        "prompt": "Uma viagem pela luz da lua.",
+        "cta": "DÊ O PRIMEIRO PASSO",
+        "fileName": "historia-da-lua.mp4",
+        "backgroundAsset": "assets/lib/framerise-chibi/studio.png",
+        "poses": [
+          {
+            "asset": "assets/lib/framerise-chibi/pose-0.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-1.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-2.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-3.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-4.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-5.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-6.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-7.png"
+          }
+        ],
+        "previews": [
+          {
+            "asset": "assets/lib/framerise-chibi/moon.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/island.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/observatory.png"
+          }
+        ],
+        "pose": 6,
+        "reactToSpeech": true,
+        "motion": 1,
+        "actionProgress": 0.72,
+        "accent": "#C3FF5F",
+        "secondary": "#9C7BFF",
+        "footer": "FrameRise · demonstração visual",
+        "soundEnabled": true,
+        "soundLevel": 0.65
+      },
+      "durationInFrames": 140,
+      "narration": "Você digita o tema. Vou escolher uma história à luz da lua.",
+      "voice": "supertonic-f2",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Você",
+          "start": 300,
+          "end": 620
+        },
+        {
+          "id": "w-2",
+          "word": "digita",
+          "start": 620,
+          "end": 1140
+        },
+        {
+          "id": "w-3",
+          "word": "o",
+          "start": 1140,
+          "end": 1220
+        },
+        {
+          "id": "w-4",
+          "word": "tema.",
+          "start": 1220,
+          "end": 1500
+        },
+        {
+          "id": "w-5",
+          "word": "Vou",
+          "start": 2080,
+          "end": 2200
+        },
+        {
+          "id": "w-6",
+          "word": "escolher",
+          "start": 2200,
+          "end": 2560
+        },
+        {
+          "id": "w-7",
+          "word": "uma",
+          "start": 2560,
+          "end": 2720
+        },
+        {
+          "id": "w-8",
+          "word": "história",
+          "start": 2720,
+          "end": 3080
+        },
+        {
+          "id": "w-9",
+          "word": "à",
+          "start": 3080,
+          "end": 3300
+        },
+        {
+          "id": "w-10",
+          "word": "luz",
+          "start": 3300,
+          "end": 3440
+        },
+        {
+          "id": "w-11",
+          "word": "da",
+          "start": 3440,
+          "end": 3660
+        },
+        {
+          "id": "w-12",
+          "word": "lua.",
+          "start": 3660,
+          "end": 3940
+        }
+      ],
+      "timing": "asr_estimated",
+      "assets": {
+        "assets/lib/framerise-chibi/studio.png": "assets/lib/framerise-chibi/studio.png",
+        "assets/lib/framerise-chibi/pose-0.png": "assets/lib/framerise-chibi/pose-0.png",
+        "assets/lib/framerise-chibi/pose-1.png": "assets/lib/framerise-chibi/pose-1.png",
+        "assets/lib/framerise-chibi/pose-2.png": "assets/lib/framerise-chibi/pose-2.png",
+        "assets/lib/framerise-chibi/pose-3.png": "assets/lib/framerise-chibi/pose-3.png",
+        "assets/lib/framerise-chibi/pose-4.png": "assets/lib/framerise-chibi/pose-4.png",
+        "assets/lib/framerise-chibi/pose-5.png": "assets/lib/framerise-chibi/pose-5.png",
+        "assets/lib/framerise-chibi/pose-6.png": "assets/lib/framerise-chibi/pose-6.png",
+        "assets/lib/framerise-chibi/pose-7.png": "assets/lib/framerise-chibi/pose-7.png",
+        "assets/lib/framerise-chibi/moon.png": "assets/lib/framerise-chibi/moon.png",
+        "assets/lib/framerise-chibi/island.png": "assets/lib/framerise-chibi/island.png",
+        "assets/lib/framerise-chibi/observatory.png": "assets/lib/framerise-chibi/observatory.png"
+      },
+      "layers": [],
+      "transitionIn": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/vrs-pro-audio/sfx-whoosh.wav",
+          "at_ms": 40,
+          "volume": 0.09100000000000001,
+          "role": "chibi:sfx-whoosh"
+        },
+        {
+          "path": "assets/lib/vrs-pro-audio/sfx-marker-write.wav",
+          "at_ms": 3355,
+          "volume": 0.13,
+          "role": "chibi:sfx-marker-write"
+        },
+        {
+          "path": "assets/lib/vrs-pro-audio/sfx-marker-write.wav",
+          "at_ms": 466,
+          "volume": 0.029249999999999998,
+          "role": "chibi:sfx-marker-write"
+        },
+        {
+          "path": "assets/lib/vrs-pro-audio/sfx-marker-write.wav",
+          "at_ms": 792,
+          "volume": 0.029249999999999998,
+          "role": "chibi:sfx-marker-write"
+        },
+        {
+          "path": "assets/lib/vrs-pro-audio/sfx-marker-write.wav",
+          "at_ms": 1118,
+          "volume": 0.029249999999999998,
+          "role": "chibi:sfx-marker-write"
+        },
+        {
+          "path": "assets/lib/vrs-pro-audio/sfx-marker-write.wav",
+          "at_ms": 1445,
+          "volume": 0.029249999999999998,
+          "role": "chibi:sfx-marker-write"
+        },
+        {
+          "path": "assets/lib/vrs-pro-audio/sfx-marker-write.wav",
+          "at_ms": 1771,
+          "volume": 0.029249999999999998,
+          "role": "chibi:sfx-marker-write"
+        },
+        {
+          "path": "assets/lib/vrs-pro-audio/sfx-marker-write.wav",
+          "at_ms": 2097,
+          "volume": 0.029249999999999998,
+          "role": "chibi:sfx-marker-write"
+        },
+        {
+          "path": "assets/lib/vrs-pro-audio/sfx-marker-write.wav",
+          "at_ms": 2423,
+          "volume": 0.029249999999999998,
+          "role": "chibi:sfx-marker-write"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "anchors": [],
+      "id": "s04",
+      "component": "vrs-framerise-chibi",
+      "params": {
+        "mode": "script",
+        "title": "UMA HISTÓRIA, CENA POR CENA",
+        "appName": "FrameRise",
+        "prompt": "Uma viagem pela luz da lua.",
+        "cta": "DÊ O PRIMEIRO PASSO",
+        "fileName": "historia-da-lua.mp4",
+        "backgroundAsset": "assets/lib/framerise-chibi/studio.png",
+        "poses": [
+          {
+            "asset": "assets/lib/framerise-chibi/pose-0.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-1.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-2.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-3.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-4.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-5.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-6.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-7.png"
+          }
+        ],
+        "previews": [
+          {
+            "asset": "assets/lib/framerise-chibi/moon.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/island.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/observatory.png"
+          }
+        ],
+        "pose": 5,
+        "reactToSpeech": true,
+        "motion": 1,
+        "actionProgress": 0.72,
+        "accent": "#C3FF5F",
+        "secondary": "#9C7BFF",
+        "footer": "FrameRise · demonstração visual",
+        "soundEnabled": true,
+        "soundLevel": 0.65
+      },
+      "durationInFrames": 147,
+      "narration": "O roteiro organiza a história e orienta a montagem das cenas.",
+      "voice": "supertonic-f2",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "O",
+          "start": 300,
+          "end": 500
+        },
+        {
+          "id": "w-2",
+          "word": "roteiro",
+          "start": 500,
+          "end": 880
+        },
+        {
+          "id": "w-3",
+          "word": "organiza",
+          "start": 880,
+          "end": 1360
+        },
+        {
+          "id": "w-4",
+          "word": "a",
+          "start": 1360,
+          "end": 1400
+        },
+        {
+          "id": "w-5",
+          "word": "história",
+          "start": 1400,
+          "end": 1820
+        },
+        {
+          "id": "w-6",
+          "word": "e",
+          "start": 1820,
+          "end": 2280
+        },
+        {
+          "id": "w-7",
+          "word": "orienta",
+          "start": 2280,
+          "end": 2800
+        },
+        {
+          "id": "w-8",
+          "word": "a",
+          "start": 2800,
+          "end": 2920
+        },
+        {
+          "id": "w-9",
+          "word": "montagem",
+          "start": 2920,
+          "end": 3420
+        },
+        {
+          "id": "w-10",
+          "word": "das",
+          "start": 3420,
+          "end": 3620
+        },
+        {
+          "id": "w-11",
+          "word": "cenas.",
+          "start": 3620,
+          "end": 3980
+        }
+      ],
+      "timing": "asr_estimated",
+      "assets": {
+        "assets/lib/framerise-chibi/studio.png": "assets/lib/framerise-chibi/studio.png",
+        "assets/lib/framerise-chibi/pose-0.png": "assets/lib/framerise-chibi/pose-0.png",
+        "assets/lib/framerise-chibi/pose-1.png": "assets/lib/framerise-chibi/pose-1.png",
+        "assets/lib/framerise-chibi/pose-2.png": "assets/lib/framerise-chibi/pose-2.png",
+        "assets/lib/framerise-chibi/pose-3.png": "assets/lib/framerise-chibi/pose-3.png",
+        "assets/lib/framerise-chibi/pose-4.png": "assets/lib/framerise-chibi/pose-4.png",
+        "assets/lib/framerise-chibi/pose-5.png": "assets/lib/framerise-chibi/pose-5.png",
+        "assets/lib/framerise-chibi/pose-6.png": "assets/lib/framerise-chibi/pose-6.png",
+        "assets/lib/framerise-chibi/pose-7.png": "assets/lib/framerise-chibi/pose-7.png",
+        "assets/lib/framerise-chibi/moon.png": "assets/lib/framerise-chibi/moon.png",
+        "assets/lib/framerise-chibi/island.png": "assets/lib/framerise-chibi/island.png",
+        "assets/lib/framerise-chibi/observatory.png": "assets/lib/framerise-chibi/observatory.png"
+      },
+      "layers": [],
+      "transitionIn": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/vrs-pro-audio/sfx-whoosh.wav",
+          "at_ms": 40,
+          "volume": 0.09100000000000001,
+          "role": "chibi:sfx-whoosh"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "anchors": [],
+      "id": "s05",
+      "component": "vrs-framerise-chibi",
+      "params": {
+        "mode": "voice",
+        "title": "VOZ E LEGENDAS JUNTAS",
+        "appName": "FrameRise",
+        "prompt": "Uma viagem pela luz da lua.",
+        "cta": "DÊ O PRIMEIRO PASSO",
+        "fileName": "historia-da-lua.mp4",
+        "backgroundAsset": "assets/lib/framerise-chibi/studio.png",
+        "poses": [
+          {
+            "asset": "assets/lib/framerise-chibi/pose-0.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-1.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-2.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-3.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-4.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-5.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-6.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-7.png"
+          }
+        ],
+        "previews": [
+          {
+            "asset": "assets/lib/framerise-chibi/moon.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/island.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/observatory.png"
+          }
+        ],
+        "pose": 2,
+        "reactToSpeech": true,
+        "motion": 1,
+        "actionProgress": 0.72,
+        "accent": "#C3FF5F",
+        "secondary": "#9C7BFF",
+        "footer": "FrameRise · demonstração visual",
+        "soundEnabled": true,
+        "soundLevel": 0.65
+      },
+      "durationInFrames": 124,
+      "narration": "A narração entra, e as legendas acompanham cada fala.",
+      "voice": "supertonic-f2",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "A",
+          "start": 300,
+          "end": 480
+        },
+        {
+          "id": "w-2",
+          "word": "narração",
+          "start": 480,
+          "end": 920
+        },
+        {
+          "id": "w-3",
+          "word": "entra,",
+          "start": 920,
+          "end": 1320
+        },
+        {
+          "id": "w-4",
+          "word": "e",
+          "start": 1320,
+          "end": 1680
+        },
+        {
+          "id": "w-5",
+          "word": "as",
+          "start": 1680,
+          "end": 1820
+        },
+        {
+          "id": "w-6",
+          "word": "legendas",
+          "start": 1820,
+          "end": 2300
+        },
+        {
+          "id": "w-7",
+          "word": "acompanham",
+          "start": 2300,
+          "end": 2800
+        },
+        {
+          "id": "w-8",
+          "word": "cada",
+          "start": 2800,
+          "end": 3020
+        },
+        {
+          "id": "w-9",
+          "word": "fala.",
+          "start": 3020,
+          "end": 3420
+        }
+      ],
+      "timing": "asr_estimated",
+      "assets": {
+        "assets/lib/framerise-chibi/studio.png": "assets/lib/framerise-chibi/studio.png",
+        "assets/lib/framerise-chibi/pose-0.png": "assets/lib/framerise-chibi/pose-0.png",
+        "assets/lib/framerise-chibi/pose-1.png": "assets/lib/framerise-chibi/pose-1.png",
+        "assets/lib/framerise-chibi/pose-2.png": "assets/lib/framerise-chibi/pose-2.png",
+        "assets/lib/framerise-chibi/pose-3.png": "assets/lib/framerise-chibi/pose-3.png",
+        "assets/lib/framerise-chibi/pose-4.png": "assets/lib/framerise-chibi/pose-4.png",
+        "assets/lib/framerise-chibi/pose-5.png": "assets/lib/framerise-chibi/pose-5.png",
+        "assets/lib/framerise-chibi/pose-6.png": "assets/lib/framerise-chibi/pose-6.png",
+        "assets/lib/framerise-chibi/pose-7.png": "assets/lib/framerise-chibi/pose-7.png",
+        "assets/lib/framerise-chibi/moon.png": "assets/lib/framerise-chibi/moon.png",
+        "assets/lib/framerise-chibi/island.png": "assets/lib/framerise-chibi/island.png",
+        "assets/lib/framerise-chibi/observatory.png": "assets/lib/framerise-chibi/observatory.png"
+      },
+      "layers": [],
+      "transitionIn": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/vrs-pro-audio/sfx-whoosh.wav",
+          "at_ms": 40,
+          "volume": 0.09100000000000001,
+          "role": "chibi:sfx-whoosh"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "anchors": [],
+      "id": "s06",
+      "component": "vrs-framerise-chibi",
+      "params": {
+        "mode": "scenes",
+        "title": "A HISTÓRIA GANHA FORMA",
+        "appName": "FrameRise",
+        "prompt": "Uma viagem pela luz da lua.",
+        "cta": "DÊ O PRIMEIRO PASSO",
+        "fileName": "historia-da-lua.mp4",
+        "backgroundAsset": "assets/lib/framerise-chibi/moon.png",
+        "poses": [
+          {
+            "asset": "assets/lib/framerise-chibi/pose-0.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-1.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-2.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-3.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-4.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-5.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-6.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-7.png"
+          }
+        ],
+        "previews": [
+          {
+            "asset": "assets/lib/framerise-chibi/moon.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/island.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/observatory.png"
+          }
+        ],
+        "pose": 7,
+        "reactToSpeech": true,
+        "motion": 1,
+        "actionProgress": 0.72,
+        "accent": "#C3FF5F",
+        "secondary": "#9C7BFF",
+        "footer": "FrameRise · demonstração visual",
+        "soundEnabled": true,
+        "soundLevel": 0.65
+      },
+      "durationInFrames": 138,
+      "narration": "Imagens, cenários e animações começam a dar vida ao vídeo.",
+      "voice": "supertonic-f2",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Imagens,",
+          "start": 300,
+          "end": 900
+        },
+        {
+          "id": "w-2",
+          "word": "cenários",
+          "start": 1220,
+          "end": 1620
+        },
+        {
+          "id": "w-3",
+          "word": "e",
+          "start": 1620,
+          "end": 1820
+        },
+        {
+          "id": "w-4",
+          "word": "animações",
+          "start": 1820,
+          "end": 2440
+        },
+        {
+          "id": "w-5",
+          "word": "começam",
+          "start": 2440,
+          "end": 3100
+        },
+        {
+          "id": "w-6",
+          "word": "a",
+          "start": 3100,
+          "end": 3200
+        },
+        {
+          "id": "w-7",
+          "word": "dar",
+          "start": 3200,
+          "end": 3280
+        },
+        {
+          "id": "w-8",
+          "word": "vida",
+          "start": 3280,
+          "end": 3460
+        },
+        {
+          "id": "w-9",
+          "word": "ao",
+          "start": 3460,
+          "end": 3620
+        },
+        {
+          "id": "w-10",
+          "word": "vídeo.",
+          "start": 3620,
+          "end": 3900
+        }
+      ],
+      "timing": "asr_estimated",
+      "assets": {
+        "assets/lib/framerise-chibi/moon.png": "assets/lib/framerise-chibi/moon.png",
+        "assets/lib/framerise-chibi/pose-0.png": "assets/lib/framerise-chibi/pose-0.png",
+        "assets/lib/framerise-chibi/pose-1.png": "assets/lib/framerise-chibi/pose-1.png",
+        "assets/lib/framerise-chibi/pose-2.png": "assets/lib/framerise-chibi/pose-2.png",
+        "assets/lib/framerise-chibi/pose-3.png": "assets/lib/framerise-chibi/pose-3.png",
+        "assets/lib/framerise-chibi/pose-4.png": "assets/lib/framerise-chibi/pose-4.png",
+        "assets/lib/framerise-chibi/pose-5.png": "assets/lib/framerise-chibi/pose-5.png",
+        "assets/lib/framerise-chibi/pose-6.png": "assets/lib/framerise-chibi/pose-6.png",
+        "assets/lib/framerise-chibi/pose-7.png": "assets/lib/framerise-chibi/pose-7.png",
+        "assets/lib/framerise-chibi/island.png": "assets/lib/framerise-chibi/island.png",
+        "assets/lib/framerise-chibi/observatory.png": "assets/lib/framerise-chibi/observatory.png"
+      },
+      "layers": [],
+      "transitionIn": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/vrs-pro-audio/sfx-whoosh.wav",
+          "at_ms": 40,
+          "volume": 0.09100000000000001,
+          "role": "chibi:sfx-whoosh"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "anchors": [],
+      "id": "s07",
+      "component": "vrs-framerise-chibi",
+      "params": {
+        "mode": "styles",
+        "title": "ESCOLHA O SEU ESTILO",
+        "appName": "FrameRise",
+        "prompt": "Uma viagem pela luz da lua.",
+        "cta": "DÊ O PRIMEIRO PASSO",
+        "fileName": "historia-da-lua.mp4",
+        "backgroundAsset": "assets/lib/framerise-chibi/studio.png",
+        "poses": [
+          {
+            "asset": "assets/lib/framerise-chibi/pose-0.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-1.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-2.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-3.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-4.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-5.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-6.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-7.png"
+          }
+        ],
+        "previews": [
+          {
+            "asset": "assets/lib/framerise-chibi/moon.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/island.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/observatory.png"
+          }
+        ],
+        "pose": 2,
+        "reactToSpeech": true,
+        "motion": 1,
+        "actionProgress": 0.72,
+        "accent": "#C3FF5F",
+        "secondary": "#9C7BFF",
+        "footer": "FrameRise · demonstração visual",
+        "soundEnabled": true,
+        "soundLevel": 0.65
+      },
+      "durationInFrames": 154,
+      "narration": "Quer mudar o estilo? Escolha outro visual e acompanhe a transformação.",
+      "voice": "supertonic-f2",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Quer",
+          "start": 300,
+          "end": 480
+        },
+        {
+          "id": "w-2",
+          "word": "mudar",
+          "start": 480,
+          "end": 740
+        },
+        {
+          "id": "w-3",
+          "word": "o",
+          "start": 740,
+          "end": 880
+        },
+        {
+          "id": "w-4",
+          "word": "estilo?",
+          "start": 880,
+          "end": 1300
+        },
+        {
+          "id": "w-5",
+          "word": "Escolha",
+          "start": 1760,
+          "end": 2100
+        },
+        {
+          "id": "w-6",
+          "word": "outro",
+          "start": 2100,
+          "end": 2320
+        },
+        {
+          "id": "w-7",
+          "word": "visual",
+          "start": 2320,
+          "end": 2740
+        },
+        {
+          "id": "w-8",
+          "word": "e",
+          "start": 2740,
+          "end": 3020
+        },
+        {
+          "id": "w-9",
+          "word": "acompanhe",
+          "start": 3020,
+          "end": 3620
+        },
+        {
+          "id": "w-10",
+          "word": "a",
+          "start": 3620,
+          "end": 3700
+        },
+        {
+          "id": "w-11",
+          "word": "transformação.",
+          "start": 3700,
+          "end": 4460
+        }
+      ],
+      "timing": "asr_estimated",
+      "assets": {
+        "assets/lib/framerise-chibi/studio.png": "assets/lib/framerise-chibi/studio.png",
+        "assets/lib/framerise-chibi/pose-0.png": "assets/lib/framerise-chibi/pose-0.png",
+        "assets/lib/framerise-chibi/pose-1.png": "assets/lib/framerise-chibi/pose-1.png",
+        "assets/lib/framerise-chibi/pose-2.png": "assets/lib/framerise-chibi/pose-2.png",
+        "assets/lib/framerise-chibi/pose-3.png": "assets/lib/framerise-chibi/pose-3.png",
+        "assets/lib/framerise-chibi/pose-4.png": "assets/lib/framerise-chibi/pose-4.png",
+        "assets/lib/framerise-chibi/pose-5.png": "assets/lib/framerise-chibi/pose-5.png",
+        "assets/lib/framerise-chibi/pose-6.png": "assets/lib/framerise-chibi/pose-6.png",
+        "assets/lib/framerise-chibi/pose-7.png": "assets/lib/framerise-chibi/pose-7.png",
+        "assets/lib/framerise-chibi/moon.png": "assets/lib/framerise-chibi/moon.png",
+        "assets/lib/framerise-chibi/island.png": "assets/lib/framerise-chibi/island.png",
+        "assets/lib/framerise-chibi/observatory.png": "assets/lib/framerise-chibi/observatory.png"
+      },
+      "layers": [],
+      "transitionIn": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/vrs-pro-audio/sfx-whoosh.wav",
+          "at_ms": 40,
+          "volume": 0.09100000000000001,
+          "role": "chibi:sfx-whoosh"
+        },
+        {
+          "path": "assets/lib/vrs-pro-audio/sfx-marker-write.wav",
+          "at_ms": 3694,
+          "volume": 0.13,
+          "role": "chibi:sfx-marker-write"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "anchors": [],
+      "id": "s08",
+      "component": "vrs-framerise-chibi",
+      "params": {
+        "mode": "before",
+        "title": "ANTES",
+        "appName": "FrameRise",
+        "prompt": "Uma viagem pela luz da lua.",
+        "cta": "DÊ O PRIMEIRO PASSO",
+        "fileName": "historia-da-lua.mp4",
+        "backgroundAsset": "assets/lib/framerise-chibi/moon.png",
+        "poses": [
+          {
+            "asset": "assets/lib/framerise-chibi/pose-0.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-1.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-2.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-3.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-4.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-5.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-6.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-7.png"
+          }
+        ],
+        "previews": [
+          {
+            "asset": "assets/lib/framerise-chibi/moon.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/island.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/observatory.png"
+          }
+        ],
+        "pose": 5,
+        "reactToSpeech": true,
+        "motion": 1,
+        "actionProgress": 0.72,
+        "accent": "#C3FF5F",
+        "secondary": "#9C7BFF",
+        "footer": "FrameRise · demonstração visual",
+        "soundEnabled": true,
+        "soundLevel": 0.65
+      },
+      "durationInFrames": 90,
+      "narration": "Olha essa mesma cena antes da edição.",
+      "voice": "supertonic-f2",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Olha",
+          "start": 300,
+          "end": 540
+        },
+        {
+          "id": "w-2",
+          "word": "essa",
+          "start": 540,
+          "end": 720
+        },
+        {
+          "id": "w-3",
+          "word": "mesma",
+          "start": 720,
+          "end": 960
+        },
+        {
+          "id": "w-4",
+          "word": "cena",
+          "start": 960,
+          "end": 1300
+        },
+        {
+          "id": "w-5",
+          "word": "antes",
+          "start": 1300,
+          "end": 1660
+        },
+        {
+          "id": "w-6",
+          "word": "da",
+          "start": 1660,
+          "end": 1860
+        },
+        {
+          "id": "w-7",
+          "word": "edição.",
+          "start": 1860,
+          "end": 2240
+        }
+      ],
+      "timing": "asr_estimated",
+      "assets": {
+        "assets/lib/framerise-chibi/moon.png": "assets/lib/framerise-chibi/moon.png",
+        "assets/lib/framerise-chibi/pose-0.png": "assets/lib/framerise-chibi/pose-0.png",
+        "assets/lib/framerise-chibi/pose-1.png": "assets/lib/framerise-chibi/pose-1.png",
+        "assets/lib/framerise-chibi/pose-2.png": "assets/lib/framerise-chibi/pose-2.png",
+        "assets/lib/framerise-chibi/pose-3.png": "assets/lib/framerise-chibi/pose-3.png",
+        "assets/lib/framerise-chibi/pose-4.png": "assets/lib/framerise-chibi/pose-4.png",
+        "assets/lib/framerise-chibi/pose-5.png": "assets/lib/framerise-chibi/pose-5.png",
+        "assets/lib/framerise-chibi/pose-6.png": "assets/lib/framerise-chibi/pose-6.png",
+        "assets/lib/framerise-chibi/pose-7.png": "assets/lib/framerise-chibi/pose-7.png",
+        "assets/lib/framerise-chibi/island.png": "assets/lib/framerise-chibi/island.png",
+        "assets/lib/framerise-chibi/observatory.png": "assets/lib/framerise-chibi/observatory.png"
+      },
+      "layers": [],
+      "transitionIn": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/vrs-pro-audio/sfx-whoosh.wav",
+          "at_ms": 40,
+          "volume": 0.09100000000000001,
+          "role": "chibi:sfx-whoosh"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "anchors": [],
+      "id": "s09",
+      "component": "vrs-framerise-chibi",
+      "params": {
+        "mode": "after",
+        "title": "DEPOIS",
+        "appName": "FrameRise",
+        "prompt": "Uma viagem pela luz da lua.",
+        "cta": "DÊ O PRIMEIRO PASSO",
+        "fileName": "historia-da-lua.mp4",
+        "backgroundAsset": "assets/lib/framerise-chibi/moon.png",
+        "poses": [
+          {
+            "asset": "assets/lib/framerise-chibi/pose-0.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-1.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-2.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-3.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-4.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-5.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-6.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-7.png"
+          }
+        ],
+        "previews": [
+          {
+            "asset": "assets/lib/framerise-chibi/moon.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/island.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/observatory.png"
+          }
+        ],
+        "pose": 4,
+        "reactToSpeech": true,
+        "motion": 1,
+        "actionProgress": 0.72,
+        "accent": "#C3FF5F",
+        "secondary": "#9C7BFF",
+        "footer": "FrameRise · demonstração visual",
+        "soundEnabled": true,
+        "soundLevel": 0.65
+      },
+      "durationInFrames": 146,
+      "narration": "Agora, com movimento, cortes e efeitos. Sentiu a diferença?",
+      "voice": "supertonic-f2",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Agora,",
+          "start": 300,
+          "end": 660
+        },
+        {
+          "id": "w-2",
+          "word": "com",
+          "start": 660,
+          "end": 1040
+        },
+        {
+          "id": "w-3",
+          "word": "movimento,",
+          "start": 1040,
+          "end": 1380
+        },
+        {
+          "id": "w-4",
+          "word": "cortes",
+          "start": 1780,
+          "end": 2140
+        },
+        {
+          "id": "w-5",
+          "word": "e",
+          "start": 2140,
+          "end": 2240
+        },
+        {
+          "id": "w-6",
+          "word": "efeitos.",
+          "start": 2240,
+          "end": 2740
+        },
+        {
+          "id": "w-7",
+          "word": "Sentiu",
+          "start": 3040,
+          "end": 3440
+        },
+        {
+          "id": "w-8",
+          "word": "a",
+          "start": 3440,
+          "end": 3520
+        },
+        {
+          "id": "w-9",
+          "word": "diferença?",
+          "start": 3520,
+          "end": 3840
+        }
+      ],
+      "timing": "asr_estimated",
+      "assets": {
+        "assets/lib/framerise-chibi/moon.png": "assets/lib/framerise-chibi/moon.png",
+        "assets/lib/framerise-chibi/pose-0.png": "assets/lib/framerise-chibi/pose-0.png",
+        "assets/lib/framerise-chibi/pose-1.png": "assets/lib/framerise-chibi/pose-1.png",
+        "assets/lib/framerise-chibi/pose-2.png": "assets/lib/framerise-chibi/pose-2.png",
+        "assets/lib/framerise-chibi/pose-3.png": "assets/lib/framerise-chibi/pose-3.png",
+        "assets/lib/framerise-chibi/pose-4.png": "assets/lib/framerise-chibi/pose-4.png",
+        "assets/lib/framerise-chibi/pose-5.png": "assets/lib/framerise-chibi/pose-5.png",
+        "assets/lib/framerise-chibi/pose-6.png": "assets/lib/framerise-chibi/pose-6.png",
+        "assets/lib/framerise-chibi/pose-7.png": "assets/lib/framerise-chibi/pose-7.png",
+        "assets/lib/framerise-chibi/island.png": "assets/lib/framerise-chibi/island.png",
+        "assets/lib/framerise-chibi/observatory.png": "assets/lib/framerise-chibi/observatory.png"
+      },
+      "layers": [],
+      "transitionIn": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/vrs-pro-audio/sfx-whoosh.wav",
+          "at_ms": 40,
+          "volume": 0.09100000000000001,
+          "role": "chibi:sfx-whoosh"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "anchors": [],
+      "id": "s10",
+      "component": "vrs-framerise-chibi",
+      "params": {
+        "mode": "cuts",
+        "title": "AUTOMAÇÃO COM A SUA DIREÇÃO",
+        "appName": "FrameRise",
+        "prompt": "Uma viagem pela luz da lua.",
+        "cta": "DÊ O PRIMEIRO PASSO",
+        "fileName": "historia-da-lua.mp4",
+        "backgroundAsset": "assets/lib/framerise-chibi/engine.png",
+        "poses": [
+          {
+            "asset": "assets/lib/framerise-chibi/pose-0.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-1.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-2.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-3.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-4.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-5.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-6.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-7.png"
+          }
+        ],
+        "previews": [
+          {
+            "asset": "assets/lib/framerise-chibi/moon.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/island.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/observatory.png"
+          }
+        ],
+        "pose": 2,
+        "reactToSpeech": true,
+        "motion": 1,
+        "actionProgress": 0.72,
+        "accent": "#C3FF5F",
+        "secondary": "#9C7BFF",
+        "footer": "FrameRise · demonstração visual",
+        "soundEnabled": true,
+        "soundLevel": 0.65
+      },
+      "durationInFrames": 204,
+      "narration": "O FrameRise reúne essas etapas em um fluxo automatizado, com ajustes do seu jeito.",
+      "voice": "supertonic-f2",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "O",
+          "start": 300,
+          "end": 480
+        },
+        {
+          "id": "w-2",
+          "word": "FrameRise",
+          "start": 480,
+          "end": 1100
+        },
+        {
+          "id": "w-3",
+          "word": "reúne",
+          "start": 1100,
+          "end": 1560
+        },
+        {
+          "id": "w-4",
+          "word": "essas",
+          "start": 1560,
+          "end": 1920
+        },
+        {
+          "id": "w-5",
+          "word": "etapas",
+          "start": 1920,
+          "end": 2620
+        },
+        {
+          "id": "w-6",
+          "word": "em",
+          "start": 2620,
+          "end": 2740
+        },
+        {
+          "id": "w-7",
+          "word": "um",
+          "start": 2740,
+          "end": 2900
+        },
+        {
+          "id": "w-8",
+          "word": "fluxo",
+          "start": 2900,
+          "end": 3380
+        },
+        {
+          "id": "w-9",
+          "word": "automatizado,",
+          "start": 3380,
+          "end": 4200
+        },
+        {
+          "id": "w-10",
+          "word": "com",
+          "start": 4200,
+          "end": 4760
+        },
+        {
+          "id": "w-11",
+          "word": "ajustes",
+          "start": 4760,
+          "end": 5340
+        },
+        {
+          "id": "w-12",
+          "word": "do",
+          "start": 5340,
+          "end": 5420
+        },
+        {
+          "id": "w-13",
+          "word": "seu",
+          "start": 5420,
+          "end": 5600
+        },
+        {
+          "id": "w-14",
+          "word": "jeito.",
+          "start": 5600,
+          "end": 5980
+        }
+      ],
+      "timing": "asr_estimated",
+      "assets": {
+        "assets/lib/framerise-chibi/engine.png": "assets/lib/framerise-chibi/engine.png",
+        "assets/lib/framerise-chibi/pose-0.png": "assets/lib/framerise-chibi/pose-0.png",
+        "assets/lib/framerise-chibi/pose-1.png": "assets/lib/framerise-chibi/pose-1.png",
+        "assets/lib/framerise-chibi/pose-2.png": "assets/lib/framerise-chibi/pose-2.png",
+        "assets/lib/framerise-chibi/pose-3.png": "assets/lib/framerise-chibi/pose-3.png",
+        "assets/lib/framerise-chibi/pose-4.png": "assets/lib/framerise-chibi/pose-4.png",
+        "assets/lib/framerise-chibi/pose-5.png": "assets/lib/framerise-chibi/pose-5.png",
+        "assets/lib/framerise-chibi/pose-6.png": "assets/lib/framerise-chibi/pose-6.png",
+        "assets/lib/framerise-chibi/pose-7.png": "assets/lib/framerise-chibi/pose-7.png",
+        "assets/lib/framerise-chibi/moon.png": "assets/lib/framerise-chibi/moon.png",
+        "assets/lib/framerise-chibi/island.png": "assets/lib/framerise-chibi/island.png",
+        "assets/lib/framerise-chibi/observatory.png": "assets/lib/framerise-chibi/observatory.png"
+      },
+      "layers": [],
+      "transitionIn": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/vrs-pro-audio/sfx-whoosh.wav",
+          "at_ms": 40,
+          "volume": 0.09100000000000001,
+          "role": "chibi:sfx-whoosh"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "anchors": [],
+      "id": "s11",
+      "component": "vrs-framerise-chibi",
+      "params": {
+        "mode": "edit",
+        "title": "EXPERIMENTE. AJUSTE. ASSISTA.",
+        "appName": "FrameRise",
+        "prompt": "Uma viagem pela luz da lua.",
+        "cta": "DÊ O PRIMEIRO PASSO",
+        "fileName": "historia-da-lua.mp4",
+        "backgroundAsset": "assets/lib/framerise-chibi/studio.png",
+        "poses": [
+          {
+            "asset": "assets/lib/framerise-chibi/pose-0.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-1.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-2.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-3.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-4.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-5.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-6.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-7.png"
+          }
+        ],
+        "previews": [
+          {
+            "asset": "assets/lib/framerise-chibi/moon.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/island.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/observatory.png"
+          }
+        ],
+        "pose": 2,
+        "reactToSpeech": true,
+        "motion": 1,
+        "actionProgress": 0.72,
+        "accent": "#C3FF5F",
+        "secondary": "#9C7BFF",
+        "footer": "FrameRise · demonstração visual",
+        "soundEnabled": true,
+        "soundLevel": 0.65
+      },
+      "durationInFrames": 116,
+      "narration": "Troque uma cena, ajuste o ritmo e confira a prévia.",
+      "voice": "supertonic-f2",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Troque",
+          "start": 300,
+          "end": 640
+        },
+        {
+          "id": "w-2",
+          "word": "uma",
+          "start": 640,
+          "end": 780
+        },
+        {
+          "id": "w-3",
+          "word": "cena,",
+          "start": 780,
+          "end": 1140
+        },
+        {
+          "id": "w-4",
+          "word": "ajuste",
+          "start": 1480,
+          "end": 1880
+        },
+        {
+          "id": "w-5",
+          "word": "o",
+          "start": 1880,
+          "end": 1900
+        },
+        {
+          "id": "w-6",
+          "word": "ritmo",
+          "start": 1900,
+          "end": 2240
+        },
+        {
+          "id": "w-7",
+          "word": "e",
+          "start": 2240,
+          "end": 2340
+        },
+        {
+          "id": "w-8",
+          "word": "confira",
+          "start": 2340,
+          "end": 2720
+        },
+        {
+          "id": "w-9",
+          "word": "a",
+          "start": 2720,
+          "end": 2840
+        },
+        {
+          "id": "w-10",
+          "word": "prévia.",
+          "start": 2840,
+          "end": 3180
+        }
+      ],
+      "timing": "asr_estimated",
+      "assets": {
+        "assets/lib/framerise-chibi/studio.png": "assets/lib/framerise-chibi/studio.png",
+        "assets/lib/framerise-chibi/pose-0.png": "assets/lib/framerise-chibi/pose-0.png",
+        "assets/lib/framerise-chibi/pose-1.png": "assets/lib/framerise-chibi/pose-1.png",
+        "assets/lib/framerise-chibi/pose-2.png": "assets/lib/framerise-chibi/pose-2.png",
+        "assets/lib/framerise-chibi/pose-3.png": "assets/lib/framerise-chibi/pose-3.png",
+        "assets/lib/framerise-chibi/pose-4.png": "assets/lib/framerise-chibi/pose-4.png",
+        "assets/lib/framerise-chibi/pose-5.png": "assets/lib/framerise-chibi/pose-5.png",
+        "assets/lib/framerise-chibi/pose-6.png": "assets/lib/framerise-chibi/pose-6.png",
+        "assets/lib/framerise-chibi/pose-7.png": "assets/lib/framerise-chibi/pose-7.png",
+        "assets/lib/framerise-chibi/moon.png": "assets/lib/framerise-chibi/moon.png",
+        "assets/lib/framerise-chibi/island.png": "assets/lib/framerise-chibi/island.png",
+        "assets/lib/framerise-chibi/observatory.png": "assets/lib/framerise-chibi/observatory.png"
+      },
+      "layers": [],
+      "transitionIn": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/vrs-pro-audio/sfx-whoosh.wav",
+          "at_ms": 40,
+          "volume": 0.09100000000000001,
+          "role": "chibi:sfx-whoosh"
+        },
+        {
+          "path": "assets/lib/vrs-pro-audio/sfx-marker-write.wav",
+          "at_ms": 2772,
+          "volume": 0.13,
+          "role": "chibi:sfx-marker-write"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "anchors": [],
+      "id": "s12",
+      "component": "vrs-framerise-chibi",
+      "params": {
+        "mode": "sound",
+        "title": "CADA SOM NA SUA HORA",
+        "appName": "FrameRise",
+        "prompt": "Uma viagem pela luz da lua.",
+        "cta": "DÊ O PRIMEIRO PASSO",
+        "fileName": "historia-da-lua.mp4",
+        "backgroundAsset": "assets/lib/framerise-chibi/engine.png",
+        "poses": [
+          {
+            "asset": "assets/lib/framerise-chibi/pose-0.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-1.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-2.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-3.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-4.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-5.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-6.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-7.png"
+          }
+        ],
+        "previews": [
+          {
+            "asset": "assets/lib/framerise-chibi/moon.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/island.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/observatory.png"
+          }
+        ],
+        "pose": 3,
+        "reactToSpeech": true,
+        "motion": 1,
+        "actionProgress": 0.72,
+        "accent": "#C3FF5F",
+        "secondary": "#9C7BFF",
+        "footer": "FrameRise · demonstração visual",
+        "soundEnabled": true,
+        "soundLevel": 0.65
+      },
+      "durationInFrames": 113,
+      "narration": "A trilha e os efeitos completam a experiência.",
+      "voice": "supertonic-f2",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "A",
+          "start": 300,
+          "end": 386
+        },
+        {
+          "id": "w-2",
+          "word": "trilha",
+          "start": 386,
+          "end": 900
+        },
+        {
+          "id": "w-3",
+          "word": "e",
+          "start": 900,
+          "end": 1000
+        },
+        {
+          "id": "w-4",
+          "word": "os",
+          "start": 1000,
+          "end": 1120
+        },
+        {
+          "id": "w-5",
+          "word": "efeitos",
+          "start": 1120,
+          "end": 1520
+        },
+        {
+          "id": "w-6",
+          "word": "completam",
+          "start": 1520,
+          "end": 2100
+        },
+        {
+          "id": "w-7",
+          "word": "a",
+          "start": 2100,
+          "end": 2200
+        },
+        {
+          "id": "w-8",
+          "word": "experiência.",
+          "start": 2200,
+          "end": 2820
+        }
+      ],
+      "timing": "asr_estimated",
+      "assets": {
+        "assets/lib/framerise-chibi/engine.png": "assets/lib/framerise-chibi/engine.png",
+        "assets/lib/framerise-chibi/pose-0.png": "assets/lib/framerise-chibi/pose-0.png",
+        "assets/lib/framerise-chibi/pose-1.png": "assets/lib/framerise-chibi/pose-1.png",
+        "assets/lib/framerise-chibi/pose-2.png": "assets/lib/framerise-chibi/pose-2.png",
+        "assets/lib/framerise-chibi/pose-3.png": "assets/lib/framerise-chibi/pose-3.png",
+        "assets/lib/framerise-chibi/pose-4.png": "assets/lib/framerise-chibi/pose-4.png",
+        "assets/lib/framerise-chibi/pose-5.png": "assets/lib/framerise-chibi/pose-5.png",
+        "assets/lib/framerise-chibi/pose-6.png": "assets/lib/framerise-chibi/pose-6.png",
+        "assets/lib/framerise-chibi/pose-7.png": "assets/lib/framerise-chibi/pose-7.png",
+        "assets/lib/framerise-chibi/moon.png": "assets/lib/framerise-chibi/moon.png",
+        "assets/lib/framerise-chibi/island.png": "assets/lib/framerise-chibi/island.png",
+        "assets/lib/framerise-chibi/observatory.png": "assets/lib/framerise-chibi/observatory.png"
+      },
+      "layers": [],
+      "transitionIn": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/vrs-pro-audio/sfx-whoosh.wav",
+          "at_ms": 40,
+          "volume": 0.09100000000000001,
+          "role": "chibi:sfx-whoosh"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "anchors": [],
+      "id": "s13",
+      "component": "vrs-framerise-chibi",
+      "params": {
+        "mode": "mascot",
+        "title": "SUA COMPANHEIRA DE CRIAÇÃO",
+        "appName": "FrameRise",
+        "prompt": "Uma viagem pela luz da lua.",
+        "cta": "DÊ O PRIMEIRO PASSO",
+        "fileName": "historia-da-lua.mp4",
+        "backgroundAsset": "assets/lib/framerise-chibi/observatory.png",
+        "poses": [
+          {
+            "asset": "assets/lib/framerise-chibi/pose-0.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-1.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-2.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-3.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-4.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-5.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-6.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-7.png"
+          }
+        ],
+        "previews": [
+          {
+            "asset": "assets/lib/framerise-chibi/moon.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/island.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/observatory.png"
+          }
+        ],
+        "pose": 0,
+        "reactToSpeech": true,
+        "motion": 1,
+        "actionProgress": 0.72,
+        "accent": "#C3FF5F",
+        "secondary": "#9C7BFF",
+        "footer": "FrameRise · demonstração visual",
+        "soundEnabled": true,
+        "soundLevel": 0.65
+      },
+      "durationInFrames": 110,
+      "narration": "E eu acompanho você para apresentar cada detalhe!",
+      "voice": "supertonic-f2",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "E",
+          "start": 300,
+          "end": 500
+        },
+        {
+          "id": "w-2",
+          "word": "eu",
+          "start": 500,
+          "end": 600
+        },
+        {
+          "id": "w-3",
+          "word": "acompanho",
+          "start": 600,
+          "end": 1140
+        },
+        {
+          "id": "w-4",
+          "word": "você",
+          "start": 1140,
+          "end": 1360
+        },
+        {
+          "id": "w-5",
+          "word": "para",
+          "start": 1360,
+          "end": 1560
+        },
+        {
+          "id": "w-6",
+          "word": "apresentar",
+          "start": 1560,
+          "end": 2140
+        },
+        {
+          "id": "w-7",
+          "word": "cada",
+          "start": 2140,
+          "end": 2440
+        },
+        {
+          "id": "w-8",
+          "word": "detalhe!",
+          "start": 2440,
+          "end": 3040
+        }
+      ],
+      "timing": "asr_estimated",
+      "assets": {
+        "assets/lib/framerise-chibi/observatory.png": "assets/lib/framerise-chibi/observatory.png",
+        "assets/lib/framerise-chibi/pose-0.png": "assets/lib/framerise-chibi/pose-0.png",
+        "assets/lib/framerise-chibi/pose-1.png": "assets/lib/framerise-chibi/pose-1.png",
+        "assets/lib/framerise-chibi/pose-2.png": "assets/lib/framerise-chibi/pose-2.png",
+        "assets/lib/framerise-chibi/pose-3.png": "assets/lib/framerise-chibi/pose-3.png",
+        "assets/lib/framerise-chibi/pose-4.png": "assets/lib/framerise-chibi/pose-4.png",
+        "assets/lib/framerise-chibi/pose-5.png": "assets/lib/framerise-chibi/pose-5.png",
+        "assets/lib/framerise-chibi/pose-6.png": "assets/lib/framerise-chibi/pose-6.png",
+        "assets/lib/framerise-chibi/pose-7.png": "assets/lib/framerise-chibi/pose-7.png",
+        "assets/lib/framerise-chibi/moon.png": "assets/lib/framerise-chibi/moon.png",
+        "assets/lib/framerise-chibi/island.png": "assets/lib/framerise-chibi/island.png"
+      },
+      "layers": [],
+      "transitionIn": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/vrs-pro-audio/sfx-whoosh.wav",
+          "at_ms": 40,
+          "volume": 0.09100000000000001,
+          "role": "chibi:sfx-whoosh"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "anchors": [],
+      "id": "s14",
+      "component": "vrs-framerise-chibi",
+      "params": {
+        "mode": "finish",
+        "title": "PRONTO PARA EXPORTAR",
+        "appName": "FrameRise",
+        "prompt": "Uma viagem pela luz da lua.",
+        "cta": "DÊ O PRIMEIRO PASSO",
+        "fileName": "historia-da-lua.mp4",
+        "backgroundAsset": "assets/lib/framerise-chibi/studio.png",
+        "poses": [
+          {
+            "asset": "assets/lib/framerise-chibi/pose-0.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-1.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-2.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-3.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-4.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-5.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-6.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-7.png"
+          }
+        ],
+        "previews": [
+          {
+            "asset": "assets/lib/framerise-chibi/moon.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/island.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/observatory.png"
+          }
+        ],
+        "pose": 4,
+        "reactToSpeech": true,
+        "motion": 1,
+        "actionProgress": 0.72,
+        "accent": "#C3FF5F",
+        "secondary": "#9C7BFF",
+        "footer": "FrameRise · demonstração visual",
+        "soundEnabled": true,
+        "soundLevel": 0.65
+      },
+      "durationInFrames": 131,
+      "narration": "Gostou do resultado? É só exportar o vídeo pronto.",
+      "voice": "supertonic-f2",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Gostou",
+          "start": 300,
+          "end": 780
+        },
+        {
+          "id": "w-2",
+          "word": "do",
+          "start": 780,
+          "end": 880
+        },
+        {
+          "id": "w-3",
+          "word": "resultado?",
+          "start": 880,
+          "end": 1320
+        },
+        {
+          "id": "w-4",
+          "word": "É",
+          "start": 1920,
+          "end": 2020
+        },
+        {
+          "id": "w-5",
+          "word": "só",
+          "start": 2020,
+          "end": 2200
+        },
+        {
+          "id": "w-6",
+          "word": "exportar",
+          "start": 2200,
+          "end": 2680
+        },
+        {
+          "id": "w-7",
+          "word": "o",
+          "start": 2680,
+          "end": 2820
+        },
+        {
+          "id": "w-8",
+          "word": "vídeo",
+          "start": 2820,
+          "end": 3040
+        },
+        {
+          "id": "w-9",
+          "word": "pronto.",
+          "start": 3040,
+          "end": 3420
+        }
+      ],
+      "timing": "asr_estimated",
+      "assets": {
+        "assets/lib/framerise-chibi/studio.png": "assets/lib/framerise-chibi/studio.png",
+        "assets/lib/framerise-chibi/pose-0.png": "assets/lib/framerise-chibi/pose-0.png",
+        "assets/lib/framerise-chibi/pose-1.png": "assets/lib/framerise-chibi/pose-1.png",
+        "assets/lib/framerise-chibi/pose-2.png": "assets/lib/framerise-chibi/pose-2.png",
+        "assets/lib/framerise-chibi/pose-3.png": "assets/lib/framerise-chibi/pose-3.png",
+        "assets/lib/framerise-chibi/pose-4.png": "assets/lib/framerise-chibi/pose-4.png",
+        "assets/lib/framerise-chibi/pose-5.png": "assets/lib/framerise-chibi/pose-5.png",
+        "assets/lib/framerise-chibi/pose-6.png": "assets/lib/framerise-chibi/pose-6.png",
+        "assets/lib/framerise-chibi/pose-7.png": "assets/lib/framerise-chibi/pose-7.png",
+        "assets/lib/framerise-chibi/moon.png": "assets/lib/framerise-chibi/moon.png",
+        "assets/lib/framerise-chibi/island.png": "assets/lib/framerise-chibi/island.png",
+        "assets/lib/framerise-chibi/observatory.png": "assets/lib/framerise-chibi/observatory.png"
+      },
+      "layers": [],
+      "transitionIn": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/vrs-pro-audio/sfx-whoosh.wav",
+          "at_ms": 40,
+          "volume": 0.09100000000000001,
+          "role": "chibi:sfx-whoosh"
+        },
+        {
+          "path": "assets/lib/vrs-pro-audio/sfx-marker-write.wav",
+          "at_ms": 3132,
+          "volume": 0.13,
+          "role": "chibi:sfx-marker-write"
+        },
+        {
+          "path": "assets/lib/vrs-pro-audio/sfx-ding-check.wav",
+          "at_ms": 3654,
+          "volume": 0.13,
+          "role": "chibi:sfx-ding-check"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "anchors": [],
+      "id": "s15",
+      "component": "vrs-framerise-chibi",
+      "params": {
+        "mode": "cta",
+        "title": "COMECE A SUA PRÓXIMA HISTÓRIA",
+        "appName": "FrameRise",
+        "prompt": "Uma viagem pela luz da lua.",
+        "cta": "DÊ O PRIMEIRO PASSO",
+        "fileName": "historia-da-lua.mp4",
+        "backgroundAsset": "assets/lib/framerise-chibi/engine.png",
+        "poses": [
+          {
+            "asset": "assets/lib/framerise-chibi/pose-0.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-1.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-2.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-3.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-4.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-5.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-6.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/pose-7.png"
+          }
+        ],
+        "previews": [
+          {
+            "asset": "assets/lib/framerise-chibi/moon.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/island.png"
+          },
+          {
+            "asset": "assets/lib/framerise-chibi/observatory.png"
+          }
+        ],
+        "pose": 0,
+        "reactToSpeech": true,
+        "motion": 1,
+        "actionProgress": 0.72,
+        "accent": "#C3FF5F",
+        "secondary": "#9C7BFF",
+        "footer": "FrameRise · demonstração visual",
+        "soundEnabled": true,
+        "soundLevel": 0.65
+      },
+      "durationInFrames": 201,
+      "narration": "Seu sonho de ter um canal dark pode começar hoje. FrameRise. Vamos criar o seu?",
+      "voice": "supertonic-f2",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Seu",
+          "start": 300,
+          "end": 560
+        },
+        {
+          "id": "w-2",
+          "word": "sonho",
+          "start": 560,
+          "end": 800
+        },
+        {
+          "id": "w-3",
+          "word": "de",
+          "start": 800,
+          "end": 880
+        },
+        {
+          "id": "w-4",
+          "word": "ter",
+          "start": 880,
+          "end": 1020
+        },
+        {
+          "id": "w-5",
+          "word": "um",
+          "start": 1020,
+          "end": 1160
+        },
+        {
+          "id": "w-6",
+          "word": "canal",
+          "start": 1160,
+          "end": 1380
+        },
+        {
+          "id": "w-7",
+          "word": "dark",
+          "start": 1380,
+          "end": 1860
+        },
+        {
+          "id": "w-8",
+          "word": "pode",
+          "start": 1860,
+          "end": 2140
+        },
+        {
+          "id": "w-9",
+          "word": "começar",
+          "start": 2140,
+          "end": 2560
+        },
+        {
+          "id": "w-10",
+          "word": "hoje.",
+          "start": 2560,
+          "end": 2940
+        },
+        {
+          "id": "w-11",
+          "word": "FrameRise.",
+          "start": 2940,
+          "end": 4420
+        },
+        {
+          "id": "w-12",
+          "word": "Vamos",
+          "start": 4420,
+          "end": 4720
+        },
+        {
+          "id": "w-13",
+          "word": "criar",
+          "start": 4720,
+          "end": 5040
+        },
+        {
+          "id": "w-14",
+          "word": "o",
+          "start": 5040,
+          "end": 5220
+        },
+        {
+          "id": "w-15",
+          "word": "seu?",
+          "start": 5220,
+          "end": 5380
+        }
+      ],
+      "timing": "asr_estimated",
+      "assets": {
+        "assets/lib/framerise-chibi/engine.png": "assets/lib/framerise-chibi/engine.png",
+        "assets/lib/framerise-chibi/pose-0.png": "assets/lib/framerise-chibi/pose-0.png",
+        "assets/lib/framerise-chibi/pose-1.png": "assets/lib/framerise-chibi/pose-1.png",
+        "assets/lib/framerise-chibi/pose-2.png": "assets/lib/framerise-chibi/pose-2.png",
+        "assets/lib/framerise-chibi/pose-3.png": "assets/lib/framerise-chibi/pose-3.png",
+        "assets/lib/framerise-chibi/pose-4.png": "assets/lib/framerise-chibi/pose-4.png",
+        "assets/lib/framerise-chibi/pose-5.png": "assets/lib/framerise-chibi/pose-5.png",
+        "assets/lib/framerise-chibi/pose-6.png": "assets/lib/framerise-chibi/pose-6.png",
+        "assets/lib/framerise-chibi/pose-7.png": "assets/lib/framerise-chibi/pose-7.png",
+        "assets/lib/framerise-chibi/moon.png": "assets/lib/framerise-chibi/moon.png",
+        "assets/lib/framerise-chibi/island.png": "assets/lib/framerise-chibi/island.png",
+        "assets/lib/framerise-chibi/observatory.png": "assets/lib/framerise-chibi/observatory.png"
+      },
+      "layers": [],
+      "transitionIn": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/vrs-pro-audio/sfx-whoosh.wav",
+          "at_ms": 40,
+          "volume": 0.09100000000000001,
+          "role": "chibi:sfx-whoosh"
+        }
+      ],
+      "notes": ""
+    }
+  ],
+  "uncertainties": [],
+  "sources": [],
+  "illustrativeData": false,
+  "warnings": [
+    "Cena s04: a fala (4.9s) não cabe em 4.0s; a cena foi estendida sem cortar palavras.",
+    "Cena s05: a fala (4.1s) não cabe em 3.4s; a cena foi estendida sem cortar palavras.",
+    "Cena s07: a fala (5.1s) não cabe em 4.6s; a cena foi estendida sem cortar palavras.",
+    "Cena s10: a fala (6.8s) não cabe em 5.9s; a cena foi estendida sem cortar palavras.",
+    "Cena s13: a fala (3.7s) não cabe em 2.9s; a cena foi estendida sem cortar palavras.",
+    "Cena s14: a fala (4.3s) não cabe em 3.8s; a cena foi estendida sem cortar palavras."
+  ]
+}

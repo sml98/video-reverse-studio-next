@@ -1,0 +1,112 @@
+{
+  "project_id": "p1f2e78df32e0",
+  "niche": "framerise-chibi",
+  "duration_s": 71.467,
+  "render_seconds": 168.3,
+  "review": {
+    "technical": "aprovado_tecnicamente",
+    "findings": [],
+    "motion": [
+      {
+        "scene": "s01",
+        "component": "vrs-framerise-chibi",
+        "motion": 10.81,
+        "first_half": 10.66
+      },
+      {
+        "scene": "s02",
+        "component": "vrs-framerise-chibi",
+        "motion": 5.14,
+        "first_half": 4.78
+      },
+      {
+        "scene": "s03",
+        "component": "vrs-framerise-chibi",
+        "motion": 2.5,
+        "first_half": 2.28
+      },
+      {
+        "scene": "s04",
+        "component": "vrs-framerise-chibi",
+        "motion": 3.23,
+        "first_half": 3.36
+      },
+      {
+        "scene": "s05",
+        "component": "vrs-framerise-chibi",
+        "motion": 3.32,
+        "first_half": 3.24
+      },
+      {
+        "scene": "s06",
+        "component": "vrs-framerise-chibi",
+        "motion": 12.7,
+        "first_half": 13.88
+      },
+      {
+        "scene": "s07",
+        "component": "vrs-framerise-chibi",
+        "motion": 8.54,
+        "first_half": 8.9
+      },
+      {
+        "scene": "s08",
+        "component": "vrs-framerise-chibi",
+        "motion": 11.25,
+        "first_half": 12.6
+      },
+      {
+        "scene": "s09",
+        "component": "vrs-framerise-chibi",
+        "motion": 14.84,
+        "first_half": 15.95
+      },
+      {
+        "scene": "s10",
+        "component": "vrs-framerise-chibi",
+        "motion": 3.75,
+        "first_half": 3.37
+      },
+      {
+        "scene": "s11",
+        "component": "vrs-framerise-chibi",
+        "motion": 5.7,
+        "first_half": 7.13
+      },
+      {
+        "scene": "s12",
+        "component": "vrs-framerise-chibi",
+        "motion": 5.78,
+        "first_half": 5.29
+      },
+      {
+        "scene": "s13",
+        "component": "vrs-framerise-chibi",
+        "motion": 8.02,
+        "first_half": 7.64
+      },
+      {
+        "scene": "s14",
+        "component": "vrs-framerise-chibi",
+        "motion": 5.17,
+        "first_half": 4.93
+      },
+      {
+        "scene": "s15",
+        "component": "vrs-framerise-chibi",
+        "motion": 5.44,
+        "first_half": 5.1
+      }
+    ],
+    "audio": {
+      "max_volume_db": -1.4,
+      "mean_volume_db": -19.2,
+      "integrated_lufs": -16.0,
+      "true_peak_dbfs": -1.4
+    }
+  },
+  "kind": "native_editable_adaptation",
+  "reference": "reference.mp4",
+  "reference_duration_s": 65.1666666667,
+  "critical_listening": false
+}

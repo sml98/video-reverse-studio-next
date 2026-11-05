@@ -4,7 +4,7 @@ import { api } from "../api";
 export const SettingsPage: React.FC = () => {
   const [data, setData] = useState<any>(null);
   const [theme, setTheme] = useState<string>(() => document.documentElement.getAttribute("data-theme") || "dark");
-  const [ttsText, setTtsText] = useState<string>("Olá! Esta voz foi sintetizada localmente na CPU pelo Video Reverse Studio.");
+  const [ttsText, setTtsText] = useState<string>("Olá! Esta voz foi sintetizada localmente na CPU pelo FrameRise.");
   const [ttsVoice, setTtsVoice] = useState<string>("faber");
   const [ttsJob, setTtsJob] = useState<any>(null);
 
@@ -53,7 +53,7 @@ export const SettingsPage: React.FC = () => {
           <div className="panel col" style={{ gap: 10 }}>
             <h2>Agentes de direção</h2>
             <p className="muted" style={{ fontSize: 13 }}>
-              O agente é o cérebro criativo; o Video Reverse Studio é o motor determinístico em CPU. Nenhum LLM pesado roda embutido na CPU.
+              O agente é o cérebro criativo; o FrameRise é o motor determinístico em CPU. Nenhum LLM pesado roda embutido na CPU.
             </p>
             <div className="col" style={{ gap: 8 }}>
               {(data?.agents || []).map((a: any) => (
@@ -71,19 +71,20 @@ export const SettingsPage: React.FC = () => {
           </div>
 
           <div className="panel col" style={{ gap: 10 }}>
-            <h2>Vozes locais em CPU (Piper ONNX PT-BR)</h2>
+            <h2>Vozes locais em CPU · Piper e Supertonic</h2>
             <div className="col" style={{ gap: 8 }}>
               {(data?.voices || []).map((v: any) => (
                 <div key={v.id} className="row spread" style={{ padding: "8px 12px", background: "var(--bg-elev)", borderRadius: 8 }}>
                   <div>
-                    <strong>{v.id}</strong> · <span className="muted">{v.language} ({v.quality})</span>
+                    <strong>{v.label || v.id}</strong> · <span className="muted">{v.language} ({v.quality})</span>
+                    {v.model_card && <p className="muted" style={{ fontSize: 12 }}>{v.model_card}</p>}
                   </div>
                   {v.audition && <audio controls preload="none" src={v.audition} style={{ height: 30 }} />}
                 </div>
               ))}
             </div>
             <form onSubmit={previewTts} className="col" style={{ gap: 8, marginTop: 8 }}>
-              <label>Testar síntese local com alinhamento fonético de palavras</label>
+              <label>Testar síntese local com tempos de palavras (precisão indicada no resultado)</label>
               <div className="row" style={{ gap: 8 }}>
                 <select value={ttsVoice} onChange={(e) => setTtsVoice(e.target.value)} style={{ width: 120 }}>
                   {(data?.voices || []).map((v: any) => (

@@ -10,7 +10,7 @@ mkdir -p data/logs
 PIDFILE="data/logs/vrs-$PORT.pid"
 
 if [ -f "$PIDFILE" ] && kill -0 "$(cat "$PIDFILE")" 2>/dev/null; then
-  echo "Video Reverse Studio já está rodando (PID $(cat "$PIDFILE")) em http://127.0.0.1:$PORT"
+  echo "FrameRise já está rodando (PID $(cat "$PIDFILE")) em http://127.0.0.1:$PORT"
   exit 0
 fi
 rm -f "$PIDFILE"
@@ -31,12 +31,21 @@ export PATH="$ROOT/.tools/bin:$PATH"
 export LD_LIBRARY_PATH="$ROOT/.tools/usr/lib/x86_64-linux-gnu:${LD_LIBRARY_PATH:-}"
 export TESSDATA_PREFIX="$ROOT/.tools/usr/share/tesseract-ocr/5/tessdata"
 
-nohup .venv/bin/python -m vrs.cli serve < /dev/null > data/logs/server.log 2>&1 &
-disown || true
-echo $! > "$PIDFILE"
+.venv/bin/python - "$PIDFILE" <<'PY'
+import os, subprocess, sys
+from pathlib import Path
+root = Path.cwd()
+with (root / "data/logs/server.log").open("ab") as log:
+    process = subprocess.Popen(
+        [str(root / ".venv/bin/vrs"), "serve"],
+        stdin=subprocess.DEVNULL, stdout=log, stderr=subprocess.STDOUT,
+        start_new_session=True, env=os.environ.copy(),
+    )
+Path(sys.argv[1]).write_text(str(process.pid) + "\n")
+PY
 sleep 1.5
 if kill -0 "$(cat "$PIDFILE")" 2>/dev/null; then
-  echo "Video Reverse Studio iniciado em http://127.0.0.1:$PORT (PID $(cat "$PIDFILE"))"
+  echo "FrameRise iniciado em http://127.0.0.1:$PORT (PID $(cat "$PIDFILE"))"
 else
   echo "Falha ao iniciar servidor. Verifique data/logs/server.log" >&2
   exit 1

@@ -1,0 +1,776 @@
+{
+  "schema": "vrs.storyboard/1",
+  "title": "Seu canal pode começar aqui",
+  "language": "pt-BR",
+  "uncertainties": [],
+  "sources": [],
+  "illustrative_data": false,
+  "music": "lib:vrs-pro-audio.bgm-lofi-explain",
+  "scenes": [
+    {
+      "preset_id": "vrs-framerise-chibi",
+      "parameters": {
+        "mode": "hello",
+        "title": "SEU CANAL PODE COMEÇAR AQUI",
+        "appName": "FrameRise",
+        "prompt": "Uma viagem pela luz da lua.",
+        "backgroundAsset": "lib:framerise-chibi.observatory",
+        "poses": [
+          {
+            "asset": "lib:framerise-chibi.pose-0"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-1"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-2"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-3"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-4"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-5"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-6"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-7"
+          }
+        ],
+        "previews": [
+          {
+            "asset": "lib:framerise-chibi.moon"
+          },
+          {
+            "asset": "lib:framerise-chibi.island"
+          },
+          {
+            "asset": "lib:framerise-chibi.observatory"
+          }
+        ],
+        "pose": 0
+      },
+      "narration": "Você sempre sonhou em ter um canal dark, mas nunca soube por onde começar?",
+      "duration": 5.13,
+      "transition": "none"
+    },
+    {
+      "preset_id": "vrs-framerise-chibi",
+      "parameters": {
+        "mode": "brand",
+        "title": "CONHEÇA O FRAMERISE",
+        "appName": "FrameRise",
+        "prompt": "Uma viagem pela luz da lua.",
+        "backgroundAsset": "lib:framerise-chibi.engine",
+        "poses": [
+          {
+            "asset": "lib:framerise-chibi.pose-0"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-1"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-2"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-3"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-4"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-5"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-6"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-7"
+          }
+        ],
+        "previews": [
+          {
+            "asset": "lib:framerise-chibi.moon"
+          },
+          {
+            "asset": "lib:framerise-chibi.island"
+          },
+          {
+            "asset": "lib:framerise-chibi.observatory"
+          }
+        ],
+        "pose": 0
+      },
+      "narration": "Conheça o FrameRise. Seu espaço para criar vídeos e tirar essa ideia do papel.",
+      "duration": 5.68,
+      "transition": "none"
+    },
+    {
+      "preset_id": "vrs-framerise-chibi",
+      "parameters": {
+        "mode": "prompt",
+        "title": "ESCREVA A SUA IDEIA",
+        "appName": "FrameRise",
+        "prompt": "Uma viagem pela luz da lua.",
+        "backgroundAsset": "lib:framerise-chibi.studio",
+        "poses": [
+          {
+            "asset": "lib:framerise-chibi.pose-0"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-1"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-2"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-3"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-4"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-5"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-6"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-7"
+          }
+        ],
+        "previews": [
+          {
+            "asset": "lib:framerise-chibi.moon"
+          },
+          {
+            "asset": "lib:framerise-chibi.island"
+          },
+          {
+            "asset": "lib:framerise-chibi.observatory"
+          }
+        ],
+        "pose": 6
+      },
+      "narration": "Você digita o tema. Vou escolher uma história à luz da lua.",
+      "duration": 4.36,
+      "transition": "none"
+    },
+    {
+      "preset_id": "vrs-framerise-chibi",
+      "parameters": {
+        "mode": "script",
+        "title": "UMA HISTÓRIA, CENA POR CENA",
+        "appName": "FrameRise",
+        "prompt": "Uma viagem pela luz da lua.",
+        "backgroundAsset": "lib:framerise-chibi.studio",
+        "poses": [
+          {
+            "asset": "lib:framerise-chibi.pose-0"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-1"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-2"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-3"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-4"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-5"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-6"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-7"
+          }
+        ],
+        "previews": [
+          {
+            "asset": "lib:framerise-chibi.moon"
+          },
+          {
+            "asset": "lib:framerise-chibi.island"
+          },
+          {
+            "asset": "lib:framerise-chibi.observatory"
+          }
+        ],
+        "pose": 5
+      },
+      "narration": "O roteiro organiza a história e orienta a montagem das cenas.",
+      "duration": 3.98,
+      "transition": "none"
+    },
+    {
+      "preset_id": "vrs-framerise-chibi",
+      "parameters": {
+        "mode": "voice",
+        "title": "VOZ E LEGENDAS JUNTAS",
+        "appName": "FrameRise",
+        "prompt": "Uma viagem pela luz da lua.",
+        "backgroundAsset": "lib:framerise-chibi.studio",
+        "poses": [
+          {
+            "asset": "lib:framerise-chibi.pose-0"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-1"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-2"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-3"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-4"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-5"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-6"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-7"
+          }
+        ],
+        "previews": [
+          {
+            "asset": "lib:framerise-chibi.moon"
+          },
+          {
+            "asset": "lib:framerise-chibi.island"
+          },
+          {
+            "asset": "lib:framerise-chibi.observatory"
+          }
+        ],
+        "pose": 2
+      },
+      "narration": "A narração entra, e as legendas acompanham cada fala.",
+      "duration": 3.36,
+      "transition": "none"
+    },
+    {
+      "preset_id": "vrs-framerise-chibi",
+      "parameters": {
+        "mode": "scenes",
+        "title": "A HISTÓRIA GANHA FORMA",
+        "appName": "FrameRise",
+        "prompt": "Uma viagem pela luz da lua.",
+        "backgroundAsset": "lib:framerise-chibi.moon",
+        "poses": [
+          {
+            "asset": "lib:framerise-chibi.pose-0"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-1"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-2"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-3"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-4"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-5"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-6"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-7"
+          }
+        ],
+        "previews": [
+          {
+            "asset": "lib:framerise-chibi.moon"
+          },
+          {
+            "asset": "lib:framerise-chibi.island"
+          },
+          {
+            "asset": "lib:framerise-chibi.observatory"
+          }
+        ],
+        "pose": 7
+      },
+      "narration": "Imagens, cenários e animações começam a dar vida ao vídeo.",
+      "duration": 4.2,
+      "transition": "none"
+    },
+    {
+      "preset_id": "vrs-framerise-chibi",
+      "parameters": {
+        "mode": "styles",
+        "title": "ESCOLHA O SEU ESTILO",
+        "appName": "FrameRise",
+        "prompt": "Uma viagem pela luz da lua.",
+        "backgroundAsset": "lib:framerise-chibi.studio",
+        "poses": [
+          {
+            "asset": "lib:framerise-chibi.pose-0"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-1"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-2"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-3"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-4"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-5"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-6"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-7"
+          }
+        ],
+        "previews": [
+          {
+            "asset": "lib:framerise-chibi.moon"
+          },
+          {
+            "asset": "lib:framerise-chibi.island"
+          },
+          {
+            "asset": "lib:framerise-chibi.observatory"
+          }
+        ],
+        "pose": 2
+      },
+      "narration": "Quer mudar o estilo? Escolha outro visual e acompanhe a transformação.",
+      "duration": 4.64,
+      "transition": "none"
+    },
+    {
+      "preset_id": "vrs-framerise-chibi",
+      "parameters": {
+        "mode": "before",
+        "title": "ANTES",
+        "appName": "FrameRise",
+        "prompt": "Uma viagem pela luz da lua.",
+        "backgroundAsset": "lib:framerise-chibi.moon",
+        "poses": [
+          {
+            "asset": "lib:framerise-chibi.pose-0"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-1"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-2"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-3"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-4"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-5"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-6"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-7"
+          }
+        ],
+        "previews": [
+          {
+            "asset": "lib:framerise-chibi.moon"
+          },
+          {
+            "asset": "lib:framerise-chibi.island"
+          },
+          {
+            "asset": "lib:framerise-chibi.observatory"
+          }
+        ],
+        "pose": 5
+      },
+      "narration": "Olha essa mesma cena antes da edição.",
+      "duration": 2.6,
+      "transition": "none"
+    },
+    {
+      "preset_id": "vrs-framerise-chibi",
+      "parameters": {
+        "mode": "after",
+        "title": "DEPOIS",
+        "appName": "FrameRise",
+        "prompt": "Uma viagem pela luz da lua.",
+        "backgroundAsset": "lib:framerise-chibi.moon",
+        "poses": [
+          {
+            "asset": "lib:framerise-chibi.pose-0"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-1"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-2"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-3"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-4"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-5"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-6"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-7"
+          }
+        ],
+        "previews": [
+          {
+            "asset": "lib:framerise-chibi.moon"
+          },
+          {
+            "asset": "lib:framerise-chibi.island"
+          },
+          {
+            "asset": "lib:framerise-chibi.observatory"
+          }
+        ],
+        "pose": 4
+      },
+      "narration": "Agora, com movimento, cortes e efeitos. Sentiu a diferença?",
+      "duration": 4.86,
+      "transition": "none"
+    },
+    {
+      "preset_id": "vrs-framerise-chibi",
+      "parameters": {
+        "mode": "cuts",
+        "title": "AUTOMAÇÃO COM A SUA DIREÇÃO",
+        "appName": "FrameRise",
+        "prompt": "Uma viagem pela luz da lua.",
+        "backgroundAsset": "lib:framerise-chibi.engine",
+        "poses": [
+          {
+            "asset": "lib:framerise-chibi.pose-0"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-1"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-2"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-3"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-4"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-5"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-6"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-7"
+          }
+        ],
+        "previews": [
+          {
+            "asset": "lib:framerise-chibi.moon"
+          },
+          {
+            "asset": "lib:framerise-chibi.island"
+          },
+          {
+            "asset": "lib:framerise-chibi.observatory"
+          }
+        ],
+        "pose": 2
+      },
+      "narration": "O FrameRise reúne essas etapas em um fluxo automatizado, com ajustes do seu jeito.",
+      "duration": 5.88,
+      "transition": "none"
+    },
+    {
+      "preset_id": "vrs-framerise-chibi",
+      "parameters": {
+        "mode": "edit",
+        "title": "EXPERIMENTE. AJUSTE. ASSISTA.",
+        "appName": "FrameRise",
+        "prompt": "Uma viagem pela luz da lua.",
+        "backgroundAsset": "lib:framerise-chibi.studio",
+        "poses": [
+          {
+            "asset": "lib:framerise-chibi.pose-0"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-1"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-2"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-3"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-4"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-5"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-6"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-7"
+          }
+        ],
+        "previews": [
+          {
+            "asset": "lib:framerise-chibi.moon"
+          },
+          {
+            "asset": "lib:framerise-chibi.island"
+          },
+          {
+            "asset": "lib:framerise-chibi.observatory"
+          }
+        ],
+        "pose": 2
+      },
+      "narration": "Troque uma cena, ajuste o ritmo e confira a prévia.",
+      "duration": 3.72,
+      "transition": "none"
+    },
+    {
+      "preset_id": "vrs-framerise-chibi",
+      "parameters": {
+        "mode": "sound",
+        "title": "CADA SOM NA SUA HORA",
+        "appName": "FrameRise",
+        "prompt": "Uma viagem pela luz da lua.",
+        "backgroundAsset": "lib:framerise-chibi.engine",
+        "poses": [
+          {
+            "asset": "lib:framerise-chibi.pose-0"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-1"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-2"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-3"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-4"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-5"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-6"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-7"
+          }
+        ],
+        "previews": [
+          {
+            "asset": "lib:framerise-chibi.moon"
+          },
+          {
+            "asset": "lib:framerise-chibi.island"
+          },
+          {
+            "asset": "lib:framerise-chibi.observatory"
+          }
+        ],
+        "pose": 3
+      },
+      "narration": "A trilha e os efeitos completam a experiência.",
+      "duration": 3.36,
+      "transition": "none"
+    },
+    {
+      "preset_id": "vrs-framerise-chibi",
+      "parameters": {
+        "mode": "mascot",
+        "title": "SUA COMPANHEIRA DE CRIAÇÃO",
+        "appName": "FrameRise",
+        "prompt": "Uma viagem pela luz da lua.",
+        "backgroundAsset": "lib:framerise-chibi.observatory",
+        "poses": [
+          {
+            "asset": "lib:framerise-chibi.pose-0"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-1"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-2"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-3"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-4"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-5"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-6"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-7"
+          }
+        ],
+        "previews": [
+          {
+            "asset": "lib:framerise-chibi.moon"
+          },
+          {
+            "asset": "lib:framerise-chibi.island"
+          },
+          {
+            "asset": "lib:framerise-chibi.observatory"
+          }
+        ],
+        "pose": 0
+      },
+      "narration": "E eu acompanho você para apresentar cada detalhe!",
+      "duration": 2.94,
+      "transition": "none"
+    },
+    {
+      "preset_id": "vrs-framerise-chibi",
+      "parameters": {
+        "mode": "finish",
+        "title": "PRONTO PARA EXPORTAR",
+        "appName": "FrameRise",
+        "prompt": "Uma viagem pela luz da lua.",
+        "backgroundAsset": "lib:framerise-chibi.studio",
+        "poses": [
+          {
+            "asset": "lib:framerise-chibi.pose-0"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-1"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-2"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-3"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-4"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-5"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-6"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-7"
+          }
+        ],
+        "previews": [
+          {
+            "asset": "lib:framerise-chibi.moon"
+          },
+          {
+            "asset": "lib:framerise-chibi.island"
+          },
+          {
+            "asset": "lib:framerise-chibi.observatory"
+          }
+        ],
+        "pose": 4
+      },
+      "narration": "Gostou do resultado? É só exportar o vídeo pronto.",
+      "duration": 3.76,
+      "transition": "none"
+    },
+    {
+      "preset_id": "vrs-framerise-chibi",
+      "parameters": {
+        "mode": "cta",
+        "title": "COMECE A SUA PRÓXIMA HISTÓRIA",
+        "appName": "FrameRise",
+        "prompt": "Uma viagem pela luz da lua.",
+        "backgroundAsset": "lib:framerise-chibi.engine",
+        "poses": [
+          {
+            "asset": "lib:framerise-chibi.pose-0"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-1"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-2"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-3"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-4"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-5"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-6"
+          },
+          {
+            "asset": "lib:framerise-chibi.pose-7"
+          }
+        ],
+        "previews": [
+          {
+            "asset": "lib:framerise-chibi.moon"
+          },
+          {
+            "asset": "lib:framerise-chibi.island"
+          },
+          {
+            "asset": "lib:framerise-chibi.observatory"
+          }
+        ],
+        "pose": 0
+      },
+      "narration": "Seu sonho de ter um canal dark pode começar hoje. FrameRise. Vamos criar o seu?",
+      "duration": 6.7,
+      "transition": "none"
+    }
+  ]
+}

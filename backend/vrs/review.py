@@ -19,6 +19,7 @@ from .render import kinocut_bin
 from .util import VRSError, read_json, run, sanitize, write_json
 
 MEDIA_SCENES = {
+    "vrs-framerise-chibi",
     "vrs-doc-montage",
     "vrs-story-panel",
     "vrs-stickman-stage",
@@ -354,7 +355,7 @@ def _build_publish_kit(plan: dict[str, Any]) -> dict[str, Any]:
         ],
         "chapters": chapters,
         "chapters_text": "\n".join(f"{c['timestamp']} {c['label']}" for c in chapters),
-        "hashtags": [f"#{vl}", "#explicacao", "#animacao2d", "#animacao3d", "#videoreversestudio"],
+        "hashtags": [f"#{vl}", "#explicacao", "#animacao2d", "#animacao3d", "#framerise"],
     }
 
 

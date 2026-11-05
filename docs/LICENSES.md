@@ -33,3 +33,8 @@ Cada importação para um projeto registra SHA256, tamanho, pacote e licença em
 ## 5. Gate de Verificação Independente (`.tools/kinocut-venv/`)
 
 - `kinocut==1.16.5` (MIT) instalado em ambiente Python 3.12 isolado e chamado exclusivamente como gate de verificação pós-render.
+# FrameRise Chibi e Supertonic opcional
+
+O pacote `framerise-chibi` contém ilustrações do projeto do usuário geradas com ImageGen e o vídeo original enviado por ele. Consulte `data/library/packs/framerise-chibi/SOURCES.md`. As ilustrações não são assets CC0 nem modelos open source; não há promessa de exclusividade. O vídeo nativo é uma adaptação, com código de cena reutilizável.
+
+O helper Supertonic incluído em `backend/vrs/vendor/supertonic/` é MIT, com licença preservada nesse diretório. Os pesos Supertonic 3 têm licença Open RAIL-M, são opcionais e não estão incluídos no Git. A origem e revisão usadas no exemplo estão em `data/examples/framerise-chibi/reference-voice-provenance.json`.

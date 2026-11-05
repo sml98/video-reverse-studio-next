@@ -1,9 +1,11 @@
-# Video Reverse Studio
+# FrameRise
 
 Aplicativo pessoal completo de criação e engenharia reversa de vídeos programáticos em **CPU** para Ubuntu, dirigido pelo seu agente de IA (via MCP, CLI ou receita editorial local).
 
 **Fluxo central**:
-> **Escolher um nicho → assistir a um exemplo animado → escrever minha ideia → o agente adaptar o exemplo (ou referência) → renderizar localmente na CPU → revisar quadros reais → entregar MP4 e projeto editável.**
+> **Escolher um preset → assistir à prévia → usar o roteiro do exemplo, colar um roteiro próprio ou desenvolver um tema com um agente → renderizar na CPU → revisar → exportar MP4 e projeto editável.**
+
+O catálogo atualizado inclui **FrameRise Chibi · apresentação v5**, com original e adaptação nativa separados, personagem, cenários, digitação, cliques, timeline, trilha, efeitos e legendas. Veja [instalação da voz, fluxo e limitações](docs/framerise-chibi.md).
 
 ## Arquitetura em um único produto
 
@@ -12,8 +14,8 @@ Aplicativo pessoal completo de criação e engenharia reversa de vídeos program
   1. **Web App em Português (Modo Escuro Padrão)**: Criar vídeo, Meus projetos, Biblioteca (com visualizador 3D Three.js), Configurações e Editor/Player interativo por projeto.
   2. **Servidor MCP stdio (`python -m vrs.mcp_server`)**: ferramentas compatíveis com aliases de direção para direção pelo agente escolhido.
   3. **CLI (`vrs`)**: `status`, `doctor`, `niches`, `scenes`, `library`, `create`, `projects`, `project`, `agent-task`, `submit-storyboard`, `render`, `review`, `approve`, `export`, `examples`, `worker`, `serve`.
-- **Motor visual unificado**: 27 cenas animadas VRS (`vrs-*`) + 50 componentes MIT RenderComp (`rc-*`) renderizados no mesmo motor Remotion 4, com efeitos via `WordAnchor` ativos e `ViralCaptions` entre o `<Player>` interativo e o MP4 final.
-- **Voz local em CPU**: Piper ONNX (`faber`, `cadu`, `jeff` PT-BR) com extração fonética real de tempos de palavra em milissegundos (`tts_phonemes`).
+- **Motor visual unificado**: 80 componentes de cenas (`vrs-*` e RenderComp MIT `rc-*`) no motor Remotion 4, com efeitos via `WordAnchor` e legendas entre o player interativo e o MP4.
+- **Voz local em CPU**: Piper ONNX (`faber`, `cadu`, `jeff` PT-BR) com tempos fonéticos (`tts_phonemes`); Supertonic 3 opcional (`F2`, `F4`, `F5`, português) com pesos já instalados e tempos estimados por ASR. Não há download automático de modelos.
 
 ## Comandos rápidos
 

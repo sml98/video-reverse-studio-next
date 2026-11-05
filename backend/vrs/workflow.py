@@ -263,16 +263,22 @@ def _prepare(ctx: JobCtx) -> dict[str, Any]:
     pid = ctx.project_id
     p = projects.get_project(pid)
     ref = ctx.params.get("reference") or {"kind": "niche_example"}
-    ctx.progress("análise: importando referência", 0.02)
+    using_recipe = ref.get("kind")=="niche_example" and not (p.get("options") or {}).get("clone_full")
+    ctx.progress("preparação: carregando preset" if using_recipe else "análise: importando referência", 0.02)
     if not ctx.checkpoints.get("imported"):
         kind = ref.get("kind")
         if kind == "niche_example":
-            try:
-                analysis.import_example(pid, p["niche_id"])
-            except VRSError as e:
-                if e.code != "no_example":
-                    raise
-                ctx.checkpoint("reference_note", "exemplo ainda não gerado; seguindo sem referência em vídeo")
+            if using_recipe:
+                niche=catalog.get_niche(p["niche_id"])
+                write_json(projects.project_dir(pid)/"brief.json",{"schema":"vrs.brief/1","reference":{"kind":"authored_recipe","niche_id":niche["id"]},"measured":{},"interpretation":{"basis":"authored_recipe","scenes":len(niche["recipe"]),"arc":niche["arc"]},"limits":["Receita conhecida do preset; o vídeo de demonstração não foi reanalisado."]})
+                projects.update_project(pid,reference={"kind":"preset_recipe","niche_id":niche["id"],"requested":ref})
+            else:
+                try:
+                    analysis.import_example(pid, p["niche_id"])
+                except VRSError as e:
+                    if e.code != "no_example":
+                        raise
+                    ctx.checkpoint("reference_note", "exemplo ainda não gerado; seguindo sem referência em vídeo")
         elif kind == "library":
             analysis.import_library(pid, ref["resource_id"])
         elif kind == "link":
@@ -285,7 +291,7 @@ def _prepare(ctx: JobCtx) -> dict[str, Any]:
             raise VRSError(f"Tipo de referência desconhecido: {kind}")
         ctx.checkpoint("imported", True)
     p = projects.get_project(pid)
-    if (p.get("reference") or {}).get("file") and not ctx.checkpoints.get("analyzed"):
+    if not using_recipe and (p.get("reference") or {}).get("file") and not ctx.checkpoints.get("analyzed"):
         res = analysis.analyze(pid, progress=lambda s, f: ctx.progress(f"análise: {s}", 0.25 + 0.65 * f))
         ctx.checkpoint("analyzed", res)
     projects.update_project(pid, stage="aguardando direção")

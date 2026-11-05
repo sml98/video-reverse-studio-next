@@ -74,7 +74,8 @@ def list_voices() -> list[dict[str, Any]]:
                 "audition": "/media/voices/faber/audition.wav",
             }
         )
-    return out
+    from . import supertonic
+    return supertonic.voices() + out
 
 
 def _model_path(voice_id: str) -> Path:
@@ -219,6 +220,18 @@ def synthesize(text: str, voice_id: str, out_wav: Path, *, length_scale: float =
     text = re.sub(r"\s+", " ", text or "").strip()
     if not text:
         raise VRSError("Texto vazio para narração.")
+    if voice_id.startswith("supertonic-"):
+        from . import supertonic
+        audio, sr = supertonic.generate(text, voice_id, length_scale=length_scale)
+        raw = out_wav.with_name(out_wav.stem + "-raw.wav")
+        out_wav.parent.mkdir(parents=True,exist_ok=True)
+        write_wav(raw,apply_fades(audio,sr,SAMPLE_FADE_MS),sr)
+        try:
+            info = align_uploaded_voice(raw,out_wav,transcript_text=text,language="pt")
+        finally:
+            raw.unlink(missing_ok=True)
+        info["voice"] = voice_id
+        return info
     if voice_id == "duet":
         v_pair = ["faber", "cadu"]
     elif "+" in voice_id:
@@ -312,6 +325,9 @@ def read_wav(path: Path) -> tuple[np.ndarray, int]:
 
 
 def voice_hash(voice_id: str) -> str:
+    if voice_id.startswith("supertonic-"):
+        from . import supertonic
+        return supertonic.fingerprint(voice_id)
     onnx = _model_path(voice_id)
     marker = onnx.with_suffix(".sha256")
     if marker.exists() and marker.stat().st_mtime >= onnx.stat().st_mtime:
@@ -342,8 +358,49 @@ def synthesize_cached(text: str, voice_id: str, *, length_scale: float = 1.0) ->
     return info
 
 
+def reconcile_asr_words(text: str, asr_words: list[tuple[str,int,int]], duration_ms: int) -> tuple[list[dict[str,Any]],str]:
+    """Keep every approved word; ASR supplies estimates, never a forced-alignment claim."""
+    from difflib import SequenceMatcher
+    from .anchors import normalize_token
+    tokens = WORD_RE.findall(text)
+    if not tokens:
+        return [{"id":f"w-{i+1}","word":w,"start":a,"end":b} for i,(w,a,b) in enumerate(asr_words)],"asr_estimated"
+    matches: dict[int,tuple[int,int]] = {}
+    matcher = SequenceMatcher(None,[normalize_token(t) for t in tokens],[normalize_token(t[0]) for t in asr_words],autojunk=False)
+    for block in matcher.get_matching_blocks():
+        for k in range(block.size):
+            _,a,b = asr_words[block.b+k]
+            matches[block.a+k] = (a,b)
+    precise = len(matches)/max(1,len(tokens)) >= .5
+    if not precise:
+        matches = {}
+    spans = [matches.get(i) for i in range(len(tokens))]
+    i = 0
+    while i < len(tokens):
+        if spans[i] is not None:
+            i += 1
+            continue
+        end = i
+        while end < len(tokens) and spans[end] is None:
+            end += 1
+        start_ms = spans[i-1][1] if i else 0
+        end_ms = spans[end][0] if end < len(tokens) else duration_ms
+        weights = [max(1,len(t)) for t in tokens[i:end]]; total = sum(weights); cursor = start_ms
+        for offset,weight in enumerate(weights):
+            stop = cursor+max(1,(end_ms-start_ms)*weight/total)
+            spans[i+offset] = (round(cursor),round(stop)); cursor = stop
+        i = end
+    words = []
+    for i,(word,span) in enumerate(zip(tokens,spans)):
+        a,b = span
+        a = max(words[-1]["end"] if words else 0,min(duration_ms-len(tokens)+i,a))
+        b = min(duration_ms-len(tokens)+i+1,max(a+1,b))
+        words.append({"id":f"w-{i+1}","word":word,"start":int(a),"end":int(b)})
+    return words,"asr_estimated" if precise else "proportional"
+
+
 def align_uploaded_voice(src_audio: Path, out_wav: Path, *, transcript_text: str = "", language: str = "pt") -> dict[str, Any]:
-    """Normaliza áudio gravado pelo usuário e extrai tempos de palavras (forced_aligned/asr_estimated/proportional)."""
+    """Normaliza áudio e estima tempos por ASR, preservando a transcrição aprovada."""
     from .util import run
 
     out_wav.parent.mkdir(parents=True, exist_ok=True)
@@ -375,15 +432,9 @@ def align_uploaded_voice(src_audio: Path, out_wav: Path, *, transcript_text: str
                         b = max(a + 10, min(dur_ms, int(round(wd.end * 1000))))
                         asr_words.append((w_txt, a, b))
             if asr_words:
-                user_toks = WORD_RE.findall(spoken_text) if spoken_text else []
-                if user_toks and len(user_toks) == len(asr_words):
-                    words = [{"id": f"w-{i + 1}", "word": uw, "start": a, "end": b} for i, (uw, (_, a, b)) in enumerate(zip(user_toks, asr_words))]
-                    timing = "forced_aligned"
-                else:
-                    words = [{"id": f"w-{i + 1}", "word": w, "start": a, "end": b} for i, (w, a, b) in enumerate(asr_words)]
-                    timing = "forced_aligned" if user_toks else "asr_estimated"
-                    if not spoken_text:
-                        spoken_text = " ".join(w for w, _, _ in asr_words)
+                words,timing = reconcile_asr_words(spoken_text,asr_words,dur_ms)
+                if not spoken_text:
+                    spoken_text = " ".join(w for w, _, _ in asr_words)
         except Exception:
             pass
         finally:

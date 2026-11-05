@@ -181,6 +181,25 @@ def _dossier_sfx(pid: str, params: dict[str, Any], words: list[dict[str, Any]], 
     return cues
 
 
+def _chibi_sfx(pid: str, params: dict[str, Any], duration_ms: int, opts: dict[str, Any]) -> list[dict[str, Any]]:
+    if not opts.get("auto_sfx",True) or not params.get("soundEnabled",True):
+        return []
+    level=float(params.get("soundLevel",.65)); mode=params.get("mode","hello")
+    if level<=0:return []
+    events=[("sfx-whoosh",40,.14)]
+    action=float(params.get("actionProgress",.72))
+    if mode in ("prompt","edit","styles","finish"):
+        events.append(("sfx-marker-write",duration_ms*action,.2))
+    if mode=="prompt":
+        events.extend(("sfx-marker-write",duration_ms*(.1+i*max(.01,action-.3)/6),.045) for i in range(7))
+    if mode=="finish":events.append(("sfx-ding-check",duration_ms*min(.99,action+.12),.2))
+    cues=[]
+    for resource,at,volume in events:
+        try:cues.append({"path":_resolve_asset(pid,"lib:vrs-pro-audio."+resource),"at_ms":round(at),"volume":volume*level,"role":"chibi:"+resource})
+        except VRSError:pass
+    return cues
+
+
 def _apply_assets(pid: str, preset: str, params: dict[str, Any], asset_path: str, asset_ids: list[str]) -> dict[str, str]:
     extra = [a for a in ([asset_path] if asset_path else []) + [f"lib:{i}" if not i.startswith("lib:") else i for i in asset_ids]]
     if preset == "vrs-doc-montage" and extra:
@@ -280,6 +299,8 @@ def expand(pid: str, storyboard: dict[str, Any], *, progress: Progress | None = 
         tr = s.transition or (default_tr if i else "fade")
         anchors = [a.model_dump() for a in s.anchors]
         scene_sfx = _dossier_sfx(pid, params, words, opts) if s.preset_id == "vrs-dossier" else _auto_sfx(pid, i, s.preset_id, tr, words, opts)
+        if s.preset_id=="vrs-framerise-chibi":
+            scene_sfx=_chibi_sfx(pid,params,dur_ms,opts)
         if s.sfx:
             scene_sfx.append({"path": _resolve_asset(pid, s.sfx), "at_ms": words[0]["start"] if words else 0, "volume": 0.16, "role": "scene"})
         for anchor in anchors:
@@ -352,7 +373,7 @@ def expand(pid: str, storyboard: dict[str, Any], *, progress: Progress | None = 
         "captions": {
             "enabled": captions != "off",
             "mode": captions if captions in ("word", "phrase", "off") else "word",
-            "position": "bottom",
+            "position": niche.get("captions", {}).get("position", "bottom"),
             "maxWords": int(niche.get("captions", {}).get("maxWords", 3)),
             "highlight": niche.get("captions", {}).get("highlight", "#ffd23f"),
             "style": cap_style if cap_style in ("hormozi", "karaoke", "cinema", "comic") else "hormozi",
@@ -401,52 +422,13 @@ def auto_storyboard_from_idea(niche_id: str, idea: str, target_seconds: float | 
         from .studio import mix_storyboard
         return mix_storyboard(niche_id, idea, float(target_seconds or 30), studio_sliders, title=title)
     n = catalog.get_niche(niche_id)
-    clean_idea = re.sub(r"\s+", " ", (idea or "").strip())
+    clean_idea = re.sub(r"[^\S\n]+", " ", (idea or "").strip())
     if not clean_idea:
         return storyboard_from_recipe(niche_id, title=title or None)
 
-    sentences = [s.strip() for s in re.split(r"[.!?;\n]+", clean_idea) if len(s.strip()) > 3]
-    headline = title.strip() or (sentences[0][:68] if sentences else clean_idea[:68])
-    words_only = [w for w in re.findall(r"[A-Za-zÀ-ÿ0-9]{4,}", clean_idea) if w.lower() not in {"como", "para", "sobre", "quero", "vídeo", "video", "fazer", "explicar", "explique", "estilo", "cenas", "segundos"}]
-    topic = " ".join(words_only[:4]).title() or headline[:36]
+    from .direction import storyboard_from_script
+    return storyboard_from_script(niche_id,clean_idea,float(target_seconds or n["defaultDuration"]),title=title)
 
-    base = storyboard_from_recipe(niche_id, title=headline)
-    scenes = base["scenes"]
-    num_sc = len(scenes)
-    scale = max(0.6, min(1.8, float(target_seconds or n["defaultDuration"]) / max(1.0, sum(s["duration"] for s in scenes))))
-
-    for i, sc in enumerate(scenes):
-        sc["duration"] = round(max(3.5, sc["duration"] * scale), 1)
-        p = sc["parameters"]
-        pid_preset = sc["preset_id"]
-        user_sent = sentences[i % len(sentences)] if sentences else clean_idea
-
-        if i == 0:
-            if "title" in p:
-                p["title"] = headline[:85]
-            if "subtitle" in p:
-                p["subtitle"] = f"Guia visual: {topic}"[:110]
-            if "kicker" in p:
-                p["kicker"] = n["title"].upper()[:36]
-            if len(sentences) == 1 and len(clean_idea) <= 180:
-                sc["narration"] = f"{clean_idea.rstrip('.!?')}. Vamos ver na prática como isso funciona."
-            else:
-                sc["narration"] = f"{user_sent.rstrip('.!?')}. Entenda os pontos essenciais sobre {topic.lower()}."
-        elif i == num_sc - 1 and pid_preset == "vrs-cta":
-            p["headline"] = f"Gostou de entender {topic}?"[:80]
-            sc["narration"] = f"Se essa explicação sobre {topic.lower()} ajudou você, salve este vídeo e compartilhe!"
-        else:
-            if "title" in p and p["title"]:
-                p["title"] = f"{topic}: Etapa {i}"[:80]
-            if pid_preset == "vrs-stickman-stage" and len(sentences) > 1:
-                p["boardTitle"] = topic.upper()[:42]
-                p["bullets"] = [s[:48] for s in sentences[:3]]
-            elif pid_preset == "vrs-news-highlight":
-                p["headline"] = headline[:90]
-                p["highlightText"] = user_sent[:110]
-            if len(sentences) > i:
-                sc["narration"] = f"{sentences[i].rstrip('.!?')}."
-    return base
 
 
 def patch_scene(plan: dict[str, Any], scene_id: str, patch: dict[str, Any], *, pid: str | None = None) -> dict[str, Any]:

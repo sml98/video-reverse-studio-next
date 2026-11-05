@@ -1,0 +1,39 @@
+{
+  "id": "framerise-chibi",
+  "title": "FrameRise Chibi · cenários e poses",
+  "source": "https://github.com/sml98/video-reverse-studio-next",
+  "license": "FrameRise original composition; AI-generated illustrations (ImageGen), see SOURCES.md",
+  "credit": "FrameRise / original ImageGen illustrations",
+  "tags": [
+    "framerise",
+    "chibi",
+    "kawaii",
+    "mascote",
+    "apresentacao",
+    "interface",
+    "fantasia"
+  ],
+  "niches": [
+    "framerise-chibi"
+  ],
+  "styles": [
+    "ilustrado",
+    "kawaii",
+    "motion"
+  ],
+  "files": {
+    "images/observatory.png": "5baca6dcccf003486f90ccc7e37e0a71b25a9f098017c831034d80edcde46caa",
+    "images/pose-7.png": "b0e235a663539bc97de4675561b6efc37990cc44903f91d1a85382311bf5a2b2",
+    "images/moon.png": "ae55faee41e8b9b85b6b6c37ef0c0a049132149acaafcd8a9e11c6ccf27b27b7",
+    "images/pose-0.png": "72c77eca057926957e5f77264ce2c2e517d8dc0106966f2576107da24d39bc47",
+    "images/island.png": "9d57e3a500c637627b457b990b1d38322ea72322a02a7bc7a4027c4570ac8325",
+    "images/pose-2.png": "3318353fd385e5d1c03a83bd9dfd8225a67e0a6cf170db440dabce26849b9ee3",
+    "images/pose-1.png": "de86dc215cfcc0ce9c5f92a78d6f843a916f788a4ced027904328f2f491ced2c",
+    "images/pose-4.png": "c79b777836c70f4b5efdb03b7569af77803b600a98ef82e59b5ae6c886ecf764",
+    "images/pose-5.png": "4db5dc8b046a67405e2497e3df87b5f13538f2b910753eabf4ffed7200a872d7",
+    "images/pose-3.png": "2aacaf65f8a3a6541f11ac740dd05444e882ded8060cc1a6509390db37a179b9",
+    "images/engine.png": "4ec7955c9d75c2c21b5574482563b1a3ac219eec0813dde71da0562071c229e4",
+    "images/pose-6.png": "c50558df3e153a8f79809e36d23d965514bd930f8536423839a58f743310a8ff",
+    "images/studio.png": "ad14c73e87a144b9c881b29be2ea29fc826504a8882de98b01c0d86356c9a91d"
+  }
+}

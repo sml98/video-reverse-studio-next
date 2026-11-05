@@ -232,7 +232,7 @@ def cmd_hypit_clone(a):
 
 def main(argv: list[str] | None = None) -> None:
     limit_threads()
-    p = argparse.ArgumentParser(prog="vrs", description="Video Reverse Studio (local, CPU)")
+    p = argparse.ArgumentParser(prog="vrs", description="FrameRise (local, CPU)")
     sub = p.add_subparsers(dest="cmd", required=True)
     sub.add_parser("serve", help="servidor local 127.0.0.1:8765 + worker").set_defaults(fn=cmd_serve)
     sub.add_parser("doctor").set_defaults(fn=cmd_doctor)

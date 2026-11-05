@@ -194,6 +194,186 @@
       ]
     },
     {
+      "id": "vrs-framerise-chibi",
+      "title": "FrameRise Chibi: mascote + demonstração interativa",
+      "summary": "Mascote com oito poses, cinco cenários, digitação, cursor, timeline, prévia, exportação e efeitos sincronizados. Interface ilustrativa editável.",
+      "category": "apresentacao",
+      "motion": [
+        "troca de poses",
+        "piscar",
+        "digitação",
+        "cursor e clique",
+        "timeline animada",
+        "cards",
+        "exportação demonstrativa"
+      ],
+      "params": [
+        {
+          "key": "mode",
+          "type": "select",
+          "label": "Composição",
+          "default": "hello",
+          "options": [
+            "hello",
+            "brand",
+            "prompt",
+            "script",
+            "voice",
+            "scenes",
+            "styles",
+            "before",
+            "after",
+            "cuts",
+            "edit",
+            "sound",
+            "mascot",
+            "finish",
+            "cta"
+          ]
+        },
+        {
+          "key": "title",
+          "type": "text",
+          "label": "Título em cena",
+          "default": "SEU CANAL PODE COMEÇAR AQUI",
+          "maxLength": 60
+        },
+        {
+          "key": "appName",
+          "type": "text",
+          "label": "Nome do produto",
+          "default": "FrameRise",
+          "maxLength": 24
+        },
+        {
+          "key": "prompt",
+          "type": "longtext",
+          "label": "Texto digitado",
+          "default": "Uma viagem pela luz da lua.",
+          "maxLength": 180
+        },
+        {
+          "key": "cta",
+          "type": "text",
+          "label": "Chamada para ação",
+          "default": "DÊ O PRIMEIRO PASSO",
+          "maxLength": 38
+        },
+        {
+          "key": "fileName",
+          "type": "text",
+          "label": "Nome do arquivo demonstrativo",
+          "default": "historia-da-lua.mp4",
+          "maxLength": 50
+        },
+        {
+          "key": "backgroundAsset",
+          "type": "asset",
+          "label": "Cenário",
+          "default": ""
+        },
+        {
+          "key": "poses",
+          "type": "list",
+          "label": "Poses da mascote (0–7)",
+          "default": [],
+          "maxItems": 8,
+          "item": {
+            "type": "object",
+            "fields": [
+              {
+                "key": "asset",
+                "type": "asset",
+                "label": "Pose PNG",
+                "default": ""
+              }
+            ]
+          }
+        },
+        {
+          "key": "previews",
+          "type": "list",
+          "label": "Mídias da demonstração",
+          "default": [],
+          "maxItems": 4,
+          "item": {
+            "type": "object",
+            "fields": [
+              {
+                "key": "asset",
+                "type": "asset",
+                "label": "Imagem",
+                "default": ""
+              }
+            ]
+          }
+        },
+        {
+          "key": "pose",
+          "type": "number",
+          "label": "Pose principal (0–7)",
+          "default": 0,
+          "min": 0,
+          "max": 7
+        },
+        {
+          "key": "reactToSpeech",
+          "type": "boolean",
+          "label": "Reação aproximada à fala",
+          "default": true
+        },
+        {
+          "key": "motion",
+          "type": "number",
+          "label": "Intensidade de movimento",
+          "default": 1,
+          "min": 0,
+          "max": 2
+        },
+        {
+          "key": "actionProgress",
+          "type": "number",
+          "label": "Momento da ação na cena (0–1)",
+          "default": 0.72,
+          "min": 0.2,
+          "max": 0.9
+        },
+        {
+          "key": "accent",
+          "type": "color",
+          "label": "Verde da marca",
+          "default": "#C3FF5F"
+        },
+        {
+          "key": "secondary",
+          "type": "color",
+          "label": "Cor de apoio",
+          "default": "#9C7BFF"
+        },
+        {
+          "key": "footer",
+          "type": "text",
+          "label": "Nota de rodapé",
+          "default": "FrameRise · demonstração visual",
+          "maxLength": 70
+        },
+        {
+          "key": "soundEnabled",
+          "type": "boolean",
+          "label": "Efeitos sonoros",
+          "default": true
+        },
+        {
+          "key": "soundLevel",
+          "type": "number",
+          "label": "Intensidade dos efeitos",
+          "default": 0.65,
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    {
       "id": "vrs-dossier",
       "title": "Dossiê documental: moldura, lupa e dados",
       "summary": "Vídeo ou foto em moldura, documento editável com lupa real por máscara, anotações conectadas, contador e entrada em perspectiva. Substitua mídias e narrativa.",

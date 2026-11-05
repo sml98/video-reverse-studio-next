@@ -89,6 +89,11 @@ def get_niche(niche_id: str) -> dict[str, Any]:
 def niche_summary(n: dict[str, Any]) -> dict[str, Any]:
     return {
         "id": n["id"],
+        "family": n.get("family", "apresentadores" if n["id"] in ("pandora","multiplane","southpark","stickman","roblox") else "dados" if n["id"]=="financas" else "tipografia" if n["id"]=="frases" else "documental" if n["id"] in ("documentario","historia","dossie-documental") else "explicativos"),
+        "revision": n.get("revision", "1.0"),
+        "featured": n.get("featured", n["id"]=="dossie-documental"),
+        "capabilities": n.get("capabilities", n["visualLanguages"]),
+        "defaultVoice": n.get("defaultVoice",n.get("voice","faber")),
         "title": n["title"],
         "emoji": n.get("emoji", ""),
         "description": n["description"],

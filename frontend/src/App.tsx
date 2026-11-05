@@ -40,7 +40,7 @@ export const App: React.FC = () => {
     <div className="app">
       <aside className="sidebar">
         <div className="brand">
-          <div className="brand-mark">▶</div> Video Reverse Studio
+          <div className="brand-mark"><svg viewBox="0 0 44 44" aria-hidden="true"><path d="M4 15V4H15M29 4H40V15M40 29V40H29M15 40H4V29" fill="none" stroke="currentColor" strokeWidth="2.5"/><path d="M16 12L32 22L16 32Z" fill="currentColor"/></svg></div><div>FrameRise<small>CREATIVE STUDIO</small></div>
         </div>
         <nav className="nav col" style={{ gap: 4 }}>
           {NAV.map((n) => (
@@ -49,7 +49,8 @@ export const App: React.FC = () => {
             </a>
           ))}
         </nav>
-        <div className="foot">Processamento local em CPU · 127.0.0.1</div>
+        <div className="sidebar-note"><span>✦</span><strong>Sua próxima história<br/>começa aqui.</strong><p>Crie, ajuste e dê vida às suas ideias.</p></div>
+        <div className="foot">Seus projetos neste computador.</div>
       </aside>
       <div>
         <nav className="mobile-nav">

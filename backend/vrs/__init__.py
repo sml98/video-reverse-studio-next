@@ -1,4 +1,4 @@
-"""Video Reverse Studio — motor determinístico local dirigido por agente.
+"""FrameRise — motor determinístico local dirigido por agente.
 
 O agente (externo, via MCP/CLI, ou um adaptador explicitamente configurado)
 é o "cérebro"; este pacote é o motor: catálogo, projetos, fila, validação,

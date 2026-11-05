@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { api, fmtBytes, Resource } from "../api";
 import { GlbViewer } from "../components/GlbViewer";
+import sceneSpecs from "../contracts/scene-specs.json";
 
 const KIND_CAPABILITY: Record<string, string> = {
   image: "Imagem / prop 2D recortado — animável por posição, escala, rotação e parallax em camada.",
@@ -56,15 +57,15 @@ export const LibraryPage: React.FC = () => {
         <div>
           <h1 style={{ fontSize: 24 }}>Biblioteca</h1>
           <p className="muted" style={{ fontSize: 14 }}>
-            Materiais locais verificados com licença/procedência e catálogo de 67 cenas animadas (17 VRS + 50 RenderComp MIT).
+            Materiais locais com licença e procedência, personagens, cenários, sons e {sceneSpecs.scenes.length} componentes de cenas.
           </p>
         </div>
         <div className="row" style={{ gap: 8 }}>
           <button className={`btn ${tab === "resources" ? "primary" : ""}`} onClick={() => setTab("resources")}>
-            Materiais e pacotes ({total || 218})
+            Materiais e pacotes ({total})
           </button>
           <button className={`btn ${tab === "scenes" ? "primary" : ""}`} onClick={() => setTab("scenes")}>
-            Cenas e animações (67)
+            Cenas e animações ({sceneSpecs.scenes.length})
           </button>
         </div>
       </header>

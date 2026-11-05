@@ -12,14 +12,14 @@ from pydantic import BaseModel, Field, ValidationError
 
 from . import agents, analysis, catalog, jobs, library, projects, review, sogni, voice, workflow, hypit, cutout
 from .studio import StudioSliders
-from .config import ALLOWED_ORIGINS, settings
+from .config import ALLOWED_ORIGINS, RUN_PORT, settings
 from .util import VRSError, new_id, safe_join
 
 MEDIA_EXT = {".mp4", ".mov", ".webm", ".jpg", ".jpeg", ".png", ".webp", ".gif", ".wav", ".mp3", ".ogg", ".srt", ".vtt", ".glb", ".gltf", ".bin", ".json"}
 PROJECT_JSON_OK = {"plan.json", "storyboard.json", "brief.json", "review.json", "render.json", "words.json", "provenance.json", "timings.json", "reference.json"}
 MAX_UPLOAD = 600 * 1024 * 1024
 
-app = FastAPI(title="Video Reverse Studio", version="1.0.0", docs_url="/api/docs", redoc_url=None, openapi_url="/api/openapi.json")
+app = FastAPI(title="FrameRise", version="1.0.0", docs_url="/api/docs", redoc_url=None, openapi_url="/api/openapi.json")
 
 
 @app.middleware("http")
@@ -54,7 +54,7 @@ async def validation_error(_: Request, e: ValidationError):
 # ---------------------------------------------------------------------------
 @app.get("/api/health")
 def health() -> dict[str, Any]:
-    return {"ok": True, **workflow.status(), "host": "127.0.0.1", "port": 8765}
+    return {"ok": True, **workflow.status(), "product":"FrameRise", "ui_revision":2, "host": "127.0.0.1", "port": RUN_PORT}
 
 
 @app.get("/api/creation/catalog")
@@ -66,8 +66,10 @@ def creation_catalog() -> dict[str, Any]:
         has = (ex / n["id"] / "example.mp4").exists()
         s["example_video"] = f"/media/examples/{n['id']}/example.mp4" if has else ""
         s["thumbnail"] = f"/media/examples/{n['id']}/thumb.jpg" if (ex / n["id"] / "thumb.jpg").exists() else ""
+        s["reference_video"] = f"/media/examples/{n['id']}/reference.mp4" if (ex / n["id"] / "reference.mp4").exists() else ""
+        s["reference_thumbnail"] = f"/media/examples/{n['id']}/reference-thumb.png" if (ex / n["id"] / "reference-thumb.png").exists() else ""
         items.append(s)
-    return {"niches": items, "voices": voice.list_voices(), "agents": agents.available(), "sogni": sogni.status(), "stages": workflow.STAGES}
+    return {"product":"FrameRise", "catalog_revision":2, "niches": items, "voices": voice.list_voices(), "agents": agents.available(), "sogni": sogni.status(), "stages": workflow.STAGES}
 
 
 @app.get("/api/creation/niches/{nid}")
@@ -131,6 +133,7 @@ async def creation_start_upload(
     quality: str = Form("final"),
     studio_sliders: str = Form(""),
     clone_full: bool = Form(False),
+    name: str = Form(""),
 ) -> dict[str, Any]:
     ext = Path(file.filename or "").suffix.lower()
     if ext not in analysis.VIDEO_EXT:
@@ -145,7 +148,7 @@ async def creation_start_upload(
                 tmp.unlink(missing_ok=True)
                 raise VRSError("Arquivo grande demais (máx. 600 MB).")
             f.write(chunk)
-    res = workflow.start_creation(niche_id=niche_id, idea=idea, aspect=aspect, duration=duration or None, reference={"kind": "upload"}, voice_id=voice_id, captions=captions, agent=agent, quality=quality, studio_sliders=StudioSliders.model_validate_json(studio_sliders).model_dump() if studio_sliders else None, clone_full=clone_full)
+    res = workflow.start_creation(niche_id=niche_id, idea=idea, aspect=aspect, duration=duration or None, reference={"kind": "upload"}, voice_id=voice_id, captions=captions, agent=agent, quality=quality, name=name, studio_sliders=StudioSliders.model_validate_json(studio_sliders).model_dump() if studio_sliders else None, clone_full=clone_full)
     analysis.import_upload(res["project"]["id"], tmp, file.filename or "upload" + ext)
     return res
 

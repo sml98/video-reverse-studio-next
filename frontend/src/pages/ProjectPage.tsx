@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Player } from "@remotion/player";
-import { api, fmtBytes, media, Project } from "../api";
+import { api, fmtBytes, media, Project, Voice } from "../api";
 import { go } from "../App";
 import { Film, totalFrames as calcTotalFrames } from "../remotion/Film";
 import sceneSpecs from "../contracts/scene-specs.json";
@@ -18,6 +18,7 @@ const SPEC_MAP: Record<string, any> = Object.fromEntries((sceneSpecs.scenes as a
 
 const QUICK_ASSETS = [
   { label: "— Selecionar da biblioteca (ou digite abaixo) —", value: "" },
+  ...["studio", "moon", "island", "engine", "observatory"].map((name) => ({ label: `FrameRise · ${name}`, value: `lib:framerise-chibi.${name}` })),
   { label: "🐾 Panda Programador (Avatar)", value: "lib:user-avatars.animal-character-coder-red-panda" },
   { label: "🦈 Tubarão Advogado (Avatar)", value: "lib:user-avatars.animal-character-lawyer-shark" },
   { label: "🐧 Pinguim Professor (Avatar)", value: "lib:user-avatars.animal-character-professor-penguin" },
@@ -70,6 +71,11 @@ export const ProjectPage: React.FC<{ id: string }> = ({ id }) => {
   const [planJson, setPlanJson] = useState<string>("");
   const [msg, setMsg] = useState<string>("");
   const [err, setErr] = useState<string>("");
+  const [voices, setVoices] = useState<Voice[]>([]);
+
+  useEffect(() => {
+    api.get<{ voices: Voice[] }>("/api/settings").then((s) => setVoices(s.voices || [])).catch(() => {});
+  }, []);
 
   const load = async () => {
     try {
@@ -511,7 +517,7 @@ export const ProjectPage: React.FC<{ id: string }> = ({ id }) => {
                   <video src={media(proj.id, (proj as any).reference.file)} controls playsInline style={{ width: "100%", maxHeight: 340, background: "#000", borderRadius: 8 }} />
                 </div>
                 <div className="col" style={{ gap: 6 }}>
-                  <span className="muted" style={{ fontSize: 12 }}>Vídeo gerado pelo VRS:</span>
+                  <span className="muted" style={{ fontSize: 12 }}>Vídeo gerado pelo FrameRise:</span>
                   {curRender ? (
                     <video src={media(proj.id, curRender.mp4)} controls playsInline style={{ width: "100%", maxHeight: 340, background: "#000", borderRadius: 8 }} />
                   ) : (
@@ -862,10 +868,8 @@ export const ProjectPage: React.FC<{ id: string }> = ({ id }) => {
                         style={{ width: 150, padding: "3px 6px", fontSize: 11.5 }}
                         title="Voz desta cena"
                       >
-                        <option value="faber">Voz: faber (PT-BR)</option>
-                        <option value="cadu">Voz: cadu (PT-BR)</option>
-                        <option value="jeff">Voz: jeff (PT-BR)</option>
-                        <option value="duet">Dueto: faber + cadu</option>
+                        {!voices.some((v) => v.id === (sceneEdit.voice || plan?.audio?.voice || "faber")) && <option value={sceneEdit.voice || plan?.audio?.voice || "faber"}>{sceneEdit.voice || plan?.audio?.voice || "faber"} · usada no projeto</option>}
+                        {voices.map((v) => <option key={v.id} value={v.id}>{v.label || v.id} ({v.language})</option>)}
                       </select>
                     </div>
                     <textarea
@@ -925,6 +929,9 @@ export const ProjectPage: React.FC<{ id: string }> = ({ id }) => {
                   {/* Parâmetros do preset baseados em scene-specs.json */}
                   {(SPEC_MAP[sceneEdit.component]?.params || []).map((p: any) => {
                     const val = sceneEdit.params?.[p.key] ?? p.default;
+                    if (p.type === "boolean") {
+                      return <label key={p.key} className="row"><input type="checkbox" checked={val === true} onChange={(e) => setSceneEdit({ ...sceneEdit, params: { ...sceneEdit.params, [p.key]: e.target.checked } })} />{p.label}</label>;
+                    }
                     if (p.type === "list") {
                       const items: any[] = Array.isArray(val) ? val : [];
                       const isObjList = p.item?.type === "object" && Array.isArray(p.item?.fields);

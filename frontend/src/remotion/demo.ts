@@ -7,6 +7,6 @@ export const DEMO_PLAN: FilmPlan = FilmPlanSchema.parse({
   height: 720,
   fps: 30,
   scenes: [
-    { id: "s1", component: "vrs-title", params: { label: "VRS", title: "Video Reverse Studio", subtitle: "Composição de demonstração" }, durationInFrames: 90 },
+    { id: "s1", component: "vrs-title", params: { label: "VRS", title: "FrameRise", subtitle: "Composição de demonstração" }, durationInFrames: 90 },
   ],
 });

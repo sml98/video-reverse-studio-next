@@ -29,6 +29,11 @@ export const api = {
 
 export type Niche = {
   id: string;
+  family?: string;
+  revision?: string;
+  featured?: boolean;
+  capabilities?: string[];
+  defaultVoice?: string;
   title: string;
   emoji: string;
   description: string;
@@ -40,10 +45,12 @@ export type Niche = {
   scenes: { role: string; label: string; preset_id: string; duration: number }[];
   example_video: string;
   thumbnail: string;
+  reference_video?: string;
+  reference_thumbnail?: string;
 };
-export type Voice = { id: string; language: string; quality: string; audition: string; model_card: string };
+export type Voice = { id: string; label?: string; engine?: string; language: string; quality: string; audition: string; model_card: string };
 export type AgentOpt = { id: string; label: string; available: boolean; note: string };
-export type Catalog = { niches: Niche[]; voices: Voice[]; agents: AgentOpt[]; sogni: { enabled: boolean; policy: string }; stages: string[] };
+export type Catalog = { product?:string; catalog_revision?:number; niches: Niche[]; voices: Voice[]; agents: AgentOpt[]; sogni: { enabled: boolean; policy: string }; stages: string[] };
 export type Job = { id: string; kind: string; state: string; step: string; progress: number; error: string; result: any; created_at: number; project_id: string };
 export type Render = { version: number; mp4: string; size: number; review_state: string; created_at: number };
 export type Project = {

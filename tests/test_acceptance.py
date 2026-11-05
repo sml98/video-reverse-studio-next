@@ -108,6 +108,38 @@ def test_dossier_sound_matches_cue_and_respects_mute(monkeypatch):
     assert [c["role"] for c in expand._dossier_sfx("test", {**params, "cueWord": "removed"}, words, {})] == ["dossier:paper"]
 
 
+def test_framerise_catalog_reference_and_explicit_example_creation(isolated_storage):
+    examples=isolated_storage/"examples"/"framerise-chibi"
+    examples.mkdir(parents=True)
+    (examples/"reference.mp4").write_bytes(b"reference-test")
+    (examples/"example.mp4").write_bytes(b"native-test")
+    client=TestClient(api.app)
+    c=client.get("/api/creation/catalog").json()
+    assert c["product"]=="FrameRise" and c["catalog_revision"]==2
+    chibi=next(n for n in c["niches"] if n["id"]=="framerise-chibi")
+    assert chibi["reference_video"]!=chibi["example_video"]
+    assert chibi["defaultVoice"]=="supertonic-f2"
+    assert chibi["featured"] is True
+    result=client.post("/api/creation/start",json={"niche_id":"framerise-chibi","idea":"","agent":"draft","voice":"faber"})
+    assert result.status_code==200
+    project=result.json()["project"]
+    assert project["options"]["agent"]=="draft" and project["idea"]==""
+
+
+def test_known_preset_uses_its_recipe_without_reanalyzing_the_demo(monkeypatch):
+    from vrs import workflow,analysis
+    def forbidden(*args,**kwargs):
+        raise AssertionError("A known preset must not reimport or reanalyze its demonstration video")
+    monkeypatch.setattr(analysis,"import_example",forbidden)
+    monkeypatch.setattr(analysis,"analyze",forbidden)
+    created=workflow.start_creation(niche_id="framerise-chibi",idea="",agent="draft",voice_id="faber")
+    assert jobs.Worker().run_one()
+    pid=created["project"]["id"]
+    assert jobs.get(created["job"]["id"])["state"]=="done"
+    assert projects.load(pid,"brief")["reference"]["kind"]=="authored_recipe"
+    assert len(projects.load(pid,"storyboard")["scenes"])==15
+
+
 def test_path_traversal_and_executable_svg_blocked(tmp_path: Path):
     with pytest.raises(util.VRSError):
         util.safe_join(tmp_path, "../etc/passwd")
