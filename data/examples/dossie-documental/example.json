@@ -1,0 +1,64 @@
+{
+  "project_id": "p8d1f30e40bc7",
+  "niche": "dossie-documental",
+  "review": {
+    "technical": "aprovado_tecnicamente",
+    "findings": [],
+    "motion": [
+      {
+        "scene": "s01",
+        "component": "vrs-dossier",
+        "motion": 5.08,
+        "first_half": 5.33
+      },
+      {
+        "scene": "s02",
+        "component": "vrs-dossier",
+        "motion": 8.1,
+        "first_half": 4.09
+      },
+      {
+        "scene": "s03",
+        "component": "vrs-dossier",
+        "motion": 3.09,
+        "first_half": 2.28
+      },
+      {
+        "scene": "s04",
+        "component": "vrs-dossier",
+        "motion": 5.2,
+        "first_half": 4.87
+      },
+      {
+        "scene": "s05",
+        "component": "vrs-dossier",
+        "motion": 2.73,
+        "first_half": 4.15
+      }
+    ]
+  },
+  "render_seconds": 87.5,
+  "duration_s": 30.0,
+  "kind": "narrated_complete_example",
+  "audio": {
+    "present": true,
+    "narration": true,
+    "music": true,
+    "sfx_count": 11,
+    "measurements": {
+      "max_volume_db": -2.6,
+      "mean_volume_db": -20.1,
+      "integrated_lufs": -15.9,
+      "true_peak_dbfs": -2.6
+    },
+    "critical_listening": false
+  },
+  "checks": {
+    "full_decode": true,
+    "backend_tests": 19,
+    "frontend_tests": 13,
+    "kinocut_all_passed": false,
+    "kinocut_note": "Low saturation is consistent with the intentional paper/document palette."
+  },
+  "content_review": "Visual reviewed; critical listening pending"
+}

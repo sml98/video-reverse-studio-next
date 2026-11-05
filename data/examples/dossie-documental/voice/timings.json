@@ -1,0 +1,42 @@
+{
+  "s01": {
+    "wav": "voice/s01.wav",
+    "offset_ms": 300,
+    "duration_ms": 3808,
+    "timing": "tts_phonemes",
+    "cached": false,
+    "voice": "faber"
+  },
+  "s02": {
+    "wav": "voice/s02.wav",
+    "offset_ms": 300,
+    "duration_ms": 4202,
+    "timing": "tts_phonemes",
+    "cached": false,
+    "voice": "faber"
+  },
+  "s03": {
+    "wav": "voice/s03.wav",
+    "offset_ms": 300,
+    "duration_ms": 4215,
+    "timing": "tts_phonemes",
+    "cached": false,
+    "voice": "faber"
+  },
+  "s04": {
+    "wav": "voice/s04.wav",
+    "offset_ms": 300,
+    "duration_ms": 4052,
+    "timing": "tts_phonemes",
+    "cached": false,
+    "voice": "faber"
+  },
+  "s05": {
+    "wav": "voice/s05.wav",
+    "offset_ms": 300,
+    "duration_ms": 4319,
+    "timing": "tts_phonemes",
+    "cached": false,
+    "voice": "faber"
+  }
+}

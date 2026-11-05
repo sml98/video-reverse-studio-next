@@ -150,6 +150,37 @@ def _resolve_asset(pid: str, value: str) -> str:
     return value
 
 
+def _dossier_sfx(pid: str, params: dict[str, Any], words: list[dict[str, Any]], opts: dict[str, Any]) -> list[dict[str, Any]]:
+    """Local foley at the same configurable document/counter cues used by the renderer."""
+    if not opts.get("auto_sfx", True) or not params.get("soundEnabled", True):
+        return []
+    level = float(params.get("soundLevel", .65))
+    if level <= 0:
+        return []
+    cues: list[dict[str, Any]] = []
+    def add(resource: str, at: float, volume: float, role: str) -> None:
+        try:
+            rel = _resolve_asset(pid, f"lib:vrs-dossier.{resource}")
+            cues.append({"path": rel, "at_ms": round(at), "volume": volume * level, "role": role})
+        except VRSError:
+            pass  # Optional pack absent: rendering remains available without sound.
+    if params.get("entry") != "none":
+        add("paper-slide", 40, .3, "dossier:paper")
+    cue_word = params.get("cueWord", "").strip()
+    if cue_word:
+        matches = [w for w in words if normalize_token(w["word"]) == normalize_token(cue_word)]
+        occurrence = max(1, int(params.get("cueOccurrence", 1)))
+        if len(matches) < occurrence:
+            return cues
+        at_ms = matches[occurrence - 1]["start"]
+    else:
+        at_ms = float(params.get("cueSeconds", .7)) * 1000
+    add("focus-click", at_ms, .23, "dossier:reveal")
+    if params.get("showCounter"):
+        add("counter-roll", at_ms + 50, .15, "dossier:counter")
+    return cues
+
+
 def _apply_assets(pid: str, preset: str, params: dict[str, Any], asset_path: str, asset_ids: list[str]) -> dict[str, str]:
     extra = [a for a in ([asset_path] if asset_path else []) + [f"lib:{i}" if not i.startswith("lib:") else i for i in asset_ids]]
     if preset == "vrs-doc-montage" and extra:
@@ -248,7 +279,7 @@ def expand(pid: str, storyboard: dict[str, Any], *, progress: Progress | None = 
         frames = math.ceil(dur_ms * fps / 1000)
         tr = s.transition or (default_tr if i else "fade")
         anchors = [a.model_dump() for a in s.anchors]
-        scene_sfx = _auto_sfx(pid, i, s.preset_id, tr, words, opts)
+        scene_sfx = _dossier_sfx(pid, params, words, opts) if s.preset_id == "vrs-dossier" else _auto_sfx(pid, i, s.preset_id, tr, words, opts)
         if s.sfx:
             scene_sfx.append({"path": _resolve_asset(pid, s.sfx), "at_ms": words[0]["start"] if words else 0, "volume": 0.16, "role": "scene"})
         for anchor in anchors:
@@ -323,7 +354,7 @@ def expand(pid: str, storyboard: dict[str, Any], *, progress: Progress | None = 
             "mode": captions if captions in ("word", "phrase", "off") else "word",
             "position": "bottom",
             "maxWords": int(niche.get("captions", {}).get("maxWords", 3)),
-            "highlight": "#ffd23f",
+            "highlight": niche.get("captions", {}).get("highlight", "#ffd23f"),
             "style": cap_style if cap_style in ("hormozi", "karaoke", "cinema", "comic") else "hormozi",
         },
         "audio": {"narration": "voice/narration.wav" if timings else "", "music": music_rel, "musicVolume": float(opts.get("music_volume", 0.12)), "duck": True, "voice": voice_id if timings else ""},
@@ -347,7 +378,7 @@ def storyboard_from_recipe(niche_id: str, *, title: str | None = None) -> dict[s
         "language": "pt-BR",
         "uncertainties": [],
         "sources": n.get("sources", []),
-        "illustrative_data": any(s["parameters"].get("illustrative") for s in n["recipe"]),
+        "illustrative_data": any(s["parameters"].get("illustrative") or s["parameters"].get("fictional") for s in n["recipe"]),
         "music": n.get("music", ""),
         "scenes": [
             {

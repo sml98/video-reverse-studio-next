@@ -194,6 +194,290 @@
       ]
     },
     {
+      "id": "vrs-dossier",
+      "title": "Dossiê documental: moldura, lupa e dados",
+      "summary": "Vídeo ou foto em moldura, documento editável com lupa real por máscara, anotações conectadas, contador e entrada em perspectiva. Substitua mídias e narrativa.",
+      "category": "documentario",
+      "motion": [
+        "lupa com ampliação",
+        "documentos em perspectiva",
+        "contador numérico",
+        "vídeo em moldura",
+        "anotação conectada"
+      ],
+      "params": [
+        {
+          "key": "mode",
+          "type": "select",
+          "label": "Composição",
+          "default": "frame",
+          "options": [
+            "frame",
+            "lens",
+            "closing"
+          ]
+        },
+        {
+          "key": "title",
+          "type": "text",
+          "label": "Título do documento / quadro",
+          "default": "Um arquivo sem assinatura",
+          "maxLength": 70
+        },
+        {
+          "key": "eyebrow",
+          "type": "text",
+          "label": "Linha superior",
+          "default": "DOSSIÊ DOCUMENTAL",
+          "maxLength": 42
+        },
+        {
+          "key": "documentId",
+          "type": "text",
+          "label": "Código / data",
+          "default": "ARQ. 001",
+          "maxLength": 32
+        },
+        {
+          "key": "documentText",
+          "type": "longtext",
+          "label": "Texto do documento",
+          "default": "Uma pista muda a leitura do conjunto.",
+          "maxLength": 220
+        },
+        {
+          "key": "media",
+          "type": "asset",
+          "label": "Imagem ou vídeo da moldura",
+          "default": ""
+        },
+        {
+          "key": "mediaType",
+          "type": "select",
+          "label": "Tipo de mídia",
+          "default": "image",
+          "options": [
+            "image",
+            "video"
+          ]
+        },
+        {
+          "key": "fit",
+          "type": "select",
+          "label": "Enquadramento da mídia",
+          "default": "cover",
+          "options": [
+            "cover",
+            "contain"
+          ]
+        },
+        {
+          "key": "videoStartSeconds",
+          "type": "number",
+          "label": "Início do trecho de vídeo (s)",
+          "default": 0,
+          "min": 0,
+          "max": 36000
+        },
+        {
+          "key": "videoLoopSeconds",
+          "type": "number",
+          "label": "Duração do trecho para repetir (0 = sem repetição)",
+          "default": 0,
+          "min": 0,
+          "max": 600
+        },
+        {
+          "key": "documentImage",
+          "type": "asset",
+          "label": "Imagem inserida no documento",
+          "default": ""
+        },
+        {
+          "key": "calloutLabel",
+          "type": "text",
+          "label": "Rótulo da anotação",
+          "default": "DETALHE EM FOCO",
+          "maxLength": 40
+        },
+        {
+          "key": "calloutText",
+          "type": "text",
+          "label": "Texto da anotação",
+          "default": "Substitua pelo contexto da sua narrativa.",
+          "maxLength": 85
+        },
+        {
+          "key": "showCounter",
+          "type": "boolean",
+          "label": "Exibir contador",
+          "default": false
+        },
+        {
+          "key": "value",
+          "type": "number",
+          "label": "Valor final",
+          "default": 3,
+          "min": -1000000000.0,
+          "max": 1000000000.0
+        },
+        {
+          "key": "decimals",
+          "type": "number",
+          "label": "Casas decimais",
+          "default": 0,
+          "min": 0,
+          "max": 2
+        },
+        {
+          "key": "prefix",
+          "type": "text",
+          "label": "Prefixo do valor",
+          "default": "",
+          "maxLength": 8
+        },
+        {
+          "key": "suffix",
+          "type": "text",
+          "label": "Sufixo do valor",
+          "default": "",
+          "maxLength": 8
+        },
+        {
+          "key": "counterSeconds",
+          "type": "number",
+          "label": "Duração da contagem (s)",
+          "default": 1.2,
+          "min": 0.2,
+          "max": 5
+        },
+        {
+          "key": "cueWord",
+          "type": "text",
+          "label": "Palavra que revela anotação (vazio usa tempo)",
+          "default": "",
+          "maxLength": 50
+        },
+        {
+          "key": "cueOccurrence",
+          "type": "number",
+          "label": "Ocorrência da palavra",
+          "default": 1,
+          "min": 1,
+          "max": 30
+        },
+        {
+          "key": "cueSeconds",
+          "type": "number",
+          "label": "Tempo de revelação sem palavra (s)",
+          "default": 0.7,
+          "min": 0,
+          "max": 120
+        },
+        {
+          "key": "focusFromX",
+          "type": "number",
+          "label": "Lupa: x inicial",
+          "default": 0.3,
+          "min": 0.15,
+          "max": 0.85
+        },
+        {
+          "key": "focusFromY",
+          "type": "number",
+          "label": "Lupa: y inicial",
+          "default": 0.56,
+          "min": 0.2,
+          "max": 0.8
+        },
+        {
+          "key": "focusToX",
+          "type": "number",
+          "label": "Lupa: x final",
+          "default": 0.6,
+          "min": 0.15,
+          "max": 0.85
+        },
+        {
+          "key": "focusToY",
+          "type": "number",
+          "label": "Lupa: y final",
+          "default": 0.64,
+          "min": 0.2,
+          "max": 0.8
+        },
+        {
+          "key": "zoom",
+          "type": "number",
+          "label": "Ampliação óptica",
+          "default": 1.8,
+          "min": 1.1,
+          "max": 3
+        },
+        {
+          "key": "entry",
+          "type": "select",
+          "label": "Entrada do plano",
+          "default": "perspective",
+          "options": [
+            "perspective",
+            "slide",
+            "none"
+          ]
+        },
+        {
+          "key": "rotation",
+          "type": "number",
+          "label": "Inclinação do papel (graus)",
+          "default": -2,
+          "min": -7,
+          "max": 7
+        },
+        {
+          "key": "motion",
+          "type": "number",
+          "label": "Movimento contínuo",
+          "default": 1,
+          "min": 0,
+          "max": 2
+        },
+        {
+          "key": "paperColor",
+          "type": "color",
+          "label": "Cor do papel",
+          "default": "#edeae2"
+        },
+        {
+          "key": "accent",
+          "type": "color",
+          "label": "Cor das marcações",
+          "default": "#e95d52"
+        },
+        {
+          "key": "closingTitle",
+          "type": "text",
+          "label": "Título de fechamento",
+          "default": "A próxima pista está nos detalhes.",
+          "maxLength": 70
+        },
+        {
+          "key": "credit",
+          "type": "text",
+          "label": "Crédito da mídia / fonte",
+          "default": "",
+          "maxLength": 85
+        },
+        {
+          "key": "fictional",
+          "type": "boolean",
+          "label": "Identificar como ficção / demonstração",
+          "default": false
+        },
+        {"key": "soundEnabled", "type": "boolean", "label": "Efeitos sonoros automáticos", "default": true},
+        {"key": "soundLevel", "type": "number", "label": "Intensidade dos efeitos", "default": 0.65, "min": 0, "max": 1}
+      ]
+    },
+    {
       "id": "vrs-doc-montage",
       "title": "Montagem documental com imagens",
       "summary": "Imagens em camadas com movimento de câmera (Ken Burns/parallax), legenda e crédito. É câmera sobre imagem, não animação do conteúdo.",

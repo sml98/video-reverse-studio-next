@@ -19,12 +19,13 @@ def isolated_storage(tmp_path: Path, monkeypatch: pytest.MonkeyPatch):
     """Isola completamente banco SQLite, projetos e cache dos dados reais do usuário."""
     data_dir = tmp_path / "data"
     data_dir.mkdir(parents=True, exist_ok=True)
-    # Copia um pacote da biblioteca para testar importação com procedência sem symlink externo
-    real_pack = config.ROOT / "data" / "library" / "packs" / "kenney-halloween"
-    if real_pack.exists():
-        dst_pack = data_dir / "library" / "packs" / "kenney-halloween"
-        dst_pack.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copytree(real_pack, dst_pack)
+    # Small fixture packs needed by the recipes; user storage remains isolated.
+    for pack in ("kenney-halloween", "vrs-dossier", "vrs-pro-audio"):
+        real_pack = config.ROOT / "data" / "library" / "packs" / pack
+        if real_pack.exists():
+            dst_pack = data_dir / "library" / "packs" / pack
+            dst_pack.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copytree(real_pack, dst_pack)
     monkeypatch.setenv("VRS_DATA_DIR", str(data_dir))
     monkeypatch.delenv("VRS_SOGNI_ENABLED", raising=False)
     monkeypatch.delenv("VRS_SOGNI_LAUNCHER", raising=False)
@@ -73,6 +74,38 @@ def test_storyboard_and_filmplan_validation():
         contracts.Layer.model_validate(
             {"id": "l1", "type": "path", "d": "M0 0 <script>alert(1)</script>"}
         )
+
+
+def test_dossier_catalog_expansion_and_caption_theme():
+    niche = catalog.get_niche("dossie-documental")
+    assert niche["recipe"][0]["parameters"]["fictional"] is True
+    assert catalog.search_catalog("dossiê", "scene")["items"][0]["id"] == "vrs-dossier"
+    sb = expand.storyboard_from_recipe("dossie-documental")
+    assert sb["illustrative_data"] is True
+    for aspect, dimensions in [("landscape", (1920, 1080)), ("vertical", (1080, 1920)), ("square", (1080, 1080))]:
+        p = projects.create_project(name="Dossiê", idea="Ficção", niche_id="dossie-documental", aspect=aspect, target_seconds=30, options={"narration": False})
+        plan = expand.expand(p["id"], sb)
+        assert (plan["width"], plan["height"]) == dimensions
+        assert {s["component"] for s in plan["scenes"]} == {"vrs-dossier"}
+        assert plan["captions"]["highlight"] == "#e95d52"
+        assert plan["captions"]["style"] == "cinema"
+        assert plan["audio"]["music"]
+        assert all(s["assets"] for s in plan["scenes"])
+        assert all(s["sfx"] for s in plan["scenes"])
+    with pytest.raises(util.VRSError):
+        catalog.validate_params("vrs-dossier", {"media": "../private.mp4"})
+
+
+def test_dossier_sound_matches_cue_and_respects_mute(monkeypatch):
+    monkeypatch.setattr(expand, "_resolve_asset", lambda pid, value: "assets/" + value.split(".")[-1] + ".wav")
+    words = [{"word": "três,", "start": 1200}, {"word": "três", "start": 2800}]
+    params = {"cueWord": "tres", "cueOccurrence": 2, "entry": "perspective", "showCounter": True}
+    cues = expand._dossier_sfx("test", params, words, {})
+    assert next(c["at_ms"] for c in cues if c["role"] == "dossier:reveal") == 2800
+    assert len(cues) == 3
+    assert expand._dossier_sfx("test", params, words, {"auto_sfx": False}) == []
+    assert expand._dossier_sfx("test", {**params, "soundEnabled": False}, words, {}) == []
+    assert [c["role"] for c in expand._dossier_sfx("test", {**params, "cueWord": "removed"}, words, {})] == ["dossier:paper"]
 
 
 def test_path_traversal_and_executable_svg_blocked(tmp_path: Path):

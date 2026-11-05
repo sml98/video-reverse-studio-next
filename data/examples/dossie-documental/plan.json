@@ -1,0 +1,777 @@
+{
+  "schema": "vrs.filmplan/1",
+  "title": "Um arquivo sem assinatura",
+  "language": "pt-BR",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "theme": {
+    "background": "#edeae2",
+    "foreground": "#ffffff",
+    "accent": "#e95d52",
+    "accent2": "#262522",
+    "muted": "#8e887c",
+    "font": "sans",
+    "visualLanguage": "documentario"
+  },
+  "captions": {
+    "enabled": true,
+    "mode": "word",
+    "position": "bottom",
+    "maxWords": 4,
+    "highlight": "#e95d52",
+    "style": "cinema"
+  },
+  "audio": {
+    "narration": "voice/narration.wav",
+    "music": "assets/lib/vrs-pro-audio/bgm-doc-suspense.wav",
+    "musicVolume": 0.12,
+    "duck": true,
+    "voice": "faber"
+  },
+  "scenes": [
+    {
+      "anchors": [],
+      "id": "s01",
+      "component": "vrs-dossier",
+      "params": {
+        "mode": "frame",
+        "title": "Um mapa. Nenhuma assinatura.",
+        "eyebrow": "UM ARQUIVO SEM ASSINATURA",
+        "documentId": "ARQ. 001",
+        "documentText": "FICÇÃO · Um achado abre a investigação.",
+        "media": "assets/lib/vrs-dossier/reading-room.jpg",
+        "mediaType": "image",
+        "fit": "cover",
+        "videoStartSeconds": 0,
+        "videoLoopSeconds": 0,
+        "documentImage": "assets/lib/vrs-dossier/mapa.png",
+        "calloutLabel": "PRIMEIRA PISTA",
+        "calloutText": "Quem deixou este mapa aqui?",
+        "showCounter": false,
+        "value": 3,
+        "decimals": 0,
+        "prefix": "",
+        "suffix": "",
+        "counterSeconds": 1.2,
+        "cueWord": "",
+        "cueOccurrence": 1,
+        "cueSeconds": 0.7,
+        "focusFromX": 0.3,
+        "focusFromY": 0.56,
+        "focusToX": 0.6,
+        "focusToY": 0.64,
+        "zoom": 1.8,
+        "entry": "perspective",
+        "rotation": -2,
+        "motion": 1,
+        "paperColor": "#edeae2",
+        "accent": "#e95d52",
+        "closingTitle": "A próxima pista está nos detalhes.",
+        "credit": "C. M. Highsmith / LOC · cenário ilustrativo",
+        "fictional": true,
+        "soundEnabled": true,
+        "soundLevel": 0.65
+      },
+      "durationInFrames": 180,
+      "narration": "Um mapa apareceu no arquivo. Mas ninguém sabia quem o tinha desenhado.",
+      "voice": "faber",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Um",
+          "start": 300,
+          "end": 473
+        },
+        {
+          "id": "w-2",
+          "word": "mapa",
+          "start": 473,
+          "end": 721
+        },
+        {
+          "id": "w-3",
+          "word": "apareceu",
+          "start": 721,
+          "end": 1154
+        },
+        {
+          "id": "w-4",
+          "word": "no",
+          "start": 1154,
+          "end": 1241
+        },
+        {
+          "id": "w-5",
+          "word": "arquivo.",
+          "start": 1241,
+          "end": 1786
+        },
+        {
+          "id": "w-6",
+          "word": "Mas",
+          "start": 1926,
+          "end": 2105
+        },
+        {
+          "id": "w-7",
+          "word": "ninguém",
+          "start": 2105,
+          "end": 2453
+        },
+        {
+          "id": "w-8",
+          "word": "sabia",
+          "start": 2453,
+          "end": 2849
+        },
+        {
+          "id": "w-9",
+          "word": "quem",
+          "start": 2849,
+          "end": 3065
+        },
+        {
+          "id": "w-10",
+          "word": "o",
+          "start": 3065,
+          "end": 3113
+        },
+        {
+          "id": "w-11",
+          "word": "tinha",
+          "start": 3113,
+          "end": 3329
+        },
+        {
+          "id": "w-12",
+          "word": "desenhado.",
+          "start": 3329,
+          "end": 4108
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {
+        "assets/lib/vrs-dossier/reading-room.jpg": "assets/lib/vrs-dossier/reading-room.jpg",
+        "assets/lib/vrs-dossier/mapa.png": "assets/lib/vrs-dossier/mapa.png"
+      },
+      "layers": [],
+      "transitionIn": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/vrs-dossier/paper-slide.wav",
+          "at_ms": 40,
+          "volume": 0.195,
+          "role": "dossier:paper"
+        },
+        {
+          "path": "assets/lib/vrs-dossier/focus-click.wav",
+          "at_ms": 700,
+          "volume": 0.14950000000000002,
+          "role": "dossier:reveal"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "anchors": [],
+      "id": "s02",
+      "component": "vrs-dossier",
+      "params": {
+        "mode": "lens",
+        "title": "A anotação no verso",
+        "eyebrow": "UM ARQUIVO SEM ASSINATURA",
+        "documentId": "ARQ. 002",
+        "documentText": "Três marcas. Um traço interrompido.\nA mesma pergunta: por quê?",
+        "media": "",
+        "mediaType": "image",
+        "fit": "cover",
+        "videoStartSeconds": 0,
+        "videoLoopSeconds": 0,
+        "documentImage": "assets/lib/vrs-dossier/mapa.png",
+        "calloutLabel": "MARCAS NO MAPA",
+        "calloutText": "Três pontos na história fictícia.",
+        "showCounter": true,
+        "value": 3,
+        "decimals": 0,
+        "prefix": "",
+        "suffix": "",
+        "counterSeconds": 1.2,
+        "cueWord": "três",
+        "cueOccurrence": 1,
+        "cueSeconds": 0.7,
+        "focusFromX": 0.3,
+        "focusFromY": 0.56,
+        "focusToX": 0.6,
+        "focusToY": 0.64,
+        "zoom": 1.8,
+        "entry": "perspective",
+        "rotation": -2,
+        "motion": 1,
+        "paperColor": "#edeae2",
+        "accent": "#e95d52",
+        "closingTitle": "A próxima pista está nos detalhes.",
+        "credit": "História fictícia · exemplo editável",
+        "fictional": true,
+        "soundEnabled": true,
+        "soundLevel": 0.65
+      },
+      "durationInFrames": 180,
+      "narration": "No verso, uma anotação chamou a atenção: três pontos estavam marcados.",
+      "voice": "faber",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "No",
+          "start": 300,
+          "end": 429
+        },
+        {
+          "id": "w-2",
+          "word": "verso,",
+          "start": 429,
+          "end": 971
+        },
+        {
+          "id": "w-3",
+          "word": "uma",
+          "start": 971,
+          "end": 1147
+        },
+        {
+          "id": "w-4",
+          "word": "anotação",
+          "start": 1147,
+          "end": 1689
+        },
+        {
+          "id": "w-5",
+          "word": "chamou",
+          "start": 1689,
+          "end": 1924
+        },
+        {
+          "id": "w-6",
+          "word": "a",
+          "start": 1924,
+          "end": 1995
+        },
+        {
+          "id": "w-7",
+          "word": "atenção:",
+          "start": 1995,
+          "end": 2736
+        },
+        {
+          "id": "w-8",
+          "word": "três",
+          "start": 2736,
+          "end": 2995
+        },
+        {
+          "id": "w-9",
+          "word": "pontos",
+          "start": 2995,
+          "end": 3337
+        },
+        {
+          "id": "w-10",
+          "word": "estavam",
+          "start": 3337,
+          "end": 3714
+        },
+        {
+          "id": "w-11",
+          "word": "marcados.",
+          "start": 3714,
+          "end": 4502
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {
+        "assets/lib/vrs-dossier/mapa.png": "assets/lib/vrs-dossier/mapa.png"
+      },
+      "layers": [],
+      "transitionIn": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/vrs-dossier/paper-slide.wav",
+          "at_ms": 40,
+          "volume": 0.195,
+          "role": "dossier:paper"
+        },
+        {
+          "path": "assets/lib/vrs-dossier/focus-click.wav",
+          "at_ms": 2736,
+          "volume": 0.14950000000000002,
+          "role": "dossier:reveal"
+        },
+        {
+          "path": "assets/lib/vrs-dossier/counter-roll.wav",
+          "at_ms": 2786,
+          "volume": 0.0975,
+          "role": "dossier:counter"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "anchors": [],
+      "id": "s03",
+      "component": "vrs-dossier",
+      "params": {
+        "mode": "frame",
+        "title": "As pistas se conectam",
+        "eyebrow": "UM ARQUIVO SEM ASSINATURA",
+        "documentId": "ARQ. 003",
+        "documentText": "Observar → comparar → formular uma hipótese",
+        "media": "assets/lib/vrs-dossier/mapa-animado.mp4",
+        "mediaType": "video",
+        "fit": "cover",
+        "videoStartSeconds": 0,
+        "videoLoopSeconds": 4,
+        "documentImage": "assets/lib/vrs-dossier/mapa.png",
+        "calloutLabel": "UMA HIPÓTESE",
+        "calloutText": "A conexão ainda precisa ser verificada.",
+        "showCounter": false,
+        "value": 3,
+        "decimals": 0,
+        "prefix": "",
+        "suffix": "",
+        "counterSeconds": 1.2,
+        "cueWord": "",
+        "cueOccurrence": 1,
+        "cueSeconds": 0.7,
+        "focusFromX": 0.3,
+        "focusFromY": 0.56,
+        "focusToX": 0.6,
+        "focusToY": 0.64,
+        "zoom": 1.8,
+        "entry": "perspective",
+        "rotation": -2,
+        "motion": 1,
+        "paperColor": "#edeae2",
+        "accent": "#e95d52",
+        "closingTitle": "A próxima pista está nos detalhes.",
+        "credit": "Mapa e animação originais · ficção",
+        "fictional": true,
+        "soundEnabled": true,
+        "soundLevel": 0.65
+      },
+      "durationInFrames": 180,
+      "narration": "As marcas pareciam soltas. Só ganharam sentido quando foram comparadas.",
+      "voice": "faber",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "As",
+          "start": 300,
+          "end": 476
+        },
+        {
+          "id": "w-2",
+          "word": "marcas",
+          "start": 476,
+          "end": 805
+        },
+        {
+          "id": "w-3",
+          "word": "pareciam",
+          "start": 805,
+          "end": 1347
+        },
+        {
+          "id": "w-4",
+          "word": "soltas.",
+          "start": 1347,
+          "end": 2053
+        },
+        {
+          "id": "w-5",
+          "word": "Só",
+          "start": 2193,
+          "end": 2347
+        },
+        {
+          "id": "w-6",
+          "word": "ganharam",
+          "start": 2347,
+          "end": 2761
+        },
+        {
+          "id": "w-7",
+          "word": "sentido",
+          "start": 2761,
+          "end": 3140
+        },
+        {
+          "id": "w-8",
+          "word": "quando",
+          "start": 3140,
+          "end": 3413
+        },
+        {
+          "id": "w-9",
+          "word": "foram",
+          "start": 3413,
+          "end": 3638
+        },
+        {
+          "id": "w-10",
+          "word": "comparadas.",
+          "start": 3638,
+          "end": 4515
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {
+        "assets/lib/vrs-dossier/mapa-animado.mp4": "assets/lib/vrs-dossier/mapa-animado.mp4",
+        "assets/lib/vrs-dossier/mapa.png": "assets/lib/vrs-dossier/mapa.png"
+      },
+      "layers": [],
+      "transitionIn": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/vrs-dossier/paper-slide.wav",
+          "at_ms": 40,
+          "volume": 0.195,
+          "role": "dossier:paper"
+        },
+        {
+          "path": "assets/lib/vrs-dossier/focus-click.wav",
+          "at_ms": 700,
+          "volume": 0.14950000000000002,
+          "role": "dossier:reveal"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "anchors": [],
+      "id": "s04",
+      "component": "vrs-dossier",
+      "params": {
+        "mode": "lens",
+        "title": "O traço que faltava",
+        "eyebrow": "UM ARQUIVO SEM ASSINATURA",
+        "documentId": "ARQ. 004",
+        "documentText": "Um detalhe não encerra uma investigação.\nEle indica onde olhar em seguida.",
+        "media": "",
+        "mediaType": "image",
+        "fit": "cover",
+        "videoStartSeconds": 0,
+        "videoLoopSeconds": 0,
+        "documentImage": "assets/lib/vrs-dossier/anotacao.png",
+        "calloutLabel": "OLHE DE NOVO",
+        "calloutText": "O que parecia isolado ganhou contexto.",
+        "showCounter": false,
+        "value": 3,
+        "decimals": 0,
+        "prefix": "",
+        "suffix": "",
+        "counterSeconds": 1.2,
+        "cueWord": "",
+        "cueOccurrence": 1,
+        "cueSeconds": 0.7,
+        "focusFromX": 0.62,
+        "focusFromY": 0.56,
+        "focusToX": 0.4,
+        "focusToY": 0.64,
+        "zoom": 1.8,
+        "entry": "perspective",
+        "rotation": -2,
+        "motion": 1,
+        "paperColor": "#edeae2",
+        "accent": "#e95d52",
+        "closingTitle": "A próxima pista está nos detalhes.",
+        "credit": "História fictícia · exemplo editável",
+        "fictional": true,
+        "soundEnabled": true,
+        "soundLevel": 0.65
+      },
+      "durationInFrames": 180,
+      "narration": "Uma linha quase apagada ligava os pontos. O detalhe mudou a leitura.",
+      "voice": "faber",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "Uma",
+          "start": 300,
+          "end": 503
+        },
+        {
+          "id": "w-2",
+          "word": "linha",
+          "start": 503,
+          "end": 718
+        },
+        {
+          "id": "w-3",
+          "word": "quase",
+          "start": 718,
+          "end": 1005
+        },
+        {
+          "id": "w-4",
+          "word": "apagada",
+          "start": 1005,
+          "end": 1471
+        },
+        {
+          "id": "w-5",
+          "word": "ligava",
+          "start": 1471,
+          "end": 1806
+        },
+        {
+          "id": "w-6",
+          "word": "os",
+          "start": 1806,
+          "end": 1938
+        },
+        {
+          "id": "w-7",
+          "word": "pontos.",
+          "start": 1938,
+          "end": 2691
+        },
+        {
+          "id": "w-8",
+          "word": "O",
+          "start": 2831,
+          "end": 2932
+        },
+        {
+          "id": "w-9",
+          "word": "detalhe",
+          "start": 2932,
+          "end": 3309
+        },
+        {
+          "id": "w-10",
+          "word": "mudou",
+          "start": 3309,
+          "end": 3585
+        },
+        {
+          "id": "w-11",
+          "word": "a",
+          "start": 3585,
+          "end": 3648
+        },
+        {
+          "id": "w-12",
+          "word": "leitura.",
+          "start": 3648,
+          "end": 4352
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {
+        "assets/lib/vrs-dossier/anotacao.png": "assets/lib/vrs-dossier/anotacao.png"
+      },
+      "layers": [],
+      "transitionIn": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/vrs-dossier/paper-slide.wav",
+          "at_ms": 40,
+          "volume": 0.195,
+          "role": "dossier:paper"
+        },
+        {
+          "path": "assets/lib/vrs-dossier/focus-click.wav",
+          "at_ms": 700,
+          "volume": 0.14950000000000002,
+          "role": "dossier:reveal"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "anchors": [],
+      "id": "s05",
+      "component": "vrs-dossier",
+      "params": {
+        "mode": "closing",
+        "title": "O arquivo continua aberto",
+        "eyebrow": "UM ARQUIVO SEM ASSINATURA",
+        "documentId": "ARQ. 005",
+        "documentText": "Cada resposta pode abrir uma pergunta melhor.",
+        "media": "",
+        "mediaType": "image",
+        "fit": "cover",
+        "videoStartSeconds": 0,
+        "videoLoopSeconds": 0,
+        "documentImage": "assets/lib/vrs-dossier/mapa.png",
+        "calloutLabel": "DETALHE EM FOCO",
+        "calloutText": "Substitua pelo contexto da sua narrativa.",
+        "showCounter": false,
+        "value": 3,
+        "decimals": 0,
+        "prefix": "",
+        "suffix": "",
+        "counterSeconds": 1.2,
+        "cueWord": "",
+        "cueOccurrence": 1,
+        "cueSeconds": 0.7,
+        "focusFromX": 0.3,
+        "focusFromY": 0.56,
+        "focusToX": 0.6,
+        "focusToY": 0.64,
+        "zoom": 1.8,
+        "entry": "perspective",
+        "rotation": -2,
+        "motion": 1,
+        "paperColor": "#edeae2",
+        "accent": "#e95d52",
+        "closingTitle": "Quem desenhou o mapa?",
+        "credit": "História fictícia · exemplo editável",
+        "fictional": true,
+        "soundEnabled": true,
+        "soundLevel": 0.65
+      },
+      "durationInFrames": 180,
+      "narration": "O arquivo continuava sem assinatura. Mas agora existia uma nova pergunta.",
+      "voice": "faber",
+      "words": [
+        {
+          "id": "w-1",
+          "word": "O",
+          "start": 300,
+          "end": 383
+        },
+        {
+          "id": "w-2",
+          "word": "arquivo",
+          "start": 383,
+          "end": 751
+        },
+        {
+          "id": "w-3",
+          "word": "continuava",
+          "start": 751,
+          "end": 1392
+        },
+        {
+          "id": "w-4",
+          "word": "sem",
+          "start": 1392,
+          "end": 1558
+        },
+        {
+          "id": "w-5",
+          "word": "assinatura.",
+          "start": 1558,
+          "end": 2401
+        },
+        {
+          "id": "w-6",
+          "word": "Mas",
+          "start": 2541,
+          "end": 2728
+        },
+        {
+          "id": "w-7",
+          "word": "agora",
+          "start": 2728,
+          "end": 3051
+        },
+        {
+          "id": "w-8",
+          "word": "existia",
+          "start": 3051,
+          "end": 3487
+        },
+        {
+          "id": "w-9",
+          "word": "uma",
+          "start": 3487,
+          "end": 3624
+        },
+        {
+          "id": "w-10",
+          "word": "nova",
+          "start": 3624,
+          "end": 3922
+        },
+        {
+          "id": "w-11",
+          "word": "pergunta.",
+          "start": 3922,
+          "end": 4619
+        }
+      ],
+      "timing": "tts_phonemes",
+      "assets": {
+        "assets/lib/vrs-dossier/mapa.png": "assets/lib/vrs-dossier/mapa.png"
+      },
+      "layers": [],
+      "transitionIn": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "transitionOut": {
+        "type": "none",
+        "durationInFrames": 0,
+        "color": ""
+      },
+      "sfx": [
+        {
+          "path": "assets/lib/vrs-dossier/paper-slide.wav",
+          "at_ms": 40,
+          "volume": 0.195,
+          "role": "dossier:paper"
+        },
+        {
+          "path": "assets/lib/vrs-dossier/focus-click.wav",
+          "at_ms": 700,
+          "volume": 0.14950000000000002,
+          "role": "dossier:reveal"
+        }
+      ],
+      "notes": ""
+    }
+  ],
+  "uncertainties": [],
+  "sources": [],
+  "illustrativeData": true,
+  "warnings": []
+}

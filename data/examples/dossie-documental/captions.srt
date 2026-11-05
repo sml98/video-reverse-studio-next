@@ -1,0 +1,39 @@
+1
+00:00:00,300 --> 00:00:01,786
+Um mapa apareceu no arquivo.
+
+2
+00:00:01,926 --> 00:00:04,108
+Mas ninguém sabia quem o tinha desenhado.
+
+3
+00:00:06,300 --> 00:00:08,736
+No verso, uma anotação chamou a atenção:
+
+4
+00:00:08,736 --> 00:00:10,502
+três pontos estavam marcados.
+
+5
+00:00:12,300 --> 00:00:14,053
+As marcas pareciam soltas.
+
+6
+00:00:14,193 --> 00:00:16,515
+Só ganharam sentido quando foram comparadas.
+
+7
+00:00:18,300 --> 00:00:20,691
+Uma linha quase apagada ligava os pontos.
+
+8
+00:00:20,831 --> 00:00:22,352
+O detalhe mudou a leitura.
+
+9
+00:00:24,300 --> 00:00:26,401
+O arquivo continuava sem assinatura.
+
+10
+00:00:26,541 --> 00:00:28,619
+Mas agora existia uma nova pergunta.

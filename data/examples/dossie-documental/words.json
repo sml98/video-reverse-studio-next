@@ -1,0 +1,344 @@
+{
+  "schema": "vrs.words/1",
+  "precision": [
+    "tts_phonemes"
+  ],
+  "words": [
+    {
+      "id": "s01-w-1",
+      "word": "Um",
+      "start": 300,
+      "end": 473
+    },
+    {
+      "id": "s01-w-2",
+      "word": "mapa",
+      "start": 473,
+      "end": 721
+    },
+    {
+      "id": "s01-w-3",
+      "word": "apareceu",
+      "start": 721,
+      "end": 1154
+    },
+    {
+      "id": "s01-w-4",
+      "word": "no",
+      "start": 1154,
+      "end": 1241
+    },
+    {
+      "id": "s01-w-5",
+      "word": "arquivo.",
+      "start": 1241,
+      "end": 1786
+    },
+    {
+      "id": "s01-w-6",
+      "word": "Mas",
+      "start": 1926,
+      "end": 2105
+    },
+    {
+      "id": "s01-w-7",
+      "word": "ninguém",
+      "start": 2105,
+      "end": 2453
+    },
+    {
+      "id": "s01-w-8",
+      "word": "sabia",
+      "start": 2453,
+      "end": 2849
+    },
+    {
+      "id": "s01-w-9",
+      "word": "quem",
+      "start": 2849,
+      "end": 3065
+    },
+    {
+      "id": "s01-w-10",
+      "word": "o",
+      "start": 3065,
+      "end": 3113
+    },
+    {
+      "id": "s01-w-11",
+      "word": "tinha",
+      "start": 3113,
+      "end": 3329
+    },
+    {
+      "id": "s01-w-12",
+      "word": "desenhado.",
+      "start": 3329,
+      "end": 4108
+    },
+    {
+      "id": "s02-w-1",
+      "word": "No",
+      "start": 6300,
+      "end": 6429
+    },
+    {
+      "id": "s02-w-2",
+      "word": "verso,",
+      "start": 6429,
+      "end": 6971
+    },
+    {
+      "id": "s02-w-3",
+      "word": "uma",
+      "start": 6971,
+      "end": 7147
+    },
+    {
+      "id": "s02-w-4",
+      "word": "anotação",
+      "start": 7147,
+      "end": 7689
+    },
+    {
+      "id": "s02-w-5",
+      "word": "chamou",
+      "start": 7689,
+      "end": 7924
+    },
+    {
+      "id": "s02-w-6",
+      "word": "a",
+      "start": 7924,
+      "end": 7995
+    },
+    {
+      "id": "s02-w-7",
+      "word": "atenção:",
+      "start": 7995,
+      "end": 8736
+    },
+    {
+      "id": "s02-w-8",
+      "word": "três",
+      "start": 8736,
+      "end": 8995
+    },
+    {
+      "id": "s02-w-9",
+      "word": "pontos",
+      "start": 8995,
+      "end": 9337
+    },
+    {
+      "id": "s02-w-10",
+      "word": "estavam",
+      "start": 9337,
+      "end": 9714
+    },
+    {
+      "id": "s02-w-11",
+      "word": "marcados.",
+      "start": 9714,
+      "end": 10502
+    },
+    {
+      "id": "s03-w-1",
+      "word": "As",
+      "start": 12300,
+      "end": 12476
+    },
+    {
+      "id": "s03-w-2",
+      "word": "marcas",
+      "start": 12476,
+      "end": 12805
+    },
+    {
+      "id": "s03-w-3",
+      "word": "pareciam",
+      "start": 12805,
+      "end": 13347
+    },
+    {
+      "id": "s03-w-4",
+      "word": "soltas.",
+      "start": 13347,
+      "end": 14053
+    },
+    {
+      "id": "s03-w-5",
+      "word": "Só",
+      "start": 14193,
+      "end": 14347
+    },
+    {
+      "id": "s03-w-6",
+      "word": "ganharam",
+      "start": 14347,
+      "end": 14761
+    },
+    {
+      "id": "s03-w-7",
+      "word": "sentido",
+      "start": 14761,
+      "end": 15140
+    },
+    {
+      "id": "s03-w-8",
+      "word": "quando",
+      "start": 15140,
+      "end": 15413
+    },
+    {
+      "id": "s03-w-9",
+      "word": "foram",
+      "start": 15413,
+      "end": 15638
+    },
+    {
+      "id": "s03-w-10",
+      "word": "comparadas.",
+      "start": 15638,
+      "end": 16515
+    },
+    {
+      "id": "s04-w-1",
+      "word": "Uma",
+      "start": 18300,
+      "end": 18503
+    },
+    {
+      "id": "s04-w-2",
+      "word": "linha",
+      "start": 18503,
+      "end": 18718
+    },
+    {
+      "id": "s04-w-3",
+      "word": "quase",
+      "start": 18718,
+      "end": 19005
+    },
+    {
+      "id": "s04-w-4",
+      "word": "apagada",
+      "start": 19005,
+      "end": 19471
+    },
+    {
+      "id": "s04-w-5",
+      "word": "ligava",
+      "start": 19471,
+      "end": 19806
+    },
+    {
+      "id": "s04-w-6",
+      "word": "os",
+      "start": 19806,
+      "end": 19938
+    },
+    {
+      "id": "s04-w-7",
+      "word": "pontos.",
+      "start": 19938,
+      "end": 20691
+    },
+    {
+      "id": "s04-w-8",
+      "word": "O",
+      "start": 20831,
+      "end": 20932
+    },
+    {
+      "id": "s04-w-9",
+      "word": "detalhe",
+      "start": 20932,
+      "end": 21309
+    },
+    {
+      "id": "s04-w-10",
+      "word": "mudou",
+      "start": 21309,
+      "end": 21585
+    },
+    {
+      "id": "s04-w-11",
+      "word": "a",
+      "start": 21585,
+      "end": 21648
+    },
+    {
+      "id": "s04-w-12",
+      "word": "leitura.",
+      "start": 21648,
+      "end": 22352
+    },
+    {
+      "id": "s05-w-1",
+      "word": "O",
+      "start": 24300,
+      "end": 24383
+    },
+    {
+      "id": "s05-w-2",
+      "word": "arquivo",
+      "start": 24383,
+      "end": 24751
+    },
+    {
+      "id": "s05-w-3",
+      "word": "continuava",
+      "start": 24751,
+      "end": 25392
+    },
+    {
+      "id": "s05-w-4",
+      "word": "sem",
+      "start": 25392,
+      "end": 25558
+    },
+    {
+      "id": "s05-w-5",
+      "word": "assinatura.",
+      "start": 25558,
+      "end": 26401
+    },
+    {
+      "id": "s05-w-6",
+      "word": "Mas",
+      "start": 26541,
+      "end": 26728
+    },
+    {
+      "id": "s05-w-7",
+      "word": "agora",
+      "start": 26728,
+      "end": 27051
+    },
+    {
+      "id": "s05-w-8",
+      "word": "existia",
+      "start": 27051,
+      "end": 27487
+    },
+    {
+      "id": "s05-w-9",
+      "word": "uma",
+      "start": 27487,
+      "end": 27624
+    },
+    {
+      "id": "s05-w-10",
+      "word": "nova",
+      "start": 27624,
+      "end": 27922
+    },
+    {
+      "id": "s05-w-11",
+      "word": "pergunta.",
+      "start": 27922,
+      "end": 28619
+    }
+  ]
+}

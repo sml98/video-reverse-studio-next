@@ -1,0 +1,13 @@
+{
+  "reference_media_reused": false,
+  "fictional": true,
+  "image_sources": [
+    "Carol M. Highsmith / Library of Congress, LC-DIG-highsm-11604 (public domain)",
+    "Original synthetic map and note (CC0-1.0)"
+  ],
+  "voice": "Piper Faber PT-BR; dataset CC0 according to installed model card; no weights included",
+  "music": "vrs-pro-audio.bgm-doc-suspense (CC0-1.0)",
+  "sfx": "11 timed original Foley cues, vrs-dossier (CC0-1.0)",
+  "audio_review": "Technical measurement only; no critical listening",
+  "provenance_file": "../../library/packs/vrs-dossier/SOURCES.md"
+}

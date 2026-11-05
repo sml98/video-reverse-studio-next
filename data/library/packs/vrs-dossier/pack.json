@@ -1,0 +1,32 @@
+{
+  "id": "vrs-dossier",
+  "title": "Dossiê: imagens e foley",
+  "source": "https://github.com/sml98/video-reverse-studio-next",
+  "license": "CC0-1.0 for original maps, animation and SFX; public domain for Highsmith photograph (see SOURCES.md)",
+  "credit": "Carol M. Highsmith / Library of Congress; FrameRise procedural assets",
+  "tags": [
+    "dossie",
+    "documentario",
+    "arquivo",
+    "mapa",
+    "papel",
+    "foley",
+    "investigacao"
+  ],
+  "styles": [
+    "dossie-documental"
+  ],
+  "niches": [
+    "dossie-documental"
+  ],
+  "notes": "Photograph is illustrative scenery for an explicitly fictional story. No footage copied from reference.",
+  "files": {
+    "images/anotacao.png": "d0457c2064ed0669eb8f4ce9700c4aa79ed3814a3958a18c64c2d41812554484",
+    "images/mapa.png": "6fb98dce4d0d754ace71bfd426e3dd2aca56e8a4fd8db1ec3b26702ec1ec9be6",
+    "images/reading-room.jpg": "d82530b2be9e0dfca44896b0cbfc3edd569ffe4e88a92d6b3b996a978b2cc252",
+    "sfx/counter-roll.wav": "202d0254fe51f6b5733855b4cbb04e1a9fbae419fe80b029be5f29568aff413a",
+    "sfx/focus-click.wav": "9f100b9da04f3d1c769281ce98672ea2b3b2454d74aaec6d3dffa7a05466ae00",
+    "sfx/paper-slide.wav": "80a72b5f37dd725b030c4b13184d5685e940182df0ef7881f7c8501e95c0d752",
+    "video/mapa-animado.mp4": "dfe4ef45b3e9690635908b51a588020ea1188a19071dfee24f8ba2fa1902d0b6"
+  }
+}

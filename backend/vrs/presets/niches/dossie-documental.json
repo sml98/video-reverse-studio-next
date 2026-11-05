@@ -1,0 +1,171 @@
+{
+  "id": "dossie-documental",
+  "schema": "vrs.niche/1",
+  "title": "Dossiê documental",
+  "emoji": "🔎",
+  "description": "Narrativa documental com imagens já incluídas, voz, trilha, efeitos, lupa e documentos em perspectiva. Exemplo fictício e editável.",
+  "arc": [
+    "gancho",
+    "contexto",
+    "evidência",
+    "síntese",
+    "fechamento"
+  ],
+  "visualLanguages": [
+    "documentario",
+    "colagem",
+    "motion",
+    "arquivo"
+  ],
+  "theme": {
+    "background": "#edeae2",
+    "foreground": "#ffffff",
+    "accent": "#e95d52",
+    "accent2": "#262522",
+    "muted": "#8e887c",
+    "font": "sans",
+    "visualLanguage": "documentario"
+  },
+  "example": {
+    "title": "Um arquivo sem assinatura",
+    "idea": "História fictícia: um mapa sem assinatura leva à comparação de três pistas.",
+    "aspect": "landscape"
+  },
+  "recipe": [
+    {
+      "role": "gancho",
+      "label": "Um arquivo inesperado",
+      "preset_id": "vrs-dossier",
+      "duration": 6,
+      "narration": "Um mapa apareceu no arquivo. Mas ninguém sabia quem o tinha desenhado.",
+      "parameters": {
+        "eyebrow": "UM ARQUIVO SEM ASSINATURA",
+        "fictional": true,
+        "credit": "C. M. Highsmith / LOC · cenário ilustrativo",
+        "documentId": "ARQ. 001",
+        "mode": "frame",
+        "title": "Um mapa. Nenhuma assinatura.",
+        "documentText": "FICÇÃO · Um achado abre a investigação.",
+        "calloutLabel": "PRIMEIRA PISTA",
+        "calloutText": "Quem deixou este mapa aqui?",
+        "documentImage": "lib:vrs-dossier.mapa",
+        "media": "lib:vrs-dossier.reading-room",
+        "mediaType": "image",
+        "fit": "cover"
+      },
+      "guidance": "Ficção demonstrativa. Troque os textos e mídias pelo novo tema; sincronize à nova narração.",
+      "transition": "none"
+    },
+    {
+      "role": "contexto",
+      "label": "Examine o documento",
+      "preset_id": "vrs-dossier",
+      "duration": 6,
+      "narration": "No verso, uma anotação chamou a atenção: três pontos estavam marcados.",
+      "parameters": {
+        "eyebrow": "UM ARQUIVO SEM ASSINATURA",
+        "fictional": true,
+        "credit": "História fictícia · exemplo editável",
+        "documentId": "ARQ. 002",
+        "mode": "lens",
+        "title": "A anotação no verso",
+        "documentText": "Três marcas. Um traço interrompido.\nA mesma pergunta: por quê?",
+        "showCounter": true,
+        "value": 3,
+        "calloutLabel": "MARCAS NO MAPA",
+        "calloutText": "Três pontos na história fictícia.",
+        "cueWord": "três",
+        "documentImage": "lib:vrs-dossier.mapa"
+      },
+      "guidance": "Ficção demonstrativa. Troque os textos e mídias pelo novo tema; sincronize à nova narração.",
+      "transition": "none"
+    },
+    {
+      "role": "evidência",
+      "label": "Compare as pistas",
+      "preset_id": "vrs-dossier",
+      "duration": 6,
+      "narration": "As marcas pareciam soltas. Só ganharam sentido quando foram comparadas.",
+      "parameters": {
+        "eyebrow": "UM ARQUIVO SEM ASSINATURA",
+        "fictional": true,
+        "credit": "Mapa e animação originais · ficção",
+        "documentId": "ARQ. 003",
+        "mode": "frame",
+        "title": "As pistas se conectam",
+        "documentText": "Observar → comparar → formular uma hipótese",
+        "calloutLabel": "UMA HIPÓTESE",
+        "calloutText": "A conexão ainda precisa ser verificada.",
+        "documentImage": "lib:vrs-dossier.mapa",
+        "media": "lib:vrs-dossier.mapa-animado",
+        "mediaType": "video",
+        "videoLoopSeconds": 4
+      },
+      "guidance": "Ficção demonstrativa. Troque os textos e mídias pelo novo tema; sincronize à nova narração.",
+      "transition": "none"
+    },
+    {
+      "role": "síntese",
+      "label": "O detalhe muda a leitura",
+      "preset_id": "vrs-dossier",
+      "duration": 6,
+      "narration": "Uma linha quase apagada ligava os pontos. O detalhe mudou a leitura.",
+      "parameters": {
+        "eyebrow": "UM ARQUIVO SEM ASSINATURA",
+        "fictional": true,
+        "credit": "História fictícia · exemplo editável",
+        "documentId": "ARQ. 004",
+        "mode": "lens",
+        "title": "O traço que faltava",
+        "documentText": "Um detalhe não encerra uma investigação.\nEle indica onde olhar em seguida.",
+        "calloutLabel": "OLHE DE NOVO",
+        "calloutText": "O que parecia isolado ganhou contexto.",
+        "focusFromX": 0.62,
+        "focusToX": 0.4,
+        "documentImage": "lib:vrs-dossier.anotacao"
+      },
+      "guidance": "Ficção demonstrativa. Troque os textos e mídias pelo novo tema; sincronize à nova narração.",
+      "transition": "none"
+    },
+    {
+      "role": "fechamento",
+      "label": "Fechamento editorial",
+      "preset_id": "vrs-dossier",
+      "duration": 6,
+      "narration": "O arquivo continuava sem assinatura. Mas agora existia uma nova pergunta.",
+      "parameters": {
+        "eyebrow": "UM ARQUIVO SEM ASSINATURA",
+        "fictional": true,
+        "credit": "História fictícia · exemplo editável",
+        "documentId": "ARQ. 005",
+        "mode": "closing",
+        "title": "O arquivo continua aberto",
+        "documentText": "Cada resposta pode abrir uma pergunta melhor.",
+        "closingTitle": "Quem desenhou o mapa?",
+        "documentImage": "lib:vrs-dossier.mapa"
+      },
+      "guidance": "Ficção demonstrativa. Troque os textos e mídias pelo novo tema; sincronize à nova narração.",
+      "transition": "none"
+    }
+  ],
+  "aspects": [
+    "landscape",
+    "vertical",
+    "square"
+  ],
+  "durationRange": [
+    15,
+    360
+  ],
+  "defaultDuration": 30,
+  "captions": {
+    "mode": "word",
+    "position": "bottom",
+    "maxWords": 4,
+    "style": "cinema",
+    "highlight": "#e95d52"
+  },
+  "voice": "faber",
+  "sources": [],
+  "music": "lib:vrs-pro-audio.bgm-doc-suspense"
+}
